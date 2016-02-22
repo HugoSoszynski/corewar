@@ -1,0 +1,6 @@
+*.o
+*~
+\#*\#
+asm
+corewar
+champ/*
