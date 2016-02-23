@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Tue Feb 23 15:57:37 2016 
+** Last update Tue Feb 23 16:23:51 2016 
 */
 
 #ifndef		ASM_H_
@@ -47,10 +47,10 @@ typedef struct	s_cmd
   char		label[T_LAB];
 }		t_cmd;
 
-header_t	*create_cor_header(char *,
-				   char **,
-				   int);
-t_cmd		*create_cmd_struct(char *);
+header_t	*create_cor_header(char *name,
+				   char **coment,
+				   int prog_size);
+t_cmd		*create_cmd_struct(char *line);
 int		check_cmd_line(char *line); /* return 0 reussite et 1 erreur */
 int		choose_line_type(char *line);
 
