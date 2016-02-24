@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ##
 ## Started on  Mon Feb  8 17:48:10 2016 Hugo SOSZYNSKI
-## Last update Tue Feb 23 16:37:26 2016 Hugo SOSZYNSKI
+## Last update Wed Feb 24 12:21:17 2016 Hugo SOSZYNSKI
 ##
 
 CC					=		gcc
@@ -23,7 +23,7 @@ ASM					=		asm
 ASM_SRCS		=		asm/sources/main.c \
 								asm/sources/cor_header.c
 
-ASM_OBJS				=		$(ASM_SRCS:.c=.o)
+ASM_OBJS		=		$(ASM_SRCS:.c=.o)
 
 
 

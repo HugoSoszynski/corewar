@@ -1,6 +1,4 @@
 *.o
 *~
 \#*\#
-asm
-corewar
 champ/*
