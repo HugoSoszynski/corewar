@@ -5,12 +5,12 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ##
 ## Started on  Mon Feb  8 17:48:10 2016 Hugo SOSZYNSKI
-## Last update Wed Feb 24 12:21:17 2016 Hugo SOSZYNSKI
+## Last update Wed Feb 24 11:46:23 2016 loens_g
 ##
 
-CC					=		gcc
+CC			=	gcc
 
-RM					=		rm -f
+RM			=	rm -f
 
 CFLAGS			+=	-W -Wextra -Wall
 CFLAGS			+=	-Werror
@@ -18,18 +18,18 @@ CFLAGS			+=	-Werror
 CFLAGS			+=	-pedantic
 CFLAGS			+=	-ggdb3
 
-ASM					=		asm
+ASM			=	asm
 
-ASM_SRCS		=		asm/sources/main.c \
-								asm/sources/cor_header.c
+ASM_SRCS		=	asm/sources/main.c \
+				asm/sources/cor_header.c
 
-ASM_OBJS		=		$(ASM_SRCS:.c=.o)
+ASM_OBJS		=	$(ASM_SRCS:.c=.o)
 
 
 
 all:		$(ASM)
 
-$(ASM):	$(ASM_OBJS)
+$(ASM):		$(ASM_OBJS)
 		$(CC) $(ASM_OBJS) -o $(ASM) -Iinclude
 
 clean:
