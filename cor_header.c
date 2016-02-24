@@ -1,17 +1,23 @@
 /*
-** cor_header.c for  in /home/pillon_m/corewar/CPE_2015_corewar
+** cor_header.c for asm in /home/soszyn_h/rendu/CPE/CPE_2015_corewar/
 **
-** Made by
-** Login   <@epitech.net>
+** Made by Hugo SOSZYNSKI
+** Login   <hugo.soszynski@epitech.eu>
 **
-** Started on  Tue Feb 23 16:20:01 2016
-** Last update Tue Feb 23 19:41:35 2016 Hugo SOSZYNSKI
+** Started on  Wed Feb 24 11:58:27 2016 Hugo SOSZYNSKI
+** Last update Wed Feb 24 12:16:53 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
 #include	<unistd.h>
 #include	"asm.h"
 #include	"op.h"
+
+/*
+** Copie le tableau de string contenant les commentaires
+** dans la section comment du header au format :
+** "comment_1\ncomment2\ncomment_3\0"
+*/
 
 static header_t		*cpy_commentary(header_t *header,
 					char **comment)
@@ -37,6 +43,11 @@ static header_t		*cpy_commentary(header_t *header,
     }
   return (header);
 }
+
+/*
+** Alloue la mémoire pour le header_t
+** et met toutes les valeurs à 0
+*/
 
 static header_t	*init_cor_header()
 {
@@ -64,6 +75,10 @@ static header_t	*init_cor_header()
   return (header);
 }
 
+/*
+** Appelle la fonction init_cor_header() et le remplit
+*/
+
 header_t	*create_cor_header(char *name,
 				   char **comment,
 				   int prog_size)
@@ -81,6 +96,10 @@ header_t	*create_cor_header(char *name,
   header = cpy_comentary(header, comment);
   return (header);
 }
+
+/*
+** Ecrit la structure header_t remplie dans le fichier .cor
+*/
 
 int		write_cor_header(header_t *header,
 				 int fd,
