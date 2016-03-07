@@ -5,13 +5,13 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 10:53:24 2016 Grégoire Loens
-** Last update Mon Mar  7 14:10:48 2016 Grégoire Loens
+** Last update Mon Mar  7 14:48:14 2016 Grégoire Loens
 */
 
 #include 	"stddef.h"
 #include	"parser.h"
 
-int		gst_comment(char *line)
+static int		gst_comment(char *line)
 {
   int		cpt;
 
@@ -26,7 +26,7 @@ int		gst_comment(char *line)
     return (-1);
 }
 
-int		gst_name(char *line)
+static int		gst_name(char *line)
 {
   int		cpt;
 
@@ -40,28 +40,4 @@ int		gst_name(char *line)
   if (line[cpt] != '"')
     return (-1);
 
-}
-
-int		verif_beginning_file(int fd)
-{
-  char		*line;
-  int		nbr_line;
-
-  counter = -1;
-  while (++nbr_line < 2)
-    {
-      line = get_next_line(fd);
-      if (line == NULL)
-	return (error_message("Error: empty file\n"));
-      if (i == 0)
-	{
-	  if (gst_name(line) == -1)
-	    return (error_message("Syntax error line 1"));
-        }
-      if (i == 1)
-	{
-	  if (gst_comment(line) == -1)
-	    return (error_message("Syntax error line 2"));
-	}
-    }
 }
