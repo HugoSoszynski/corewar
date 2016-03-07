@@ -79,15 +79,13 @@ extern  op_t    op_tab[];
 #define COMMENT_LENGTH          2048
 #define COREWAR_EXEC_MAGIC      0xea83f3        /* why not */
 
-struct header_s
+typedef struct	header_s
 {
    int  magic;
    char prog_name[PROG_NAME_LENGTH+1];
    int  prog_size;
    char comment[COMMENT_LENGTH+1];
-};
-
-typedef struct header_s header_t;
+}		header_t;
 
 /*
  ** live

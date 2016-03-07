@@ -5,11 +5,13 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Mon Mar  7 10:23:33 2016 Hugo SOSZYNSKI
+** Last update Mon Mar  7 16:36:38 2016 Hugo SOSZYNSKI
 */
 
 #ifndef		ASM_H_
 # define	ASM_H_
+
+#include	"op.h"
 
 # define	ERROR				(-1)
 
@@ -40,6 +42,8 @@
 # define	TYPE_LINE_LABEL			(6)
 # define	TYPE_LINE_LABEL_CMD		(7)
 
+# define	IS_LIT_ENDIAN			(check_for_endianess())
+
 typedef struct	s_cmd
 {
   char		opcode;
@@ -57,7 +61,16 @@ header_t	*create_cor_header(char *name,
 				   char **coment,
 				   int prog_size);
 int		write_cor_header(header_t *header,
-				 int fd);
+				 int fd,
+				 char *file_name);
+
+/*
+** my_endianess.c
+*/
+
+int		check_for_endianess();
+void		my_reverse_bytes(void *value,
+				unsigned int size);
 
 /*
 ** à coder

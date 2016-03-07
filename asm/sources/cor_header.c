@@ -5,11 +5,12 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Wed Feb 24 11:58:27 2016 Hugo SOSZYNSKI
-** Last update Wed Feb 24 12:16:53 2016 Hugo SOSZYNSKI
+** Last update Mon Mar  7 16:36:24 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
 #include	<unistd.h>
+#include	<stdlib.h>
 #include	"asm.h"
 #include	"op.h"
 
@@ -19,27 +20,26 @@
 ** "comment_1\ncomment2\ncomment_3\0"
 */
 
-static header_t		*cpy_commentary(header_t *header,
-					char **comment)
+static header_t	*cpy_commentary(header_t *header,
+				char **comment)
 {
   int		cpt;
   int		cpt1;
   int		cpt2;
 
   cpt = -1;
-  cpt1 = -1;
   cpt2 = 0;
   while (comment[++cpt] != NULL)
     {
+      cpt1 = -1;
       while (comment[cpt][++cpt1] != '\0')
 	{
-	  header->comment[cpt2] = comment[cpt][++cpt1];
+	  header->comment[cpt2] = comment[cpt][cpt1];
 	  cpt2++;
 	}
       if (comment[cpt + 1] != NULL)
 	header->comment[cpt2] = '\n';
       cpt2++;
-      cpt1 = 0;
     }
   return (header);
 }
@@ -52,8 +52,9 @@ static header_t		*cpy_commentary(header_t *header,
 static header_t	*init_cor_header()
 {
   int		cpt;
+  header_t	*header;
 
-  if ((header = malloc(sizeof(t_header))) == NULL)
+  if ((header = malloc(sizeof(header_t))) == NULL)
     {
       write(2, "Can’t perform malloc\n", 21);
       return (NULL);
@@ -69,7 +70,7 @@ static header_t	*init_cor_header()
   cpt = 0;
   while (cpt < COMMENT_LENGTH + 1)
     {
-      headr->comment[cpt] = '\0';
+      header->comment[cpt] = '\0';
       cpt++;
     }
   return (header);
@@ -93,7 +94,7 @@ header_t	*create_cor_header(char *name,
   while (name[++cpt] != '\0')
     header->prog_name[cpt] = name[cpt];
   header->prog_size = prog_size;
-  header = cpy_comentary(header, comment);
+  header = cpy_commentary(header, comment);
   return (header);
 }
 
@@ -107,14 +108,19 @@ int		write_cor_header(header_t *header,
 {
   int		size;
 
-  size = 0;
-  while (file_name[size] != '\0')
-    size++;
-  if (write(fd, header, sizeof(header)) == -1)
+  if (IS_LIT_ENDIAN)
     {
+      my_reverse_bytes(&header->magic, sizeof(int));
+      my_reverse_bytes(&header->prog_size, sizeof(int));
+    }
+  if (write(fd, header, sizeof(header_t)) == -1)
+    {
+      size = 0;
+      while (file_name[size] != '\0')
+	size++;
       write(2, "File ", 5);
       write(2, file_name, size);
-      write(2, "not accessible\n", 15);
+      write(2, " not accessible\n", 15);
       return (ERROR);
     }
   return (0);
