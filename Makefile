@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ##
 ## Started on  Mon Feb  8 17:48:10 2016 Hugo SOSZYNSKI
-## Last update Wed Feb 24 11:46:23 2016 loens_g
+## Last update Mon Mar  7 16:39:30 2016 Hugo SOSZYNSKI
 ##
 
 CC			=	gcc
@@ -17,11 +17,12 @@ CFLAGS			+=	-Werror
 #CFLAGS			+=	-ansi
 CFLAGS			+=	-pedantic
 CFLAGS			+=	-ggdb3
+CFLAGS			+=	-Iasm/includes
 
-ASM			=	asm
+ASM			=	asm/asm
 
-ASM_SRCS		=	asm/sources/main.c \
-				asm/sources/cor_header.c
+ASM_SRCS		=	asm/sources/cor_header.c \
+				asm/sources/my_endianess.c
 
 ASM_OBJS		=	$(ASM_SRCS:.c=.o)
 
@@ -30,7 +31,7 @@ ASM_OBJS		=	$(ASM_SRCS:.c=.o)
 all:		$(ASM)
 
 $(ASM):		$(ASM_OBJS)
-		$(CC) $(ASM_OBJS) -o $(ASM) -Iinclude
+		$(CC) $(ASM_OBJS) -o $(ASM) -Iasm/includes
 
 clean:
 		$(RM) $(ASM_OBJS)
