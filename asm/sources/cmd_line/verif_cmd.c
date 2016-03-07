@@ -1,12 +1,56 @@
 /*
 ** verif_cmd.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources/cmd_line
-** 
-** Made by 
+**
+** Made by
 ** Login   <@epitech.net>
-** 
-** Started on  Mon Mar  7 16:10:58 2016 
-** Last update Mon Mar  7 17:04:51 2016 
+**
+** Started on  Mon Mar  7 16:10:58 2016
+** Last update Mon Mar  7 17:10:00 2016 Grégoire Loens
 */
+
+char		**set_cmd_part1()
+{
+  char		**cmd;
+
+  cmd[0] = "live";
+  cmd[1] = "d";
+  cmd[2] = "ld";
+  cmd[3] = "d/i,r";
+  cmd[4] = "st";
+  cmd[5] = "r,d/r";
+  cmd[6] = "add";
+  cmd[7] = "r,r,r";
+  cmd[8] = "sub";
+  cmd[9] = "r,r,r";
+  cmd[10] = "and";
+  cmd[11] = "r/d/i,r/d/i,r";
+  cmd[12] = "or";
+  cmd[13] = "r/d/i,r/d/i,r";
+  cmd[14] = "xor";
+  cmd[15] = "r/d/i,r/d/i,r";
+  cmd[16] = "zjmp";
+  cmd[17] = "d";
+  cmd[18] = "ldi";
+  cmd[19] = "r/d/i,r/d/i";
+  cmd[20] = "sti";
+  cmd[21] = "r,r/d/i,r/d";
+  return (set_cmd_part2(cmd));
+}
+
+char		**set_cmd_part2(char **cmd)
+{
+  cmd[22] = "fork";
+  cmd[23] = "d";
+  cmd[24] = "lfork";
+  cmd[25] = "d";
+  cmd[26] = "lld";
+  cmd[27] = "d/i,r";
+  cmd[28] = "lldi";
+  cmd[29] = "r/d/i,r/d,r";
+  cmp[30] = "aff";
+  cmp[31] = "r";
+  return (cmd);
+}
 
 int		verif_nbr_cmd_label(char *line)
 {
