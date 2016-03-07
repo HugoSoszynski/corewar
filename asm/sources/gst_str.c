@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Mon Mar  7 16:25:21 2016 
+** Last update Mon Mar  7 16:13:54 2016 Grégoire Loens
 */
 
 int		my_strlen(char *str, int i)
@@ -23,7 +23,7 @@ int		my_isalpha_num(char c)
   return (0);
 }
 
-int		my_str_cmp(char *str, char *str1)
+int		my_strcmp(char *str, char *str1)
 {
   int		i;
 
