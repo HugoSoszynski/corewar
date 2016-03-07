@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Mon Mar  7 15:58:12 2016 
+** Last update Mon Mar  7 16:25:21 2016 
 */
 
 int		my_strlen(char *str, int i)
@@ -35,6 +35,29 @@ int		my_str_cmp(char *str, char *str1)
     }
   if (str1[i] != '\0')
     return (-1);
+}
+
+char		*my_getword(char *line, int nb_word)
+{
+  int		cpt;
+  int		cpt_output;
+  char		*output;
+
+  if ((output == malloc(sizeof(char) * my_strlen(line))) == NULL)
+    return(NULL);
+  cpt_output = 0;
+  cpt = -1;
+  while (line[++cpt] != '\0' && (nb_word - 1) > 0)
+    if (line[cpt] == ' ')
+      nb_word--;
+  while (line[cpt] != '\0' && line[cpt] != ' ')
+    {
+      output[cpt_output] = line[cpt];
+      cpt++;
+      cpt_output++;
+    }
+  output[cpt_output] = '\0';
+  return (output);
 }
 
 char		*my_isspace(char *input)
