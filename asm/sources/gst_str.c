@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Mon Mar  7 16:13:54 2016 Grégoire Loens
+** Last update Mon Mar  7 17:18:09 2016 
 */
 
 int		my_strlen(char *str, int i)
@@ -50,6 +50,8 @@ char		*my_getword(char *line, int nb_word)
   while (line[++cpt] != '\0' && (nb_word - 1) > 0)
     if (line[cpt] == ' ')
       nb_word--;
+  if (line[cpt] == '\0')
+    return (NULL);
   while (line[cpt] != '\0' && line[cpt] != ' ')
     {
       output[cpt_output] = line[cpt];
