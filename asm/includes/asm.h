@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Mon Mar  7 16:36:38 2016 Hugo SOSZYNSKI
+** Last update Tue Mar  8 15:20:09 2016 Hugo SOSZYNSKI
 */
 
 #ifndef		ASM_H_
@@ -71,6 +71,12 @@ int		write_cor_header(header_t *header,
 int		check_for_endianess();
 void		my_reverse_bytes(void *value,
 				unsigned int size);
+
+/*
+** error.c
+*/
+
+void		error_message(char *msg);
 
 /*
 ** à coder
