@@ -5,18 +5,24 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 11:59:21 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 17:24:34 2016 corsin_a
 */
 
 #include	<stddef.h>
 #include	"corewar.h"
 
-int		main(int ac, char **av)
+int		main(int 	argc,
+		     char 	*argv[])
 {
   t_corewar	corewar;
 
-  if (ac == 0 && av == NULL)
+  corewar.process_list = NULL;
+  if (argc == 1)
     return (ERROR);
-  init_corewar(&corewar);
+  else
+    {
+      if (init_corewar(&corewar, argc, argv) != SUCCESS)
+	return (ERROR);
+    }
   return (SUCCESS);
 }

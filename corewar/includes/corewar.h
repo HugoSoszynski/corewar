@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 11:48:38 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 17:48:06 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -20,6 +20,10 @@
 #ifndef			ERROR
 # define		ERROR		(1)
 #endif			/* !ERROR */
+
+#ifndef			IS_LIT_ENDIAN
+# define		IS_LIT_ENDIAN	(check_for_endianess())
+#endif			/* !IS_LIT_ENDIAN */
 
 typedef struct		s_instruction
 {
@@ -47,10 +51,24 @@ typedef struct		s_process_list
 
 typedef struct		s_champion
 {
-  char			*name;
-  char			*comment;
+  header_t		header;
+  unsigned char		*prog;
+  unsigned int		address;
   unsigned int		nb_champion;
 }			t_champion;
+
+typedef struct		s_options_champion
+{
+  char			*name;
+  int			nb;
+  int			address;
+}			t_options_champion;
+
+typedef struct		s_options
+{
+  int			dump;
+  t_options_champion	champion[4];
+}			t_options;
 
 typedef struct		s_corewar
 {
@@ -59,11 +77,22 @@ typedef struct		s_corewar
   unsigned long int	actual_cycle;
   char			champions_alive[4];
   unsigned char		nb_champions;
-  t_champion		champions_info[4];
+  t_champion		champion[4];
   char			mem[MEM_SIZE];
   unsigned int		live_nb;
 }			t_corewar;
 
-int			init_corewar(t_corewar *corewar);
+int			init_corewar(t_corewar *corewar,
+				     int ac, char **av);
+int			init_champ(t_corewar		*corewar,
+				   int			nb_file,
+				   char			*file[]);
+int			check_for_endianess(void);
+void			my_reverse_bytes(void		*_value,
+					 unsigned int 	size);
+void			error_message(char		*msg);
+int			error_file(char			*start,
+				   char			*name,
+				   char			*end);
 
 #endif		/* !COREWAR_H_ */

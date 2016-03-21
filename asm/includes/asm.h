@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Tue Mar  8 15:20:09 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 14:47:10 2016 Hugo SOSZYNSKI
 */
 
 #ifndef		ASM_H_
@@ -42,7 +42,9 @@
 # define	TYPE_LINE_LABEL			(6)
 # define	TYPE_LINE_LABEL_CMD		(7)
 
+#ifndef		IS_LIT_ENDIAN
 # define	IS_LIT_ENDIAN			(check_for_endianess())
+#endif		/* !IS_LIT_ENDIAN */
 
 typedef struct	s_cmd
 {
