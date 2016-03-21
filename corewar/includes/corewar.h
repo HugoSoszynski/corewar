@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 12:13:21 2016 corsin_a
+** Last update Mon Mar 21 16:54:50 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
@@ -20,6 +20,10 @@
 #ifndef			ERROR
 # define		ERROR		(1)
 #endif			/* !ERROR */
+
+#ifndef			IS_LIT_ENDIAN
+# define		IS_LIT_ENDIAN	(check_for_endianess())
+#endif			/* !IS_LIT_ENDIAN */
 
 typedef struct		s_instruction
 {
@@ -47,8 +51,9 @@ typedef struct		s_process_list
 
 typedef struct		s_champion
 {
-  char			*name;
-  char			*comment;
+  header_t		header;
+  char			*prog;
+  unsigned int		address;
   unsigned int		nb_champion;
 }			t_champion;
 
@@ -67,5 +72,10 @@ typedef struct		s_corewar
 int			init_process(t_process_list	*process_list,
 				     int		nb_file,
 				     char		*file[]);
+int			check_for_endianess();
+void			my_reverse_bytes(void		*_value,
+					 unsigned int 	size);
+void			error_message(char		*msg);
+int			error_file(char *start, char *name, char *end);
 
 #endif		/* !COREWAR_H_ */

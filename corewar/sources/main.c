@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 12:14:28 2016 corsin_a
+** Last update Mon Mar 21 15:07:03 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
@@ -16,6 +16,7 @@ int		main(int 	argc,
 {
   t_corewar	corewar;
 
+  corewar.process_list = NULL;
   if (argc == 1)
     return (ERROR);
   else
