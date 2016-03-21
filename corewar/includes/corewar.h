@@ -5,25 +5,29 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 19:45:36 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 19:55:27 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
 # define		COREWAR_H_
 
-#include		"op.h"
+# include		"op.h"
 
-#ifndef			SUCCESS
-# define		SUCCESS		(0)
-#endif			/* !SUCCESS */
+# ifndef		SUCCESS
+#  define		SUCCESS		(0)
+# endif			/* !SUCCESS */
 
-#ifndef			ERROR
-# define		ERROR		(1)
-#endif			/* !ERROR */
+# ifndef		ERROR
+#  define		ERROR		(1)
+# endif			/* !ERROR */
 
-#ifndef			IS_LIT_ENDIAN
-# define		IS_LIT_ENDIAN	(check_for_endianess())
-#endif			/* !IS_LIT_ENDIAN */
+# ifndef		CONTINUE
+#  define		CONTINUE	(2)
+# endif			/* !CONTINUE */
+
+# ifndef		IS_LIT_ENDIAN
+#  define		IS_LIT_ENDIAN	(check_for_endianess())
+# endif			/* !IS_LIT_ENDIAN */
 
 typedef struct		s_instruction
 {

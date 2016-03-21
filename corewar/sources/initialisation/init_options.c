@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 17:42:18 2016 corsin_a
-** Last update Mon Mar 21 18:26:57 2016 corsin_a
+** Last update Mon Mar 21 18:50:48 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -18,11 +18,39 @@ static void	clean_champion(t_options_champion	*champion)
   champion->ad = -1;
 }
 
+static int	is_options(t_options	*options,
+			   char		*opt,
+			   char		*next)
+{
+  if (my_strcmp(opt, "-dump"))
+    {
+      if (options->dump != -1 || !my_getnbr(next, &options->dump))
+	return (ERROR);
+      return (SUCCESS);
+    }
+  else if (my_strcmp(opt, "-n"))
+    {
+      if (options->champion[options->nb_champion].nb != -1 ||
+	  !my_getnbr(next, &options->champion[options->nb_champion].nb))
+	return (ERROR);
+      return (SUCCESS);
+    }
+  else if (my_strcmp(opt, "-a"))
+    {
+      if (options->champion[options->nb_champion].ad != -1 ||
+	  !my_getnbr(next, &options->champion[options->nb_champion].ad))
+	return (ERROR);
+      return (SUCCESS);
+    }
+  return (CONTINUE);
+}
+
 int		init_options(int	argc,
 			     char	*argv[],
 			     t_options	*options)
 {
   int		cpt;
+  int		ret;
 
   cpt = 1;
   options->nb_champion = 0;
@@ -30,25 +58,9 @@ int		init_options(int	argc,
   clean_champion(&options->champion[0]);
   while (cpt < argc)
     {
-      if (my_strcmp(argv[cpt], "-dump"))
-	{
-	  if (!my_getnbr(argv[cpt + 1], &options->dump))
-	    return (ERROR);
-	  ++cpt;
-	}
-      else if (my_strcmp(argv[cpt], "-n"))
-	{
-	  if (!my_getnbr(argv[cpt + 1], &options->champion[options->nb_champion].nb))
-	    return (ERROR);
-	  ++cpt;
-	}
-      else if (my_strcmp(argv[cpt], "-a"))
-	{
-	  if (!my_getnbr(argv[cpt + 1], &options->champion[options->nb_champion].ad))
-	    return (ERROR);
-	  ++cpt;
-	}
-      else
+      if ((ret = is_options(options, argv[cpt], argv[cpt + 1])) == ERROR)
+	return (ERROR);
+      else if (ret == CONTINUE)
 	{
 	  options->champion[options->nb_champion].name = argv[cpt];
 	  ++options->nb_champion;
@@ -56,6 +68,8 @@ int		init_options(int	argc,
 	    return (error_message("Too much champions"));
           clean_champion(&options->champion[options->nb_champion]);
 	}
+      else
+	++cpt;
       ++cpt;
     }
   return (SUCCESS);
