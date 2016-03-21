@@ -5,25 +5,29 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 17:48:06 2016 corsin_a
+** Last update Mon Mar 21 19:55:27 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
 # define		COREWAR_H_
 
-#include		"op.h"
+# include		"op.h"
 
-#ifndef			SUCCESS
-# define		SUCCESS		(0)
-#endif			/* !SUCCESS */
+# ifndef		SUCCESS
+#  define		SUCCESS		(0)
+# endif			/* !SUCCESS */
 
-#ifndef			ERROR
-# define		ERROR		(1)
-#endif			/* !ERROR */
+# ifndef		ERROR
+#  define		ERROR		(1)
+# endif			/* !ERROR */
 
-#ifndef			IS_LIT_ENDIAN
-# define		IS_LIT_ENDIAN	(check_for_endianess())
-#endif			/* !IS_LIT_ENDIAN */
+# ifndef		CONTINUE
+#  define		CONTINUE	(2)
+# endif			/* !CONTINUE */
+
+# ifndef		IS_LIT_ENDIAN
+#  define		IS_LIT_ENDIAN	(check_for_endianess())
+# endif			/* !IS_LIT_ENDIAN */
 
 typedef struct		s_instruction
 {
@@ -61,12 +65,13 @@ typedef struct		s_options_champion
 {
   char			*name;
   int			nb;
-  int			address;
+  int			ad;
 }			t_options_champion;
 
 typedef struct		s_options
 {
   int			dump;
+  int			nb_champion;
   t_options_champion	champion[4];
 }			t_options;
 
@@ -87,12 +92,20 @@ int			init_corewar(t_corewar *corewar,
 int			init_champ(t_corewar		*corewar,
 				   int			nb_file,
 				   char			*file[]);
+int			init_options(int		argc,
+				     char		*argv[],
+				     t_options		*options);
 int			check_for_endianess(void);
 void			my_reverse_bytes(void		*_value,
 					 unsigned int 	size);
-void			error_message(char		*msg);
+int			my_getnbr(const char 		*str,
+				  int 			*nb);
+int			my_strcmp(char			*str1,
+				  char			*str2);
+int			error_message(char		*msg);
 int			error_file(char			*start,
 				   char			*name,
 				   char			*end);
+int			champ_imcomp(t_corewar *corewar);
 
 #endif		/* !COREWAR_H_ */
