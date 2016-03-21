@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 17:46:13 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 17:24:34 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -21,7 +21,7 @@ int		main(int 	argc,
     return (ERROR);
   else
     {
-      if (init_corewar(&corewar, ac, av) != SUCCESS)
+      if (init_corewar(&corewar, argc, argv) != SUCCESS)
 	return (ERROR);
     }
   return (SUCCESS);

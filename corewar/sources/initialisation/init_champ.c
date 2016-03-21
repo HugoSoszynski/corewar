@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 12:03:44 2016 corsin_a
-** Last update Mon Mar 21 17:33:22 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 17:30:56 2016 corsin_a
 */
 
 #include		<sys/types.h>
@@ -16,7 +16,7 @@
 #include		<stdlib.h>
 #include		"corewar.h"
 
-unsigned char		*read_exe(int			fd,
+static unsigned char	*read_exe(int			fd,
 				  size_t		prog_size)
 {
   unsigned char		*prog;
@@ -27,7 +27,7 @@ unsigned char		*read_exe(int			fd,
       error_message("Can't perform malloc");
       return (NULL);
     }
-  prog[prog_size]
+  prog[prog_size] = '\0';
   if (read(fd, prog, prog_size) < (int)(prog_size))
     {
       free(prog);
@@ -65,8 +65,9 @@ int			init_champ(t_corewar	*corewar,
           my_reverse_bytes(&(corewar->champion[cpt].header.prog_size),
 			   sizeof(int));
 	}
-      if ((corewar->champion[cpt].prog =
-	   read_exe(fd, corewar->champion[cpt].header.prog_size)) == NULL)
+      if (corewar->champion[cpt].header.magic != COREWAR_EXEC_MAGIC)
+	return (error_file("", file[cpt], " is not a corewar executable"));
+      if ((corewar->champion[cpt].prog = read_exe(fd, corewar->champion[cpt].header.prog_size)) == NULL)
 	return (ERROR);
       close(fd);
     }

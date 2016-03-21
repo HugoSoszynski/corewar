@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 17:30:43 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 17:29:54 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -52,7 +52,7 @@ typedef struct		s_process_list
 typedef struct		s_champion
 {
   header_t		header;
-  char			*prog;
+  unsigned char		*prog;
   unsigned int		address;
   unsigned int		nb_champion;
 }			t_champion;
@@ -64,12 +64,14 @@ typedef struct		s_corewar
   unsigned long int	actual_cycle;
   char			champions_alive[4];
   unsigned char		nb_champions;
-  t_champion		champions_info[4];
+  t_champion		champion[4];
   char			mem[MEM_SIZE];
   unsigned int		live_nb;
 }			t_corewar;
 
-int			init_champ(t_process_list	*process_list,
+int			init_corewar(t_corewar *corewar,
+				     int ac, char **av);
+int			init_champ(t_corewar		*corewar,
 				   int			nb_file,
 				   char			*file[]);
 int			check_for_endianess(void);
