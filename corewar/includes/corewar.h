@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 18:26:30 2016 corsin_a
+** Last update Mon Mar 21 19:45:36 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
@@ -102,5 +102,6 @@ int			error_message(char		*msg);
 int			error_file(char			*start,
 				   char			*name,
 				   char			*end);
+int			champ_imcomp(t_corewar *corewar);
 
 #endif		/* !COREWAR_H_ */
