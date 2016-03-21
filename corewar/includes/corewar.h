@@ -5,11 +5,21 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar  7 18:29:17 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 11:48:38 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
 # define		COREWAR_H_
+
+#include		"op.h"
+
+#ifndef			SUCCESS
+# define		SUCCESS		(0)
+#endif			/* !SUCCESS */
+
+#ifndef			ERROR
+# define		ERROR		(1)
+#endif			/* !ERROR */
 
 typedef struct		s_instruction
 {
@@ -21,7 +31,7 @@ typedef struct		s_instruction
 
 typedef struct		s_process
 {
-  int			reg[16];
+  char			reg[REG_NUMBER * REG_SIZE];
   char			carry;
   unsigned int		pc;
   unsigned int		nb_champion;
@@ -51,6 +61,9 @@ typedef struct		s_corewar
   unsigned char		nb_champions;
   t_champion		champions_info[4];
   char			mem[MEM_SIZE];
+  unsigned int		live_nb;
 }			t_corewar;
+
+int			init_corewar(t_corewar *corewar);
 
 #endif		/* !COREWAR_H_ */
