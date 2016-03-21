@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Mon Mar 21 18:07:54 2016 Sylvain Corsini
+## Last update Mon Mar 21 21:26:58 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
@@ -33,9 +33,11 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 				corewar/sources/initialisation/init_champ.c \
 				corewar/sources/initialisation/init_corewar.c \
 				corewar/sources/initialisation/init_options.c \
+				corewar/sources/initialisation/champ_incomp.c \
 				corewar/sources/my_endianess.c \
 				corewar/sources/error.c \
 				corewar/sources/my_getnbr.c \
+				corewar/sources/my_putnbr.c \
 				corewar/sources/my_strcmp.c
 
 COREWAR_OBJS		=	$(COREWAR_SRCS:.c=.o)

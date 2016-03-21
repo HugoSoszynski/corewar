@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 19:55:27 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 21:26:05 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -90,8 +90,7 @@ typedef struct		s_corewar
 int			init_corewar(t_corewar *corewar,
 				     int ac, char **av);
 int			init_champ(t_corewar		*corewar,
-				   int			nb_file,
-				   char			*file[]);
+				   t_options		*options);
 int			init_options(int		argc,
 				     char		*argv[],
 				     t_options		*options);
@@ -100,12 +99,16 @@ void			my_reverse_bytes(void		*_value,
 					 unsigned int 	size);
 int			my_getnbr(const char 		*str,
 				  int 			*nb);
+void			my_putnbr(int			nb);
 int			my_strcmp(char			*str1,
 				  char			*str2);
 int			error_message(char		*msg);
 int			error_file(char			*start,
 				   char			*name,
 				   char			*end);
+int			error_nbr(char			*start,
+				  int			nb,
+				  char			*end);
 int			champ_imcomp(t_corewar *corewar);
 
 #endif		/* !COREWAR_H_ */

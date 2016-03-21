@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 12:03:44 2016 corsin_a
-** Last update Mon Mar 21 17:30:56 2016 corsin_a
+** Last update Mon Mar 21 21:15:18 2016 corsin_a
 */
 
 #include		<sys/types.h>
@@ -43,21 +43,32 @@ static unsigned char	*read_exe(int			fd,
   return (prog);
 }
 
+static int		finish_init(t_corewar	*corewar,
+				    t_options	*options,
+				    int		cpt,
+				    int		fd)
+{
+  if ((corewar->champion[cpt].prog = read_exe(fd, corewar->champion[cpt].header.prog_size)) == NULL)
+    return (ERROR);
+  corewar->champion[cpt].address = options->champion[cpt].ad;
+  corewar->champion[cpt].nb_champion = options->champion[cpt].nb;
+  return (SUCCESS);
+}
+
 int			init_champ(t_corewar	*corewar,
-				   int		nb_file,
-				   char		*file[])
+				   t_options	*options)
 {
   int			cpt;
   int			fd;
 
   cpt = -1;
-  while (++cpt < nb_file)
+  while (++cpt < options->nb_champion)
     {
-      if ((fd = open(file[cpt], O_RDONLY)) == -1)
-	return (error_file("File ", file[cpt], " is not accessible"));
+      if ((fd = open(options->champion[cpt].name, O_RDONLY)) == -1)
+	return (error_file("File ", options->champion[cpt].name, " is not accessible"));
       if (read(fd, &corewar->champion[cpt].header,
 	       sizeof(header_t)) != sizeof(header_t))
-	return (error_file("File ", file[cpt], " : wrong file size"));
+	return (error_file("File ", options->champion[cpt].name, " : wrong file size"));
       if (IS_LIT_ENDIAN)
 	{
 	  my_reverse_bytes(&(corewar->champion[cpt].header.magic),
@@ -66,8 +77,8 @@ int			init_champ(t_corewar	*corewar,
 			   sizeof(int));
 	}
       if (corewar->champion[cpt].header.magic != COREWAR_EXEC_MAGIC)
-	return (error_file("", file[cpt], " is not a corewar executable"));
-      if ((corewar->champion[cpt].prog = read_exe(fd, corewar->champion[cpt].header.prog_size)) == NULL)
+	return (error_file("", options->champion[cpt].name, " is not a corewar executable"));
+      if (finish_init(corewar, options, cpt, fd) == ERROR)
 	return (ERROR);
       close(fd);
     }

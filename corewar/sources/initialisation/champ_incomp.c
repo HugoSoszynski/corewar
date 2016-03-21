@@ -5,20 +5,20 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 18:45:27 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 19:42:31 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 21:19:31 2016 corsin_a
 */
 
 #include	"corewar.h"
 
 static int	check_address(t_champion *champ1, t_champion *champ2)
 {
-  if (champ1->ad == champ2->ad)
+  if (champ1->address == champ2->address)
     return (error_message("Two champions in same memory range"));
-  if (champ1->ad >= champ2->ad && champ1->ad <=
-      (champ2->ad + champ2->header.prog_size))
+  if (champ1->address >= champ2->address && champ1->address <=
+      (champ2->address + champ2->header.prog_size))
     return (error_message("Two champions in same memory range"));
-  if (champ2->ad >= champ1->ad && champ2->ad <=
-      (champ1->ad + champ1->header.prog_size))
+  if (champ2->address >= champ1->address && champ2->address <=
+      (champ1->address + champ1->header.prog_size))
     return (error_message("Two champions in same memory range"));
   return (SUCCESS);
 }
@@ -42,7 +42,7 @@ static int	check_champ_values(t_corewar *corewar)
 				" already used"));
 	    }
 	  if (check_address(&corewar->champion[cpt],
-			    corewar->champion[tmp]) != SUCCESS)
+			    &corewar->champion[tmp]) != SUCCESS)
 	    return (ERROR);
 	  tmp++;
 	}
@@ -67,4 +67,5 @@ int		champ_imcomp(t_corewar *corewar)
     }
   if (total_size < 0 || total_size >= MEM_SIZE)
     return (error_message("Not enough memory for the champions"));
+  return (SUCCESS);
 }
