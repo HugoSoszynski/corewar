@@ -5,12 +5,13 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:40:50 2016 Grégoire Loens
-** Last update Mon Mar  7 13:41:13 2016 Grégoire Loens
+** Last update Mon Mar 21 15:20:45 2016 Grégoire Loens
 */
 
 #include		<unistd.h>
 #include		<stdlib.h>
 #include		"../includes/get_next_line.h"
+#include		"../includes/parser.h"
 
 char			*my_realloc(char *str, int size)
 {
@@ -18,7 +19,7 @@ char			*my_realloc(char *str, int size)
   int			i;
 
   i = 0;
-  str1 = malloc(sizeof(char) * (strlen(str) + size + 1));
+  str1 = malloc(sizeof(char) * (my_strlen(str) + size + 1));
   while (str[i] != '\0' && str[i] != '\n')
     {
       str1[i] = str[i];
