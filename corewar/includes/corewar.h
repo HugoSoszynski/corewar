@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 11:48:38 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 12:13:21 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -64,6 +64,8 @@ typedef struct		s_corewar
   unsigned int		live_nb;
 }			t_corewar;
 
-int			init_corewar(t_corewar *corewar);
+int			init_process(t_process_list	*process_list,
+				     int		nb_file,
+				     char		*file[]);
 
 #endif		/* !COREWAR_H_ */

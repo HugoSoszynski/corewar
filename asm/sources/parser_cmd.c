@@ -1,11 +1,11 @@
 /*
-1;2802;0c** parser_cmd.c for corewar in /home/loens_g/Rendu/CPE_2015_corewar/asm/sources/
+** parser_cmd.c for corewar in /home/loens_g/Rendu/CPE_2015_corewar/asm/sources/
 **
 ** Made by Grégoire Loens
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Tue Mar  8 15:37:50 2016 Grégoire Loens
+** Last update Mon Mar 21 12:22:36 2016 
 */
 
 #include	"parser.h"
@@ -41,7 +41,7 @@ int		parsing(char *line)
 
   if (line = my_isspace(line) == NULL)
     return(error_message_parser("Syntax error line ", nbr_line));
-  if ((type == type_of_cmd(line)) == -1)
+  if ((type = type_of_cmd(line)) == -1)
     return(error_message_parser("Syntax error line ", nbr_line));
   if (type == TYPE_LINE_NAME)
     if (check_dot_name(line) == -1)
