@@ -31,7 +31,6 @@ char		**set_cmd_part1()
 {
   char		**cmd;
 
-  #include	<string.h>
   cmd = malloc(sizeof(char *) * 35);
   cmd[0] = my_strdup("live");
   cmd[1] = my_strdup("1d");
