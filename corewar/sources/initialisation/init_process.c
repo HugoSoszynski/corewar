@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 12:03:44 2016 corsin_a
-** Last update Mon Mar 21 17:00:30 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 17:33:22 2016 Hugo SOSZYNSKI
 */
 
 #include		<sys/types.h>
@@ -43,9 +43,9 @@ unsigned char		*read_exe(int			fd,
   return (prog);
 }
 
-int			init_process(t_corewar		*corewar,
-				     int		nb_file,
-				     char		*file[])
+int			init_champ(t_corewar	*corewar,
+				   int		nb_file,
+				   char		*file[])
 {
   int			cpt;
   int			fd;

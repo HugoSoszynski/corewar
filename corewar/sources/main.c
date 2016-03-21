@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 15:07:03 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 17:46:13 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
@@ -21,7 +21,7 @@ int		main(int 	argc,
     return (ERROR);
   else
     {
-      if (init_process(corewar.process_list, argc - 1, &argv[1]) == -1)
+      if (init_corewar(&corewar, ac, av) != SUCCESS)
 	return (ERROR);
     }
   return (SUCCESS);

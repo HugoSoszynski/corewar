@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 16:54:50 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 17:30:43 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
@@ -69,13 +69,15 @@ typedef struct		s_corewar
   unsigned int		live_nb;
 }			t_corewar;
 
-int			init_process(t_process_list	*process_list,
-				     int		nb_file,
-				     char		*file[]);
-int			check_for_endianess();
+int			init_champ(t_process_list	*process_list,
+				   int			nb_file,
+				   char			*file[]);
+int			check_for_endianess(void);
 void			my_reverse_bytes(void		*_value,
 					 unsigned int 	size);
 void			error_message(char		*msg);
-int			error_file(char *start, char *name, char *end);
+int			error_file(char			*start,
+				   char			*name,
+				   char			*end);
 
 #endif		/* !COREWAR_H_ */
