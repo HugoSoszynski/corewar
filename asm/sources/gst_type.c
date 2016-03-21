@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 10:53:24 2016 Grégoire Loens
-** Last update Tue Mar  8 15:49:58 2016 Grégoire Loens
+** Last update Mon Mar 21 13:57:29 2016 Grégoire Loens
 */
 
 #include 	"stddef.h"
@@ -41,7 +41,7 @@ int		gst_name(char *line)
     return (-1);
 }
 
-int		gst_cmd(char *line)
+int		gst_cmd(char *line, char **cmd)
 {
   int		cpt;
 
@@ -53,4 +53,12 @@ int		gst_cmd(char *line)
       cpt += 2;
     }
   return (-1);
+}
+
+int		gst_extend(char *line)
+{
+  if (my_strcmp(line, ".extend") == -1)
+    return (-1);
+  else
+    return (0);
 }
