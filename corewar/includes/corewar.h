@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 17:29:54 2016 corsin_a
+** Last update Mon Mar 21 17:48:06 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -56,6 +56,19 @@ typedef struct		s_champion
   unsigned int		address;
   unsigned int		nb_champion;
 }			t_champion;
+
+typedef struct		s_options_champion
+{
+  char			*name;
+  int			nb;
+  int			address;
+}			t_options_champion;
+
+typedef struct		s_options
+{
+  int			dump;
+  t_options_champion	champion[4];
+}			t_options;
 
 typedef struct		s_corewar
 {
