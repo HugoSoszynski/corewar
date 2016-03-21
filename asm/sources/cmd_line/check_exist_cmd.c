@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Mon Mar  7 19:23:44 2016 
-** Last update Mon Mar  7 19:47:34 2016 
+** Last update Mon Mar 21 15:15:17 2016 
 */
 
 int		check_exist_cmd(char *line,
@@ -18,7 +18,7 @@ int		check_exist_cmd(char *line,
     {
       if (my_strcmp(line, cmd[cpt]) == 0)
 	return (cpt);
-      cpt++;
+      cpt += 2;
     }
   return (-1);
 }
