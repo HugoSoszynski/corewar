@@ -5,13 +5,13 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Tue Mar  8 15:27:33 2016 Grégoire Loens
+** Last update Tue Mar  8 15:37:50 2016 Grégoire Loens
 */
 
 #include	"parser.h"
 #include	"asm.h"
 
-int		type_of_cmd(char *line)
+int		type_of_cmd(char *line, char **cmd)
 {
   if (line[0] == '.')
     {
@@ -26,12 +26,12 @@ int		type_of_cmd(char *line)
     }
   else
     {
-      if (gst_label(line) == 1)
-	return(TYPE_LINE_LABEL);
-      else if (gst_label(line) == 2)
-	return (TYPE_LINE_LABEL_CMD);
-      else if (gst_cmd(line) == 0)
+      if (gst_cmd(line, cmd) == 0)
 	return (TYPE_LINE_CMD);
+      else if (gst_label(line, cmd) == 1)
+	return(TYPE_LINE_LABEL);
+      else if (gst_label(line, cmd) == 2)
+	return (TYPE_LINE_LABEL_CMD);
     }
 }
 
