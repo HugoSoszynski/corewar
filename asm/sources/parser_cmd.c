@@ -5,11 +5,11 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Mon Mar 21 12:22:36 2016 
+** Last update Mon Mar 21 14:41:56 2016 Grégoire Loens
 */
 
-#include	"parser.h"
-#include	"asm.h"
+#include	"../includes/parser.h"
+#include	"../includes/asm.h"
 
 int		type_of_cmd(char *line, char **cmd)
 {

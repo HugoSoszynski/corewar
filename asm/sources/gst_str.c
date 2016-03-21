@@ -5,13 +5,15 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Mon Mar  7 17:18:09 2016 
+** Last update Mon Mar 21 15:19:22 2016 Grégoire Loens
 */
+
+#include	<stdlib.h>
 
 int		my_strlen(char *str, int i)
 {
   while ((*str) != '\0' && ++i == i && ++str == str);
-  return (i + 1);
+  return (i);
 }
 
 int		my_isalpha_num(char c)
@@ -35,31 +37,15 @@ int		my_strcmp(char *str, char *str1)
     }
   if (str1[i] != '\0')
     return (-1);
+  else
+    return (0);
 }
 
-char		*my_getword(char *line, int nb_word)
+int		my_ispace(char c)
 {
-  int		cpt;
-  int		cpt_output;
-  char		*output;
-
-  if ((output == malloc(sizeof(char) * my_strlen(line))) == NULL)
-    return(NULL);
-  cpt_output = 0;
-  cpt = -1;
-  while (line[++cpt] != '\0' && (nb_word - 1) > 0)
-    if (line[cpt] == ' ')
-      nb_word--;
-  if (line[cpt] == '\0')
-    return (NULL);
-  while (line[cpt] != '\0' && line[cpt] != ' ')
-    {
-      output[cpt_output] = line[cpt];
-      cpt++;
-      cpt_output++;
-    }
-  output[cpt_output] = '\0';
-  return (output);
+  if (c == ' ' || c == '\t' || c == '\v')
+    return (-1);
+  return (0);
 }
 
 char		*my_isspace(char *input)
@@ -68,13 +54,13 @@ char		*my_isspace(char *input)
   int		cpt_output;
   char		*output;
 
-  if ((output = malloc(sizeof(char) * my_strlen(input))) == NULL)
+  if ((output = malloc(sizeof(char) * my_strlen(input, 0))) == NULL)
     return (NULL);
   cpt_input = 0;
   cpt_output = 0;
-  while (input[i] != '\0')
+  while (input[cpt_input] != '\0')
     {
-      if (my_isspace(input[cpt_input]) != -1)
+      if (my_ispace(input[cpt_input]) != -1)
 	output[cpt_output] = input[cpt_input];
       else
 	{
