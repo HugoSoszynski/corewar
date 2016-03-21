@@ -5,9 +5,10 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar  8 16:14:42 2016 
-** Last update Tue Mar  8 16:15:07 2016 
+** Last update Mon Mar 21 14:53:15 2016 
 */
 
 int			check_dot_extend(char *line)
 {
+  return (0);
 }
