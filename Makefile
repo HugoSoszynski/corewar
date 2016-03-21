@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Mon Mar 21 15:23:09 2016 Hugo SOSZYNSKI
+## Last update Mon Mar 21 17:25:11 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
@@ -30,7 +30,8 @@ ASM_OBJS		=	$(ASM_SRCS:.c=.o)
 COREWAR			=	corewar/corewar
 
 COREWAR_SRCS		=	corewar/sources/main.c \
-				corewar/sources/initialisation/init_process.c \
+				corewar/sources/initialisation/init_champ.c \
+				corewar/sources/initialisation/init_corewar.c \
 				corewar/sources/my_endianess.c \
 				corewar/sources/error.c
 
