@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 22:09:36 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 15:21:33 2016 corsin_a
+** Last update Tue Mar 22 18:23:38 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -44,13 +44,6 @@ static void	set_address_one(t_corewar *corewar)
 			 + free_size + current_address) % MEM_SIZE;
     }
 }
-
-/*
-static void	check_set_address(t_corewar *corewar)
-{
-
-}
-*/
 
 int		fill_champions(t_corewar *corewar)
 {

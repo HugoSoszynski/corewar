@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 15:51:56 2016 corsin_a
+** Last update Tue Mar 22 19:33:27 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
@@ -40,7 +40,7 @@ typedef struct		s_instruction
 
 typedef struct		s_process
 {
-  char			reg[REG_NUMBER * REG_SIZE];
+  char			reg[REG_NUMBER][REG_SIZE];
   char			carry;
   unsigned int		pc;
   unsigned int		nb_champion;
@@ -76,20 +76,21 @@ typedef struct		s_corewar
 
 typedef struct		s_options_champion
 {
-        char			*name;
-        int			nb;
-        int			ad;
+  char			*name;
+  int			nb;
+  int			ad;
 }			t_options_champion;
 
 typedef struct		s_options
 {
-        int			dump;
-        int			nb_champion;
-        t_options_champion	champion[4];
+  int			dump;
+  int			nb_champion;
+  t_options_champion	champion[4];
 }			t_options;
 
-int			init_corewar(t_corewar *corewar,
-				     int ac, char **av);
+int			init_corewar(t_corewar		*corewar,
+				     int		ac,
+				     char		**av);
 int			init_champ(t_corewar		*corewar,
 				   t_options		*options);
 int			init_options(int		argc,
@@ -110,10 +111,12 @@ int			error_file(char			*start,
 int			error_nbr(char			*start,
 				  int			nb,
 				  char			*end);
-int			champ_imcomp(t_corewar *corewar);
-int			fill_champions(t_corewar *corewar);
+int			champ_imcomp(t_corewar		*corewar);
+int			fill_champions(t_corewar	*corewar);
 int			aff_help(int			a);
 int			there_is_help(int		argc,
 				      char		*argv[]);
+void			my_init_tab(void		*_tab,
+				    size_t		size);
 
 #endif		/* !COREWAR_H_ */
