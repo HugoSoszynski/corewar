@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 17:24:34 2016 corsin_a
+** Last update Tue Mar 22 15:31:44 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -16,13 +16,12 @@ int		main(int 	argc,
 {
   t_corewar	corewar;
 
-  corewar.process_list = NULL;
-  if (argc == 1)
-    return (ERROR);
-  else
+  if (there_is_help(argc, argv) == SUCCESS)
     {
-      if (init_corewar(&corewar, argc, argv) != SUCCESS)
-	return (ERROR);
+      aff_help(0);
+      return (SUCCESS);
     }
+  if (init_corewar(&corewar, argc, argv) != SUCCESS)
+    return (aff_help(1));
   return (SUCCESS);
 }

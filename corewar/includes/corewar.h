@@ -5,12 +5,13 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 21:26:05 2016 corsin_a
+** Last update Tue Mar 22 15:51:56 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
 # define		COREWAR_H_
 
+# include		<stdbool.h>
 # include		"op.h"
 
 # ifndef		SUCCESS
@@ -57,35 +58,35 @@ typedef struct		s_champion
 {
   header_t		header;
   unsigned char		*prog;
-  unsigned int		address;
-  unsigned int		nb_champion;
-}			t_champion;
-
-typedef struct		s_options_champion
-{
-  char			*name;
-  int			nb;
-  int			ad;
-}			t_options_champion;
-
-typedef struct		s_options
-{
-  int			dump;
+  int			address;
   int			nb_champion;
-  t_options_champion	champion[4];
-}			t_options;
+}			t_champion;
 
 typedef struct		s_corewar
 {
   t_process_list	*process_list;
   unsigned int		cycle_to_die;
   unsigned long int	actual_cycle;
-  char			champions_alive[4];
+  bool			champions_alive[4];
   unsigned char		nb_champions;
   t_champion		champion[4];
   char			mem[MEM_SIZE];
   unsigned int		live_nb;
 }			t_corewar;
+
+typedef struct		s_options_champion
+{
+        char			*name;
+        int			nb;
+        int			ad;
+}			t_options_champion;
+
+typedef struct		s_options
+{
+        int			dump;
+        int			nb_champion;
+        t_options_champion	champion[4];
+}			t_options;
 
 int			init_corewar(t_corewar *corewar,
 				     int ac, char **av);
@@ -110,5 +111,9 @@ int			error_nbr(char			*start,
 				  int			nb,
 				  char			*end);
 int			champ_imcomp(t_corewar *corewar);
+int			fill_champions(t_corewar *corewar);
+int			aff_help(int			a);
+int			there_is_help(int		argc,
+				      char		*argv[]);
 
 #endif		/* !COREWAR_H_ */
