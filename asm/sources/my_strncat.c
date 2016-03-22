@@ -5,8 +5,11 @@
 ** Login   <corsin_a@epitech.net>
 **
 ** Started on  Tue Oct  6 15:37:05 2015 Corsini Sylvain
-** Last update Thu Jan  7 16:00:16 2016 corsin_a
+** Last update Tue Mar 22 11:52:21 2016 
 */
+
+#include	"parser.h"
+#include	"asm.h"
 
 char		*my_strncat(char *dest, char *src, int nbr)
 {

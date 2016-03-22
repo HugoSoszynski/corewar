@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar  8 16:16:04 2016 
-** Last update Mon Mar 21 15:08:40 2016 
+** Last update Tue Mar 22 14:20:50 2016 
 */
 
 #include		"parser.h"
@@ -27,7 +27,7 @@ int			check_dot_code(char *line)
   val_of_cara = 0;
   while (line[++cpt] != '\0')
     {
-      if (val_of_cara = 2)
+      if (val_of_cara == 2)
 	{
 	  if (line[cpt] != ' ')
 	    return (-1);
@@ -40,4 +40,5 @@ int			check_dot_code(char *line)
 	  val_of_cara++;
 	}
     }
+  return (0);
 }

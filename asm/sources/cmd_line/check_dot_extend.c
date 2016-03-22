@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar  8 16:14:42 2016 
-** Last update Tue Mar 22 10:21:54 2016 
+** Last update Tue Mar 22 14:26:18 2016 
 */
 
 #include		"asm.h"
@@ -13,5 +13,6 @@
 
 int			check_dot_extend(char *line)
 {
+  (void)line;
   return (0);
 }

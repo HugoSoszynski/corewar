@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Tue Mar 22 11:41:07 2016 
+** Last update Tue Mar 22 12:46:09 2016 
 */
 
 #ifndef	PARSER_H_
@@ -15,6 +15,7 @@ int	my_strlen(char *);
 int	error_message(char *);
 int	error_message_parser(char *message, int nbr);
 int	arg_direct(char *);
+char	*my_strncat(char *dest, char *src, int nbr);
 int	arg_indirect(char *);
 int	arg_register(char *);
 int	check_is_type(char*, char *);
@@ -24,8 +25,9 @@ int	check_cmd(char *);
 int	is_hexa(char );
 int	check_dot_code(char *);
 int	check_dot_comment(char *);
+int	check_dot_extend(char *);
 int	check_dot_name(char *);
-int	check_exist_cmd(char *, char *cmd);
+int	check_exist_cmd(char *, char **cmd);
 int	check_label_cmd(char *);
 int	check_label(char *);
 int	start_word(char *, int);
@@ -45,6 +47,7 @@ int	gst_name(char *);
 int	gst_cmd(char *, char **);
 int	gst_extend(char *);
 int	gst_label(char *);
+int	gst_code(char *);
 int	my_getnbr(const char *, int *);
 void	find_word(char *, char *, int *);
 void	move_to_word(char *, char *, int *);
@@ -52,9 +55,9 @@ char	**my_make_tab(char **, char *, int , char *);
 int	my_counter_words(char *, char *);
 char	**my_str_to_wordtab(char *, int *, char *);
 char	*my_strdup(const char *);
-int	type_of_cmd(char *, char **);
-int	parsing(char *);
-int	verif_cmd_line(int, int);
+int	type_of_cmd(char *);
+int	parsing(char *, int);
+int	verif_cmd_line(int);
 int	my_put_nbr_base(int, char *);
 
 #endif	/* !PARSER_H_ */
