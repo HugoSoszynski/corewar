@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 14:29:28 2016 corsin_a
+** Last update Tue Mar 22 15:31:44 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -21,7 +21,6 @@ int		main(int 	argc,
       aff_help(0);
       return (SUCCESS);
     }
-  corewar.process_list = NULL;
   if (init_corewar(&corewar, argc, argv) != SUCCESS)
     return (aff_help(1));
   return (SUCCESS);
