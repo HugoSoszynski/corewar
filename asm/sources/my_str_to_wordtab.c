@@ -5,13 +5,12 @@
 ** Login   <corsin_a@epitech.net>
 **
 ** Started on  Wed Oct  7 14:29:05 2015 Corsini Sylvain
-** Last update Tue Jan 19 10:48:42 2016 corsin_a
+** Last update Tue Mar 22 10:18:55 2016 
 */
 
 #include	<stdlib.h>
-#include	"my.h"
-
-#include	<stdio.h>
+#include	"asm.h"
+#include	"parser.h"
 
 void		find_word(char			*str,
 			  char			*separator,

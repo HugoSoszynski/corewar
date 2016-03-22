@@ -5,11 +5,12 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar  8 16:11:56 2016 
-** Last update Mon Mar 21 12:38:41 2016 
+** Last update Tue Mar 22 10:22:21 2016 
 */
 
 #include	"parser.h"
 #include	"asm.h"
+#include	"op.h"
 
 int		check_dot_name(char *line)
 {

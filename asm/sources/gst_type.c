@@ -5,11 +5,11 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 10:53:24 2016 Grégoire Loens
-** Last update Mon Mar 21 17:30:34 2016 Grégoire Loens
+** Last update Tue Mar 22 10:15:34 2016 
 */
 
 #include 	<stddef.h>
-#include	"../includes/parser.h"
+#include	"parser.h"
 
 int		gst_comment(char *line)
 {

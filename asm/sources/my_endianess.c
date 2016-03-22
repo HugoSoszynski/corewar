@@ -5,13 +5,16 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 15:55:28 2016 Hugo SOSZYNSKI
-** Last update Mon Mar  7 16:38:26 2016 Hugo SOSZYNSKI
+** Last update Tue Mar 22 10:16:44 2016 
 */
 
 /*
 ** Function wich check the endianess of the machine
 ** Returns 0 if Big Endian or 1 if Little Endian
 */
+
+#include	"parser.h"
+#include	"asm.h"
 
 int		check_for_endianess()
 {

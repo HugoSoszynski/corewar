@@ -5,10 +5,12 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Mon Mar 21 15:19:22 2016 Grégoire Loens
+** Last update Tue Mar 22 10:15:07 2016 
 */
 
 #include	<stdlib.h>
+#include	"parser.h"
+#include	"asm.h"
 
 int		my_strlen(char *str, int i)
 {

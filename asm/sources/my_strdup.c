@@ -5,10 +5,12 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar 21 17:10:44 2016 Grégoire Loens
-** Last update Mon Mar 21 17:19:54 2016 Grégoire Loens
+** Last update Tue Mar 22 10:17:52 2016 
 */
 
 #include	<stdlib.h>
+#include	"asm.h"
+#include	"parser.h"
 
 char		*my_strdup(const char *src)
 {
