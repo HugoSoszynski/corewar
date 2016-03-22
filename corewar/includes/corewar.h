@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 22:32:34 2016 Hugo SOSZYNSKI
+** Last update Tue Mar 22 23:41:57 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
@@ -118,5 +118,8 @@ int			there_is_help(int		argc,
 				      char		*argv[]);
 void			my_init_tab(void		*_tab,
 				    size_t		size);
+void			free_processlist(t_process_list	*list);
+int			clone_process(t_process_list	*src,
+				      int		add_to_pc);
 
 #endif		/* !COREWAR_H_ */
