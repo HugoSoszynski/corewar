@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 18:45:27 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 12:36:38 2016 Hugo SOSZYNSKI
+** Last update Tue Mar 22 14:08:58 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -37,7 +37,8 @@ static int	check_champ_values(t_corewar *corewar)
       while (tmp < corewar->nb_champions)
 	{
 	  if (corewar->champion[cpt].nb_champion ==
-	      corewar->champion[tmp].nb_champion)
+	      corewar->champion[tmp].nb_champion &&
+	      corewar->champion[tmp].nb_champion != -1)
 	    {
 	      return (error_nbr("prog number ",
 				corewar->champion[tmp].nb_champion,

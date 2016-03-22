@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 12:03:44 2016 corsin_a
-** Last update Mon Mar 21 21:15:18 2016 corsin_a
+** Last update Tue Mar 22 14:07:13 2016 corsin_a
 */
 
 #include		<sys/types.h>
@@ -82,5 +82,6 @@ int			init_champ(t_corewar	*corewar,
 	return (ERROR);
       close(fd);
     }
+  corewar->nb_champions = options->nb_champion;
   return (SUCCESS);
 }

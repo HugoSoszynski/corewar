@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Tue Mar 22 11:01:47 2016 Sylvain Corsini
+## Last update Tue Mar 22 14:09:37 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
@@ -57,6 +57,7 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 				corewar/sources/initialisation/init_corewar.c \
 				corewar/sources/initialisation/init_options.c \
 				corewar/sources/initialisation/champ_incomp.c \
+				corewar/sources/initialisation/fill_champions.c \
 				corewar/sources/my_endianess.c \
 				corewar/sources/error.c \
 				corewar/sources/my_getnbr.c \
