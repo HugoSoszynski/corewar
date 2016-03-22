@@ -5,10 +5,12 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Tue Oct  6 10:24:10 2015 gregoire loens
-** Last update Tue Mar 22 10:26:45 2016 Grégoire Loens
+** Last update Tue Mar 22 11:28:28 2016 
 */
 
 #include	<unistd.h>
+#include	"parser.h"
+#include	"asm.h"
 
 int     	my_put_nbr_base(int nbr, char *base)
 {

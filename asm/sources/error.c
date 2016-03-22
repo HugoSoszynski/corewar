@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:40:34 2016 Grégoire Loens
-** Last update Mon Mar 21 22:59:18 2016 
+** Last update Tue Mar 22 11:34:55 2016 
 */
 
 #include	<unistd.h>
@@ -15,7 +15,7 @@
 int		error_message_parser(char *message, int nbr)
 {
   write (2, message, my_strlen(message));
-  my_putnbr(nbr);
+  my_put_nbr_base(nbr, "0123456789");
   return (-1);
 }
 

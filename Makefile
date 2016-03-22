@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Tue Mar 22 11:12:05 2016 
+## Last update Tue Mar 22 11:29:42 2016 
 ##
 
 CC			=	gcc
@@ -25,6 +25,7 @@ ASM			=	asm/asm
 ASM_SRCS		=	asm/sources/cor_header.c \
 				asm/sources/my_endianess.c \
                                 asm/sources/get_next_line.c \
+				asm/sources/my_put_nbr.c \
 				asm/sources/my_strdup.c \
 				asm/sources/cor_header.c \
 				asm/sources/gst_str.c \
