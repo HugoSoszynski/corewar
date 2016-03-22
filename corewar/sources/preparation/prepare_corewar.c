@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 15:44:55 2016 corsin_a
-** Last update Tue Mar 22 22:41:33 2016 corsin_a
+** Last update Tue Mar 22 23:34:11 2016 corsin_a
 */
 
 #include		<stddef.h>
@@ -17,7 +17,8 @@ static t_process_list	*create_process_list(t_champion		*champion)
   t_process_list	*process_list;
   int			cpt;
 
-  process_list = malloc(sizeof(t_process_list));
+  if ((process_list = malloc(sizeof(t_process_list))) == NULL)
+    return (error_message("Can't perform malloc"));
   process_list->cycle = 0;
   process_list->current.opcode = 0;
   process_list->process.carry = 0;
