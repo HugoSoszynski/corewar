@@ -5,13 +5,14 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 22:32:34 2016 Hugo SOSZYNSKI
+** Last update Tue Mar 22 22:34:01 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
 # define		COREWAR_H_
 
 # include		<stdbool.h>
+# include		<stddef.h>
 # include		"op.h"
 
 # ifndef		SUCCESS
@@ -29,6 +30,10 @@
 # ifndef		IS_LIT_ENDIAN
 #  define		IS_LIT_ENDIAN	(check_for_endianess())
 # endif			/* !IS_LIT_ENDIAN */
+
+# define		IS_DEAD		(0)
+# define		IS_RUN		(1)
+# define		IS_ALIVE	(2)
 
 typedef struct		s_instruction
 {
@@ -66,11 +71,12 @@ typedef struct		s_corewar
 {
   t_process_list	*process_list;
   unsigned int		cycle_to_die;
+  unsigned int		cycle_passed;
   unsigned long int	actual_cycle;
-  bool			champions_alive[4];
+  char			champions_alive[4];
   unsigned char		nb_champions;
   t_champion		champion[4];
-  char			mem[MEM_SIZE];
+  unsigned char		mem[MEM_SIZE];
   unsigned int		live_nb;
 }			t_corewar;
 
@@ -118,5 +124,7 @@ int			there_is_help(int		argc,
 				      char		*argv[]);
 void			my_init_tab(void		*_tab,
 				    size_t		size);
+int			prepare_corewar(t_corewar	*corewar);
+int			launch_corewar(t_corewar	*corewar);
 
 #endif		/* !COREWAR_H_ */
