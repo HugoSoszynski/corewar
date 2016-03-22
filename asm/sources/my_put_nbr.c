@@ -5,20 +5,10 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Tue Oct  6 10:24:10 2015 gregoire loens
-** Last update Tue Feb 16 09:30:36 2016 Grégoire Loens
+** Last update Tue Mar 22 10:26:45 2016 Grégoire Loens
 */
 
 #include	<unistd.h>
-
-int		my_strlen(char *str)
-{
-  int		i;
-
-  i = 0;
-  while (str[i] != 0)
-    i++;
-  return (i);
-}
 
 int     	my_put_nbr_base(int nbr, char *base)
 {
