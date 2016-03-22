@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 22:09:36 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 17:59:47 2016 corsin_a
+** Last update Tue Mar 22 18:47:54 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -17,15 +17,15 @@ static void	set_address_one_2(t_corewar	*corewar,
   int		cpt;
   int		current_address;
 
-  current_address = corewar->champion[set].adress;
+  current_address = corewar->champion[set].address;
   cpt = -1;
   while (++cpt < corewar->nb_champions)
     {
       corewar->champion[(cpt + set) % corewar->nb_champions].address
       = current_address;
       current_address = (corewar->champion[(cpt + set) %
-			       corewar->nb_champions].header.prog_size
-			       + free_size + current_address) % MEM_SIZE;
+			 corewar->nb_champions].header.prog_size
+			 + free_size + current_address) % MEM_SIZE;
     }
 }
 
