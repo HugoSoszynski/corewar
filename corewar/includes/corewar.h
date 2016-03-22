@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 23:41:57 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 00:15:39 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
@@ -33,7 +33,6 @@
 typedef struct		s_instruction
 {
   char			opcode;
-  char			octet_codage;
   int			arg[3];
   char			type_arg[3];
 }			t_instruction;
