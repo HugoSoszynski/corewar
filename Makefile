@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Tue Mar 22 11:29:42 2016 
+## Last update Tue Mar 22 18:40:50 2016 
 ##
 
 CC			=	gcc
@@ -27,26 +27,27 @@ ASM_SRCS		=	asm/sources/cor_header.c \
                                 asm/sources/get_next_line.c \
 				asm/sources/my_put_nbr.c \
 				asm/sources/my_strdup.c \
-				asm/sources/cor_header.c \
 				asm/sources/gst_str.c \
+				asm/sources/my_strncat.c \
+				asm/sources/gst_type_extend.c \
 				asm/sources/my_getnbr.c \
 				asm/sources/gst_type.c \
 				asm/sources/error.c \
+				asm/sources/main.c \
 				asm/sources/my_str_to_wordtab.c \
-				asm/sources/op.c \
-				asm/sources/parser.c \
 				asm/sources/parser_cmd.c \
-				asm/sources/check_arg.c \
-				asm/sources/check_cmd.c \
-				asm/sources/check_dot_code.c \
-				asm/sources/check_dot_comment.c \
-				asm/sources/check_dot_extend.c \
-				asm/sources/check_dot_name.c \
-				asm/sources/check_exist_cmd.c \
-				asm/sources/check_label.c \
-				asm/sources/check_label_cmd.c \
-				asm/sources/my_getword.c \
-				asm/sources/tab_cmd.c \
+				asm/sources/cmd_line/check_arg.c \
+				asm/sources/base.c \
+				asm/sources/cmd_line/check_cmd.c \
+				asm/sources/cmd_line/check_dot_code.c \
+				asm/sources/cmd_line/check_dot_comment.c \
+				asm/sources/cmd_line/check_dot_extend.c \
+				asm/sources/cmd_line/check_dot_name.c \
+				asm/sources/cmd_line/check_exist_cmd.c \
+				asm/sources/cmd_line/check_label.c \
+				asm/sources/cmd_line/check_label_cmd.c \
+				asm/sources/cmd_line/my_getword.c \
+				asm/sources/cmd_line/tab_cmd.c \
 
 ASM_OBJS		=	$(ASM_SRCS:.c=.o)
 
@@ -82,7 +83,7 @@ fclean:		clean
 
 re:		fclean all
 
-test:		$(ASM)
-		$(CC) $(ASM_OBJ) -o $(ASM) -I./asm/includes
+test:		$(ASM_OBJS)
+		$(CC) $(ASM_OBJS) -o $(ASM) -I./asm/includes
 
 .PHONY:		all clean fclean re

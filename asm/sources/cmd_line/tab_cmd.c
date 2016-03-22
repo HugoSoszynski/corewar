@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Tue Mar  8 16:05:30 2016
-** Last update Tue Mar 22 10:24:34 2016 
+** Last update Tue Mar 22 14:36:23 2016 
 */
 
 #include	<stdlib.h>
@@ -52,9 +52,9 @@ char		**set_cmd_part1()
   cmd[15] = my_strdup("3r/d/i,r/d/i,r");
   cmd[16] = my_strdup("zjmp");
   cmd[17] = my_strdup("1d");
-  cmd[18] = my_strdup("ldi)";
+  cmd[18] = my_strdup("ldi");
   cmd[19] = my_strdup("2r/d/i,r/d/i");
   cmd[20] = my_strdup("sti");
   cmd[21] = my_strdup("3r,r/d/i,r/d");
-  return(set_cmd_part2(cmd));
+  return (set_cmd_part2(cmd));
 }

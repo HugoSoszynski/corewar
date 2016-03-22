@@ -5,10 +5,11 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar  8 16:13:23 2016 
-** Last update Mon Mar 21 14:46:23 2016 
+** Last update Tue Mar 22 14:25:47 2016 
 */
 
 #include		"parser.h"
+#include		"op.h"
 #include		"asm.h"
 
 int			check_dot_comment(char *line)
@@ -18,9 +19,9 @@ int			check_dot_comment(char *line)
   i = 0;
   while (line[i] != '\0')
     {
-      if (line[i] > 128 || line[i] < 0)
+      if (line[i] < 0)
 	return (-1);
-      if (i > COMMENT_LENGHT + 8)
+      if (i > COMMENT_LENGTH + 8)
 	return (-1);
       i++;
     }
