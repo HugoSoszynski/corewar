@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Tue Mar 22 11:29:42 2016 
+## Last update Tue Mar 22 11:01:47 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
@@ -61,7 +61,8 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 				corewar/sources/error.c \
 				corewar/sources/my_getnbr.c \
 				corewar/sources/my_putnbr.c \
-				corewar/sources/my_strcmp.c
+				corewar/sources/my_strcmp.c \
+				corewar/sources/aff_help.c
 
 COREWAR_OBJS		=	$(COREWAR_SRCS:.c=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 17:42:18 2016 corsin_a
-** Last update Mon Mar 21 22:06:22 2016 Hugo SOSZYNSKI
+** Last update Tue Mar 22 10:55:10 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -45,6 +45,17 @@ static int	is_options(t_options	*options,
   return (CONTINUE);
 }
 
+static int	is_champion(t_options	*options,
+			    char	*champ)
+{
+  options->champion[options->nb_champion].name = champ;
+  ++options->nb_champion;
+  if (options->nb_champion > 3)
+    return (error_message("Too much champions"));
+  clean_champion(&options->champion[options->nb_champion]);
+  return (SUCCESS);
+}
+
 int		init_options(int	argc,
 			     char	*argv[],
 			     t_options	*options)
@@ -60,17 +71,13 @@ int		init_options(int	argc,
     {
       if ((ret = is_options(options, argv[cpt], argv[cpt + 1])) == ERROR)
 	return (ERROR);
-      else if (ret == CONTINUE)
-	{
-	  options->champion[options->nb_champion].name = argv[cpt];
-	  ++options->nb_champion;
-          if (options->nb_champion > 3)
-	    return (error_message("Too much champions"));
-          clean_champion(&options->champion[options->nb_champion]);
-	}
+      else if (ret == CONTINUE && is_champion(options, argv[cpt]))
+	return (ERROR);
       else
 	++cpt;
       ++cpt;
     }
+  if (options->nb_champion == 0 || cpt == 1)
+    return (error_message("Need at least one champion"));
   return (SUCCESS);
 }
