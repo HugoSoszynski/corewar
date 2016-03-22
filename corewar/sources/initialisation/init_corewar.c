@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:51:42 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 18:28:27 2016 corsin_a
+** Last update Mon Mar 21 21:16:29 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -16,12 +16,11 @@ int		init_corewar(t_corewar *corewar,
 {
   t_options	options;
 
-  (void)corewar;
   if (init_options(ac, av, &options) != SUCCESS)
     return (ERROR);
-  /*
-  if (init_champ(corewar, ac - 1, &av[1]) != SUCCESS)
+  if (init_champ(corewar, &options) != SUCCESS)
     return (ERROR);
-  */
+  if (champ_imcomp(corewar) != SUCCESS)
+    return (ERROR);
   return (SUCCESS);
 }
