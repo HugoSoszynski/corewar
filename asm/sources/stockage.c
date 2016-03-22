@@ -5,10 +5,11 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Tue Mar  8 14:42:29 2016 Hugo SOSZYNSKI
-** Last update Tue Mar  8 16:00:11 2016 Hugo SOSZYNSKI
+** Last update Tue Mar 22 10:20:08 2016 
 */
 
 #include	<stddef.h>
+#include	"parser.h"
 #include	"asm.h"
 
 int		stockage(t_cmd *cmd_tab, char *line, int line_type)

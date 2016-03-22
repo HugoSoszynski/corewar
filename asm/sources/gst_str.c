@@ -5,14 +5,20 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Mon Mar 21 15:19:22 2016 Grégoire Loens
+** Last update Tue Mar 22 11:07:45 2016 
 */
 
 #include	<stdlib.h>
+#include	"parser.h"
+#include	"asm.h"
 
-int		my_strlen(char *str, int i)
+int		my_strlen(char *str)
 {
-  while ((*str) != '\0' && ++i == i && ++str == str);
+  int		i;
+
+  i = 0;
+  while (str[i] != '\0')
+    i++;
   return (i);
 }
 
@@ -54,7 +60,7 @@ char		*my_isspace(char *input)
   int		cpt_output;
   char		*output;
 
-  if ((output = malloc(sizeof(char) * my_strlen(input, 0))) == NULL)
+  if ((output = malloc(sizeof(char) * my_strlen(input))) == NULL)
     return (NULL);
   cpt_input = 0;
   cpt_output = 0;

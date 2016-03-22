@@ -5,13 +5,13 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:40:50 2016 Grégoire Loens
-** Last update Mon Mar 21 15:20:45 2016 Grégoire Loens
+** Last update Tue Mar 22 10:13:57 2016 
 */
 
 #include		<unistd.h>
 #include		<stdlib.h>
-#include		"../includes/get_next_line.h"
-#include		"../includes/parser.h"
+#include		"get_next_line.h"
+#include		"parser.h"
 
 char			*my_realloc(char *str, int size)
 {

@@ -5,8 +5,11 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Feb  1 14:05:30 2016 corsin_a
-** Last update Wed Feb 10 14:16:21 2016 corsin_a
+** Last update Tue Mar 22 10:17:13 2016 
 */
+
+#include	"parser.h"
+#include	"asm.h"
 
 int		my_getnbr(const char *str, int *nb)
 {

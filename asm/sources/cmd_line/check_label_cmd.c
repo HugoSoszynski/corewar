@@ -5,8 +5,11 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Tue Mar  8 16:21:23 2016
-** Last update Mon Mar 21 21:20:00 2016 Grégoire Loens
+** Last update Tue Mar 22 10:23:50 2016 
 */
+
+#include		"parser.h"
+#include		"asm.h"
 
 int			check_label_cmd(char *line)
 {

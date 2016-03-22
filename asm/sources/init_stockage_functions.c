@@ -5,10 +5,12 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Tue Mar  8 16:06:35 2016 Hugo SOSZYNSKI
-** Last update Tue Mar  8 16:43:45 2016 Hugo SOSZYNSKI
+** Last update Tue Mar 22 10:16:11 2016 
 */
 
 #include	<stddef.h>
+#include	"parser.h"
+#include	"asm.h"
 
 int		init_stock_func(void *tab)
 {

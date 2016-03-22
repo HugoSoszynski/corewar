@@ -5,11 +5,11 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Mon Mar 21 19:14:18 2016 
+** Last update Tue Mar 22 10:19:49 2016 
 */
 
-#include	"../includes/parser.h"
-#include	"../includes/asm.h"
+#include	"parser.h"
+#include	"asm.h"
 
 int		type_of_cmd(char *line, char **cmd)
 {
@@ -58,23 +58,11 @@ int		parsing(char *line)
   if (type == TYPE_LINE_CMD)
     if (check_cmd(line) == -1)
       return(error_message_parser("Syntax error line ", nbr_line));
-  if (type == TYPE_LINE_LABEL)
-    if (check_label(line) == -1)
-      return(error_message_parser("Syntax error line ", nbr_line));
-  if (type == TYPE_LINE_LABER_CMD)
+   if (type == TYPE_LINE_LABER_CMD)
     if (check_label_cmd(line) == -1)
       return(error_message_parser("Syntax error line ", nbr_line));
   return (type);
 }
-
-  /*if (verif_nbr_cmd(line) == -1)
-    return (error_message_parser("Syntax error line ", nbr_line));
-  if (verif_nbr_arg(line) == -1)
-    return (error_message_parser("Syntax error line ", nbr_line));
-  if (command_with_arg(line) == -1)
-    return (error_message_parser("Syntax error line ", nbr_line));
-  if (use_of_arg(line) == -1)
-  return (error_message_parser("Syntax error line ", nbr_line));  */
 
 int		verif_cmd_line(int fd, int nbr_line)
 {
@@ -83,7 +71,6 @@ int		verif_cmd_line(int fd, int nbr_line)
 
   while ((line = get_next_line(fd)) != NULL)
     {
-
       type = parsing(line);
     }
 }

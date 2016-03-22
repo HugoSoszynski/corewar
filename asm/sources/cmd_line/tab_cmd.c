@@ -5,10 +5,12 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Tue Mar  8 16:05:30 2016
-** Last update Mon Mar 21 14:25:17 2016 Grégoire Loens
+** Last update Tue Mar 22 10:24:34 2016 
 */
 
 #include	<stdlib.h>
+#include	"asm.h"
+#include	"parser.h"
 
 char		**set_cmd_part2(char **cmd)
 {
