@@ -5,13 +5,15 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 18:45:27 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 21:19:31 2016 corsin_a
+** Last update Tue Mar 22 12:36:38 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
 
 static int	check_address(t_champion *champ1, t_champion *champ2)
 {
+  if (champ2->address == -1 || champ1->address == -1)
+    return (SUCCESS);
   if (champ1->address == champ2->address)
     return (error_message("Two champions in same memory range"));
   if (champ1->address >= champ2->address && champ1->address <=
