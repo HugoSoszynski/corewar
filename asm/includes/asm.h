@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 14:47:10 2016 Hugo SOSZYNSKI
+** Last update Mon Mar 21 23:00:23 2016 
 */
 
 #ifndef		ASM_H_
@@ -65,27 +65,11 @@ header_t	*create_cor_header(char *name,
 int		write_cor_header(header_t *header,
 				 int fd,
 				 char *file_name);
-
-/*
-** my_endianess.c
-*/
-
 int		check_for_endianess();
 void		my_reverse_bytes(void *value,
 				unsigned int size);
-
-/*
-** error.c
-*/
-
-void		error_message(char *msg);
-
-/*
-** à coder
-*/
-
 t_cmd		*create_cmd_struct(char *line);
-int		check_cmd_line(char *line); /* return 0 reussite et 1 erreur */
+int		check_cmd_line(char *line);
 int		choose_line_type(char *line);
 
 #endif		/* !ASM_H_ */

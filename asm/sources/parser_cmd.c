@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Mon Mar 21 19:14:18 2016 
+** Last update Mon Mar 21 22:58:47 2016 
 */
 
 #include	"../includes/parser.h"
@@ -66,15 +66,6 @@ int		parsing(char *line)
       return(error_message_parser("Syntax error line ", nbr_line));
   return (type);
 }
-
-  /*if (verif_nbr_cmd(line) == -1)
-    return (error_message_parser("Syntax error line ", nbr_line));
-  if (verif_nbr_arg(line) == -1)
-    return (error_message_parser("Syntax error line ", nbr_line));
-  if (command_with_arg(line) == -1)
-    return (error_message_parser("Syntax error line ", nbr_line));
-  if (use_of_arg(line) == -1)
-  return (error_message_parser("Syntax error line ", nbr_line));  */
 
 int		verif_cmd_line(int fd, int nbr_line)
 {
