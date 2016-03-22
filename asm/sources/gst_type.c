@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 10:53:24 2016 Grégoire Loens
-** Last update Tue Mar 22 10:15:34 2016 
+** Last update Tue Mar 22 11:16:07 2016 
 */
 
 #include 	<stddef.h>
@@ -24,6 +24,7 @@ int		gst_comment(char *line)
     cpt++;
   if (line[cpt] != '"')
     return (-1);
+  return (0);
 }
 
 int		gst_name(char *line)
@@ -39,6 +40,7 @@ int		gst_name(char *line)
     cpt++;
   if (line[cpt] != '"')
     return (-1);
+  return (0);
 }
 
 int		gst_cmd(char *line, char **cmd)
@@ -83,4 +85,5 @@ int		gst_label(char	*line)
 	}
       return (1);
     }
+  return (0);
   }

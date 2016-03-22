@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Tue Mar 22 09:44:54 2016 Grégoire Loens
+** Last update Tue Mar 22 11:17:04 2016 
 */
 
 #ifndef	PARSER_H_
@@ -39,13 +39,13 @@ int	error_message(char *);
 int	my_isalpha_num(char );
 int	my_strcmp(char *, char *);
 int	my_ispace(char );
-int	my_isspace(char *);
+char	*my_isspace(char *);
 int	gst_comment(char *);
 int	gst_name(char *);
-int	gst_cmd(char *);
+int	gst_cmd(char *, char **);
 int	gst_extend(char *);
 int	gst_label(char *);
-int	my_getnbr(char *, int *);
+int	my_getnbr(const char *, int *);
 void	find_word(char *, char *, int *);
 void	move_to_word(char *, char *, int *);
 char	**my_make_tab(char **, char *, int , char);

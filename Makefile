@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Tue Mar 22 10:55:58 2016 
+## Last update Tue Mar 22 11:12:05 2016 
 ##
 
 CC			=	gcc
@@ -25,9 +25,7 @@ ASM			=	asm/asm
 ASM_SRCS		=	asm/sources/cor_header.c \
 				asm/sources/my_endianess.c \
                                 asm/sources/get_next_line.c \
-				asm/sources/init_stockage_functions.c \
 				asm/sources/my_strdup.c \
-				asm/sources/parser.c \
 				asm/sources/cor_header.c \
 				asm/sources/gst_str.c \
 				asm/sources/my_getnbr.c \
@@ -82,5 +80,8 @@ fclean:		clean
 		$(RM) $(ASM) $(COREWAR)
 
 re:		fclean all
+
+test:		$(ASM)
+		$(CC) $(ASM_OBJ) -o $(ASM) -I./asm/includes
 
 .PHONY:		all clean fclean re
