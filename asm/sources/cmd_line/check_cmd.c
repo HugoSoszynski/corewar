@@ -5,9 +5,10 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Mon Mar  7 16:10:58 2016
-** Last update Mon Mar 21 17:44:04 2016 
+** Last update Tue Mar 22 12:53:04 2016 
 */
 
+#include	<stddef.h>
 #include	"parser.h"
 #include	"asm.h"
 
@@ -40,12 +41,10 @@ int		check_validity(char *line, char **cmd)
 int		check_cmd(char *line)
 {
   char		**cmd;
-  int		cpt;
   int		word_nbr;
   char		*word;
 
   word_nbr = 2;
-  cpt = -1;
   cmd = set_cmd_part1();
   word = my_getword(line, 1);
   if (check_exist_cmd(word, cmd) == -1)
@@ -57,7 +56,7 @@ int		check_cmd(char *line)
 	return (-1);
       word_nbr++;
     }
-  if (check_validity_cmd(line, cmd) == -1)
+  if (check_validity(line, cmd) == -1)
     return (-1);
   return (0);
 }

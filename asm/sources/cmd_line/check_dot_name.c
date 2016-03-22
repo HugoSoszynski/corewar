@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar  8 16:11:56 2016 
-** Last update Tue Mar 22 10:22:21 2016 
+** Last update Tue Mar 22 14:27:03 2016 
 */
 
 #include	"parser.h"
@@ -19,7 +19,7 @@ int		check_dot_name(char *line)
   i = 0;
   while (line[i] != '\0')
     {
-      if (line[i] > 128 || line[i] < 0)
+      if (line[i] < 0)
 	return (-1);
       if (i > PROG_NAME_LENGTH + 5)
 	return (-1);

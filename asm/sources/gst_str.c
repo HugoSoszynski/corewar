@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Tue Mar 22 11:07:45 2016 
+** Last update Tue Mar 22 19:38:53 2016 
 */
 
 #include	<stdlib.h>
@@ -54,6 +54,24 @@ int		my_ispace(char c)
   return (0);
 }
 
+char		*check_only_space(char *output)
+{
+  int		cpt;
+  int		var;
+
+  var = 0;
+  cpt = 0;
+  while (output[cpt] != '\0')
+    {
+      if (my_ispace(output[cpt]) != -1)
+	var++;
+      cpt++;
+    }
+  if (var == 0)
+    output[0] = '\0';
+  return (output);
+}
+
 char		*my_isspace(char *input)
 {
   int		cpt_input;
@@ -79,5 +97,5 @@ char		*my_isspace(char *input)
       cpt_input++;
     }
   output[cpt_output] = '\0';
-  return (output);
+  return (check_only_space(output));
 }

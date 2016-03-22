@@ -5,14 +5,22 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Tue Mar 22 10:19:49 2016 
+** Last update Tue Mar 22 19:47:49 2016 
 */
 
+#include	<stddef.h>
 #include	"parser.h"
+#include	"get_next_line.h"
 #include	"asm.h"
 
-int		type_of_cmd(char *line, char **cmd)
+int		type_of_cmd(char *line)
 {
+  char		**cmd;
+
+  if ((cmd = set_cmd_part1()) == NULL)
+    return (-1);
+  if (line[0] == COMMENT_CHAR || line[0] == '\0')
+    return (TYPE_LINE_EMPTY);
   if (line[0] == '.')
     {
       if (gst_name(line) == 0)
@@ -25,52 +33,60 @@ int		type_of_cmd(char *line, char **cmd)
 	return (TYPE_LINE_EXTEND);
     }
   else
-    {
-      if (gst_cmd(line, cmd) == 0)
-	return (TYPE_LINE_CMD);
-      else if (gst_label(line, cmd) == 1)
-	return(TYPE_LINE_LABEL);
-      else if (gst_label(line, cmd) == 2)
-	return (TYPE_LINE_LABEL_CMD);
-    }
+    if (gst_cmd(line, cmd) == 0)
+      return (TYPE_LINE_CMD);
+    else if (gst_label(line) == 1)
+      return(TYPE_LINE_LABEL);
+    else if (gst_label(line) == 2)
+      return (TYPE_LINE_LABEL_CMD);
+  return (error_message("can't reconize the command"));
 }
 
-int		parsing(char *line)
+int		parsing(char *line, int nbr_line)
 {
   int		type;
 
-  if (line = my_isspace(line) == NULL)
-    return(error_message_parser("Syntax error line ", nbr_line));
+  type = 0;
+  (void)nbr_line;
+  if ((line = my_isspace(line)) == NULL)
+    return(error_message_parser("line ", nbr_line));
   if ((type = type_of_cmd(line)) == -1)
-    return(error_message_parser("Syntax error line ", nbr_line));
+    return(error_message_parser("line ", nbr_line));
+#include <stdio.h>
+  printf("\n>>>%s at line nbr de la ligne %d et nbr du type %d<<\n\n", line, nbr_line, type);
   if (type == TYPE_LINE_NAME)
     if (check_dot_name(line) == -1)
-      return(error_message_parser("Syntax error line ", nbr_line));
+      return(error_message_parser("line ", nbr_line));
   if (type == TYPE_LINE_COMMENT)
     if (check_dot_comment(line) == -1)
-      return(error_message_parser("Syntax error line ", nbr_line));
+      return(error_message_parser("line ", nbr_line));
   if (type == TYPE_LINE_EXTEND)
     if (check_dot_extend(line) == -1)
-      return(error_message_parser("Syntax error line ", nbr_line));
+      return(error_message_parser("line ", nbr_line));
   if (type == TYPE_LINE_CODE)
     if (check_dot_code(line) == -1)
-      return(error_message_parser("Syntax error line ", nbr_line));
+      return(error_message_parser("line ", nbr_line));
   if (type == TYPE_LINE_CMD)
     if (check_cmd(line) == -1)
-      return(error_message_parser("Syntax error line ", nbr_line));
-   if (type == TYPE_LINE_LABER_CMD)
+      return(error_message_parser("line ", nbr_line));
+  if (type == TYPE_LINE_LABEL_CMD)
     if (check_label_cmd(line) == -1)
-      return(error_message_parser("Syntax error line ", nbr_line));
+      return(error_message_parser("line ", nbr_line));
   return (type);
 }
 
-int		verif_cmd_line(int fd, int nbr_line)
+int		verif_cmd_line(int fd)
 {
   char		*line;
   int		type;
+  int		nbr_line;
 
+  nbr_line = 1;
   while ((line = get_next_line(fd)) != NULL)
     {
-      type = parsing(line);
+      type = parsing(line, nbr_line);
+      (void)type;
+      nbr_line++;
     }
+  return (0);
 }

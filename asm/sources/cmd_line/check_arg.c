@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Mon Mar 21 17:40:54 2016
-** Last update Mon Mar 21 18:24:39 2016 Grégoire Loens
+** Last update Tue Mar 22 12:39:21 2016 
 */
 
 #include	"parser.h"
@@ -41,7 +41,7 @@ int		arg_indirect(char *arg_file)
 	return (-1);
       if (arg_register(arg_file) == 0)
 	return (0);
-      if (my_issalpha(arg_file + 2) == 0)
+      if (my_isalpha(arg_file + 2) == 0)
 	return (0);
       if (my_isnum(arg_file + 2) == 0)
 	return (0);
@@ -50,6 +50,7 @@ int		arg_indirect(char *arg_file)
   else
     if (my_isnum(arg_file) == 1)
 	return(0);
+  return (-1);
 }
 
 int		arg_register(char *arg_file)
@@ -64,7 +65,7 @@ int		arg_register(char *arg_file)
       cpt++;
       if ((((arg_file[cpt] > '1' && arg_file[cpt] < '7') && arg_file[cpt] <=
 	    '9') && arg_file[cpt + 1] == '\0') || (arg_file[cpt] == '1' &&
-	   (arg_file[cpt + 1] >= '0' && arg_file[cpt + 1] <= "6")))
+	   (arg_file[cpt + 1] >= '0' && arg_file[cpt + 1] <= '6')))
 	return (0);
       else
 	return (-1);

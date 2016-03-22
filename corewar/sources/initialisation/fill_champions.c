@@ -5,17 +5,35 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 22:09:36 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 18:23:38 2016 Hugo SOSZYNSKI
+** Last update Tue Mar 22 22:33:02 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
 
-static void	set_address_one(t_corewar *corewar)
+static void	set_address_one_2(t_corewar	*corewar,
+				  int		set,
+				  int		free_size)
+{
+  int		cpt;
+  int		current_address;
+
+  current_address = corewar->champion[set].address;
+  cpt = -1;
+  while (++cpt < corewar->nb_champions)
+    {
+      corewar->champion[(cpt + set) % corewar->nb_champions].address
+      = current_address;
+      current_address = (corewar->champion[(cpt + set) %
+			 corewar->nb_champions].header.prog_size
+			 + free_size + current_address) % MEM_SIZE;
+    }
+}
+
+static void	set_address_one(t_corewar 	*corewar)
 {
   int		cpt;
   int		free_size;
   int		set;
-  int		current_address;
 
   free_size = MEM_SIZE;
   cpt = -1;
@@ -27,22 +45,12 @@ static void	set_address_one(t_corewar *corewar)
       free_size -= corewar->champion[cpt].header.prog_size;
     }
   free_size /= corewar->nb_champions;
-  if (set != -1)
-    current_address = corewar->champion[set].address;
-  else
+  if (set == -1)
     {
-      current_address = 0;
+      corewar->champion[0].address = 0;
       set = 0;
     }
-  cpt = -1;
-  while (++cpt < corewar->nb_champions)
-    {
-      corewar->champion[(cpt + set) % corewar->nb_champions].address
-      = current_address;
-      current_address = (corewar->champion[(cpt + set) %
-			 corewar->nb_champions].header.prog_size
-			 + free_size + current_address) % MEM_SIZE;
-    }
+  set_address_one_2(corewar, set, free_size);
 }
 
 int		fill_champions(t_corewar *corewar)
