@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 15:44:55 2016 corsin_a
-** Last update Tue Mar 22 17:14:11 2016 corsin_a
+** Last update Tue Mar 22 17:35:05 2016 corsin_a
 */
 
 #include	<stdlib.h>
@@ -20,7 +20,7 @@ t_process_list	*create_process_list(t_champion		*champion)
   process_list->current.opcode = 0;
   process_list->process.carry = 0;
   process_list->process.pc = champion->address;
-  process_list->process.nb_champion = cpt;
+  process_list->process.nb_champion = champion->nb_champion;
   /*
   	process_list->process.reg = ???
   */
