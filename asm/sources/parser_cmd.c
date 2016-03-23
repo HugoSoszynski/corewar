@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Wed Mar 23 17:12:24 2016 
+** Last update Wed Mar 23 17:33:42 2016 
 */
 
 #include	<stddef.h>
@@ -75,7 +75,7 @@ int		parsing(char *line, int nbr_line)
     return(error_message_line("line ", nbr_line, line));
   return (type);
 }
-/*
+
 int		storage(int nbr_line, char *line, int type, t_cmd *stock_arg)
 {
   if (stock_arg->next != NULL)
@@ -94,37 +94,36 @@ int		storage(int nbr_line, char *line, int type, t_cmd *stock_arg)
     {
       if ((stock_cmd = stock_cmd(line, stock_arg)) == NULL)
 	return (-1);
-	}*/
+    }
   /* reste cmd, line_laber et line_label_cmd */
-/* }
-*/
+}
+
 int		verif_cmd_line(int fd)
 {
   char		*line;
   unsigned char	stock;
   int		type;
   int		nbr_line;
-  /*  t_cmd		*stock_arg;*/
+  t_cmd		*stock_arg;
   
   nbr_line = 1;
   stock = 0;
-  /*  if ((stock_arg = init_first_cmd()) == NULL)
-      return (error_message("initialise conflict for stocking argument"));*/
+  if ((stock_arg = init_first_cmd()) == NULL)
+      return (error_message("initialise conflict for stocking argument"));
   while ((line = get_next_line(fd)) != NULL)
     {
       type = parsing(line, nbr_line);
       if (type == -1)
 	stock = 1;
-      /*
       if (stock != 1 && type != TYPE_LINE_EMPTY)
 	if (storage(nbr_line, line, type, stock_arg) == -1)
 	  return (-1);
 	else
 	  if ((stock_arg = add_cmd(stock_arg)) == NULL)
-	    return (NULL);*/
+	    return (NULL);
       nbr_line++;
     }
-  /*  write_cor(stock_arg);*/
+  write_cor(stock_arg);
   if (stock == 1)
     return (-1);
   return (0);

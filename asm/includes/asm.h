@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 17:06:10 2016 
+** Last update Wed Mar 23 17:42:33 2016 
 */
 
 #ifndef		ASM_H_
@@ -16,7 +16,7 @@
 # define	ERROR			(-1)
 
 # ifndef	OP_LIVE
-#  define	OP_LIVE			(1)
+#  define	OP_LIVE			(0)
 # endif		/* !OP_LIVE */
 
 # ifndef	OP_LD
@@ -24,59 +24,59 @@
 # endif		/* !OP_LD */
 
 # ifndef	OP_ST
-#  define	OP_ST			(3)
+#  define	OP_ST			(4)
 # endif		/* !OP_ST */
 
 # ifndef	OP_ADD
-#  define	OP_ADD			(4)
+#  define	OP_ADD			(6)
 # endif		/* !OP_ADD */
 
 # ifndef	OP_SUB
-#  define	OP_SUB			(5)
+#  define	OP_SUB			(8)
 # endif		/* !OP_SUB */
 
 # ifndef	OP_AND
-#  define	OP_AND			(6)
+#  define	OP_AND			(10)
 # endif		/* !OP_AND */
 
 # ifndef	OP_OR
-#  define	OP_OR			(7)
+#  define	OP_OR			(12)
 # endif		/* !OP_OR */
 
 # ifndef	OP_XOR
-#  define	OP_XOR			(8)
+#  define	OP_XOR			(14)
 # endif		/* !OP_XOR */
 
 # ifndef	OP_ZJMP
-#  define	OP_ZJMP			(9)
+#  define	OP_ZJMP			(16)
 # endif		/* !OP_ZJMP */
 
 # ifndef	OP_LDI
-#  define	OP_LDI			(10)
+#  define	OP_LDI			(18)
 # endif		/* !OP_LDI */
 
 # ifndef	OP_STI
-#  define	OP_STI			(11)
+#  define	OP_STI			(20)
 # endif		/* !OP_STI */
 
 # ifndef	OP_FORK
-#  define	OP_FORK			(12)
+#  define	OP_FORK			(22)
 # endif		/* !OP_FORK */
 
 # ifndef	OP_LLD
-#  define	OP_LLD			(13)
+#  define	OP_LLD			(24)
 # endif		/* !OP_LLD */
 
 # ifndef	OP_LLDI
-#  define	OP_LLDI			(14)
+#  define	OP_LLDI			(26)
 # endif		/* !OP_LLDI */
 
 # ifndef	OP_LFORK
-#  define	OP_LFORK		(15)
+#  define	OP_LFORK		(28)
 # endif		/* !OP_LFORK */
 
 # ifndef	OP_AFF
-#  define	OP_AFF			(16)
+#  define	OP_AFF			(30)
 # endif		/* !OP_AFF */
 
 # ifndef	TYPE_LINE_ERROR
@@ -120,7 +120,7 @@
 # define	IS_LIT_ENDIAN		(check_for_endianess())
 #endif		/* !IS_LIT_ENDIAN */
 
-/*typedef struct s_list
+typedef struct s_list
 {
   struct s_cmd	*head;
 }		t_list;
@@ -140,11 +140,11 @@ typedef struct	s_cmd
   t_pile	*def;
   t_pile	*call;
 }		t_cmd;
-*/
+
 /*
 ** cor_header.c
 */
-/*
+
 header_t	*create_cor_header(char *name,
 				   char **coment,
 				   int prog_size);
@@ -157,5 +157,5 @@ void		my_reverse_bytes(void *value,
 t_cmd		*create_cmd_struct(char *line);
 int		check_cmd_line(char *line);
 int		choose_line_type(char *line);
-*/
+
 #endif		/* !ASM_H_ */
