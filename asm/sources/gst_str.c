@@ -5,14 +5,14 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Wed Mar 23 03:51:08 2016 
+** Last update Wed Mar 23 10:32:52 2016 Grégoire Loens
 */
 
 #include	<stdlib.h>
 #include	"parser.h"
 #include	"asm.h"
 
-int		my_strlen(char *str)
+int		my_strlen(const char *str)
 {
   int		i;
 
