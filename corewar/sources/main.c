@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 22:42:49 2016 corsin_a
+** Last update Wed Mar 23 12:27:29 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
@@ -17,7 +17,7 @@ int		main(int 	argc,
   t_corewar	corewar;
   int		cpt;
 
-  if (REG_NUMBER < 1 || REG_SIZE < 4 || CYCLE_TO_DIE < 1
+  if (REG_NUMBER < 1 || REG_SIZE != 4 || CYCLE_TO_DIE < 1
       || CYCLE_DELTA < 0 || NBR_LIVE < 1 || PROG_NAME_LENGTH < 1
       || COMMENT_LENGTH < 1 || IND_SIZE < 1 || DIR_SIZE < 1
       || T_REG < 1 || T_DIR < 1 || T_IND < 1)

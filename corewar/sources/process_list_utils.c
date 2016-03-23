@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:27:30 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 11:06:24 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 12:53:04 2016 Hugo SOSZYNSKI
 */
 
 #include		<stddef.h>
@@ -17,7 +17,6 @@ static void		cpy_t_process(t_process *src,
 				      int add_to_pc)
 {
   int			cpt;
-  int			count;
 
   dest->carry = src->carry;
   dest->nb_champion = src->nb_champion;
@@ -25,9 +24,7 @@ static void		cpy_t_process(t_process *src,
   cpt = -1;
   while (++cpt < REG_NUMBER)
     {
-      count = -1;
-      while (++count < REG_SIZE)
-	dest->reg[cpt][count] = src->[cpt][count];
+      dest->reg[cpt] = src->reg[cpt];
     }
 }
 
