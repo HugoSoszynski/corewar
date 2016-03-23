@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 10:53:29 2016 corsin_a
+** Last update Wed Mar 23 11:09:24 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_

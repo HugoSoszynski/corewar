@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Wed Mar 23 01:12:58 2016 corsin_a
+** Last update Wed Mar 23 11:56:44 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -40,7 +40,7 @@ int		launch_corewar(t_corewar	*corewar)
   while (game_is_not_finished(corewar) == CONTINUE)
     {
       execute_process(corewar);
-      printf("%ld\n", corewar->actual_cycle);
+      printf("actual cycle %ld\n", corewar->actual_cycle);
       ++corewar->cycle_passed;
       ++corewar->actual_cycle;
     }
