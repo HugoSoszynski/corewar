@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Mon Mar 21 23:00:23 2016 
+** Last update Wed Mar 23 01:11:27 2016 corsin_a
 */
 
 #ifndef		ASM_H_
@@ -52,7 +52,7 @@ typedef struct	s_cmd
   char		octet_codage;
   int		arg[3];
   char		type_arg[3];
-  char		label[T_LAB];
+  char		label[3][T_LAB];
 }		t_cmd;
 
 /*

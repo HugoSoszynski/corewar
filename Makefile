@@ -5,15 +5,15 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Tue Mar 22 22:35:24 2016 Sylvain Corsini
+## Last update Wed Mar 23 04:15:44 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
 
 RM			=	rm -f
 
-CFLAGS			+=	-W -Wextra -Wall
-CFLAGS			+=	-Werror
+#CFLAGS			+=	-W -Wextra -Wall
+#CFLAGS			+=	-Werror
 #CFLAGS			+=	-ansi
 CFLAGS			+=	-pedantic
 CFLAGS			+=	-ggdb3
@@ -60,7 +60,28 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 				corewar/sources/initialisation/champ_incomp.c \
 				corewar/sources/initialisation/fill_champions.c \
 				corewar/sources/preparation/prepare_corewar.c \
+				corewar/sources/preparation/prepare_mem.c \
+				corewar/sources/preparation/prepare_process_list.c \
+				corewar/sources/preparation/prepare_op_tab.c \
 				corewar/sources/game/launch_corewar.c \
+				corewar/sources/game/execute_process.c \
+				corewar/sources/game/copy_instruction.c \
+				corewar/sources/game/op/add.c \
+				corewar/sources/game/op/aff.c \
+				corewar/sources/game/op/and.c \
+				corewar/sources/game/op/fork.c \
+				corewar/sources/game/op/ld.c \
+				corewar/sources/game/op/ldi.c \
+				corewar/sources/game/op/lfork.c \
+				corewar/sources/game/op/live.c \
+				corewar/sources/game/op/lld.c \
+				corewar/sources/game/op/lldi.c \
+				corewar/sources/game/op/or.c \
+				corewar/sources/game/op/st.c \
+				corewar/sources/game/op/sti.c \
+				corewar/sources/game/op/sub.c \
+				corewar/sources/game/op/xor.c \
+				corewar/sources/game/op/zjmp.c \
 				corewar/sources/my_endianess.c \
 				corewar/sources/error.c \
 				corewar/sources/my_getnbr.c \

@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 00:55:44 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 04:42:05 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -37,9 +37,11 @@
 
 typedef struct		s_instruction
 {
+  char			op;
   char			opcode;
   int			arg[3];
   char			type_arg[3];
+  bool			correct;
 }			t_instruction;
 
 typedef struct		s_process
@@ -53,8 +55,8 @@ typedef struct		s_process
 typedef struct		s_process_list
 {
   t_process		process;
-  t_instruction		current;
-  unsigned int		cycle;
+  t_instruction		instruction;
+  int			cycle;
   struct s_process_list	*next;
 }			t_process_list;
 
@@ -77,6 +79,7 @@ typedef struct		s_corewar
   t_champion		champion[4];
   unsigned char		mem[MEM_SIZE];
   unsigned int		live_nb;
+  void			*op_tab;
 }			t_corewar;
 
 typedef struct		s_options_champion
@@ -92,6 +95,64 @@ typedef struct		s_options
   int			nb_champion;
   t_options_champion	champion[4];
 }			t_options;
+
+# define	OP_LIVE		(1)
+# define	OP_LD		(2)
+# define	OP_ST		(3)
+# define	OP_ADD		(4)
+# define	OP_SUB		(5)
+# define	OP_AND		(6)
+# define	OP_OR		(7)
+# define	OP_XOR		(8)
+# define	OP_ZJMP		(9)
+# define	OP_LDI		(10)
+# define	OP_STI		(11)
+# define	OP_FORK		(12)
+# define	OP_LLD		(13)
+# define	OP_LLDI		(14)
+# define	OP_LFORK	(15)
+# define	OP_AFF		(16)
+
+int		check_op_live(char);
+void		op_live(t_corewar *, t_process_list *);
+int		check_op_ld(char);
+void		op_ld(t_corewar *, t_process_list *);
+int		check_op_st(char);
+void		op_st(t_corewar *, t_process_list *);
+int		check_op_add(char);
+void		op_add(t_corewar *, t_process_list *);
+int		check_op_sub(char);
+void		op_sub(t_corewar *, t_process_list *);
+int		check_op_and(char);
+void		op_and(t_corewar *, t_process_list *);
+int		check_op_or(char);
+void		op_or(t_corewar *, t_process_list *);
+int		check_op_xor(char);
+void		op_xor(t_corewar *, t_process_list *);
+int		check_op_zjmp(char);
+void		op_zjmp(t_corewar *, t_process_list *);
+int		check_op_ldi(char);
+void		op_ldi(t_corewar *, t_process_list *);
+int		check_op_sti(char);
+void		op_sti(t_corewar *, t_process_list *);
+int		check_op_fork(char);
+void		op_fork(t_corewar *, t_process_list *);
+int		check_op_lld(char);
+void		op_lld(t_corewar *, t_process_list *);
+int		check_op_lldi(char);
+void		op_lldi(t_corewar *, t_process_list *);
+int		check_op_lfork(char);
+void		op_lfork(t_corewar *, t_process_list *);
+int		check_op_aff(char);
+void		op_aff(t_corewar *, t_process_list *);
+
+typedef struct		s_op_tab
+{
+  int			(*check)(char			opcode);
+  void			(*exec)(t_corewar 		*corewar,
+			        t_process_list		*process_list);
+  int			cycle_to_die;
+}			t_op_tab;
 
 int			init_corewar(t_corewar		*corewar,
 				     int		ac,
@@ -128,5 +189,10 @@ int			launch_corewar(t_corewar	*corewar);
 void			free_processlist(t_process_list	*list);
 int			clone_process(t_process_list	*src,
 				      int		add_to_pc);
+void			execute_process(t_corewar	*corewar);
+void			prepare_mem(t_corewar		*corewar);
+int			prepare_process_list(t_corewar	*corewar);
+int			copy_instruction(t_corewar	*corewar,
+					 t_process_list	*process_list);
 
 #endif		/* !COREWAR_H_ */

@@ -64,13 +64,6 @@ typedef struct op_s     op_t;
 #define REG_SIZE        4               /* en octet */
 #define DIR_SIZE        REG_SIZE        /* en octet */
 
-/*
- ** op_tab
- */
-
-
-extern  op_t    op_tab[];
-
 
 /*
  ** header
