@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Wed Mar 23 10:34:15 2016 Grégoire Loens
+** Last update Wed Mar 23 11:40:01 2016 
 */
 
 #include	<stdlib.h>
@@ -36,8 +36,8 @@ int		my_strcmp(char *str1, char *str2)
   int		cpt;
 
   cpt = 0;
-  /*  #include <stdio.h>
-      printf ("%s %s \n", str1, str2);*/
+  /*#include <stdio.h>
+    printf ("%s %s \n", str1, str2);*/
   while (str1[cpt] && str2[cpt] && str1[cpt] == str2[cpt])
     ++cpt;
   if (!str2[cpt] && (str1[cpt] == ' ' || str1[cpt] == '\0'))
