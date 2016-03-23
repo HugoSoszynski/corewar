@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 11:44:43 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 10:53:29 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -14,6 +14,7 @@
 # include		<stdbool.h>
 # include		<stddef.h>
 # include		"op.h"
+# include		"define_op_cycles.h"
 
 # ifndef		SUCCESS
 #  define		SUCCESS		(0)
@@ -206,7 +207,7 @@ typedef struct		s_op_tab
   int			(*check)(char			opcode);
   void			(*exec)(t_corewar 		*corewar,
 			        t_process_list		*process_list);
-  int			cycle_to_die;
+  int			cycle;
 }			t_op_tab;
 
 int			init_corewar(t_corewar		*corewar,

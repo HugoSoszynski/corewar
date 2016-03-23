@@ -5,15 +5,15 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:43 2016 corsin_a
-** Last update Wed Mar 23 03:31:25 2016 corsin_a
+** Last update Wed Mar 23 10:51:09 2016 corsin_a
 */
 
 #include	"corewar.h"
 
 int		check_op_ldi(char	opcode)
 {
-  if (opcode != 84 || opcode != 148 || opcode != 164 || opcode != 212 ||
-      opcode != 228 || opcode != 100)
+  if (opcode != 84 && opcode != 148 && opcode != 164 && opcode != 212 &&
+      opcode != 228 && opcode != 100)
     return (ERROR);
   return (SUCCESS);
 }

@@ -5,15 +5,15 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Wed Mar 23 03:33:30 2016 corsin_a
+** Last update Wed Mar 23 10:50:13 2016 corsin_a
 */
 
 #include	"corewar.h"
 
 int		check_op_sti(char	opcode)
 {
-  if (opcode != 84 || opcode != 100 || opcode != 104 || opcode != 116 ||
-      opcode != 120 || opcode != 88)
+  if (opcode != 84 && opcode != 100 && opcode != 104 && opcode != 116 &&
+      opcode != 120 && opcode != 88)
     return (ERROR);
   return (SUCCESS);
 }

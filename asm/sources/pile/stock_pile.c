@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Wed Mar 23 04:03:25 2016 Grégoire Loens
+** Last update Wed Mar 23 10:54:44 2016 Grégoire Loens
 */
 
 #include	<stdlib.h>
@@ -40,9 +40,11 @@ t_pile		*stock_pile_for_def(t_pile *def, char *line)
   cpt = 0;
   while (def->next != NULL)
     def = def->next;
-  if (def->label_name = NULL)
-    def = add_label(def);
-  def = def->next;
+  if (def->label_name != NULL)
+    {
+      def = add_label(def);
+      def = def->next;
+    }
   while(line[cpt] != ':')
     cpt++;
   if ((def->label_name = malloc(sizeof(char) * cpt + 1)) == NULL)
@@ -65,14 +67,16 @@ t_pile		*stock_pile_for_call(t_pile *call, char *arg)
    cpt++;
   while(call->next != NULL)
     call = call->next;
-  if (call->label_name == NULL)
-    call = add_label(call);
-  call = call->next;
+  if (call->label_name != NULL)
+    {
+      call = add_label(call);
+      call = call->next;
+    }
   if ((call->label_name = malloc(sizeof(char) * cpt + 1)) == NULL)
     return (NULL);
   cpt = 0;
   while (arg[cpt] != 0)
-    { 
+    {
       call->label_name[cpt] = arg[cpt];
       cpt++;
     }
