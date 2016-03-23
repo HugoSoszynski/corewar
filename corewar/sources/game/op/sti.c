@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Wed Mar 23 16:30:44 2016 corsin_a
+** Last update Wed Mar 23 16:55:20 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -28,5 +28,8 @@ void		copy_op_sti(t_corewar *corewar,
 void		exec_op_sti(t_corewar	*corewar,
 			    t_process_list	*current)
 {
-
+  if (current->instruction.correct)
+    {
+      
+    }
 }
