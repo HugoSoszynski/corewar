@@ -5,13 +5,12 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 12:08:22 2016 Grégoire Loens
+** Last update Wed Mar 23 17:06:10 2016 
 */
 
 #ifndef		ASM_H_
 # define	ASM_H_
 
-#include	"pile.h"
 #include	"op.h"
 
 # define	ERROR			(-1)
@@ -121,7 +120,7 @@
 # define	IS_LIT_ENDIAN		(check_for_endianess())
 #endif		/* !IS_LIT_ENDIAN */
 
-typedef struct s_list
+/*typedef struct s_list
 {
   struct s_cmd	*head;
 }		t_list;
@@ -141,11 +140,11 @@ typedef struct	s_cmd
   t_pile	*def;
   t_pile	*call;
 }		t_cmd;
-
+*/
 /*
 ** cor_header.c
 */
-
+/*
 header_t	*create_cor_header(char *name,
 				   char **coment,
 				   int prog_size);
@@ -158,5 +157,5 @@ void		my_reverse_bytes(void *value,
 t_cmd		*create_cmd_struct(char *line);
 int		check_cmd_line(char *line);
 int		choose_line_type(char *line);
-
+*/
 #endif		/* !ASM_H_ */

@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Wed Mar 23 04:15:44 2016 Sylvain Corsini
+## Last update Wed Mar 23 17:17:34 2016 
 ##
 
 CC			=	gcc
@@ -22,9 +22,7 @@ CFLAGS			+=	-Icorewar/includes
 
 ASM			=	asm/asm
 
-ASM_SRCS		=	asm/sources/cor_header.c \
-				asm/sources/my_endianess.c \
-                                asm/sources/get_next_line.c \
+ASM_SRCS		=       asm/sources/get_next_line.c \
 				asm/sources/my_put_nbr.c \
 				asm/sources/my_strdup.c \
 				asm/sources/gst_str.c \
@@ -93,7 +91,7 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 COREWAR_OBJS		=	$(COREWAR_SRCS:.c=.o)
 
 
-all:		$(ASM) $(COREWAR)
+all:		$(ASM)
 
 $(ASM):		$(ASM_OBJS)
 		$(CC) $(ASM_OBJS) -o $(ASM) -Iasm/includes
