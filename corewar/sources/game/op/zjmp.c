@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:32 2016 corsin_a
-** Last update Wed Mar 23 16:48:15 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 16:37:22 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -20,11 +20,11 @@ int		check_op_zjmp(char	opcode)
 void		copy_op_zjmp(t_corewar *corewar,
 			     t_process_list *current)
 {
-
+  
 }
 
 void		exec_op_zjmp(t_corewar	*corewar,
-			     t_process_list	*curent)
+			     t_process_list	*current)
 {
   current->process.pc += current->instruction.arg[0];
 }
