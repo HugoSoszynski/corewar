@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:27:30 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 03:49:47 2016 corsin_a
+** Last update Wed Mar 23 11:06:24 2016 Hugo SOSZYNSKI
 */
 
 #include		<stddef.h>
@@ -73,16 +73,16 @@ t_process_list		*kill_zombies(t_process_list *list,
   t_process_list	*head;
 
   head = list;
+  while (list != NULL)
+    {
+      tmp = list->next;
+      check_zombie(head, list, tmp, nb_champion);
+    }
   if (head != NULL && head->next == NULL &&
       head->process.nb_champion == nb_champion)
     {
       free(head);
       return (NULL);
-    }
-  while (list != NULL)
-    {
-      tmp = list->next;
-      check_zombie(head, list, tmp, nb_champion);
     }
   return (head);
 }
