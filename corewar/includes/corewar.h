@@ -5,13 +5,14 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 15:51:56 2016 corsin_a
+** Last update Wed Mar 23 04:42:05 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
 # define		COREWAR_H_
 
 # include		<stdbool.h>
+# include		<stddef.h>
 # include		"op.h"
 
 # ifndef		SUCCESS
@@ -30,17 +31,22 @@
 #  define		IS_LIT_ENDIAN	(check_for_endianess())
 # endif			/* !IS_LIT_ENDIAN */
 
+# define		IS_DEAD		(0)
+# define		IS_RUN		(1)
+# define		IS_ALIVE	(2)
+
 typedef struct		s_instruction
 {
+  char			op;
   char			opcode;
-  char			octet_codage;
   int			arg[3];
   char			type_arg[3];
+  bool			correct;
 }			t_instruction;
 
 typedef struct		s_process
 {
-  char			reg[REG_NUMBER * REG_SIZE];
+  char			reg[REG_NUMBER][REG_SIZE];
   char			carry;
   unsigned int		pc;
   unsigned int		nb_champion;
@@ -49,8 +55,8 @@ typedef struct		s_process
 typedef struct		s_process_list
 {
   t_process		process;
-  t_instruction		current;
-  unsigned int		cycle;
+  t_instruction		instruction;
+  int			cycle;
   struct s_process_list	*next;
 }			t_process_list;
 
@@ -66,30 +72,91 @@ typedef struct		s_corewar
 {
   t_process_list	*process_list;
   unsigned int		cycle_to_die;
+  unsigned int		cycle_passed;
   unsigned long int	actual_cycle;
-  bool			champions_alive[4];
+  char			champions_alive[4];
   unsigned char		nb_champions;
   t_champion		champion[4];
-  char			mem[MEM_SIZE];
+  unsigned char		mem[MEM_SIZE];
   unsigned int		live_nb;
+  void			*op_tab;
 }			t_corewar;
 
 typedef struct		s_options_champion
 {
-        char			*name;
-        int			nb;
-        int			ad;
+  char			*name;
+  int			nb;
+  int			ad;
 }			t_options_champion;
 
 typedef struct		s_options
 {
-        int			dump;
-        int			nb_champion;
-        t_options_champion	champion[4];
+  int			dump;
+  int			nb_champion;
+  t_options_champion	champion[4];
 }			t_options;
 
-int			init_corewar(t_corewar *corewar,
-				     int ac, char **av);
+# define	OP_LIVE		(1)
+# define	OP_LD		(2)
+# define	OP_ST		(3)
+# define	OP_ADD		(4)
+# define	OP_SUB		(5)
+# define	OP_AND		(6)
+# define	OP_OR		(7)
+# define	OP_XOR		(8)
+# define	OP_ZJMP		(9)
+# define	OP_LDI		(10)
+# define	OP_STI		(11)
+# define	OP_FORK		(12)
+# define	OP_LLD		(13)
+# define	OP_LLDI		(14)
+# define	OP_LFORK	(15)
+# define	OP_AFF		(16)
+
+int		check_op_live(char);
+void		op_live(t_corewar *, t_process_list *);
+int		check_op_ld(char);
+void		op_ld(t_corewar *, t_process_list *);
+int		check_op_st(char);
+void		op_st(t_corewar *, t_process_list *);
+int		check_op_add(char);
+void		op_add(t_corewar *, t_process_list *);
+int		check_op_sub(char);
+void		op_sub(t_corewar *, t_process_list *);
+int		check_op_and(char);
+void		op_and(t_corewar *, t_process_list *);
+int		check_op_or(char);
+void		op_or(t_corewar *, t_process_list *);
+int		check_op_xor(char);
+void		op_xor(t_corewar *, t_process_list *);
+int		check_op_zjmp(char);
+void		op_zjmp(t_corewar *, t_process_list *);
+int		check_op_ldi(char);
+void		op_ldi(t_corewar *, t_process_list *);
+int		check_op_sti(char);
+void		op_sti(t_corewar *, t_process_list *);
+int		check_op_fork(char);
+void		op_fork(t_corewar *, t_process_list *);
+int		check_op_lld(char);
+void		op_lld(t_corewar *, t_process_list *);
+int		check_op_lldi(char);
+void		op_lldi(t_corewar *, t_process_list *);
+int		check_op_lfork(char);
+void		op_lfork(t_corewar *, t_process_list *);
+int		check_op_aff(char);
+void		op_aff(t_corewar *, t_process_list *);
+
+typedef struct		s_op_tab
+{
+  int			(*check)(char			opcode);
+  void			(*exec)(t_corewar 		*corewar,
+			        t_process_list		*process_list);
+  int			cycle_to_die;
+}			t_op_tab;
+
+int			init_corewar(t_corewar		*corewar,
+				     int		ac,
+				     char		**av);
 int			init_champ(t_corewar		*corewar,
 				   t_options		*options);
 int			init_options(int		argc,
@@ -110,10 +177,22 @@ int			error_file(char			*start,
 int			error_nbr(char			*start,
 				  int			nb,
 				  char			*end);
-int			champ_imcomp(t_corewar *corewar);
-int			fill_champions(t_corewar *corewar);
+int			champ_imcomp(t_corewar		*corewar);
+int			fill_champions(t_corewar	*corewar);
 int			aff_help(int			a);
 int			there_is_help(int		argc,
 				      char		*argv[]);
+void			my_init_tab(void		*_tab,
+				    size_t		size);
+int			prepare_corewar(t_corewar	*corewar);
+int			launch_corewar(t_corewar	*corewar);
+void			free_processlist(t_process_list	*list);
+int			clone_process(t_process_list	*src,
+				      int		add_to_pc);
+void			execute_process(t_corewar	*corewar);
+void			prepare_mem(t_corewar		*corewar);
+int			prepare_process_list(t_corewar	*corewar);
+int			copy_instruction(t_corewar	*corewar,
+					 t_process_list	*process_list);
 
 #endif		/* !COREWAR_H_ */
