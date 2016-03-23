@@ -5,3 +5,4 @@ champ/*
 test*
 asm/asm
 corewar/corewar
+op.c
