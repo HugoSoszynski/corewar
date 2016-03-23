@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar 21 17:10:44 2016 Grégoire Loens
-** Last update Wed Mar 23 11:10:13 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 11:38:51 2016 
 */
 
 #include	<stdlib.h>
@@ -18,8 +18,8 @@ char		*my_strdup(const char *src)
   int		counter;
 
   counter = -1;
-  if ((dest = malloc(sizeof(char) * my_strlen((char *)src) + 1)) == NULL);
-      return (NULL);
+  if ((dest = malloc(sizeof(char) * my_strlen(src) + 1)) == NULL)
+    return (NULL);
   while (src[++counter] != 0)
     dest[counter] = src[counter];
   return (dest);

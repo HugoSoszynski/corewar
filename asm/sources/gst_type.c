@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 10:53:24 2016 Grégoire Loens
-** Last update Wed Mar 23 05:21:13 2016 
+** Last update Wed Mar 23 11:40:24 2016 
 */
 
 #include 	<stddef.h>
@@ -23,6 +23,7 @@ int		gst_comment(char *line)
   int		cpt1;
 
   cpt = 7;
+  cpt1 = 0;
   if (my_strcmp(line, ".comment") == -1)
     return (-1);
   while (line[cpt] != '\0')
@@ -42,6 +43,7 @@ int		gst_name(char *line)
   int		cpt1;
   
   cpt = 5;
+  cpt1 = 0;
   if (my_strcmp(line, ".name") == -1)
     {
       return (-1);
@@ -66,6 +68,7 @@ int		gst_cmd(char *line, char **cmd)
   while (cpt < 30)
     {
       cpt1 = 0;
+      /*printf("%s %d \n", cmd[cpt], cpt);*/
       if (my_strcmp(line, cmd[cpt]) != -1)
 	{
 	  while (line[cpt1] != '\0' && line[cpt1] != ' ')

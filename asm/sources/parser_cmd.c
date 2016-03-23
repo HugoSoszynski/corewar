@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Wed Mar 23 05:41:30 2016 
+** Last update Wed Mar 23 11:11:44 2016 
 */
 
 #include	<stddef.h>
@@ -86,7 +86,7 @@ int		verif_cmd_line(int fd)
   while ((line = get_next_line(fd)) != NULL)
     {
       type = parsing(line, nbr_line);
-      (void)type;
+      
       nbr_line++;
     }
   return (0);
