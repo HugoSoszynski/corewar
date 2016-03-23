@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Wed Mar 23 18:09:45 2016 corsin_a
+** Last update Wed Mar 23 18:12:31 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -43,7 +43,7 @@ int		launch_corewar(t_corewar	*corewar)
       printf("actual cycle %ld\n", corewar->actual_cycle);
       ++corewar->cycle_passed;
       ++corewar->actual_cycle;
-      if (corewar->live_nb == NBR_LIVE)
+      if (corewar->live_nb >= NBR_LIVE)
 	{
 	  corewar->live_nb = 0;
 	  corewar->cycle_to_die -= CYCLE_DELTA;
