@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Wed Mar 23 17:16:41 2016 corsin_a
+** Last update Wed Mar 23 17:44:20 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -32,7 +32,7 @@ void		copy_op_sti(t_corewar *corewar,
 void		exec_op_sti(t_corewar	*corewar,
 			    t_process_list	*current)
 {
-  int		value
+  int		value;
   int		nb1;
   int		nb2;
   int		pc;
@@ -49,6 +49,7 @@ void		exec_op_sti(t_corewar	*corewar,
       else
 	nb2 = current->instruction.arg[2];
       pc = current->process.pc;
-      corewar->mem[pc + nb1 + nb2] = value;
+      corewar->mem[(pc + nb1 + nb2) % MEM_SIZE] = value;
     }
+  current->process.pc = (current->process.pc + 7) % MEM_SIZE;
 }

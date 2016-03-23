@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:11 2016 corsin_a
-** Last update Wed Mar 23 17:05:27 2016 corsin_a
+** Last update Wed Mar 23 17:34:03 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -46,4 +46,5 @@ void		exec_op_or(t_corewar		*corewar,
       *reg = nb1 | nb2;
     }
   current->process.carry = (char)current->instruction.correct;
+  move_pc(current);
 }

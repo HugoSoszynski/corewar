@@ -5,9 +5,10 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 16:29:54 2016 corsin_a
-** Last update Wed Mar 23 16:36:17 2016 corsin_a
+** Last update Wed Mar 23 17:39:55 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 static int	copy_one_arg(t_corewar		*corewar,
@@ -45,8 +46,6 @@ void		copy_args(t_corewar		*corewar,
     {
       if ((type = process_list->instruction.opcode >> (6 - cpt * 2) & 3) > 0)
 	{
-	  if (type == 2) type = 4;
-	  else if (type == 3) type = 2;
 	  process_list->instruction.arg[cpt] =
 	  copy_one_arg(corewar, process_list, &ptr, type);
 	  process_list->instruction.type_arg[cpt] = type;
