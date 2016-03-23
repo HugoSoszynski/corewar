@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 01:11:27 2016 corsin_a
+** Last update Wed Mar 23 11:20:43 2016 Grégoire Loens
 */
 
 #ifndef		ASM_H_
@@ -46,6 +46,7 @@
 # define	IS_LIT_ENDIAN			(check_for_endianess())
 #endif		/* !IS_LIT_ENDIAN */
 
+
 typedef struct	s_cmd
 {
   char		opcode;
@@ -53,6 +54,7 @@ typedef struct	s_cmd
   int		arg[3];
   char		type_arg[3];
   char		label[3][T_LAB];
+  struct s_cmd	*next
 }		t_cmd;
 
 /*
