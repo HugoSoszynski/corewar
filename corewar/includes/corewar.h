@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 11:09:24 2016 corsin_a
+** Last update Wed Mar 23 12:06:12 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -55,7 +55,7 @@ typedef struct		s_instruction
 
 typedef struct		s_process
 {
-  char			reg[REG_NUMBER][REG_SIZE];
+  int			reg[REG_NUMBER];
   char			carry;
   unsigned int		pc;
   unsigned int		nb_champion;

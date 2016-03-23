@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Wed Mar 23 11:56:57 2016 
+** Last update Wed Mar 23 12:23:05 2016 
 */
 
 #include	<stddef.h>
@@ -76,7 +76,7 @@ int		parsing(char *line, int nbr_line)
   return (type);
 }
 
-int		storage_write(char *line, int type)
+int		storage(char *line, int type)
 {
   
 }
@@ -96,9 +96,10 @@ int		verif_cmd_line(int fd)
       if (type == -1)
 	stock = 1;
       if (stock != 1)
-	if (storage_write(line, type) == -1)
+	if (storage(line, type) == -1)
 	  return (-1);
       nbr_line++;
     }
+  write_cor(
   return (0);
 }
