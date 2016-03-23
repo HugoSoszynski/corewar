@@ -5,9 +5,10 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Wed Mar 23 17:44:20 2016 corsin_a
+** Last update Wed Mar 23 17:56:36 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_sti(char	opcode)
@@ -37,8 +38,10 @@ void		exec_op_sti(t_corewar	*corewar,
   int		nb2;
   int		pc;
 
+  printf("STI");
   if (current->instruction.correct)
     {
+      printf(" OK");
       value = current->process.reg[current->instruction.arg[0] - 1];
       if (current->instruction.type_arg[1] == 1)
 	nb1 = current->process.reg[current->instruction.arg[1] - 1];
@@ -51,5 +54,6 @@ void		exec_op_sti(t_corewar	*corewar,
       pc = current->process.pc;
       corewar->mem[(pc + nb1 + nb2) % MEM_SIZE] = value;
     }
+  printf("\n");
   current->process.pc = (current->process.pc + 7) % MEM_SIZE;
 }

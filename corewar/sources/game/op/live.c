@@ -5,15 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Wed Mar 23 17:38:35 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 18:02:18 2016 corsin_a
 */
 
 #include	"corewar.h"
 
 int		check_op_live(char	opcode)
 {
-  if (opcode != 128)
-    return (ERROR);
   return (SUCCESS);
 }
 
@@ -22,7 +20,6 @@ void		copy_op_live(t_corewar *corewar,
 {
   int		cpt;
 
-  printf("LIVE EXCEPT\n");
   cpt = 0;
   current->instruction.arg[0] = 0;
   while (cpt < 4)
