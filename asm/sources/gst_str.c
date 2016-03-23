@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Tue Mar 22 19:38:53 2016 
+** Last update Wed Mar 23 03:51:08 2016 
 */
 
 #include	<stdlib.h>
@@ -31,20 +31,16 @@ int		my_isalpha_num(char c)
   return (0);
 }
 
-int		my_strcmp(char *str, char *str1)
+int		my_strcmp(char *str1, char *str2)
 {
-  int		i;
+  int		cpt;
 
-  i = -1;
-  while (str[++i] != '\0' && str1[i] != '\0')
-    {
-      if (str[i] != str1[i])
-	return (-1);
-    }
-  if (str1[i] != '\0')
-    return (-1);
-  else
+  cpt = 0;
+  while (str1[cpt] && str2[cpt] && str1[cpt] == str2[cpt])
+    ++cpt;
+  if (!str2[cpt] && (str1[cpt] == ' ' || str1[cpt] == '\0'))
     return (0);
+  return (-1);
 }
 
 int		my_ispace(char c)
@@ -78,23 +74,31 @@ char		*my_isspace(char *input)
   int		cpt_output;
   char		*output;
 
-  if ((output = malloc(sizeof(char) * my_strlen(input))) == NULL)
-    return (NULL);
   cpt_input = 0;
   cpt_output = 0;
+  if ((output = malloc(sizeof(char) * my_strlen(input))) == NULL)
+    return (NULL);
+
+  while (my_ispace(input[cpt_input]) == -1)
+    cpt_input++;
   while (input[cpt_input] != '\0')
     {
-      if (my_ispace(input[cpt_input]) != -1)
+      if (my_ispace(input[cpt_input]) == 0 && input[cpt_input] != ';')
 	output[cpt_output] = input[cpt_input];
+      else if (input[cpt_input] == ';')
+	{
+	  output[cpt_output] = '\0';
+	  return (check_only_space(output));
+	}
       else
 	{
-	  while (my_ispace(input[cpt_input]) == -1)
+	  output[cpt_output] = ' ';
+	  while (my_ispace(input[cpt_input]) == -1 && input[cpt_input] != '\0')
 	    cpt_input++;
 	  cpt_input -= 1;
-	  output[cpt_output] = ' ';
 	}
-      cpt_output++;
       cpt_input++;
+      cpt_output++;
     }
   output[cpt_output] = '\0';
   return (check_only_space(output));

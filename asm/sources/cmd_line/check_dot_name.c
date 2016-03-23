@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar  8 16:11:56 2016 
-** Last update Tue Mar 22 14:27:03 2016 
+** Last update Wed Mar 23 04:48:56 2016 
 */
 
 #include	"parser.h"
@@ -20,9 +20,9 @@ int		check_dot_name(char *line)
   while (line[i] != '\0')
     {
       if (line[i] < 0)
-	return (-1);
+	return (error_message_parser1("no ascii caracter at caracter ", i));
       if (i > PROG_NAME_LENGTH + 5)
-	return (-1);
+	return (error_message(".name has a few long size "));
       i++;
     }
   return (0);

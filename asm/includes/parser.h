@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Tue Mar 22 12:46:09 2016 
+** Last update Wed Mar 23 05:39:04 2016 
 */
 
 #ifndef	PARSER_H_
@@ -13,12 +13,17 @@
 
 int	my_strlen(char *);
 int	error_message(char *);
+int	error_message_line(char *,int , char *);
 int	error_message_parser(char *message, int nbr);
 int	arg_direct(char *);
+int	error_message_parser1(char *, int);
+int	error_message_nonb(char *);
 char	*my_strncat(char *dest, char *src, int nbr);
+int	my_islabelchar(char);
 int	arg_indirect(char *);
 int	arg_register(char *);
 int	check_is_type(char*, char *);
+int	my_islabel(char *);
 int	check_one_arg(char *, char *);
 int	check_validity(char *, char **);
 int	check_cmd(char *);

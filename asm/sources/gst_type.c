@@ -5,11 +5,17 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 10:53:24 2016 Grégoire Loens
-** Last update Tue Mar 22 19:24:57 2016 
+** Last update Wed Mar 23 05:21:13 2016 
 */
 
 #include 	<stddef.h>
 #include	"parser.h"
+#include	"asm.h"
+#include	"op.h"
+
+
+#include	<unistd.h>
+#include	<stdio.h>
 
 int		gst_comment(char *line)
 {
@@ -37,7 +43,9 @@ int		gst_name(char *line)
   
   cpt = 5;
   if (my_strcmp(line, ".name") == -1)
-    return (-1);
+    {
+      return (-1);
+    }
   while (line[cpt] != '\0')
     {
       if (line[cpt] == '"')
@@ -52,12 +60,22 @@ int		gst_name(char *line)
 int		gst_cmd(char *line, char **cmd)
 {
   int		cpt;
+  int		cpt1;
 
   cpt = 0;
   while (cpt < 30)
     {
+      cpt1 = 0;
       if (my_strcmp(line, cmd[cpt]) != -1)
-	return (0);
+	{
+	  while (line[cpt1] != '\0' && line[cpt1] != ' ')
+	    {
+	      if (line[cpt1] == LABEL_CHAR)
+		return (-1);
+	      cpt1++;
+	    }
+	  return (0);
+       	}
       cpt += 2;
     }
   return (-1);
@@ -76,8 +94,12 @@ int		gst_label(char	*line)
   int		cpt;
 
   cpt = 0;
-  while (line[cpt] != '\0' && line[cpt] != ':')
-    cpt++;
+  while (line[cpt] != '\0' && line[cpt] != LABEL_CHAR)
+    {
+      if (my_islabelchar(line[cpt]) == -1)
+	return (-1);
+      cpt++;
+    }
   if (line[cpt] == '\0')
     return (-1);
   cpt += 1;

@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Tue Mar 22 19:47:49 2016 
+** Last update Wed Mar 23 05:41:30 2016 
 */
 
 #include	<stddef.h>
@@ -39,7 +39,7 @@ int		type_of_cmd(char *line)
       return(TYPE_LINE_LABEL);
     else if (gst_label(line) == 2)
       return (TYPE_LINE_LABEL_CMD);
-  return (error_message("can't reconize the command"));
+  return (error_message("can't reconize the command "));
 }
 
 int		parsing(char *line, int nbr_line)
@@ -49,29 +49,30 @@ int		parsing(char *line, int nbr_line)
   type = 0;
   (void)nbr_line;
   if ((line = my_isspace(line)) == NULL)
-    return(error_message_parser("line ", nbr_line));
+    return(error_message_parser("epurstr failed line ", nbr_line));
+  /*#include <stdio.h>*/
+    /*  printf("my_isspace result->%s<< a la ligne %d<", line, nbr_line);*/
   if ((type = type_of_cmd(line)) == -1)
-    return(error_message_parser("line ", nbr_line));
-#include <stdio.h>
-  printf("\n>>>%s at line nbr de la ligne %d et nbr du type %d<<\n\n", line, nbr_line, type);
+    return(error_message_line("line ", nbr_line, line));
+  /* printf("type cmd %d \n", type);*/
   if (type == TYPE_LINE_NAME)
     if (check_dot_name(line) == -1)
-      return(error_message_parser("line ", nbr_line));
+    return(error_message_line("line ", nbr_line, line));
   if (type == TYPE_LINE_COMMENT)
     if (check_dot_comment(line) == -1)
-      return(error_message_parser("line ", nbr_line));
+    return(error_message_line("line ", nbr_line, line));
   if (type == TYPE_LINE_EXTEND)
     if (check_dot_extend(line) == -1)
-      return(error_message_parser("line ", nbr_line));
+    return(error_message_line("line ", nbr_line, line));
   if (type == TYPE_LINE_CODE)
     if (check_dot_code(line) == -1)
-      return(error_message_parser("line ", nbr_line));
+    return(error_message_line("line ", nbr_line, line));
   if (type == TYPE_LINE_CMD)
     if (check_cmd(line) == -1)
-      return(error_message_parser("line ", nbr_line));
+    return(error_message_line("line ", nbr_line, line));
   if (type == TYPE_LINE_LABEL_CMD)
     if (check_label_cmd(line) == -1)
-      return(error_message_parser("line ", nbr_line));
+    return(error_message_line("line ", nbr_line, line));
   return (type);
 }
 

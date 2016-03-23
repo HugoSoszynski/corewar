@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar  8 16:13:23 2016 
-** Last update Tue Mar 22 14:25:47 2016 
+** Last update Wed Mar 23 04:48:32 2016 
 */
 
 #include		"parser.h"
@@ -20,9 +20,9 @@ int			check_dot_comment(char *line)
   while (line[i] != '\0')
     {
       if (line[i] < 0)
-	return (-1);
+	return (error_message_parser1("no ascii caracter at caracter ", i));
       if (i > COMMENT_LENGTH + 8)
-	return (-1);
+	return (error_message("size of comment is few long"));
       i++;
     }
   return (0);

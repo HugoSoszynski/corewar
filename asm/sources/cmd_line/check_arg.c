@@ -5,28 +5,38 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Mon Mar 21 17:40:54 2016
-** Last update Tue Mar 22 12:39:21 2016 
+** Last update Wed Mar 23 03:55:55 2016 
 */
 
 #include	"parser.h"
 #include	"asm.h"
+#include	"op.h"
+#include <stdio.h>
+#include <unistd.h>
+
 
 int		arg_direct(char *arg_file)
 {
   int		cpt;
 
   cpt = 1;
-  if (arg_file[cpt - 1] != '%')
+  if (arg_file[0] != DIRECT_CHAR)
     return (-1);
   if (arg_file[cpt] == '\0')
     return (-1);
-  while (arg_file[cpt] != 0)
+  if (arg_file[cpt] != LABEL_CHAR)
     {
-      if(arg_file[cpt] < '0' && arg_file[cpt] > '9')
-	return (-1);
-      else
-	cpt++;
+      while (arg_file[cpt] != '\0')
+	{
+	  if((arg_file[cpt] < '0' || arg_file[cpt] > '9') && arg_file[cpt] != 'x' && arg_file[cpt] != '-')
+	    return (-1);
+	  else
+	    cpt++;
+	}
+      return (0);
     }
+  if (my_islabel(arg_file + cpt + 1) == -1)
+    return (-1);
   return (0);
 }
 
@@ -35,21 +45,17 @@ int		arg_indirect(char *arg_file)
   int		cpt;
 
   cpt = 0;
-  if (arg_file[cpt] == '%')
+  if (arg_file[cpt] != LABEL_CHAR && (arg_file[cpt] < '0' || arg_file[cpt] > '9'))
+    return (-1);
+  if (arg_file[cpt] == LABEL_CHAR)
     {
-      if (arg_file[cpt + 1] != ':' || arg_file[cpt + 2] == '\0')
+      if (my_islabel(arg_file + cpt + 1) == -1)
 	return (-1);
-      if (arg_register(arg_file) == 0)
-	return (0);
-      if (my_isalpha(arg_file + 2) == 0)
-	return (0);
-      if (my_isnum(arg_file + 2) == 0)
-	return (0);
-      return (-1);
+      return (0);
     }
   else
-    if (my_isnum(arg_file) == 1)
-	return(0);
+    if (my_isnum(arg_file) == 0)
+      return(0);
   return (-1);
 }
 
@@ -62,10 +68,10 @@ int		arg_register(char *arg_file)
     return (-1);
   else
     {
-      cpt++;
-      if ((((arg_file[cpt] > '1' && arg_file[cpt] < '7') && arg_file[cpt] <=
-	    '9') && arg_file[cpt + 1] == '\0') || (arg_file[cpt] == '1' &&
-	   (arg_file[cpt + 1] >= '0' && arg_file[cpt + 1] <= '6')))
+     cpt++;
+      if ((arg_file[cpt] >= '1' && arg_file[cpt] <= '9' && arg_file[cpt + 1] == '\0'))
+	return (0);
+      else if (arg_file[cpt] == '1' && (arg_file[cpt + 1] >= '0' && arg_file[cpt + 1] <= '6') && arg_file[cpt + 2] == '\0')
 	return (0);
       else
 	return (-1);
@@ -81,8 +87,8 @@ int		check_is_type(char *arg_file, char *type)
     if (arg_indirect(arg_file) == 0)
       return (0);
   if (type[0] == 'r')
-    if (arg_register(arg_file) == 0)
-      return (0);
+      if (arg_register(arg_file) == 0)
+	return (0);
   return (-1);
 }
 
