@@ -5,13 +5,13 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Wed Mar 23 05:39:04 2016 
+** Last update Wed Mar 23 10:30:57 2016 Grégoire Loens
 */
 
 #ifndef	PARSER_H_
 # define PARSER_H_
 
-int	my_strlen(char *);
+int	my_strlen(const char *);
 int	error_message(char *);
 int	error_message_line(char *,int , char *);
 int	error_message_parser(char *message, int nbr);
