@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Wed Mar 23 17:56:36 2016 corsin_a
+** Last update Wed Mar 23 19:33:59 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,6 +13,7 @@
 
 int		check_op_sti(char	opcode)
 {
+  printf("STI\n");
   if (opcode != 84 && opcode != 100 && opcode != 104 && opcode != 116 &&
       opcode != 120 && opcode != 88)
     return (ERROR);
@@ -25,7 +26,7 @@ void		copy_op_sti(t_corewar *corewar,
   int		temp;
 
   temp = current->instruction.opcode;
-  current->instruction.opcode = 104;
+  current->instruction.opcode = 124;
   copy_args(corewar, current);
   current->instruction.opcode = temp;
 }
@@ -38,11 +39,10 @@ void		exec_op_sti(t_corewar	*corewar,
   int		nb2;
   int		pc;
 
-  printf("STI");
   if (current->instruction.correct)
     {
-      printf(" OK");
       value = current->process.reg[current->instruction.arg[0] - 1];
+      printf("STI VALUES : %d\n", value);
       if (current->instruction.type_arg[1] == 1)
 	nb1 = current->process.reg[current->instruction.arg[1] - 1];
       else
@@ -54,6 +54,5 @@ void		exec_op_sti(t_corewar	*corewar,
       pc = current->process.pc;
       corewar->mem[(pc + nb1 + nb2) % MEM_SIZE] = value;
     }
-  printf("\n");
   current->process.pc = (current->process.pc + 7) % MEM_SIZE;
 }

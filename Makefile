@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Wed Mar 23 16:32:52 2016 Sylvain Corsini
+## Last update Wed Mar 23 18:20:23 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
@@ -82,6 +82,7 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 				corewar/sources/game/op/xor.c \
 				corewar/sources/game/op/zjmp.c \
 				corewar/sources/my_endianess.c \
+				corewar/sources/process_list_utils.c \
 				corewar/sources/error.c \
 				corewar/sources/my_getnbr.c \
 				corewar/sources/my_putnbr.c \

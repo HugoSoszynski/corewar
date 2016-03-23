@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:27:30 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 12:53:04 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 18:38:44 2016 corsin_a
 */
 
 #include		<stddef.h>
@@ -44,23 +44,25 @@ int			clone_process(t_process_list *src, int add_to_pc)
   return (SUCCESS);
 }
 
-static void		check_zombie(t_process_list *head,
-				     t_process_list *list,
-				     t_process_list *tmp,
+static void		check_zombie(t_process_list **head,
+				     t_process_list **list,
+				     t_process_list **tmp,
 				     unsigned int nb_champion)
 {
-  if (head->process.nb_champion == nb_champion)
+  if ((*head)->process.nb_champion == nb_champion)
     {
-      free(head);
-      head = tmp;
-      list = tmp;
+      free(*head);
+      *head = *tmp;
+      *list = *tmp;
     }
-  else if (tmp->process.nb_champion == nb_champion)
+  else if ((*tmp)->process.nb_champion == nb_champion)
     {
-      list->next = tmp->next;
-      free(tmp);
-      list = list->next;
+      (*list)->next = (*tmp)->next;
+      free(*tmp);
+      *list = (*list)->next;
     }
+  else
+    (*list) = (*list)->next;
 }
 
 t_process_list		*kill_zombies(t_process_list *list,
@@ -70,10 +72,10 @@ t_process_list		*kill_zombies(t_process_list *list,
   t_process_list	*head;
 
   head = list;
-  while (list != NULL)
+  while (list != NULL && list->next != NULL)
     {
       tmp = list->next;
-      check_zombie(head, list, tmp, nb_champion);
+      check_zombie(&head, &list, &tmp, nb_champion);
     }
   if (head != NULL && head->next == NULL &&
       head->process.nb_champion == nb_champion)
@@ -94,5 +96,6 @@ void			free_processlist(t_process_list *list)
       list = list->next;
       free(tmp);
     }
-  free(list);
+  if (list != NULL)
+    free(list);
 }

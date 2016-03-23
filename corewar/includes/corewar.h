@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 17:36:09 2016 corsin_a
+** Last update Wed Mar 23 19:02:19 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -47,7 +47,7 @@
 typedef struct		s_instruction
 {
   char			op;
-  char			opcode;
+  unsigned char		opcode;
   int			arg[3];
   char			type_arg[3];
   bool			correct;
@@ -158,5 +158,8 @@ int			prepare_process_list(t_corewar	*corewar);
 int			copy_instruction(t_corewar	*corewar,
 					 t_process_list	*process_list);
 void 			move_pc(t_process_list		*process_list);
+t_process_list		*kill_zombies(t_process_list 	*list,
+				      unsigned int 	nb_champion);
+void			free_processlist(t_process_list *list);
 
 #endif		/* !COREWAR_H_ */

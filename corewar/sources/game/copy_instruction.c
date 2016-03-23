@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 02:04:14 2016 corsin_a
-** Last update Wed Mar 23 17:52:34 2016 corsin_a
+** Last update Wed Mar 23 19:03:39 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -19,14 +19,13 @@ int		copy_instruction(t_corewar	*corewar,
   char		opcode;
 
   op = corewar->mem[process_list->process.pc];
-  printf("op : %d", op);
+  printf("op : %d\n", op);
   if (op < OP_LIVE || op > OP_AFF)
     {
       printf("\n");
       return (ERROR);
     }
   opcode = corewar->mem[(process_list->process.pc + 1) % MEM_SIZE];
-  printf(" : %d\n", opcode);
   if (OP_TAB[op - 1].check(opcode) == SUCCESS)
     {
       process_list->instruction.op = op;

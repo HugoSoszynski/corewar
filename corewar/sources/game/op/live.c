@@ -5,13 +5,15 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Wed Mar 23 19:12:39 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 19:19:41 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_live(char	opcode)
 {
+  printf("LIVE\n");
   return (SUCCESS);
 }
 
@@ -42,14 +44,15 @@ void		exec_op_live(t_corewar	*corewar,
   int		cpt;
 
   cpt = -1;
+  printf("LIVE NBR : %d\n",current->instruction.arg[0]);
   current->process.pc = (current->process.pc + 5) % MEM_SIZE;
   while (++cpt < corewar->nb_champions)
     {
-      if (corewar->champion[cpt].nb_champion == current->process.nb_champion)
+      if (corewar->champion[cpt].nb_champion == current->instruction.arg[0])
 	{
 	  if (corewar->champions_alive[cpt] != IS_DEAD)
 	    {
-	      corewar->nb_live += 1;
+	      corewar->live_nb += 1;
 	      corewar->champions_alive[cpt] = IS_ALIVE;
 	    }
 	  return ;
