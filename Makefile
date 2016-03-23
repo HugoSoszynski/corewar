@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Wed Mar 23 17:05:06 2016 
+## Last update Wed Mar 23 17:17:34 2016 
 ##
 
 CC			=	gcc
@@ -91,7 +91,7 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 COREWAR_OBJS		=	$(COREWAR_SRCS:.c=.o)
 
 
-all:		$(ASM) $(COREWAR)
+all:		$(ASM)
 
 $(ASM):		$(ASM_OBJS)
 		$(CC) $(ASM_OBJS) -o $(ASM) -Iasm/includes
