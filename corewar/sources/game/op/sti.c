@@ -5,21 +5,54 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Wed Mar 23 10:50:13 2016 corsin_a
+** Last update Wed Mar 23 19:33:59 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_sti(char	opcode)
 {
+  printf("STI\n");
   if (opcode != 84 && opcode != 100 && opcode != 104 && opcode != 116 &&
       opcode != 120 && opcode != 88)
     return (ERROR);
   return (SUCCESS);
 }
 
-void		op_sti(t_corewar	*corewar,
-		       t_process_list	*process_list)
+void		copy_op_sti(t_corewar *corewar,
+			    t_process_list *current)
 {
+  int		temp;
 
+  temp = current->instruction.opcode;
+  current->instruction.opcode = 124;
+  copy_args(corewar, current);
+  current->instruction.opcode = temp;
+}
+
+void		exec_op_sti(t_corewar	*corewar,
+			    t_process_list	*current)
+{
+  int		value;
+  int		nb1;
+  int		nb2;
+  int		pc;
+
+  if (current->instruction.correct)
+    {
+      value = current->process.reg[current->instruction.arg[0] - 1];
+      printf("STI VALUES : %d\n", value);
+      if (current->instruction.type_arg[1] == 1)
+	nb1 = current->process.reg[current->instruction.arg[1] - 1];
+      else
+	nb1 = current->instruction.arg[1];
+      if (current->instruction.type_arg[2] == 1)
+	nb2 = current->process.reg[current->instruction.arg[2] - 1];
+      else
+	nb2 = current->instruction.arg[2];
+      pc = current->process.pc;
+      corewar->mem[(pc + nb1 + nb2) % MEM_SIZE] = value;
+    }
+  current->process.pc = (current->process.pc + 7) % MEM_SIZE;
 }

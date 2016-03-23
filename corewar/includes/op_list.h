@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:51:58 2016 corsin_a
-** Last update Wed Mar 23 11:41:18 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 17:13:56 2016 Hugo SOSZYNSKI
 */
 
 #ifndef		OP_LIST_H_
@@ -78,36 +78,52 @@
 # endif		/* !OP_AFF */
 
 int		check_op_live(char);
-void		op_live(t_corewar *, t_process_list *);
+void		exec_op_live(t_corewar *, t_process_list *);
+void		copy_op_live(t_corewar *, t_process_list *);
 int		check_op_ld(char);
-void		op_ld(t_corewar *, t_process_list *);
+void		exec_op_ld(t_corewar *, t_process_list *);
+void		copy_op_ld(t_corewar *, t_process_list *);
 int		check_op_st(char);
-void		op_st(t_corewar *, t_process_list *);
+void		exec_op_st(t_corewar *, t_process_list *);
+void		copy_op_st(t_corewar *, t_process_list *);
 int		check_op_add(char);
-void		op_add(t_corewar *, t_process_list *);
+void		exec_op_add(t_corewar *, t_process_list *);
+void		copy_op_add(t_corewar *, t_process_list *);
 int		check_op_sub(char);
-void		op_sub(t_corewar *, t_process_list *);
+void		exec_op_sub(t_corewar *, t_process_list *);
+void		copy_op_sub(t_corewar *, t_process_list *);
 int		check_op_and(char);
-void		op_and(t_corewar *, t_process_list *);
+void		exec_op_and(t_corewar *, t_process_list *);
+void		copy_op_and(t_corewar *, t_process_list *);
 int		check_op_or(char);
-void		op_or(t_corewar *, t_process_list *);
+void		exec_op_or(t_corewar *, t_process_list *);
+void		copy_op_or(t_corewar *, t_process_list *);
 int		check_op_xor(char);
-void		op_xor(t_corewar *, t_process_list *);
+void		exec_op_xor(t_corewar *, t_process_list *);
+void		copy_op_xor(t_corewar *, t_process_list *);
 int		check_op_zjmp(char);
-void		op_zjmp(t_corewar *, t_process_list *);
+void		exec_op_zjmp(t_corewar *, t_process_list *);
+void		copy_op_zjmp(t_corewar *, t_process_list *);
 int		check_op_ldi(char);
-void		op_ldi(t_corewar *, t_process_list *);
+void		exec_op_ldi(t_corewar *, t_process_list *);
+void		copy_op_ldi(t_corewar *, t_process_list *);
 int		check_op_sti(char);
-void		op_sti(t_corewar *, t_process_list *);
+void		exec_op_sti(t_corewar *, t_process_list *);
+void		copy_op_sti(t_corewar *, t_process_list *);
 int		check_op_fork(char);
-void		op_fork(t_corewar *, t_process_list *);
+void		exec_op_fork(t_corewar *, t_process_list *);
+void		copy_op_fork(t_corewar *, t_process_list *);
 int		check_op_lld(char);
-void		op_lld(t_corewar *, t_process_list *);
+void		exec_op_lld(t_corewar *, t_process_list *);
+void		copy_op_lld(t_corewar *, t_process_list *);
 int		check_op_lldi(char);
-void		op_lldi(t_corewar *, t_process_list *);
+void		exec_op_lldi(t_corewar *, t_process_list *);
+void		copy_op_lldi(t_corewar *, t_process_list *);
 int		check_op_lfork(char);
-void		op_lfork(t_corewar *, t_process_list *);
+void		exec_op_lfork(t_corewar *, t_process_list *);
+void		copy_op_lfork(t_corewar *, t_process_list *);
 int		check_op_aff(char);
-void		op_aff(t_corewar *, t_process_list *);
+void		exec_op_aff(t_corewar *, t_process_list *);
+void		copy_op_aff(t_corewar *, t_process_list *);
 
 #endif		/* !OP_LIST_H_ */
