@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Wed Mar 23 10:32:52 2016 Grégoire Loens
+** Last update Wed Mar 23 10:34:15 2016 Grégoire Loens
 */
 
 #include	<stdlib.h>
@@ -36,6 +36,8 @@ int		my_strcmp(char *str1, char *str2)
   int		cpt;
 
   cpt = 0;
+  /*  #include <stdio.h>
+      printf ("%s %s \n", str1, str2);*/
   while (str1[cpt] && str2[cpt] && str1[cpt] == str2[cpt])
     ++cpt;
   if (!str2[cpt] && (str1[cpt] == ' ' || str1[cpt] == '\0'))
@@ -76,10 +78,9 @@ char		*my_isspace(char *input)
 
   cpt_input = 0;
   cpt_output = 0;
-  if ((output = malloc(sizeof(char) * my_strlen(input))) == NULL)
+  if ((output = malloc(sizeof(char) * my_strlen(input) + 1)) == NULL)
     return (NULL);
-
-  while (my_ispace(input[cpt_input]) == -1)
+  while (my_ispace(input[cpt_input]) == -1 && input[cpt_input] != '\0')
     cpt_input++;
   while (input[cpt_input] != '\0')
     {
