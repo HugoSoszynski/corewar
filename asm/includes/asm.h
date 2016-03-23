@@ -5,12 +5,13 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 11:55:02 2016 Hugo SOSZYNSKI
+** Last update Wed Mar 23 12:42:21 2016 
 */
 
 #ifndef		ASM_H_
 # define	ASM_H_
 
+#include	"pile.h"
 #include	"op.h"
 
 # define	ERROR			(-1)
@@ -120,13 +121,21 @@
 # define	IS_LIT_ENDIAN		(check_for_endianess())
 #endif		/* !IS_LIT_ENDIAN */
 
+
 typedef struct	s_cmd
 {
+  char		type;
+  char		*line;
+  int		nbr_line;
   char		opcode;
   char		octet_codage;
   int		arg[3];
   char		type_arg[3];
   char		label[3][T_LAB];
+  struct s_cmd	*head;
+  struct s_cmd	*next;
+  t_pile	*def;
+  t_pile	*call;
 }		t_cmd;
 
 /*
