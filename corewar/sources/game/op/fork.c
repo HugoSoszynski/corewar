@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:32 2016 corsin_a
-** Last update Wed Mar 23 03:29:40 2016 corsin_a
+** Last update Wed Mar 23 16:44:34 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -17,8 +17,14 @@ int		check_op_fork(char	opcode)
   return (SUCCESS);
 }
 
-void		op_fork(t_corewar	*corewar,
-			t_process_list	*process_list)
+void		copy_op_fork(t_corewar *corewar,
+			     t_process_list *current)
+{
+
+}
+
+void		exec_op_fork(t_corewar	*corewar,
+			     t_process_list	*current)
 {
 
 }

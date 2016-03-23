@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:06 2016 corsin_a
-** Last update Wed Mar 23 10:51:27 2016 corsin_a
+** Last update Wed Mar 23 16:46:27 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -18,8 +18,14 @@ int		check_op_lldi(char	opcode)
   return (SUCCESS);
 }
 
-void		op_lldi(t_corewar	*corewar,
-			t_process_list	*process_list)
+void		copy_op_lldi(t_corewar *corewar,
+			     t_process_list *current)
+{
+
+}
+
+void		exec_op_lldi(t_corewar	*corewar,
+			     t_process_list	*current)
 {
 
 }

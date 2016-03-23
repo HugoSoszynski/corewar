@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Wed Mar 23 10:50:13 2016 corsin_a
+** Last update Wed Mar 23 16:47:28 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -18,8 +18,14 @@ int		check_op_sti(char	opcode)
   return (SUCCESS);
 }
 
-void		op_sti(t_corewar	*corewar,
-		       t_process_list	*process_list)
+void		copy_op_sti(t_corewar *corewar,
+			    t_process_list *current)
+{
+
+}
+
+void		exec_op_sti(t_corewar	*corewar,
+			    t_process_list	*current)
 {
 
 }
