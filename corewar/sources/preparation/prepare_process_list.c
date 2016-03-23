@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:45:08 2016 corsin_a
-** Last update Wed Mar 23 03:48:20 2016 corsin_a
+** Last update Wed Mar 23 13:02:51 2016 Hugo SOSZYNSKI
 */
 
 
@@ -30,8 +30,8 @@ static t_process_list	*create_process_list(t_champion		*champion)
   process_list->process.nb_champion = champion->nb_champion;
   cpt = -1;
   while (++cpt < REG_NUMBER)
-    my_init_tab(process_list->process.reg[cpt], REG_SIZE);
-  *((int *)(process_list->process.reg[0])) = process_list->process.nb_champion;
+    process_list->process.reg[cpt] = 0;
+  process_list->process.reg[0] = process_list->process.nb_champion;
   process_list->next = NULL;
   return (process_list);
 }
@@ -43,7 +43,7 @@ int			prepare_process_list(t_corewar		*corewar)
   t_process_list	*process_list;
 
   cpt = 1;
-  if ((process_list = create_process_list(&corewar->champion[cpt])) == NULL)
+  if ((process_list = create_process_list(&corewar->champion[0])) == NULL)
     return (ERROR);
   tmp = process_list;
   while (cpt < corewar->nb_champions)
