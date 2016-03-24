@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Wed Mar 23 11:55:36 2016 Grégoire Loens
+** Last update Thu Mar 24 18:56:53 2016 Grégoire Loens
 */
 
 #include	<stdlib.h>
@@ -18,6 +18,7 @@ t_pile		*init_pile(void)
 
   if ((label = malloc(sizeof(t_pile))) == NULL)
     return (NULL);
+  label->nb_octet = 0;
   label->next = NULL;
   label->label_name = NULL;
   return (label);
