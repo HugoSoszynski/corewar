@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:32 2016 corsin_a
-** Last update Thu Mar 24 21:14:05 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 22:04:42 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,7 +13,7 @@
 
 int		check_op_fork(char	opcode)
 {
-  printf("FORK\n");
+  printf("CHECK FORK\n");
   (void)opcode;
   return (SUCCESS);
 }
@@ -23,6 +23,7 @@ void		copy_op_fork(t_corewar *corewar,
 {
   int		cpt;
 
+  printf("COPY FORK\n");
   cpt = 0;
   current->instruction.arg[0] = 0;
   while (cpt < 4)
@@ -42,10 +43,11 @@ void		copy_op_fork(t_corewar *corewar,
 void		exec_op_fork(t_corewar	*corewar,
 			     t_process_list	*current)
 {
+  printf("EXEC FORK\n");
   (void)corewar;
   if (current->instruction.correct)
     {
-      printf("EXEC FORK\n");
+      printf("CORRECT FORK\n");
       clone_process(current, current->instruction.arg[0] % IDX_MOD);
     }
   current->process.pc = (current->process.pc + 5) % MEM_SIZE;

@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Thu Mar 24 21:14:55 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 22:07:04 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -24,6 +24,7 @@ void		copy_op_live(t_corewar *corewar,
   int		cpt;
 
   cpt = 0;
+  printf("COPY LIVE\n");
   current->instruction.arg[0] = 0;
   while (cpt < 4)
     {
@@ -45,9 +46,11 @@ void		exec_op_live(t_corewar	*corewar,
   int		cpt;
 
   cpt = -1;
+  printf("EXEC LIVE\n");
   current->process.pc = (current->process.pc + 5) % MEM_SIZE;
   if (current->instruction.correct)
     {
+      printf("CORRECT LIVE\n");    
       corewar->live_nb += 1;
       while (++cpt < corewar->nb_champions)
 	{
