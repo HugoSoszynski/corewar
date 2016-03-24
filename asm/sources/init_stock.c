@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 11:21:21 2016 Grégoire Loens
-** Last update Wed Mar 23 12:19:35 2016 Grégoire Loens
+** Last update Thu Mar 24 21:48:03 2016 Grégoire Loens
 */
 
 #include	<stdlib.h>
@@ -17,7 +17,8 @@ t_cmd		*init_first_cmd()
 
   if ((stock_cmd = malloc(sizeof(t_cmd))) == NULL)
     return (NULL);
-  stock_cmd->head = init_cmd();
+  stock_cmd-> init_cmd();
+  stock_cmd->head = stock_cmd;
   stock_cmd->head->def = init_pile();
   stock_cmd->head->call = init_pile();
   stock_cmd->head->next = NULL;
