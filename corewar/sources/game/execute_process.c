@@ -5,10 +5,11 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:13:18 2016 corsin_a
-** Last update Thu Mar 24 15:42:27 2016 corsin_a
+** Last update Thu Mar 24 17:03:59 2016 corsin_a
 */
 
 #include	<stdio.h>
+#include	"op_list.h"
 #include	"corewar.h"
 
 void		move_pc(t_process_list		*process_list)
@@ -48,7 +49,9 @@ void		execute_process(t_corewar	*corewar)
 	--process_list->cycle;
       if (process_list->cycle == 0)
 	{
-	  OP_TAB[process_list->instruction.op - 1].exec(corewar, process_list);
+	  if (process_list->instruction.op >= OP_LIVE &&
+	      process_list->instruction.op <= OP_AFF)
+	    OP_TAB[process_list->instruction.op - 1].exec(corewar, process_list);
 	  process_list->cycle = -1;
 	}
       process_list = process_list->next;
