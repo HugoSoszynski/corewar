@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 17:42:33 2016 
+** Last update Thu Mar 24 17:34:23 2016 
 */
 
 #ifndef		ASM_H_
@@ -131,6 +131,7 @@ typedef struct	s_cmd
   char		*line;
   int		nbr_line;
   char		opcode;
+  int		dot_code_octet;
   char		octet_codage;
   int		arg[3];
   char		type_arg[3];
