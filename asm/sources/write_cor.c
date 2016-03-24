@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 14:40:35 2016 
-** Last update Thu Mar 24 15:24:36 2016 
+** Last update Thu Mar 24 19:33:42 2016 
 */
 
 #include	<unistd.h>
@@ -33,8 +33,11 @@ char		*to_dot_cor(char *filename)
 int		write_cor(t_cmd *cmd, char *filename)
 {
   int		fd;
+  char		*name;
+  char		**comment;
   int		prog_size;
-  
+  header_t	*header;
+
   if (label_and_prog_size(cmd, &prog_size) == -1)
     return (-1);
   if ((filename = to_dot_cor(filename)) == NULL)
@@ -42,5 +45,14 @@ int		write_cor(t_cmd *cmd, char *filename)
   if ((fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC |
 		 O_APPEND, S_IWUSR | S_IWGRP | S_IROTH)) == -1)
     return (-1);
-  
+  if ((name = check_one_name(cmd)) == NULL)
+    return (-1);
+  if ((comment = where_comment(cmd)) == NULL)
+    return (-1);
+  if ((header = create_cor_header(name, comment, prog_size)) == NULL)
+    return (-1);
+  if ((write_cor_header(header, fd, filename)) == ERROR)
+    return (1);
+  if ((write_file(fd, cmd)) == -1)
+    return(-1);
 }
