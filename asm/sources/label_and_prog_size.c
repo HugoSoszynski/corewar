@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 15:25:08 2016 
-** Last update Thu Mar 24 17:41:08 2016 
+** Last update Thu Mar 24 17:46:17 2016 
 */
 
 #include	"asm.h"
@@ -76,7 +76,9 @@ int		check_only_label(t_cmd *cmd)
 int		label_and_prog_size(t_cmd *cmd, int *prog_size)
 {
   int		i;
+  t_cmd		*head;
 
+  head = cmd;
   i = -1;
   *prog_size = 0;
   if (check_only_label(cmd) == -1)
@@ -85,9 +87,11 @@ int		label_and_prog_size(t_cmd *cmd, int *prog_size)
     {
       if (cmd->type == TYPE_LINE_CODE)
 	*prog_size += cmd->dot_code_octet;
-      if (cmd->type == TYPE_LINE_CMD || cmd->type TYPE_LINE_LABEL ||
+      else if (cmd->type == TYPE_LINE_CMD || cmd->type TYPE_LINE_LABEL ||
 	  cmd->type == TYPE_LINE_LABEL_CMD)
 	while (++i < 3)
 	  *prog_size += arg[i];
+      cmd = cmd->next;
     }
+  cmd = head;
 }
