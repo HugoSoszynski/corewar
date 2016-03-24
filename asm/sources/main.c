@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar 22 18:16:49 2016 
-** Last update Wed Mar 23 17:22:56 2016 
+** Last update Thu Mar 24 14:48:04 2016 
 */
 
 #include	<sys/stat.h>
@@ -27,7 +27,7 @@ int		main(int ac, char **av, char **envp)
     return (-1);
   if ((fd = open(av[1], O_RDONLY)) == -1)
     return (-1);
-  if ((verif_cmd_line(fd)) == -1)
+  if ((verif_cmd_line(fd, av[1])) == -1)
     return (-1);
   return (0);
 }
