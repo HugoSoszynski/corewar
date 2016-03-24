@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:24 2016 corsin_a
-** Last update Wed Mar 23 16:47:44 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 13:49:59 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -20,11 +20,23 @@ int		check_op_sub(char	opcode)
 void		copy_op_sub(t_corewar *corewar,
 			    t_process_list *current)
 {
-
+  copy_args(corewar, current);
 }
 
 void		exec_op_sub(t_corewar	*corewar,
 			    t_process_list	*current)
 {
+  int		nb1;
+  int		nb2;
+  int		*reg;
 
+  if (current->instruction.correct)
+    {
+      nb1 = current->process.reg[current->instruction.arg[0] - 1];
+      nb2 = current->process.reg[current->instruction.arg[1] - 1];
+      reg = &current->process.reg[current->instruction.arg[2] - 1];
+      *reg = nb1 + nb2;
+    }
+  current->process.carry = (char)current->instruction.correct;
+  move_pc(current);
 }

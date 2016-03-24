@@ -5,15 +5,15 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Wed Mar 23 18:20:23 2016 Sylvain Corsini
+## Last update Thu Mar 24 13:47:21 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
 
 RM			=	rm -f
 
-#CFLAGS			+=	-W -Wextra -Wall
-#CFLAGS			+=	-Werror
+CFLAGS			+=	-W -Wextra -Wall
+CFLAGS			+=	-Werror
 #CFLAGS			+=	-ansi
 CFLAGS			+=	-pedantic
 CFLAGS			+=	-ggdb3
