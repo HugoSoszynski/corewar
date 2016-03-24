@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:15 2016 corsin_a
-** Last update Thu Mar 24 15:50:34 2016 corsin_a
+** Last update Thu Mar 24 22:10:16 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,7 +13,7 @@
 
 int		check_op_st(unsigned char opcode)
 {
-  printf("ST\n");
+  printf("CHECK ST\n");
   if (opcode != 80 && opcode != 208)
     return (ERROR);
   return (SUCCESS);
@@ -22,6 +22,7 @@ int		check_op_st(unsigned char opcode)
 void		copy_op_st(t_corewar *corewar,
 			   t_process_list *current)
 {
+  printf("COPY ST\n");
   copy_args(corewar, current);
 }
 
@@ -32,8 +33,10 @@ void		exec_op_st(t_corewar		*corewar,
   int		pt;
   int		pc;
 
+  printf("EXEC ST\n");
   if (current->instruction.correct)
     {
+      printf("CORRECT ST\n");
       pc = current->process.pc;
       nb = current->process.reg[current->instruction.arg[0] - 1];
       if (current->instruction.type_arg[1] == 1)

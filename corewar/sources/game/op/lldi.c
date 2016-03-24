@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:06 2016 corsin_a
-** Last update Thu Mar 24 15:49:39 2016 corsin_a
+** Last update Thu Mar 24 22:09:15 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,7 +13,7 @@
 
 int		check_op_lldi(unsigned char opcode)
 {
-  printf("LLDI\n");
+  printf("CHECK LLDI\n");
   if (opcode != 84 && opcode != 148 && opcode != 164 && opcode != 212 &&
       opcode != 228 && opcode != 100)
     return (ERROR);
@@ -25,6 +25,7 @@ void		copy_op_lldi(t_corewar *corewar,
 {
   int		temp;
 
+  printf("COPY LLDI\n");
   temp = current->instruction.opcode;
   current->instruction.opcode = 244;
   copy_args(corewar, current);
@@ -57,8 +58,10 @@ void		exec_op_lldi(t_corewar	*corewar,
   int		nb1;
   int		nb2;
 
+  printf("EXEC LLDI\n");
   if (current->instruction.correct)
     {
+      printf("CORRECT LLDI\n");
       if (current->instruction.type_arg[0] == 1)
 	nb1 = current->process.reg[current->instruction.arg[0] - 1];
       else

@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:32 2016 corsin_a
-** Last update Thu Mar 24 15:51:43 2016 corsin_a
+** Last update Thu Mar 24 22:13:45 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,7 +13,7 @@
 
 int		check_op_zjmp(char	opcode)
 {
-  printf("ZJMP\n");
+  printf("CHECK ZJMP\n");
   (void)opcode;
   return (SUCCESS);
 }
@@ -23,6 +23,7 @@ void		copy_op_zjmp(t_corewar *corewar,
 {
   int		cpt;
 
+  printf("COPY ZJMP\n");
   cpt = 0;
   current->instruction.arg[0] = 0;
   while (cpt < 2)
@@ -42,12 +43,19 @@ void		copy_op_zjmp(t_corewar *corewar,
 void		exec_op_zjmp(t_corewar	*corewar,
 			     t_process_list	*current)
 {
+  printf("EXEC ZJMP\n");
   (void)corewar;
-  if (current->process.carry == 1)
+  if (current->instruction.correct)
     {
-      current->process.pc = ((current->process.pc +
-			      ((short)current->instruction.arg[0] % IDX_MOD))
-			     % MEM_SIZE);
+      printf("CORRECT ZJMP\n");
+      if (current->process.carry == 1)
+	{
+	  current->process.pc = ((current->process.pc +
+				  ((short)current->instruction.arg[0] % IDX_MOD))
+				 % MEM_SIZE);
+	}
+      else
+	current->process.pc = (current->process.pc + 3) % MEM_SIZE;
     }
   else
     current->process.pc = (current->process.pc + 3) % MEM_SIZE;

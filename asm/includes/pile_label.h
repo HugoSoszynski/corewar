@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:12:56 2016 Grégoire Loens
-** Last update Thu Mar 24 22:22:30 2016 Grégoire Loens
+** Last update Thu Mar 24 23:49:21 2016 Grégoire Loens
 */
 
 #ifndef PILE_LABEL_H_
