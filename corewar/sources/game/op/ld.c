@@ -5,13 +5,15 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:49 2016 corsin_a
-** Last update Wed Mar 23 16:45:04 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 14:43:05 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_ld(char	opcode)
 {
+  prinf("LD\n")
   if (opcode != 144 && opcode != 208)
     return (ERROR);
   return (SUCCESS);
@@ -20,11 +22,44 @@ int		check_op_ld(char	opcode)
 void		copy_op_ld(t_corewar *corewar,
 			   t_process_list *current)
 {
+  copy_args(corewar, current);
+}
 
+static int	get_other_nb(t_corewar		*corewar,
+			     t_process_list	*current)
+{
+  int		pt;
+  int		nb;
+  int		cpt;
+
+  pt = current->instruction.arg[0];
+  cpt = 0;
+  nb = 0;
+  while (cpt < 4)
+    {
+      nb = nb << 8;
+      nb += corewar->mem[(current->process.pc + cpt +
+			  (pt % IDX_MOD)) % MEM_SIZE];
+      ++cpt;
+    }
+  if (!IS_LIT_ENDIAN)
+    my_reverse_bytes(&nb, sizeof(int));
+  return (nb);
 }
 
 void		exec_op_ld(t_corewar		*corewar,
 			   t_process_list	*current)
 {
+  int		*reg;
 
+  if (current->instruction.correct)
+    {
+      reg = &current->process.reg[current->instruction.arg[1] - 1];
+      if (current->instruction.type_arg[0] - 1)
+	*reg = current->process.reg[current->instruction.arg[0] - 1];
+      else
+	*reg = get_other_nb(corewar, current);
+    }
+  current->process.carry = (char)current->instruction.correct;
+  move_pc(current);
 }

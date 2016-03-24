@@ -5,13 +5,15 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:18 2016 corsin_a
-** Last update Wed Mar 23 16:43:51 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 14:18:04 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_aff(char	opcode)
 {
+  printf("AFF\n");
   if (opcode != 64)
     return (ERROR);
   return (SUCCESS);

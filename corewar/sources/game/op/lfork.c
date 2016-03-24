@@ -5,13 +5,15 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:55 2016 corsin_a
-** Last update Thu Mar 24 14:55:59 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 15:31:15 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_lfork(char	opcode)
 {
+  printf("LFORK\n");
   if (opcode != 128)
     return (ERROR);
   return (SUCCESS);

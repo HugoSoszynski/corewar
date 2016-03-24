@@ -5,13 +5,15 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:24 2016 corsin_a
-** Last update Thu Mar 24 13:49:59 2016 corsin_a
+** Last update Thu Mar 24 14:16:57 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_sub(char	opcode)
 {
+  printf("SUB\n");
   if (opcode != 84)
     return (ERROR);
   return (SUCCESS);

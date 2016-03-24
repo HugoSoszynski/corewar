@@ -5,13 +5,15 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:11 2016 corsin_a
-** Last update Wed Mar 23 17:34:03 2016 corsin_a
+** Last update Thu Mar 24 14:17:37 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_or(char	opcode)
 {
+  printf("OR\n");
   if (opcode != 84 && opcode != 100 && opcode != 116 && opcode != 148 &&
       opcode != 164 && opcode != 180 && opcode != 212 && opcode != 228 &&
       opcode != 244)

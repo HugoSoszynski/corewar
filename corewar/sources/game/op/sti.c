@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Thu Mar 24 14:36:41 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 15:23:56 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -51,6 +51,8 @@ void		exec_op_sti(t_corewar	*corewar,
       else
 	nb2 = current->instruction.arg[2];
       pc = current->process.pc;
+      if (current->instruction.type_arg[1] == 2)
+	nb1 %= IDX_MOD;
       printf("SUR %d ad\n", (pc + nb1 + nb2) % MEM_SIZE);
       corewar->mem[(pc + nb1 + nb2 + 0) % MEM_SIZE] = value >> (8 * 3) & 255;
       corewar->mem[(pc + nb1 + nb2 + 1) % MEM_SIZE] = value >> (8 * 2) & 255;
