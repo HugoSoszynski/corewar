@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Wed Mar 23 16:14:19 2016
-** Last update Thu Mar 24 22:24:20 2016 
+** Last update Thu Mar 24 23:19:38 2016 
 */
 
 #include	"asm.h"
@@ -60,25 +60,36 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
   int		nb_argument;
   char		**arg;
 
-  arg = my_str_to_wordtab((check_exist_cmd(line, cmd) + 1), nb_argument, ',');
+  arg = my_str_to_wordtab((check_exist_cmd(line, cmd) + 1), &nb_argument, ',');
   nb = -1;
-  while (arg[++nb] != 0);
-    {
-      if (arg_register(arg[nb]) == 1)
-	stock_arg->type_arg[nb] = 1;
-      if (arg_register(arg[nb]) == 1)
-	stock_arg->arg[nb] = ;
-      else if (arg_direct(arg[nb]) == 1)
-	stock_arg->type_arg[nb] = 2;
-      if (arg_direct(arg[nb]) == 1)
-	stock_arg->arg[nb] = ;
-      else if (arg_indirect(arg[nb]) == 1)
-	stock_arg->type_arg[nb] = 4;
-      if (arg_indirect(arg[nb]) == 1)
-	stock_arg->arg[nb] = ;
-      else
-	stock->type_arg[nb] = 0;
-    }
+  while (++nb < 3);
+  {
+    if (nb < nb_argument)
+      {
+	if (arg_register(arg[nb]) == 1)
+	  stock_arg->type_arg[nb] = 1;
+	if (arg_register(arg[nb]) == 1)
+	  stock_arg->arg[nb] = my_getnbr_base(arg+1, "0123456789");
+	else if (arg_direct(arg[nb]) == 1)
+	  {
+	    stock_arg->type_arg[nb] = 2;
+	    if (arg[nb][1] != ':')
+	      stock_arg->arg[nb] = my_getnbr_base(arg+1, "0123456789");
+	    else
+	      stock_arg->type_arg[nb] += 10;
+	  }
+	else if (arg_indirect(arg[nb]) == 1)
+	  {
+	    stock_arg->type_arg[nb] = 4;
+	    if (arg[nb][0] != ':')
+	      stock_arg->arg[nb] = my_getnbr_base(arg, "0123456789");
+	    else
+	      stock_arg->type_arg[nb] += 10;
+	  }
+      }
+    else
+      stock->type_arg[nb] = 0;
+  }
   return (stock_arg);
 }
 

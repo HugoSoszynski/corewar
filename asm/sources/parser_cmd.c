@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Thu Mar 24 22:00:20 2016 
+** Last update Thu Mar 24 23:22:25 2016 
 */
 
 #include	<stddef.h>
@@ -94,6 +94,12 @@ int		storage(int nbr_line, char *line, int type, t_cmd *stock_arg)
     {
       if ((stock_cmd = stock_cmd(line, stock_arg)) == NULL)
 	return (-1);
+    }
+  else if (type == TYPE_LINE_LABEL)
+    {
+    }
+  else if (type == TYPE_LINE_LABEL_CMD)
+    {
     }
 }
 
