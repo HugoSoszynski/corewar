@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Wed Mar 23 19:19:41 2016 corsin_a
+** Last update Wed Mar 23 22:35:16 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -24,13 +24,16 @@ void		copy_op_live(t_corewar *corewar,
 
   cpt = 0;
   current->instruction.arg[0] = 0;
+  printf("LIVE LECTURE : ");
   while (cpt < 4)
     {
       current->instruction.arg[0] = current->instruction.arg[0] << 8;
+      printf("%.2x", corewar->mem[(current->process.pc + cpt) % MEM_SIZE]);
       current->instruction.arg[0] +=
       corewar->mem[(current->process.pc + cpt) % MEM_SIZE];
       ++cpt;
     }
+  printf("\n");
   if (!IS_LIT_ENDIAN)
     my_reverse_bytes(&current->instruction.arg[0], sizeof(int));
   current->instruction.opcode = 0;

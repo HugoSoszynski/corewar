@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Wed Mar 23 19:33:59 2016 corsin_a
+** Last update Thu Mar 24 14:34:57 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -42,7 +42,6 @@ void		exec_op_sti(t_corewar	*corewar,
   if (current->instruction.correct)
     {
       value = current->process.reg[current->instruction.arg[0] - 1];
-      printf("STI VALUES : %d\n", value);
       if (current->instruction.type_arg[1] == 1)
 	nb1 = current->process.reg[current->instruction.arg[1] - 1];
       else
