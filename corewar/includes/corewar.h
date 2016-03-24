@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Thu Mar 24 13:43:19 2016 corsin_a
+** Last update Thu Mar 24 14:47:40 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
@@ -163,5 +163,6 @@ t_process_list		*kill_zombies(t_process_list 	*list,
 void			free_processlist(t_process_list *list);
 void			copy_args(t_corewar		*corewar,
 				  t_process_list	*process_list);
+int			prepare_op_tab(t_corewar	*corewar);
 
 #endif		/* !COREWAR_H_ */
