@@ -61,22 +61,22 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
   int		nb_argument;
   char		**arg;
 
-  arg = my_str_to_wordtab((check_exist_cmd(line, cmd) + 1), nb_argument, ',');
+  arg = my_str_to_wordtab((check_exist_cmd(line, cmd) + 1), &nb_argument, ',');
   nb = -1;
   while (arg[++nb] != 0);
     {
       if (arg_direct(arg[nb]) == 1)
 	stock_arg->type_arg[nb] = 1;
       if (arg_direct(arg[nb]) == 1)
-	stock_arg->arg[nb] = 'r';
+	stock_arg->arg[nb] = ;
       else if (arg_direct(arg[nb]) == 1)
 	stock_arg->type_arg[nb] = 2;
       if (arg_direct(arg[nb]) == 1)
-	stock_arg->arg[nb] = 'd';
+	stock_arg->arg[nb] = ;
       else if (arg_indirect(arg[nb]) == 1)
 	stock_arg->type_arg[nb] = 4;
       if (arg_indirect(arg[nb]) == 1)
-	stock_arg->arg[nb] = 'i';
+	stock_arg->arg[nb] = ;
       else
 	stock->type_arg[nb] = 0;
     }
