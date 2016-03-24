@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar 22 18:16:49 2016 
-** Last update Tue Mar 22 18:25:13 2016 
+** Last update Wed Mar 23 17:22:56 2016 
 */
 
 #include	<sys/stat.h>
@@ -29,4 +29,5 @@ int		main(int ac, char **av, char **envp)
     return (-1);
   if ((verif_cmd_line(fd)) == -1)
     return (-1);
+  return (0);
 }

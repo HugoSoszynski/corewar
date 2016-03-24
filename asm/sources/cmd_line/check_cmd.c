@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Mon Mar  7 16:10:58 2016
-** Last update Wed Mar 23 05:31:27 2016 
+** Last update Wed Mar 23 17:50:15 2016 
 */
 
 #include	<stddef.h>
@@ -40,6 +40,8 @@ int		check_validity(char *line, char **cmd)
     }
   return (0);
 }
+
+/* quand asm retestable svp changer la ligne check_exist_cmd elle permet une multiple definition de fonction c'est la merde oublie pas connard de pillon ou de loens de merde */
 
 int		check_cmd(char *line)
 {
