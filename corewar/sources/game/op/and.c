@@ -5,13 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:27 2016 corsin_a
-** Last update Wed Mar 23 19:04:59 2016 corsin_a
+** Last update Thu Mar 24 15:44:35 2016 corsin_a
 */
 
 #include	<stdio.h>
 #include	"corewar.h"
 
-int		check_op_and(char	opcode)
+int		check_op_and(unsigned char opcode)
 {
   printf("AND\n");
   if (opcode != 84 && opcode != 100 && opcode != 116 && opcode != 148 &&
@@ -34,6 +34,7 @@ void		exec_op_and(t_corewar	*corewar,
   int		nb2;
   int		*reg;
 
+  (void)corewar;
   if (current->instruction.correct)
     {
       if (current->instruction.type_arg[0] == 1)

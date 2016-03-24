@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:55 2016 corsin_a
-** Last update Thu Mar 24 15:32:42 2016 corsin_a
+** Last update Thu Mar 24 15:48:38 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -14,6 +14,7 @@
 int		check_op_lfork(char	opcode)
 {
   printf("LFORK\n");
+  (void)opcode;
   return (SUCCESS);
 }
 
@@ -41,7 +42,8 @@ void		copy_op_lfork(t_corewar *corewar,
 void		exec_op_lfork(t_corewar	*corewar,
 			      t_process_list	*current)
 {
-  if (clone_process(current, current->instruction.arg[0]) != NULL)
+  (void)corewar;
+  if (clone_process(current, current->instruction.arg[0]) != ERROR)
     current->process.carry = 1;
   current->process.pc = (current->process.pc + 5) % MEM_SIZE;
 }

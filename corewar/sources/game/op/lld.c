@@ -5,13 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:03 2016 corsin_a
-** Last update Thu Mar 24 14:55:34 2016 corsin_a
+** Last update Thu Mar 24 15:49:19 2016 corsin_a
 */
 
 #include	<stdio.h>
 #include	"corewar.h"
 
-int		check_op_lld(char	opcode)
+int		check_op_lld(unsigned char opcode)
 {
   printf("LLD\n");
   if (opcode != 144 && opcode != 208)
@@ -22,7 +22,7 @@ int		check_op_lld(char	opcode)
 void		copy_op_lld(t_corewar *corewar,
 			    t_process_list *current)
 {
-
+  copy_args(corewar, current);
 }
 
 static int	get_other_nb(t_corewar		*corewar,

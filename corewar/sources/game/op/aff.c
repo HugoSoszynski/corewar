@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:18 2016 corsin_a
-** Last update Thu Mar 24 14:18:04 2016 corsin_a
+** Last update Thu Mar 24 15:43:18 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -22,11 +22,13 @@ int		check_op_aff(char	opcode)
 void		copy_op_aff(t_corewar *corewar,
 			    t_process_list *current)
 {
-
+  (void)corewar;
+  (void)current;
 }
 
 void		exec_op_aff(t_corewar	*corewar,
 			    t_process_list	*current)
 {
-
+  (void)corewar;
+  (void)current;
 }

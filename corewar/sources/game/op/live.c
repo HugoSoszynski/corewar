@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Thu Mar 24 14:17:15 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 15:48:51 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -14,6 +14,7 @@
 int		check_op_live(char	opcode)
 {
   printf("LIVE\n");
+  (void)opcode;
   return (SUCCESS);
 }
 

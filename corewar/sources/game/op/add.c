@@ -5,9 +5,10 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:55:26 2016 corsin_a
-** Last update Thu Mar 24 14:16:18 2016 corsin_a
+** Last update Thu Mar 24 15:42:54 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_add(char	opcode)
@@ -31,6 +32,7 @@ void		exec_op_add(t_corewar	*corewar,
   int		nb2;
   int		*reg;
 
+  (void)corewar;
   if (current->instruction.correct)
     {
       nb1 = current->process.reg[current->instruction.arg[0] - 1];

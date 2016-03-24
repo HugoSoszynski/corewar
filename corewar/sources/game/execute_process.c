@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:13:18 2016 corsin_a
-** Last update Thu Mar 24 11:04:59 2016 corsin_a
+** Last update Thu Mar 24 15:42:27 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,7 +13,6 @@
 
 void		move_pc(t_process_list		*process_list)
 {
-  int		cpt;
   int		type;
 
   if (process_list->instruction.correct == false)

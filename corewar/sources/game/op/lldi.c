@@ -5,13 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:06 2016 corsin_a
-** Last update Thu Mar 24 15:16:27 2016 corsin_a
+** Last update Thu Mar 24 15:49:39 2016 corsin_a
 */
 
 #include	<stdio.h>
 #include	"corewar.h"
 
-int		check_op_lldi(char	opcode)
+int		check_op_lldi(unsigned char opcode)
 {
   printf("LLDI\n");
   if (opcode != 84 && opcode != 148 && opcode != 164 && opcode != 212 &&
@@ -31,8 +31,45 @@ void		copy_op_lldi(t_corewar *corewar,
   current->instruction.opcode = temp;
 }
 
+static int	get_nb(t_corewar		*corewar,
+		       t_process_list		*current,
+		       int			pt)
+{
+  int		nb;
+  int		cpt;
+
+  cpt = 0;
+  nb = 0;
+  while (cpt < 4)
+    {
+      nb = nb << 8;
+      nb += corewar->mem[(current->process.pc + cpt + pt) % MEM_SIZE];
+      ++cpt;
+    }
+  if (!IS_LIT_ENDIAN)
+    my_reverse_bytes(&nb, sizeof(int));
+  return (nb);
+}
+
 void		exec_op_lldi(t_corewar	*corewar,
 			     t_process_list	*current)
 {
-  
+  int		nb1;
+  int		nb2;
+
+  if (current->instruction.correct)
+    {
+      if (current->instruction.type_arg[0] == 1)
+	nb1 = current->process.reg[current->instruction.arg[0] - 1];
+      else
+	nb1 = current->instruction.arg[0];
+      if (current->instruction.type_arg[1] == 1)
+	nb2 = current->process.reg[current->instruction.arg[1] - 1];
+      else
+	nb2 = current->instruction.arg[1];
+      current->process.reg[current->instruction.arg[2] - 1]
+      = get_nb(corewar, current, (nb1 + nb2));
+    }
+  current->process.carry = (char)current->instruction.correct;
+  current->process.pc = (current->process.pc + 7) % MEM_SIZE;
 }

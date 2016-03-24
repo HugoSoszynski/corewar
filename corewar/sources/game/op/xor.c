@@ -5,13 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:28 2016 corsin_a
-** Last update Thu Mar 24 14:17:12 2016 corsin_a
+** Last update Thu Mar 24 15:51:05 2016 corsin_a
 */
 
 #include	<stdio.h>
 #include	"corewar.h"
 
-int		check_op_xor(char	opcode)
+int		check_op_xor(unsigned char opcode)
 {
   printf("XOR\n");
   if (opcode != 84 && opcode != 100 && opcode != 116 && opcode != 148 &&
@@ -34,6 +34,7 @@ void		exec_op_xor(t_corewar	*corewar,
   int		nb2;
   int		*reg;
 
+  (void)corewar;
   if (current->instruction.correct)
     {
       if (current->instruction.type_arg[0] == 1)

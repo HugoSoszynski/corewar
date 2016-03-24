@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:32 2016 corsin_a
-** Last update Thu Mar 24 14:13:28 2016 corsin_a
+** Last update Thu Mar 24 15:51:43 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -14,6 +14,7 @@
 int		check_op_zjmp(char	opcode)
 {
   printf("ZJMP\n");
+  (void)opcode;
   return (SUCCESS);
 }
 
@@ -36,10 +37,12 @@ void		copy_op_zjmp(t_corewar *corewar,
   current->instruction.opcode = 0;
   current->instruction.correct = false;
   current->cycle = ((t_op_tab*)(corewar->op_tab))[0].cycle;
+}
 
 void		exec_op_zjmp(t_corewar	*corewar,
 			     t_process_list	*current)
 {
+  (void)corewar;
   if (current->process.carry == 1)
     {
       current->process.pc = ((current->process.pc +

@@ -5,13 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:15 2016 corsin_a
-** Last update Thu Mar 24 14:54:20 2016 corsin_a
+** Last update Thu Mar 24 15:50:34 2016 corsin_a
 */
 
 #include	<stdio.h>
 #include	"corewar.h"
 
-int		check_op_st(char	opcode)
+int		check_op_st(unsigned char opcode)
 {
   printf("ST\n");
   if (opcode != 80 && opcode != 208)
@@ -30,9 +30,11 @@ void		exec_op_st(t_corewar		*corewar,
 {
   int		nb;
   int		pt;
+  int		pc;
 
   if (current->instruction.correct)
     {
+      pc = current->process.pc;
       nb = current->process.reg[current->instruction.arg[0] - 1];
       if (current->instruction.type_arg[1] == 1)
 	current->process.reg[current->instruction.arg[1] - 1] = nb;

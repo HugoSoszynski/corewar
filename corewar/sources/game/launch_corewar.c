@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Thu Mar 24 13:21:22 2016 corsin_a
+** Last update Thu Mar 24 15:42:15 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -45,7 +45,6 @@ static int	game_is_not_finished(t_corewar	*corewar)
 
 int		launch_corewar(t_corewar	*corewar)
 {
-  int		cpt;
   while (game_is_not_finished(corewar) == CONTINUE)
     {
       execute_process(corewar);

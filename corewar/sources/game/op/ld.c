@@ -5,15 +5,15 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:49 2016 corsin_a
-** Last update Thu Mar 24 14:43:05 2016 corsin_a
+** Last update Thu Mar 24 15:46:04 2016 corsin_a
 */
 
 #include	<stdio.h>
 #include	"corewar.h"
 
-int		check_op_ld(char	opcode)
+int		check_op_ld(unsigned char opcode)
 {
-  prinf("LD\n")
+  printf("LD\n");
   if (opcode != 144 && opcode != 208)
     return (ERROR);
   return (SUCCESS);

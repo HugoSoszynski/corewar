@@ -5,13 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:43 2016 corsin_a
-** Last update Thu Mar 24 15:28:18 2016 corsin_a
+** Last update Thu Mar 24 15:47:23 2016 corsin_a
 */
 
 #include	<stdio.h>
 #include	"corewar.h"
 
-int		check_op_ldi(char	opcode)
+int		check_op_ldi(unsigned char	opcode)
 {
   printf("LDI\n");
   if (opcode != 84 && opcode != 148 && opcode != 164 && opcode != 212 &&
@@ -54,15 +54,11 @@ static int	get_nb(t_corewar		*corewar,
 void		exec_op_ldi(t_corewar	*corewar,
 			    t_process_list	*current)
 {
-  int		pc
-  int		pt;
   int		nb1;
   int		nb2;
-  int		value;
 
   if (current->instruction.correct)
     {
-      pc = current->process.pc;
       if (current->instruction.type_arg[0] == 1)
 	nb1 = current->process.reg[current->instruction.arg[0] - 1];
       else
