@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Wed Mar 23 16:14:19 2016
-** Last update Thu Mar 24 13:55:32 2016 Grégoire Loens
+** Last update Thu Mar 24 22:24:20 2016 
 */
 
 #include	"asm.h"
@@ -29,7 +29,7 @@ char		if_octet_codage(char **tab, int cpt1, int n, char output)
   return (output);
 }
 
-char		setup_octet_codage(char *arg)
+char		setup_octet_codage(char *arg, char cpt)
 {
   char		**tab;
   char		output;
@@ -37,6 +37,10 @@ char		setup_octet_codage(char *arg)
   int		cpt1;
   int		cpt;
 
+  if (arg == NULL)
+    return (0);
+  if (cpt == OP_LIVE || cpt == OP_ZJMP || cpt == OP_FORK || cpt == OP_LFORK)
+    return (-1);
   n = 0;
   cpt1 = -1;
   output = 0;
@@ -47,11 +51,6 @@ char		setup_octet_codage(char *arg)
       output = if_octet_codage(tab, cpt1, n, output);
       n += 2;
     }
-}
-
-t_cmd		*my_arg(char **arg, int nb)
-{
-
 }
 
 t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
@@ -65,18 +64,18 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
   nb = -1;
   while (arg[++nb] != 0);
     {
-      if (arg_direct(arg[nb]) == 1)
+      if (arg_register(arg[nb]) == 1)
 	stock_arg->type_arg[nb] = 1;
-      if (arg_direct(arg[nb]) == 1)
-	stock_arg->arg[nb] = 'r';
+      if (arg_register(arg[nb]) == 1)
+	stock_arg->arg[nb] = ;
       else if (arg_direct(arg[nb]) == 1)
 	stock_arg->type_arg[nb] = 2;
       if (arg_direct(arg[nb]) == 1)
-	stock_arg->arg[nb] = 'd';
+	stock_arg->arg[nb] = ;
       else if (arg_indirect(arg[nb]) == 1)
 	stock_arg->type_arg[nb] = 4;
       if (arg_indirect(arg[nb]) == 1)
-	stock_arg->arg[nb] = 'i';
+	stock_arg->arg[nb] = ;
       else
 	stock->type_arg[nb] = 0;
     }
@@ -90,9 +89,9 @@ t_cmd		*stock_cmd(char *line, t_cmd *stock_arg)
   if ((cmd = set_tab_part1()) == NULL)
     return (NULL);
   (int)(stock_arg->opcode) = check_exist_cmd(line, cmd); // opcode
-  if ((stock_arg->octet_codage = setup_octet_codage(my_getword(line, 2))) == -1)
+  if ((stock_arg->octet_codage = setup_octet_codage(my_getword(line, 2), stock_arg->opcode)) == -1)
     return (NULL);
-  if ((stock = arg_and_type_arg(line, stock_arg cmd)) == NULL)
+  if ((stock = arg_and_type_arg(line, stock_arg, cmd)) == NULL)
     return (NULL);
-
+  return (stock_arg);
 }

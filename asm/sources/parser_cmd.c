@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Thu Mar 24 14:49:27 2016 
+** Last update Thu Mar 24 22:00:20 2016 
 */
 
 #include	<stddef.h>
@@ -95,7 +95,6 @@ int		storage(int nbr_line, char *line, int type, t_cmd *stock_arg)
       if ((stock_cmd = stock_cmd(line, stock_arg)) == NULL)
 	return (-1);
     }
-  /* reste cmd, line_laber et line_label_cmd */
 }
 
 int		verif_cmd_line(int fd, char *filename)
