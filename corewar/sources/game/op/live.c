@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Wed Mar 23 19:19:41 2016 corsin_a
+** Last update Thu Mar 24 13:19:51 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -28,7 +28,7 @@ void		copy_op_live(t_corewar *corewar,
     {
       current->instruction.arg[0] = current->instruction.arg[0] << 8;
       current->instruction.arg[0] +=
-      corewar->mem[(current->process.pc + cpt) % MEM_SIZE];
+      corewar->mem[(current->process.pc + cpt + 1) % MEM_SIZE];
       ++cpt;
     }
   if (!IS_LIT_ENDIAN)
@@ -46,15 +46,13 @@ void		exec_op_live(t_corewar	*corewar,
   cpt = -1;
   printf("LIVE NBR : %d\n",current->instruction.arg[0]);
   current->process.pc = (current->process.pc + 5) % MEM_SIZE;
+  corewar->live_nb += 1;
   while (++cpt < corewar->nb_champions)
     {
       if (corewar->champion[cpt].nb_champion == current->instruction.arg[0])
 	{
 	  if (corewar->champions_alive[cpt] != IS_DEAD)
-	    {
-	      corewar->live_nb += 1;
-	      corewar->champions_alive[cpt] = IS_ALIVE;
-	    }
+	    corewar->champions_alive[cpt] = IS_ALIVE;
 	  return ;
 	}
     }

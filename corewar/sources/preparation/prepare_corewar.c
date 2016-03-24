@@ -5,13 +5,21 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 15:44:55 2016 corsin_a
-** Last update Wed Mar 23 04:40:57 2016 corsin_a
+** Last update Thu Mar 24 13:24:53 2016 corsin_a
 */
 
 #include		"corewar.h"
 
 int			prepare_corewar(t_corewar		*corewar)
 {
+  int			cpt;
+
+  cpt = 0;
+  while (cpt < corewar->nb_champions)
+    {
+      corewar->champions_alive[cpt] = IS_RUN;
+      ++cpt;
+    }
   corewar->cycle_to_die = CYCLE_TO_DIE;
   corewar->actual_cycle = 1;
   corewar->live_nb = 0;

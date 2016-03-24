@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:13:18 2016 corsin_a
-** Last update Wed Mar 23 19:26:16 2016 corsin_a
+** Last update Thu Mar 24 11:04:59 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -41,7 +41,7 @@ void		execute_process(t_corewar	*corewar)
   process_list = corewar->process_list;
   while (process_list != NULL)
     {
-      printf("%d ===> pc %d\n", process_list->process.nb_champion, process_list->process.pc);
+      printf("champ %d ===> pc %d\n", process_list->process.nb_champion, process_list->process.pc);
       if (process_list->cycle == -1 &&
 	  copy_instruction(corewar, process_list) != SUCCESS)
 	++process_list->process.pc;
