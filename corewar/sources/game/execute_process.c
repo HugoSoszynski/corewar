@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:13:18 2016 corsin_a
-** Last update Thu Mar 24 17:19:41 2016 corsin_a
+** Last update Thu Mar 24 20:58:49 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -49,6 +49,7 @@ void		execute_process(t_corewar	*corewar)
 	--process_list->cycle;
       else if (process_list->cycle == 0)
 	{
+	  printf("EXEC PROCESS : nb_champion = %d\n",process_list->process.nb_champion);
 	  /*if (process_list->instruction.op >= OP_LIVE &&
 		process_list->instruction.op <= OP_AFF)*/
 	    OP_TAB[process_list->instruction.op - 1].exec(corewar, process_list);
