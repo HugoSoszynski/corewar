@@ -60,13 +60,17 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
   int		nb_argument;
   char		**arg;
 
-  arg = my_str_to_wordtab((check_exist_cmd(line, cmd) + 1), nb_argument, ',');
+  arg = my_str_to_wordtab((check_exist_cmd(line, cmd) + 1), &nb_argument, ',');
   nb = -1;
   while (arg[++nb] != 0);
     {
       if (arg_register(arg[nb]) == 1)
 	stock_arg->type_arg[nb] = 1;
+<<<<<<< HEAD
+      if (arg_direct(arg[nb]) == 1)
+=======
       if (arg_register(arg[nb]) == 1)
+>>>>>>> 342400e2ddc28b557f50ebcb36de10301cba41b0
 	stock_arg->arg[nb] = ;
       else if (arg_direct(arg[nb]) == 1)
 	stock_arg->type_arg[nb] = 2;

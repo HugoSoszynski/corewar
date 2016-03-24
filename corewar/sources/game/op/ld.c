@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:49 2016 corsin_a
-** Last update Thu Mar 24 15:46:04 2016 corsin_a
+** Last update Thu Mar 24 22:05:18 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,7 +13,7 @@
 
 int		check_op_ld(unsigned char opcode)
 {
-  printf("LD\n");
+  printf("CHECK LD\n");
   if (opcode != 144 && opcode != 208)
     return (ERROR);
   return (SUCCESS);
@@ -22,6 +22,7 @@ int		check_op_ld(unsigned char opcode)
 void		copy_op_ld(t_corewar *corewar,
 			   t_process_list *current)
 {
+  printf("COPY LD\n");
   copy_args(corewar, current);
 }
 
@@ -35,8 +36,10 @@ static int	get_other_nb(t_corewar		*corewar,
   pt = current->instruction.arg[0];
   cpt = 0;
   nb = 0;
+  printf("EXEC LD\n");
   while (cpt < 4)
     {
+      printf("CORRECT LD\n");    
       nb = nb << 8;
       nb += corewar->mem[(current->process.pc + cpt +
 			  (pt % IDX_MOD)) % MEM_SIZE];

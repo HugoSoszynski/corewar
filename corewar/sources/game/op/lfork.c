@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:55 2016 corsin_a
-** Last update Thu Mar 24 21:13:53 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 22:06:32 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,7 +13,7 @@
 
 int		check_op_lfork(char	opcode)
 {
-  printf("LFORK\n");
+  printf("CHECK LFORK\n");
   (void)opcode;
   return (SUCCESS);
 }
@@ -23,6 +23,7 @@ void		copy_op_lfork(t_corewar *corewar,
 {
   int		cpt;
 
+  printf("COPY LFORK\n");
   cpt = 0;
   current->instruction.arg[0] = 0;
   while (cpt < 4)
@@ -42,9 +43,11 @@ void		copy_op_lfork(t_corewar *corewar,
 void		exec_op_lfork(t_corewar	*corewar,
 			      t_process_list	*current)
 {
+  printf("EXEC LFORK\n");
   (void)corewar;
   if (current->instruction.correct)
     {
+      printf("CORRECT LFORK\n");
       if (clone_process(current, current->instruction.arg[0]) != ERROR)
 	current->process.carry = 1;
     }
