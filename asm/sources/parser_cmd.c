@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Wed Mar 23 17:33:42 2016 
+** Last update Thu Mar 24 14:49:27 2016 
 */
 
 #include	<stddef.h>
@@ -98,7 +98,7 @@ int		storage(int nbr_line, char *line, int type, t_cmd *stock_arg)
   /* reste cmd, line_laber et line_label_cmd */
 }
 
-int		verif_cmd_line(int fd)
+int		verif_cmd_line(int fd, char *filename)
 {
   char		*line;
   unsigned char	stock;
@@ -123,7 +123,7 @@ int		verif_cmd_line(int fd)
 	    return (NULL);
       nbr_line++;
     }
-  write_cor(stock_arg);
+  write_cor(stock_arg, filename);
   if (stock == 1)
     return (-1);
   return (0);

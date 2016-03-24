@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Wed Mar 23 10:43:02 2016 Grégoire Loens
+** Last update Thu Mar 24 14:48:30 2016 
 */
 
 #ifndef	PARSER_H_
@@ -63,7 +63,7 @@ char	**my_str_to_wordtab(char *, int *, char *);
 char	*my_strdup(const char *);
 int	type_of_cmd(char *);
 int	parsing(char *, int);
-int	verif_cmd_line(int);
+int	verif_cmd_line(int, char *);
 int	my_put_nbr_base(int, char *);
 
 #endif	/* !PARSER_H_ */
