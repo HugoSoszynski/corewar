@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:32 2016 corsin_a
-** Last update Wed Mar 23 16:44:34 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 14:54:49 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -26,5 +26,6 @@ void		copy_op_fork(t_corewar *corewar,
 void		exec_op_fork(t_corewar	*corewar,
 			     t_process_list	*current)
 {
-
+  clone_process(current, current->instruction.arg[0] % IDX_MOD);
+  current->process.pc = (current->process.pc + 3) % MEM_SIZE;
 }
