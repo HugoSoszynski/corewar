@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:27 2016 corsin_a
-** Last update Thu Mar 24 15:44:35 2016 corsin_a
+** Last update Thu Mar 24 22:04:05 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,7 +13,7 @@
 
 int		check_op_and(unsigned char opcode)
 {
-  printf("AND\n");
+  printf("COPY AND\n");
   if (opcode != 84 && opcode != 100 && opcode != 116 && opcode != 148 &&
       opcode != 164 && opcode != 180 && opcode != 212 && opcode != 228 &&
       opcode != 244)
@@ -24,6 +24,7 @@ int		check_op_and(unsigned char opcode)
 void		copy_op_and(t_corewar *corewar,
 			    t_process_list *current)
 {
+  printf("COPY AND\n");
   copy_args(corewar, current);
 }
 
@@ -34,9 +35,11 @@ void		exec_op_and(t_corewar	*corewar,
   int		nb2;
   int		*reg;
 
+  printf("EXEC AND\n");
   (void)corewar;
   if (current->instruction.correct)
     {
+      printf("CORRECT AND\n");    
       if (current->instruction.type_arg[0] == 1)
 	nb1 = current->process.reg[current->instruction.arg[0] - 1];
       else

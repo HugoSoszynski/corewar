@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:18 2016 corsin_a
-** Last update Thu Mar 24 15:43:18 2016 corsin_a
+** Last update Thu Mar 24 22:13:48 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -13,7 +13,7 @@
 
 int		check_op_aff(char	opcode)
 {
-  printf("AFF\n");
+  printf("CHECK AFF\n");
   if (opcode != 64)
     return (ERROR);
   return (SUCCESS);
@@ -22,13 +22,24 @@ int		check_op_aff(char	opcode)
 void		copy_op_aff(t_corewar *corewar,
 			    t_process_list *current)
 {
-  (void)corewar;
-  (void)current;
+  printf("COPY AFF\n");
+  copy_args(corewar, current);
 }
 
 void		exec_op_aff(t_corewar	*corewar,
 			    t_process_list	*current)
 {
+  char		car;
+  int		tmp;
+
+  printf("EXEC AFF\n");
   (void)corewar;
-  (void)current;
+  if (current->instruction.correct)
+    {
+      printf("CORRECT AFF\n");
+      tmp = current->process.reg[current->process.arg[0] - 1];
+      car = (char)(tmp % 256);
+      write(1, &car, 1);
+    }
+  move_pc(current);
 }
