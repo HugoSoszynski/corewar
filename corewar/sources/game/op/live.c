@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Thu Mar 24 16:50:36 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 21:14:55 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -46,14 +46,17 @@ void		exec_op_live(t_corewar	*corewar,
 
   cpt = -1;
   current->process.pc = (current->process.pc + 5) % MEM_SIZE;
-  corewar->live_nb += 1;
-  while (++cpt < corewar->nb_champions)
+  if (current->instruction.correct)
     {
-      if (corewar->champion[cpt].nb_champion == current->instruction.arg[0])
+      corewar->live_nb += 1;
+      while (++cpt < corewar->nb_champions)
 	{
-	  if (corewar->champions_alive[cpt] != IS_DEAD)
-	    corewar->champions_alive[cpt] = IS_ALIVE;
-	  return ;
+	  if (corewar->champion[cpt].nb_champion == current->instruction.arg[0])
+	    {
+	      if (corewar->champions_alive[cpt] != IS_DEAD)
+		corewar->champions_alive[cpt] = IS_ALIVE;
+	      return ;
+	    }
 	}
     }
 }
