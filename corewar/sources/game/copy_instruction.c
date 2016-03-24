@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 02:04:14 2016 corsin_a
-** Last update Wed Mar 23 19:03:39 2016 corsin_a
+** Last update Thu Mar 24 17:11:51 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -31,13 +31,10 @@ int		copy_instruction(t_corewar	*corewar,
       process_list->instruction.op = op;
       process_list->instruction.opcode = opcode;
       OP_TAB[op - 1].copy(corewar, process_list);
-      process_list->cycle = OP_TAB[op - 1].cycle;
       process_list->instruction.correct = true;
     }
   else
-    {
-      process_list->instruction.correct = false;
-      process_list->cycle = OP_TAB[op - 1].cycle;
-    }
+    process_list->instruction.correct = false;
+  process_list->cycle = OP_TAB[op - 1].cycle;
   return (SUCCESS);
 }
