@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Thu Mar 24 22:07:04 2016 corsin_a
+** Last update Thu Mar 24 22:25:51 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,7 +13,7 @@
 
 int		check_op_live(char	opcode)
 {
-  printf("LIVE\n");
+  printf("CHECK LIVE\n");
   (void)opcode;
   return (SUCCESS);
 }
@@ -36,7 +36,6 @@ void		copy_op_live(t_corewar *corewar,
   if (!IS_LIT_ENDIAN)
     my_reverse_bytes(&current->instruction.arg[0], sizeof(int));
   current->instruction.opcode = 0;
-  current->instruction.correct = false;
   current->cycle = ((t_op_tab*)(corewar->op_tab))[0].cycle;
 }
 
@@ -48,10 +47,10 @@ void		exec_op_live(t_corewar	*corewar,
   cpt = -1;
   printf("EXEC LIVE\n");
   current->process.pc = (current->process.pc + 5) % MEM_SIZE;
+  corewar->live_nb += 1;
   if (current->instruction.correct)
     {
-      printf("CORRECT LIVE\n");    
-      corewar->live_nb += 1;
+      printf("CORRECT LIVE\n");
       while (++cpt < corewar->nb_champions)
 	{
 	  if (corewar->champion[cpt].nb_champion == current->instruction.arg[0])

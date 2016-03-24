@@ -5,10 +5,11 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:18 2016 corsin_a
-** Last update Thu Mar 24 22:13:48 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 22:16:09 2016 corsin_a
 */
 
 #include	<stdio.h>
+#include	<unistd.h>
 #include	"corewar.h"
 
 int		check_op_aff(char	opcode)
@@ -37,7 +38,7 @@ void		exec_op_aff(t_corewar	*corewar,
   if (current->instruction.correct)
     {
       printf("CORRECT AFF\n");
-      tmp = current->process.reg[current->process.arg[0] - 1];
+      tmp = current->process.reg[current->instruction.arg[0] - 1];
       car = (char)(tmp % 256);
       write(1, &car, 1);
     }
