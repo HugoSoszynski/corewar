@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Wed Mar 23 16:14:19 2016
-** Last update Thu Mar 24 23:25:10 2016 
+** Last update Fri Mar 25 00:49:38 2016 
 */
 
 #include	"asm.h"
@@ -76,7 +76,9 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
 	    if (arg[nb][1] != ':')
 	      stock_arg->arg[nb] = my_getnbr_base(arg+1, "0123456789");
 	    else
-	      stock_arg->type_arg[nb] += 10;
+	      {//fonction qui add un label en call
+		stock_arg->type_arg[nb] += 10;
+	      }
 	  }
 	else if (arg_indirect(arg[nb]) == 1)
 	  {
@@ -84,7 +86,9 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
 	    if (arg[nb][0] != ':')
 	      stock_arg->arg[nb] = my_getnbr_base(arg, "0123456789");
 	    else
-	      stock_arg->type_arg[nb] += 10;
+	      { //fonction qui add un label en call
+		stock_arg->type_arg[nb] += 10;
+	      }
 	  }
       }
     else
