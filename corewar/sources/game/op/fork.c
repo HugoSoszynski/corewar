@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:32 2016 corsin_a
-** Last update Thu Mar 24 15:45:39 2016 corsin_a
+** Last update Thu Mar 24 17:00:55 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -43,6 +43,7 @@ void		exec_op_fork(t_corewar	*corewar,
 			     t_process_list	*current)
 {
   (void)corewar;
+  printf("EXEC FORK\n");
   clone_process(current, current->instruction.arg[0] % IDX_MOD);
   current->process.pc = (current->process.pc + 5) % MEM_SIZE;
 }

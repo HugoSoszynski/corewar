@@ -5,9 +5,10 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:27:30 2016 Hugo SOSZYNSKI
-** Last update Thu Mar 24 14:53:04 2016 Hugo SOSZYNSKI
+** Last update Thu Mar 24 16:56:04 2016 Hugo SOSZYNSKI
 */
 
+#include		<stdio.h>
 #include		<stddef.h>
 #include		<stdlib.h>
 #include		"corewar.h"

@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Thu Mar 24 15:48:51 2016 corsin_a
+** Last update Thu Mar 24 16:50:36 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -45,7 +45,6 @@ void		exec_op_live(t_corewar	*corewar,
   int		cpt;
 
   cpt = -1;
-  printf("LIVE NBR : %d\n",current->instruction.arg[0]);
   current->process.pc = (current->process.pc + 5) % MEM_SIZE;
   corewar->live_nb += 1;
   while (++cpt < corewar->nb_champions)
