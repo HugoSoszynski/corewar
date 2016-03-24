@@ -1,11 +1,11 @@
 /*
 ** stock_cmd.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources/stock_arg
-** 
-** Made by 
+**
+** Made by
 ** Login   <@epitech.net>
-** 
-** Started on  Wed Mar 23 16:14:19 2016 
-** Last update Wed Mar 23 21:44:47 2016 
+**
+** Started on  Wed Mar 23 16:14:19 2016
+** Last update Thu Mar 24 13:55:32 2016 Grégoire Loens
 */
 
 #include	"asm.h"
@@ -49,9 +49,37 @@ char		setup_octet_codage(char *arg)
     }
 }
 
-t_cmd		*arg_and_type_arg(char *line, t_cmd *stock_arg)
+t_cmd		*my_arg(char **arg, int nb)
 {
-char		**cmd  
+
+}
+
+t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
+{
+  char		**cmd;
+  int		nb;
+  int		nb_argument;
+  char		**arg;
+
+  nb = check_exist_cmd(line, cmd);
+  arg = my_str_to_wordtab(cmd[nb + 1], nb_argument, ',');
+  nb = -1;
+  while (++nb <= nb_argument)
+    {
+      if (arg_direct(arg[nb]) == 1)
+	  stock_arg->type_arg[nb] = 1;
+      if (arg_direct(arg[nb]) == 1)
+	stock_arg->arg[nb] = 'r';
+      else if (arg_direct(arg[nb]) == 1)
+	  stock_arg->type_arg[nb] = 2;
+      else if (arg_direct(arg[nb]) == 1)
+	stock_arg->arg[nb] = 'd';
+      else if (arg_indirect(arg[nb]) == 1)
+	  stock_arg->type_arg[nb] = 4;
+      else if (arg_indirect(arg[nb]) == 1)
+	stock_arg->arg[nb] = 'i';
+    }
+  return (stock_arg);
 }
 
 t_cmd		*stock_cmd(char *line, t_cmd *stock_arg)
@@ -63,7 +91,7 @@ t_cmd		*stock_cmd(char *line, t_cmd *stock_arg)
   (int)(stock_arg->opcode) = check_exist_cmd(line, cmd); // opcode
   if ((stock_arg->octet_codage = setup_octet_codage(my_getword(line, 2))) == -1)
     return (NULL);
-  if ((stock = arg_and_type_arg(line, stock_arg)) == NULL)
+  if ((stock = arg_and_type_arg(line, stock_arg cmd)) == NULL)
     return (NULL);
 
 }
