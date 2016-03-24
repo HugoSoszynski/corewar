@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:27:30 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 18:38:44 2016 corsin_a
+** Last update Thu Mar 24 14:53:04 2016 Hugo SOSZYNSKI
 */
 
 #include		<stddef.h>
@@ -20,7 +20,7 @@ static void		cpy_t_process(t_process *src,
 
   dest->carry = src->carry;
   dest->nb_champion = src->nb_champion;
-  dest->pc = src->pc + add_to_pc;
+  dest->pc = (src->pc + add_to_pc) % MEM_SIZE;
   cpt = -1;
   while (++cpt < REG_NUMBER)
     {

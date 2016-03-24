@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Wed Mar 23 19:27:52 2016 corsin_a
+** Last update Thu Mar 24 13:21:22 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -18,12 +18,14 @@ static int	game_is_not_finished(t_corewar	*corewar)
 
   if (corewar->cycle_passed < corewar->cycle_to_die)
     return (CONTINUE);
+  printf("NOUVEAU CYCLE\n");
   cpt = 0;
   check = 0;
   while (cpt < corewar->nb_champions)
     {
       if (corewar->champions_alive[cpt] != IS_ALIVE)
 	{
+	  printf("champion dead : %d\n", cpt);
 	  corewar->champions_alive[cpt] = IS_DEAD;
 	  if ((corewar->process_list =
 	       kill_zombies(corewar->process_list,
@@ -43,14 +45,13 @@ static int	game_is_not_finished(t_corewar	*corewar)
 
 int		launch_corewar(t_corewar	*corewar)
 {
+  int		cpt;
   while (game_is_not_finished(corewar) == CONTINUE)
     {
       execute_process(corewar);
       printf("\n\t\t\tactual cycle %ld\n", corewar->actual_cycle);
       ++corewar->cycle_passed;
       ++corewar->actual_cycle;
-      if (corewar->actual_cycle > 100)
-	return (SUCCESS);
       if (corewar->live_nb >= NBR_LIVE)
 	{
 	  corewar->live_nb = 0;
