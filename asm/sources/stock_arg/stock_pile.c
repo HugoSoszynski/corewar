@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Thu Mar 24 18:56:53 2016 Grégoire Loens
+** Last update Fri Mar 25 01:18:57 2016 
 */
 
 #include	<stdlib.h>
@@ -28,7 +28,8 @@ t_pile		*add_label(t_pile *label)
 {
   t_pile	*new_label;
 
-  new_label = init_pile();
+  if ((new_label = init_pile()) == NULL)
+    return (NULL);
   while (label->next != NULL)
     label = label->next;
   label->next = new_label;
@@ -36,52 +37,25 @@ t_pile		*add_label(t_pile *label)
   return (label);
 }
 
-t_pile		*stock_pile_for_def(t_pile *def, char *line)
+t_pile		*stock_pile_for_def(t_pile *def, char *label, int line)
 {
+  t_pile	*head;
   int		cpt;
 
-  cpt = 0;
+  cpt = my_strlen(cpt) - 1;
+  head = def;
   while (def->next != NULL)
     def = def->next;
   if (def->label_name != NULL)
     {
-      def = add_label(def);
+      if ((def = add_label(def)) == NULL)
+	return (NULL);
       def = def->next;
     }
-  while(line[cpt] != ':')
-    cpt++;
-  if ((def->label_name = malloc(sizeof(char) * cpt + 1)) == NULL)
-    return (NULL);
-  cpt = 0;
-  while (line[cpt] != ':')
-    {
-      def->label_name[cpt] = line[cpt];
-      cpt++;
-    }
-  return (def);
-}
-
-t_pile		*stock_pile_for_call(t_pile *call, char *arg)
-{
-  int		cpt;
-
-  cpt = 0;
-  while (arg[cpt] != 0)
-   cpt++;
-  while(call->next != NULL)
-    call = call->next;
-  if (call->label_name != NULL)
-    {
-      call = add_label(call);
-      call = call->next;
-    }
-  if ((call->label_name = malloc(sizeof(char) * cpt + 1)) == NULL)
-    return (NULL);
-  cpt = 0;
-  while (arg[cpt] != 0)
-    {
-      call->label_name[cpt] = arg[cpt];
-      cpt++;
-    }
-  return (call);
+  if (label[cpt] == ':')
+    label[cpt] = '\0';
+  def->label_name = label;
+  def->nbr_line = line;
+  def = head;
+  return (head);
 }

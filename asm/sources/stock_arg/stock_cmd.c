@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Wed Mar 23 16:14:19 2016
-** Last update Thu Mar 24 23:25:10 2016 
+** Last update Fri Mar 25 01:18:49 2016 
 */
 
 #include	"asm.h"
@@ -53,6 +53,13 @@ char		setup_octet_codage(char *arg, char cpt)
     }
 }
 
+t_cmd		*add_call(char *label, t_cmd *cmd)
+{
+  if ((cmd->call = stock_pile_for_def(cmd->call, label, cmd->nbr_line)) == NULL)
+    return (NULL);
+  return (cmd);
+}
+
 t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
 {
   char		**cmd;
@@ -76,7 +83,11 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
 	    if (arg[nb][1] != ':')
 	      stock_arg->arg[nb] = my_getnbr_base(arg+1, "0123456789");
 	    else
-	      stock_arg->type_arg[nb] += 10;
+	      {
+		if ((stock_arg = add_call(arg+2, stock_arg)) == NULL)
+		  return (NULL);
+		stock_arg->type_arg[nb] += 10;
+	      }
 	  }
 	else if (arg_indirect(arg[nb]) == 1)
 	  {
@@ -84,7 +95,11 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
 	    if (arg[nb][0] != ':')
 	      stock_arg->arg[nb] = my_getnbr_base(arg, "0123456789");
 	    else
-	      stock_arg->type_arg[nb] += 10;
+	      { 
+		if ((stock_arg = add_call(arg+2, stock_arg)) == NULL)
+		  return (NULL);
+		stock_arg->type_arg[nb] += 10;
+	      }
 	  }
       }
     else
