@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:12:56 2016 Grégoire Loens
-** Last update Thu Mar 24 18:47:46 2016 Grégoire Loens
+** Last update Thu Mar 24 22:22:30 2016 Grégoire Loens
 */
 
 #ifndef PILE_LABEL_H_
@@ -21,7 +21,7 @@ typedef struct	s_pile
 {
   char		*label_name;
   int		nb_octet;
-  int		define;
+  int		nb_line;
   struct s_pile	*next;
 }		t_pile;
 
