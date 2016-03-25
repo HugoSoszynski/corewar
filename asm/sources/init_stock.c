@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 11:21:21 2016 Grégoire Loens
-** Last update Fri Mar 25 00:05:10 2016 
+** Last update Fri Mar 25 01:23:12 2016 Grégoire Loens
 */
 
 #include	<stdlib.h>
@@ -19,9 +19,9 @@ t_cmd		*init_first_cmd()
     return (NULL);
   stock_cmd-> init_cmd();
   stock_cmd->head = stock_cmd;
-  stock_cmd->head->def = init_pile();
-  stock_cmd->head->call = init_pile();
-  stock_cmd->head->next = NULL;
+  stock_cmd->def = init_pile();
+  stock_cmd->call = init_pile();
+  stock_cmd->next = NULL;
   return (stock_cmd);
 }
 
