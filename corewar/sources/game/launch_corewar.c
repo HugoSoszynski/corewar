@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Thu Mar 24 15:42:15 2016 corsin_a
+** Last update Fri Mar 25 01:41:05 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -15,12 +15,14 @@ static int	game_is_not_finished(t_corewar	*corewar)
 {
   int		cpt;
   int		check;
+  int		live;
 
   if (corewar->cycle_passed < corewar->cycle_to_die)
     return (CONTINUE);
   printf("NOUVEAU CYCLE\n");
   cpt = 0;
   check = 0;
+  live = 0;
   while (cpt < corewar->nb_champions)
     {
       if (corewar->champions_alive[cpt] != IS_ALIVE)
@@ -34,9 +36,14 @@ static int	game_is_not_finished(t_corewar	*corewar)
 	  ++check;
 	}
       else
-	corewar->champions_alive[cpt] = IS_RUN;
+	{
+	  corewar->champions_alive[cpt] = IS_RUN;
+	  ++live;
+	}
       ++cpt;
     }
+  if (live == 1 && corewar->nb_champions != 1)
+    return (SUCCESS);
   if (check >= cpt)
     return (SUCCESS);
   corewar->cycle_passed = 0;

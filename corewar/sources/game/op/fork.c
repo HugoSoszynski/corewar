@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:32 2016 corsin_a
-** Last update Thu Mar 24 22:04:42 2016 corsin_a
+** Last update Thu Mar 24 23:22:29 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -26,7 +26,7 @@ void		copy_op_fork(t_corewar *corewar,
   printf("COPY FORK\n");
   cpt = 0;
   current->instruction.arg[0] = 0;
-  while (cpt < 4)
+  while (cpt < 2)
     {
       current->instruction.arg[0] = current->instruction.arg[0] << 8;
       current->instruction.arg[0] +=
@@ -50,5 +50,5 @@ void		exec_op_fork(t_corewar	*corewar,
       printf("CORRECT FORK\n");
       clone_process(current, current->instruction.arg[0] % IDX_MOD);
     }
-  current->process.pc = (current->process.pc + 5) % MEM_SIZE;
+  current->process.pc = (current->process.pc + 3) % MEM_SIZE;
 }

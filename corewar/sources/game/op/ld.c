@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:49 2016 corsin_a
-** Last update Thu Mar 24 22:05:18 2016 corsin_a
+** Last update Fri Mar 25 01:08:44 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -24,6 +24,7 @@ void		copy_op_ld(t_corewar *corewar,
 {
   printf("COPY LD\n");
   copy_args(corewar, current);
+  check_reg(current);
 }
 
 static int	get_other_nb(t_corewar		*corewar,
@@ -36,10 +37,8 @@ static int	get_other_nb(t_corewar		*corewar,
   pt = current->instruction.arg[0];
   cpt = 0;
   nb = 0;
-  printf("EXEC LD\n");
   while (cpt < 4)
     {
-      printf("CORRECT LD\n");    
       nb = nb << 8;
       nb += corewar->mem[(current->process.pc + cpt +
 			  (pt % IDX_MOD)) % MEM_SIZE];
@@ -55,10 +54,17 @@ void		exec_op_ld(t_corewar		*corewar,
 {
   int		*reg;
 
+  printf("EXEC LD\n");
+  printf("%d\n", current->instruction.opcode);
+  printf("%d , %d , %d\n",
+	 current->instruction.arg[0],
+	 current->instruction.arg[1],
+	 current->instruction.arg[2]);
   if (current->instruction.correct)
     {
+      printf("CORRECT LD\n");
       reg = &current->process.reg[current->instruction.arg[1] - 1];
-      if (current->instruction.type_arg[0] - 1)
+      if (current->instruction.type_arg[0] == 1)
 	*reg = current->process.reg[current->instruction.arg[0] - 1];
       else
 	*reg = get_other_nb(corewar, current);

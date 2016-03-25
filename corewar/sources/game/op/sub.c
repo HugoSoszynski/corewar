@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:24 2016 corsin_a
-** Last update Thu Mar 24 23:04:01 2016 corsin_a
+** Last update Fri Mar 25 00:38:09 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -24,6 +24,7 @@ void		copy_op_sub(t_corewar *corewar,
 {
   printf("COPY SUB\n");
   copy_args(corewar, current);
+  check_reg(current);
 }
 
 void		exec_op_sub(t_corewar	*corewar,

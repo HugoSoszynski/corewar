@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:55 2016 corsin_a
-** Last update Thu Mar 24 22:06:32 2016 corsin_a
+** Last update Thu Mar 24 23:12:00 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -26,7 +26,7 @@ void		copy_op_lfork(t_corewar *corewar,
   printf("COPY LFORK\n");
   cpt = 0;
   current->instruction.arg[0] = 0;
-  while (cpt < 4)
+  while (cpt < 2)
     {
       current->instruction.arg[0] = current->instruction.arg[0] << 8;
       current->instruction.arg[0] +=
@@ -51,5 +51,5 @@ void		exec_op_lfork(t_corewar	*corewar,
       if (clone_process(current, current->instruction.arg[0]) != ERROR)
 	current->process.carry = 1;
     }
-  current->process.pc = (current->process.pc + 5) % MEM_SIZE;
+  current->process.pc = (current->process.pc + 3) % MEM_SIZE;
 }

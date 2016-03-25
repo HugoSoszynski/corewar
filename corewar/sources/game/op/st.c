@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:15 2016 corsin_a
-** Last update Thu Mar 24 22:10:16 2016 corsin_a
+** Last update Fri Mar 25 00:25:42 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -14,7 +14,7 @@
 int		check_op_st(unsigned char opcode)
 {
   printf("CHECK ST\n");
-  if (opcode != 80 && opcode != 208)
+  if (opcode != 96 && opcode != 112)
     return (ERROR);
   return (SUCCESS);
 }
