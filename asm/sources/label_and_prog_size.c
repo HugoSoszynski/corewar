@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 15:25:08 2016 
-** Last update Fri Mar 25 04:52:24 2016 
+** Last update Fri Mar 25 06:35:15 2016 
 */
 
 #include	<stddef.h>
@@ -36,19 +36,22 @@ int		check_call_exist(t_cmd *cmd, t_pile *head)
 
   cpt = 0;
   call = cmd->call;
-  while (call != NULL)
+  while (call->label_name != NULL)
     {
-      while (cmd->def != NULL)
+      while (cmd->def->label_name != NULL && cpt != 1)
 	{
 	  printf ("%s ----- %s  \n", cmd->def->label_name, call->label_name);
 	  if (strcmpend(cmd->def->label_name, call->label_name) == 0)
 	    cpt = 1;
-	  cmd->def = cmd->def->next;
+	  else
+	    cmd->def = cmd->def->next;
 	}
       if (cpt != 1)
 	return (-1);
       cmd->def = head;
       call = call->next;
+      cpt = 0;
+      printf ("verif one");
     }
   cmd->def = head;
   return (0);

@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Fri Mar 25 06:03:33 2016 
+** Last update Fri Mar 25 06:32:42 2016 
 */
 
 #include	<stdlib.h>
@@ -48,15 +48,13 @@ t_pile		*stock_pile_for_call(t_pile *def, char *label, int line)
 {
   t_pile	*head;
 
-  write(1, "ma bite\n", 8);
+  write(1, "ma call\n", 8);
   head = def;
   while (def->next != NULL)
     def = def->next;
-  if (def->label_name != NULL)
-    {
       if ((def = add_label(def)) == NULL)
 	return (NULL);
-    }
+
   def->label_name = label;
   def->nb_line = line;
   return (head);
