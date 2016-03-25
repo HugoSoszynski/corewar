@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Fri Mar 25 01:54:59 2016 
+** Last update Fri Mar 25 06:03:33 2016 
 */
 
 #include	<stdlib.h>
@@ -14,6 +14,10 @@
 #include	"asm.h"
 #include	"parser.h"
 #include	"pile_label.h"
+
+
+#include	<stdio.h>
+
 
 t_pile		*init_pile(void)
 {
@@ -40,12 +44,11 @@ t_pile		*add_label(t_pile *label)
   return (label);
 }
 
-t_pile		*stock_pile_for_def(t_pile *def, char *label, int line)
+t_pile		*stock_pile_for_call(t_pile *def, char *label, int line)
 {
   t_pile	*head;
-  int		cpt;
 
-  cpt = my_strlen(cpt) - 1;
+  write(1, "ma bite\n", 8);
   head = def;
   while (def->next != NULL)
     def = def->next;
@@ -53,12 +56,36 @@ t_pile		*stock_pile_for_def(t_pile *def, char *label, int line)
     {
       if ((def = add_label(def)) == NULL)
 	return (NULL);
-      def = def->next;
     }
-  if (label[cpt] == ':')
-    label[cpt] = '\0';
   def->label_name = label;
-  def->nbr_line = line;
-  def = head;
+  def->nb_line = line;
+  return (head);
+  
+}
+
+t_pile		*stock_pile_for_def(t_pile *def, char *label, int line)
+{
+  t_pile	*head;
+  int		cpt;
+
+  write(1, "ma bite\n", 8);
+  cpt = 0;
+  head = def;
+  while (def->next != NULL)
+    def = def->next;
+  if (def->label_name != NULL)
+    {
+      if ((def = add_label(def)) == NULL)
+	return (NULL);
+    }
+  def->label_name = label;
+  while (def->label_name[cpt] != ':')
+    cpt++;
+  while (def->label_name[cpt] != '\0')
+    {
+      def->label_name[cpt] = '\0';
+      cpt++;
+    }
+  def->nb_line = line;
   return (head);
 }

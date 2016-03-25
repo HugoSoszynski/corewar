@@ -5,10 +5,14 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 14:40:35 2016 
-** Last update Fri Mar 25 01:58:55 2016 
+** Last update Fri Mar 25 05:41:55 2016 
 */
 
 #include	<unistd.h>
+#include	<sys/types.h>
+#include	<sys/stat.h>
+#include	<fcntl.h>
+#include	<stdlib.h>
 #include	<stddef.h>
 #include	"pile_label.h"
 #include	"asm.h"
@@ -20,7 +24,7 @@ char		*to_dot_cor(char *filename)
   int		cpt;
   char		*output;
   
-  if ((output = malloc(sizeof(char) my_strlen(filename) + 2)) == NULL)
+  if ((output = malloc(sizeof(char) * my_strlen(filename) + 2)) == NULL)
     return (NULL);
   cpt = -1;
   while (filename[++cpt] != '.' && filename[cpt] != '\0')
@@ -59,4 +63,5 @@ int		write_cor(t_cmd *cmd, char *filename)
     return (1);
   if ((write_file(fd, cmd)) == -1)
     return(-1);
+  return (0);
 }

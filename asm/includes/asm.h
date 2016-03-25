@@ -5,13 +5,14 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Thu Mar 24 17:34:23 2016 
+** Last update Fri Mar 25 02:51:41 2016 
 */
 
 #ifndef		ASM_H_
 # define	ASM_H_
 
 #include	"op.h"
+#include	"pile_label.h"
 
 # define	ERROR			(-1)
 
@@ -136,7 +137,7 @@ typedef struct	s_cmd
   int		arg[3];
   char		type_arg[3];
   char		label[3][T_LAB];
-  t_list	*head;
+  struct s_cmd  *head;
   struct s_cmd	*next;
   t_pile	*def;
   t_pile	*call;

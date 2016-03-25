@@ -5,14 +5,19 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Fri Mar 25 00:29:22 2016 
-** Last update Fri Mar 25 01:55:23 2016 
+** Last update Fri Mar 25 05:40:10 2016 
 */
 
 #include	<stddef.h>
 #include	"asm.h"
 #include	"parser.h"
 #include	"op.h"
-#include	"pile.h"
+#include	"pile_label.h"
+
+
+#include	<stdio.h>
+#include	<unistd.h>
+
 
 t_cmd	*stock_label_cmd(char *line, t_cmd *cmd)
 {

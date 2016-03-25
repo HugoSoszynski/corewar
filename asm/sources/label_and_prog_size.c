@@ -5,12 +5,17 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 15:25:08 2016 
-** Last update Thu Mar 24 17:46:17 2016 
+** Last update Fri Mar 25 04:52:24 2016 
 */
 
+#include	<stddef.h>
 #include	"asm.h"
 #include	"parser.h"
 #include	"op.h"
+
+
+#include	<stdio.h>
+
 
 int		strcmpend(char *str1, char *str2)
 {
@@ -35,11 +40,12 @@ int		check_call_exist(t_cmd *cmd, t_pile *head)
     {
       while (cmd->def != NULL)
 	{
+	  printf ("%s ----- %s  \n", cmd->def->label_name, call->label_name);
 	  if (strcmpend(cmd->def->label_name, call->label_name) == 0)
 	    cpt = 1;
 	  cmd->def = cmd->def->next;
 	}
-      if (cpt == 1)
+      if (cpt != 1)
 	return (-1);
       cmd->def = head;
       call = call->next;
@@ -87,11 +93,12 @@ int		label_and_prog_size(t_cmd *cmd, int *prog_size)
     {
       if (cmd->type == TYPE_LINE_CODE)
 	*prog_size += cmd->dot_code_octet;
-      else if (cmd->type == TYPE_LINE_CMD || cmd->type TYPE_LINE_LABEL ||
+      else if (cmd->type == TYPE_LINE_CMD || cmd->type == TYPE_LINE_LABEL ||
 	  cmd->type == TYPE_LINE_LABEL_CMD)
 	while (++i < 3)
-	  *prog_size += arg[i];
+	  *prog_size += cmd->arg[i];
       cmd = cmd->next;
     }
   cmd = head;
+  return (0);
 }

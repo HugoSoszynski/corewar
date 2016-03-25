@@ -5,16 +5,32 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Fri Mar 25 01:59:16 2016 
+** Last update Fri Mar 25 06:05:03 2016 
 */
 
 #ifndef	PARSER_H_
 # define PARSER_H_
 
+#include	"pile_label.h"
+#include	"asm.h"
+
+
+t_cmd		*init_first_cmd(void);
+t_cmd		*init_cmd(void);
+char		**set_tab_part1(void);
+t_pile		*init_pile(void);
+t_pile		*stock_pile_for_call(t_pile *, char *, int);
+t_pile		*add_label(t_pile *label);
+t_pile		*stock_pile_for_def(t_pile *, char *, int);
+t_cmd		*add_cmd(t_cmd *);
+int		add_octet(t_cmd *arg);
+t_cmd		*set_octet_label(t_cmd *cmd);
 t_cmd		*stock_label_cmd(char *, t_cmd *);
 t_cmd		*stock_label(char *, t_cmd *);
 t_cmd		*stock_code(char *, t_cmd *);
+int		label_and_prog_size(t_cmd *, int *);
 t_cmd		*stock_cmd(char *, t_cmd *);
+int		strcmpend(char *str1, char *str2);
 int		calc_with_def(t_cmd *, t_cmd *, t_cmd *);
 int		calc_with_call(t_cmd *, t_cmd *, t_cmd *);
 int		add_octet(t_cmd *);

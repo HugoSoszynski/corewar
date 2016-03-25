@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Mon Mar  7 16:10:58 2016
-** Last update Wed Mar 23 17:50:15 2016 
+** Last update Fri Mar 25 04:22:00 2016 
 */
 
 #include	<stddef.h>
@@ -52,7 +52,7 @@ int		check_cmd(char *line)
   word_nbr = 2;
   cmd = set_cmd_part1();
   word = my_getword(line, 1);
- if (check_exist_cmd(word, cmd) == -1)
+  if (check_exist_cmd(word, cmd) == -1)
     return (-1);
   while ((word = my_getword(line, word_nbr)) != NULL)
     {

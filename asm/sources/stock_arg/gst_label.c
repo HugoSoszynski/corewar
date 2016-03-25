@@ -5,17 +5,18 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Thu Mar 24 16:56:13 2016 Grégoire Loens
-** Last update Fri Mar 25 01:28:23 2016 Grégoire Loens
+** Last update Fri Mar 25 02:50:03 2016 
 */
 
+#include	<stddef.h>
 #include	"asm.h"
 #include	"pile_label.h"
-
+/*
 t_cmd		*acr_label(t_cmd *stock_arg)
 {
   t_cmd		*tmp;
 
-  tmp = stock->head;
+  tmp = stock_arg->head;
  while (stock_arg->head->def->next != NULL)
     {
       tmp->def->nb_octet += sizeof(stock_arg->type_arg[1]);
@@ -25,8 +26,9 @@ t_cmd		*acr_label(t_cmd *stock_arg)
     }
   return (stock_arg);
 }
-
-t_cmd		*set_octet(t_cmd stock_arg)
+*/
+/*
+t_cmd		*set_octet(t_cmd *stock_arg)
 {
   while (stock_arg->head->def->next != NULL)
     {
@@ -37,3 +39,4 @@ t_cmd		*set_octet(t_cmd stock_arg)
     }
   return (stock_arg);
 }
+*/

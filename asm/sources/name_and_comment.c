@@ -1,20 +1,21 @@
 /*
 ** name_and_comment.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources
 ** 
-** Made by 
-** Login   <@epitech.net>
+** Made by Maxime Pillon
+** Login   <pillon_m@epitech.net>
 ** 
-** Started on  Thu Mar 24 18:04:17 2016 
-** Last update Thu Mar 24 18:32:59 2016 
+** Started on  Fri Mar 25 02:21:33 2016 
+** Last update Fri Mar 25 02:25:08 2016 
 */
 
+#include	<stddef.h>
+#include	<stdlib.h>
 #include	"asm.h"
 #include	"parser.h"
 #include	"op.h"
 
 char		*check_one_name(t_cmd *cmd)
 {
-  int		i;
   t_cmd		*check;
   char		*name;
 
@@ -22,10 +23,12 @@ char		*check_one_name(t_cmd *cmd)
   while (check != NULL)
     {
       if (check->type == TYPE_LINE_NAME)
-	if (name == NULL)
-	  name = check->line + 6;
-	else
-	  return (NULL);
+	{
+	  if (name == NULL)
+	    name = check->line + 6;
+	  else
+	    return (NULL);
+	}
       check = check->next;
     }
   return (name);
@@ -35,7 +38,7 @@ char		**comment_malloc(t_cmd *cmd)
 {
   int		cpt;
   char		**comment;
-  t_cmd		check;
+  t_cmd		*check;
 
   cpt = 0;
   check = cmd;
@@ -64,13 +67,14 @@ int		check_size_comment(char **comment)
     }
   if (size > COMMENT_LENGTH)
     return (-1);
+  return (0);
 }
 
 char		**where_comment(t_cmd *cmd)
 {
   char		**comment;
   int		cpt;
-  t_cmd		check;
+  t_cmd		*check;
 
   cpt = 0;
   check = cmd;

@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Fri Mar 25 02:09:33 2016 
+## Last update Fri Mar 25 03:33:23 2016 
 ##
 
 CC			=	gcc
@@ -24,7 +24,7 @@ ASM			=	asm/asm
 
 ASM_SRCS		=	asm/sources/my_endianess.c \
 				asm/sources/label_and_prog_size.c \
-				asm/sources/my_getnr_base.c \
+				asm/sources/my_getnbr_base.c \
 				asm/sources/name_and_comment.c \
 				asm/sources/write_cor.c \
 				asm/sources/write_file.c \
@@ -33,6 +33,8 @@ ASM_SRCS		=	asm/sources/my_endianess.c \
 				asm/sources/stock_arg/set_octet_label.c \
 				asm/sources/stock_arg/stock_cmd.c \
 				asm/sources/stock_arg/stock_code.c \
+				asm/sources/cor_header.c \
+				asm/sources/init_stock.c \
 				asm/sources/stock_arg/stock_label.c \
 				asm/sources/stock_arg/stock_label_cmd.c \
 				asm/sources/stock_arg/stock_pile.c \

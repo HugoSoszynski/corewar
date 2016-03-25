@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Thu Mar 24 21:41:06 2016 Grégoire Loens
-** Last update Fri Mar 25 01:57:47 2016 
+** Last update Fri Mar 25 02:58:36 2016 
 */
 
 #include	<unistd.h>
@@ -30,25 +30,25 @@ int		calc_octet(t_cmd *call, t_cmd *def, t_cmd *arg)
 
 void		search_def(t_cmd *call, t_cmd *def)
 {
-  while(strcmpend(call->call->label, def->def->label) != 1)
+  while(strcmpend(call->call->label_name, def->def->label_name) != 0)
     def->def = def->def->next;
 }
 
 void		set_arg(t_cmd *call, t_cmd *def, t_cmd *arg)
 {
   int		rpr;
-  int		nb_octet;
+  int		nbr_octet;
 
   rpr = -1;
-  nb_octet = calc_octet(call, def, arg);
-  while (arg->nb_line != call->call->nb_line && arg != NULL
+  nbr_octet = calc_octet(call, def, arg);
+  while (arg->nbr_line != call->call->nb_line && arg != NULL
 	 && call->call != NULL)
     arg = arg->next;
   while (arg->type_arg[++rpr] != 0)
     {
       if (arg->type_arg[rpr] == 12 && arg->arg[rpr] == 0)
 	{
-	  arg->arg[rpr] = nb_octet;
+	  arg->arg[rpr] = nbr_octet;
 	  arg->type_arg[rpr] = 2;
 	  return ;
 	}
@@ -61,7 +61,7 @@ void		set_arg(t_cmd *call, t_cmd *def, t_cmd *arg)
     }
 }
 
-t_cmd		set_octet_label(t_cmd *cmd)
+t_cmd		*set_octet_label(t_cmd *cmd)
 {
   t_cmd		*call;
   t_cmd		*def;
@@ -76,6 +76,7 @@ t_cmd		set_octet_label(t_cmd *cmd)
       set_arg(call, def, arg);
       def = cmd->head;
       arg = cmd->head;
-      call->call->next;
+      call = call->next;
     }
+    return (cmd);
 }

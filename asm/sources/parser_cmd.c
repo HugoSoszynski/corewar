@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Fri Mar 25 01:58:31 2016 
+** Last update Fri Mar 25 05:41:28 2016 
 */
 
 #include	<stddef.h>
@@ -14,6 +14,11 @@
 #include	"pile_label.h"
 #include	"get_next_line.h"
 #include	"asm.h"
+
+
+
+#include	<unistd.h>
+
 
 int		type_of_cmd(char *line)
 {
@@ -80,13 +85,11 @@ int		parsing(char *line, int nbr_line)
 
 int		storage(int nbr_line, char *line, int type, t_cmd *stock_arg)
 {
-  if (stock_arg->next != NULL)
-    stock_arg = stock_arg->next;
   stock_arg->type = type;
   stock_arg->line = line;
   stock_arg->nbr_line = nbr_line;
   if (type == TYPE_LINE_NAME || type == TYPE_LINE_COMMENT || type == TYPE_LINE_EXTEND)
-    return (stock_arg);
+    return (0);
   else if (type == TYPE_LINE_CODE)
     {
       if ((stock_arg = stock_code(line, stock_arg)) == NULL)
@@ -107,6 +110,7 @@ int		storage(int nbr_line, char *line, int type, t_cmd *stock_arg)
       if ((stock_arg = stock_label_cmd(line, stock_arg)) == NULL)
 	return (-1);
     }
+  return (0);
 }
 
 int		verif_cmd_line(int fd, char *filename)
@@ -120,18 +124,22 @@ int		verif_cmd_line(int fd, char *filename)
   nbr_line = 1;
   stock = 0;
   if ((stock_arg = init_first_cmd()) == NULL)
-      return (error_message("initialise conflict for stocking argument"));
+    return (error_message("initialise conflict for stocking argument"));
   while ((line = get_next_line(fd)) != NULL)
     {
       type = parsing(line, nbr_line);
+      if ((line = my_isspace(line)) == NULL)
+	return(error_message_parser("epurstr failed line ", nbr_line));
       if (type == -1)
 	stock = 1;
       if (stock != 1 && type != TYPE_LINE_EMPTY)
-	if (storage(nbr_line, line, type, stock_arg) == -1)
-	  return (-1);
-	else
-	  if ((stock_arg = add_cmd(stock_arg)) == NULL)
-	    return (NULL);
+	{
+	  if (storage(nbr_line, line, type, stock_arg) == -1)
+	    return (-1);
+	  else
+	    if ((stock_arg = add_cmd(stock_arg)) == NULL)
+	      return (-1);
+	}
       nbr_line++;
     }
   write_cor(stock_arg, filename);

@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Mon Mar 21 15:18:11 2016 
-** Last update Tue Mar 22 14:34:36 2016 
+** Last update Fri Mar 25 04:18:14 2016 
 */
 
 #include	<stddef.h>
@@ -40,7 +40,7 @@ char		*my_getword(char *line, int word_nbr)
   cpt1 = 0;
   if ((cpt = start_word(line, word_nbr)) == -1)
     return (NULL);
-  if ((word = malloc(sizeof(char) * my_strlen(line + cpt))) == NULL)
+  if ((word = malloc(sizeof(char) * (my_strlen(line) + 1))) == NULL)
     return (NULL);
   while (line[cpt] != ' ' && line[cpt] != '\0')
     {
@@ -48,5 +48,6 @@ char		*my_getword(char *line, int word_nbr)
       cpt1++;
       cpt++;
     }
+  word[cpt1] = '\0';
   return (word);
 }
