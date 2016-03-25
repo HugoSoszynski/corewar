@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Thu Mar 24 23:20:29 2016 Grégoire Loens
-** Last update Fri Mar 25 02:43:38 2016 
+** Last update Fri Mar 25 17:39:41 2016 
 */
 
 #include	<stddef.h>
@@ -52,10 +52,13 @@ int		add_octet(t_cmd *arg)
 
   nb_octet = 0;
   cpt = 0;
-  while (arg->arg[cpt] != 0)
-    {
-      nb_octet += arg->arg[cpt];
-      cpt++;
-    }
+  if (arg->type == TYPE_LINE_CODE)
+    nb_octet += arg->dot_code_octet;
+  else
+    while (arg->arg[cpt] != 0)
+      {
+	nb_octet += arg->arg[cpt];
+	cpt++;
+      }
   return (nb_octet);
 }

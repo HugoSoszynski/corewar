@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 15:25:08 2016 
-** Last update Fri Mar 25 06:35:15 2016 
+** Last update Fri Mar 25 17:56:01 2016 
 */
 
 #include	<stddef.h>
@@ -13,7 +13,7 @@
 #include	"parser.h"
 #include	"op.h"
 
-
+#include	<unistd.h>
 #include	<stdio.h>
 
 
@@ -28,45 +28,63 @@ int		strcmpend(char *str1, char *str2)
     return (0);
   return (-1);
 }
-
-int		check_call_exist(t_cmd *cmd, t_pile *head)
+/*
+void		write_struct(t_pile *call, t_pile *def)
+{
+  while ( call != NULL && call->label_name != NULL)
+    {
+      printf ("les valeurs dans call %s %d \n", call->label_name, call->nb_line);
+      call = call->next;
+    }
+  while (def != NULL && def->label_name != NULL)
+    {
+      printf ("les valeurs dans def %s %d \n", def->label_name, def->nb_line);
+      def = def->next;
+    }
+}
+*/
+int		check_call_exist(t_cmd *cmd)
 {
   t_pile	*call;
+  t_pile	*def;
   int		cpt;
 
   cpt = 0;
   call = cmd->call;
-  while (call->label_name != NULL)
+  def = cmd->def;
+  /*write_struct(call, cmd->def);*/
+  while (call != NULL && call->label_name != NULL)
     {
-      while (cmd->def->label_name != NULL && cpt != 1)
+      while (def != NULL && def->label_name != NULL && cpt != 1)
 	{
-	  printf ("%s ----- %s  \n", cmd->def->label_name, call->label_name);
-	  if (strcmpend(cmd->def->label_name, call->label_name) == 0)
+	  /*	  printf ("->%s<----->%s<-  \n", def->label_name, call->label_name);*/
+	  if (strcmpend(def->label_name, call->label_name) == 0)
 	    cpt = 1;
 	  else
-	    cmd->def = cmd->def->next;
+	    def = def->next;
 	}
       if (cpt != 1)
 	return (-1);
-      cmd->def = head;
+      def = cmd->def;
       call = call->next;
       cpt = 0;
-      printf ("verif one");
+      /*      printf ("verif one");*/
     }
-  cmd->def = head;
+  cmd = cmd->head;
   return (0);
 }
 
-int		check_only_label(t_cmd *cmd)
+t_cmd		*check_only_label(t_cmd *cmd)
 {
-  t_pile	*head;
   t_pile       	*check;
+  t_pile	*start;
 
-  head = cmd->def;
-  if (check_call_exist(cmd, head) == -1)
-    return (-1);
+  start = cmd->def;
+  if (check_call_exist(cmd) == -1)
+    return (NULL);
+  cmd = cmd->head;
   if (cmd->def->next == NULL)
-    return (0);
+    return (cmd);
   while (cmd->def->next != NULL)
     {
       check = cmd->def;
@@ -74,12 +92,13 @@ int		check_only_label(t_cmd *cmd)
 	{
 	  check = check->next;
 	  if (strcmpend(cmd->def->label_name, check->label_name) != -1)
-	    return (-1);
+	    return (NULL);
 	}
       cmd->def = cmd->def->next;
     }
-  cmd->def = head;
-  return (0);
+  cmd = cmd->head;
+  cmd->def = start;
+  return (cmd);
 }
 
 int		label_and_prog_size(t_cmd *cmd, int *prog_size)
@@ -87,21 +106,29 @@ int		label_and_prog_size(t_cmd *cmd, int *prog_size)
   int		i;
   t_cmd		*head;
 
+  /*printf ("%s \n", cmd->head->line);*/
   head = cmd;
-  i = -1;
   *prog_size = 0;
-  if (check_only_label(cmd) == -1)
+  if ((cmd = check_only_label(cmd)) == NULL)
     return (-1);
+  cmd = cmd->head;
   while (cmd != NULL)
     {
+      i = -1;
+      /*printf ("cmd->type writting %d \n",cmd->type); */
+      /*write(1, "inf", 3);*/
       if (cmd->type == TYPE_LINE_CODE)
 	*prog_size += cmd->dot_code_octet;
       else if (cmd->type == TYPE_LINE_CMD || cmd->type == TYPE_LINE_LABEL ||
-	  cmd->type == TYPE_LINE_LABEL_CMD)
+	       cmd->type == TYPE_LINE_LABEL_CMD)
 	while (++i < 3)
-	  *prog_size += cmd->arg[i];
+	  if (cmd->type_arg[i] < 10)
+	    *prog_size += cmd->type_arg[i];
+	  else
+	    *prog_size += cmd->type_arg[i] - 10;
       cmd = cmd->next;
     }
   cmd = head;
+  /*write (1, "sortie", 6);*/
   return (0);
 }
