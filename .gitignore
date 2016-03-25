@@ -6,3 +6,4 @@ test*
 asm/asm
 corewar/corewar
 op.c
+test*
