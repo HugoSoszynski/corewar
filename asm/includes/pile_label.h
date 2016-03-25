@@ -5,17 +5,11 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:12:56 2016 Grégoire Loens
-** Last update Thu Mar 24 23:49:21 2016 Grégoire Loens
+** Last update Fri Mar 25 02:13:54 2016 
 */
 
 #ifndef PILE_LABEL_H_
 # define PILE_LABEL_H_
-
-#ifndef YES
-# define YES (1);
-
-#ifndef NO
-# define NO (-1);
 
 typedef struct	s_pile
 {

@@ -5,13 +5,18 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 19:33:51 2016 
-** Last update Fri Mar 25 01:32:26 2016 
+** Last update Fri Mar 25 19:44:10 2016 
 */
 
 #include	<unistd.h>
 #include	"asm.h"
+#include	"pile_label.h"
 #include	"parser.h"
 #include	"op.h"
+
+
+#include	<stdio.h>
+
 
 void		write_arg(int fd, t_cmd *cmd)
 {
@@ -62,6 +67,7 @@ void		write_dot_code(int fd, t_cmd *cmd)
 
 int		write_file(int fd, t_cmd *cmd)
 {
+  printf ("queue");
   while (cmd != NULL)
     {
       if (cmd->type == TYPE_LINE_CMD || cmd->type == TYPE_LINE_LABEL_CMD)

@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Thu Mar 24 13:47:21 2016 Sylvain Corsini
+## Last update Fri Mar 25 14:20:27 2016 
 ##
 
 CC			=	gcc
@@ -19,10 +19,27 @@ CFLAGS			+=	-pedantic
 CFLAGS			+=	-ggdb3
 CFLAGS			+=	-Iasm/includes
 CFLAGS			+=	-Icorewar/includes
+CFLAGS			+=	-g
 
 ASM			=	asm/asm
 
-ASM_SRCS		=       asm/sources/get_next_line.c \
+ASM_SRCS		=	asm/sources/my_endianess.c \
+				asm/sources/label_and_prog_size.c \
+				asm/sources/my_getnbr_base.c \
+				asm/sources/name_and_comment.c \
+				asm/sources/write_cor.c \
+				asm/sources/write_file.c \
+				asm/sources/stock_arg/calc_octet.c \
+				asm/sources/stock_arg/gst_label.c \
+				asm/sources/stock_arg/set_octet_label.c \
+				asm/sources/stock_arg/stock_cmd.c \
+				asm/sources/stock_arg/stock_code.c \
+				asm/sources/cor_header.c \
+				asm/sources/init_stock.c \
+				asm/sources/stock_arg/stock_label.c \
+				asm/sources/stock_arg/stock_label_cmd.c \
+				asm/sources/stock_arg/stock_pile.c \
+				asm/sources/get_next_line.c \
 				asm/sources/my_put_nbr.c \
 				asm/sources/my_strdup.c \
 				asm/sources/gst_str.c \
@@ -63,7 +80,8 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 				corewar/sources/preparation/prepare_op_tab.c \
 				corewar/sources/game/launch_corewar.c \
 				corewar/sources/game/execute_process.c \
-				corewar/sources/game/copy_instruction.c \
+				corewar/sources/game/check_instruction.c \
+				corewar/sources/game/check_reg.c \
 				corewar/sources/game/init_instruction.c \
 				corewar/sources/game/op/add.c \
 				corewar/sources/game/op/aff.c \

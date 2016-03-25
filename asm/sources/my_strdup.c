@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar 21 17:10:44 2016 Grégoire Loens
-** Last update Wed Mar 23 11:38:51 2016 
+** Last update Fri Mar 25 04:20:10 2016 
 */
 
 #include	<stdlib.h>
@@ -22,5 +22,6 @@ char		*my_strdup(const char *src)
     return (NULL);
   while (src[++counter] != 0)
     dest[counter] = src[counter];
+  dest[counter] = '\0';
   return (dest);
 }

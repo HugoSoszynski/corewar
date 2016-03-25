@@ -1,33 +1,47 @@
 /*
 ** name_and_comment.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources
 ** 
-** Made by 
-** Login   <@epitech.net>
+** Made by Maxime Pillon
+** Login   <pillon_m@epitech.net>
 ** 
-** Started on  Thu Mar 24 18:04:17 2016 
-** Last update Thu Mar 24 18:32:59 2016 
+** Started on  Fri Mar 25 02:21:33 2016 
+** Last update Fri Mar 25 19:28:16 2016 
 */
 
+#include	<stddef.h>
+#include	<stdlib.h>
 #include	"asm.h"
 #include	"parser.h"
 #include	"op.h"
 
+
+#include	<stdio.h>
+
+
 char		*check_one_name(t_cmd *cmd)
 {
-  int		i;
   t_cmd		*check;
   char		*name;
+  int		cpt;
 
-  check = cmd;
+  check = cmd->head;
+  cpt = 0;
+  name = NULL;
   while (check != NULL)
     {
       if (check->type == TYPE_LINE_NAME)
-	if (name == NULL)
-	  name = check->line + 6;
-	else
-	  return (NULL);
+	{
+	  if (name == NULL)
+	    name = check->line + 7;
+	  else
+	    return (NULL);
+	}
       check = check->next;
     }
+  while (name[cpt] != '"' && name[cpt] != '\0')
+    cpt++;
+  if (name[cpt] == '"')
+    name[cpt] = '\0';
   return (name);
 }
 
@@ -35,7 +49,7 @@ char		**comment_malloc(t_cmd *cmd)
 {
   int		cpt;
   char		**comment;
-  t_cmd		check;
+  t_cmd		*check;
 
   cpt = 0;
   check = cmd;
@@ -45,7 +59,7 @@ char		**comment_malloc(t_cmd *cmd)
 	cpt++;
       check = check->next;
     }
-  if ((comment = malloc(sizeof(char *) * cpt + 1)) == NULL)
+  if ((comment = malloc(sizeof(char *) * (cpt + 2))) == NULL)
     return (NULL);
   return (comment);
 }
@@ -64,17 +78,18 @@ int		check_size_comment(char **comment)
     }
   if (size > COMMENT_LENGTH)
     return (-1);
+  return (0);
 }
 
 char		**where_comment(t_cmd *cmd)
 {
   char		**comment;
   int		cpt;
-  t_cmd		check;
+  t_cmd		*check;
 
   cpt = 0;
-  check = cmd;
-  if ((comment = comment_malloc(cmd)) == NULL)
+  check = cmd->head;
+  if ((comment = comment_malloc(check->head)) == NULL)
     return (NULL);
   while (check != NULL)
     {
