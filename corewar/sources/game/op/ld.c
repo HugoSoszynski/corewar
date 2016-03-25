@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:49 2016 corsin_a
-** Last update Fri Mar 25 01:08:44 2016 corsin_a
+** Last update Fri Mar 25 10:58:16 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -55,11 +55,6 @@ void		exec_op_ld(t_corewar		*corewar,
   int		*reg;
 
   printf("EXEC LD\n");
-  printf("%d\n", current->instruction.opcode);
-  printf("%d , %d , %d\n",
-	 current->instruction.arg[0],
-	 current->instruction.arg[1],
-	 current->instruction.arg[2]);
   if (current->instruction.correct)
     {
       printf("CORRECT LD\n");
