@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:15 2016 corsin_a
-** Last update Fri Mar 25 00:25:42 2016 corsin_a
+** Last update Fri Mar 25 12:13:25 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -34,6 +34,11 @@ void		exec_op_st(t_corewar		*corewar,
   int		pc;
 
   printf("EXEC ST\n");
+  printf("%d\n", current->instruction.opcode);
+  printf("%d , %d , %d\n",
+	 current->instruction.arg[0],
+	 current->instruction.arg[1],
+	 current->instruction.arg[2]);
   if (current->instruction.correct)
     {
       printf("CORRECT ST\n");
