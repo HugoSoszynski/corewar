@@ -5,12 +5,13 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Fri Mar 25 01:04:34 2016 corsin_a
+** Last update Fri Mar 25 17:34:18 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
 # define		COREWAR_H_
 
+# include		<lapin.h>
 # include		<stdbool.h>
 # include		<stddef.h>
 # include		"op.h"
@@ -87,6 +88,7 @@ typedef struct		s_corewar
   unsigned char		nb_champions;
   t_champion		champion[4];
   unsigned char		mem[MEM_SIZE];
+  unsigned int		mem_champ[MEM_SIZE];
   unsigned int		live_nb;
   void			*op_tab;
 }			t_corewar;
@@ -115,9 +117,25 @@ typedef struct		s_op_tab
   int			cycle;
 }			t_op_tab;
 
+# define		SCREEN_HEIGHT		(480)
+# define		SCREEN_WIDTH		(640)
+# define		SCREEN_FULLSCREEN	(false)
+# define		SCREEN_NAME		("Corewar")
+
+typedef			struct s_bonus
+{
+  t_corewar		corewar;
+  t_bunny_pixelarray	*pix;
+  t_bunny_window	*win;
+}			t_bonus;
+
 #define			OP_TAB		((t_op_tab*)(corewar->op_tab))
 
-int			init_corewar(t_corewar		*corewar,
+t_bunny_response mainloop(void			*data);
+t_bunny_response key(t_bunny_event_state	state,
+		     t_bunny_keysym		key,
+		     void			*data);
+int			init_corewar(t_bonus		*data,
 				     int		ac,
 				     char		**av);
 int			init_champ(t_corewar		*corewar,
@@ -125,6 +143,7 @@ int			init_champ(t_corewar		*corewar,
 int			init_options(int		argc,
 				     char		*argv[],
 				     t_options		*options);
+int			init_graphics(t_bonus		*data);
 int			check_for_endianess(void);
 void			my_reverse_bytes(void		*_value,
 					 unsigned int 	size);

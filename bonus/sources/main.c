@@ -5,18 +5,32 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Fri Mar 25 02:02:06 2016 corsin_a
+** Last update Fri Mar 25 17:31:50 2016 corsin_a
 */
 
 #include	<stddef.h>
 #include	<stdlib.h>
 #include	"corewar.h"
 
+static void	free_corewar(t_bonus	*data)
+{
+  int		cpt;
+
+  cpt = 0;
+  while (cpt < data->corewar.nb_champions)
+    {
+      free(data->corewar.champion[cpt].prog);
+      ++cpt;
+    }
+  free(data->corewar.op_tab);
+  bunny_stop(data->win);
+  bunny_delete_clipable(&data->pix->clipable);
+}
+
 int		main(int 	argc,
 		     char 	*argv[])
 {
-  t_corewar	corewar;
-  int		cpt;
+  t_bonus	data;
 
   if (REG_NUMBER < 1 || REG_SIZE != 4 || CYCLE_TO_DIE < 1
       || CYCLE_DELTA < 0 || NBR_LIVE < 1 || PROG_NAME_LENGTH < 1
@@ -28,28 +42,14 @@ int		main(int 	argc,
       aff_help(0);
       return (SUCCESS);
     }
-  if (init_corewar(&corewar, argc, argv) != SUCCESS)
+  if (init_corewar(&data, argc, argv) != SUCCESS)
     return (aff_help(1));
-  if (prepare_corewar(&corewar) != SUCCESS)
+  if (prepare_corewar(&data.corewar) != SUCCESS)
     return (ERROR);
-  cpt = 0;
-  #include	<stdio.h>
-  while (cpt < MEM_SIZE)
-    {
-      printf("Ox%.2x ", corewar.mem[cpt]);
-      if ((cpt + 1) % 20 == 0 && cpt != 0)
-	printf("\n");
-      ++cpt;
-    }
-  if (launch_corewar(&corewar) != SUCCESS)
-    return (ERROR);
-  free_processlist(corewar.process_list);
-  cpt = 0;
-  while (cpt < corewar.nb_champions)
-    {
-      free(corewar.champion[cpt].prog);
-      ++cpt;
-    }
-  free(corewar.op_tab);
+  bunny_set_key_response(key);
+  bunny_set_loop_main_function(mainloop);
+  bunny_loop(data.win, 60, &data);
+  free_processlist(data.corewar.process_list);
+  free_corewar(&data);
   return (SUCCESS);
 }
