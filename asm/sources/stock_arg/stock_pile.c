@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Fri Mar 25 00:45:00 2016 
+** Last update Fri Mar 25 01:18:57 2016 
 */
 
 #include	<stdlib.h>
@@ -58,29 +58,4 @@ t_pile		*stock_pile_for_def(t_pile *def, char *label, int line)
   def->nbr_line = line;
   def = head;
   return (head);
-}
-
-t_pile		*stock_pile_for_call(t_pile *call, char *arg)
-{
-  int		cpt;
-
-  cpt = 0;
-  while (arg[cpt] != 0)
-   cpt++;
-  while(call->next != NULL)
-    call = call->next;
-  if (call->label_name != NULL)
-    {
-      call = add_label(call);
-      call = call->next;
-    }
-  if ((call->label_name = malloc(sizeof(char) * cpt + 1)) == NULL)
-    return (NULL);
-  cpt = 0;
-  while (arg[cpt] != 0)
-    {
-      call->label_name[cpt] = arg[cpt];
-      cpt++;
-    }
-  return (call);
 }
