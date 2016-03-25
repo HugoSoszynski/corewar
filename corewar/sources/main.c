@@ -5,10 +5,11 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Wed Mar 23 18:23:11 2016 corsin_a
+** Last update Fri Mar 25 02:02:06 2016 corsin_a
 */
 
 #include	<stddef.h>
+#include	<stdlib.h>
 #include	"corewar.h"
 
 int		main(int 	argc,
@@ -43,5 +44,12 @@ int		main(int 	argc,
   if (launch_corewar(&corewar) != SUCCESS)
     return (ERROR);
   free_processlist(corewar.process_list);
+  cpt = 0;
+  while (cpt < corewar.nb_champions)
+    {
+      free(corewar.champion[cpt].prog);
+      ++cpt;
+    }
+  free(corewar.op_tab);
   return (SUCCESS);
 }
