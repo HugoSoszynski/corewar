@@ -5,10 +5,12 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 14:40:35 2016 
-** Last update Thu Mar 24 22:42:51 2016 
+** Last update Fri Mar 25 01:58:55 2016 
 */
 
 #include	<unistd.h>
+#include	<stddef.h>
+#include	"pile_label.h"
 #include	"asm.h"
 #include	"parser.h"
 #include	"op.h"

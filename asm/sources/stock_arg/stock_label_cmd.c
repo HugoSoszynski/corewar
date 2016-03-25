@@ -5,9 +5,10 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Fri Mar 25 00:29:22 2016 
-** Last update Fri Mar 25 00:48:02 2016 
+** Last update Fri Mar 25 01:55:23 2016 
 */
 
+#include	<stddef.h>
 #include	"asm.h"
 #include	"parser.h"
 #include	"op.h"

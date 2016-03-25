@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Thu Mar 24 18:58:34 2016 Hugo SOSZYNSKI
-** Last update Thu Mar 24 19:12:30 2016 Hugo SOSZYNSKI
+** Last update Fri Mar 25 01:36:10 2016 
 */
 
 unsigned char		my_getnbr_base(char *str, const char *base)

@@ -5,13 +5,14 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Wed Mar 23 15:55:24 2016
-** Last update Thu Mar 24 21:59:15 2016 
+** Last update Fri Mar 25 01:55:57 2016 
 */
 
 #include	"parser.h"
 #include	"asm.h"
+#include	"pile_label.h"
 
-t_cmd		*stock_code(char * line, t_cmd *stock_arg)
+t_cmd		*stock_code(char *line, t_cmd *stock_arg)
 {
   char		**code_hexa;
   int		nb_octet;

@@ -5,11 +5,13 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Fri Mar 25 00:42:15 2016 
+** Last update Fri Mar 25 01:58:31 2016 
 */
 
 #include	<stddef.h>
+#include	"op.h"
 #include	"parser.h"
+#include	"pile_label.h"
 #include	"get_next_line.h"
 #include	"asm.h"
 

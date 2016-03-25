@@ -5,11 +5,14 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Thu Mar 24 21:41:06 2016 Grégoire Loens
-** Last update Fri Mar 25 00:40:54 2016 Grégoire Loens
+** Last update Fri Mar 25 01:57:47 2016 
 */
 
-#include	"../../includes/asm.h"
-#include	"../../includes/pile_label.h"
+#include	<unistd.h>
+#include	<stddef.h>
+#include	"asm.h"
+#include	"parser.h"
+#include	"pile_label.h"
 
 int		calc_octet(t_cmd *call, t_cmd *def, t_cmd *arg)
 {

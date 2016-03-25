@@ -5,11 +5,14 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Wed Mar 23 16:14:19 2016
-** Last update Fri Mar 25 01:18:49 2016 
+** Last update Fri Mar 25 01:56:40 2016 
 */
 
+#include	<stddef.h>
 #include	"asm.h"
 #include	"parser.h"
+#include	"op.h"
+#include	"pile_label.h"
 
 char		if_octet_codage(char **tab, int cpt1, int n, char output)
 {

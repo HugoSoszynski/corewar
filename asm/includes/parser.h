@@ -5,12 +5,27 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Thu Mar 24 14:48:30 2016 
+** Last update Fri Mar 25 01:59:16 2016 
 */
 
 #ifndef	PARSER_H_
 # define PARSER_H_
 
+t_cmd		*stock_label_cmd(char *, t_cmd *);
+t_cmd		*stock_label(char *, t_cmd *);
+t_cmd		*stock_code(char *, t_cmd *);
+t_cmd		*stock_cmd(char *, t_cmd *);
+int		calc_with_def(t_cmd *, t_cmd *, t_cmd *);
+int		calc_with_call(t_cmd *, t_cmd *, t_cmd *);
+int		add_octet(t_cmd *);
+header_t	*create_cor_header(char *, char **, int);
+int		write_cor_header(header_t *, int, char *);
+char		*to_do_cor(char *filename);
+int		write_cor(t_cmd *, char *);
+int		write_file(int fd, t_cmd *);
+unsigned char	my_getnbr_base(char *str, const char *base);
+char		*check_one_name(t_cmd *cmd);
+char		**where_comment(t_cmd *);
 int	my_strlen(const char *);
 int	error_message(char *);
 int	error_message_line(char *,int , char *);
