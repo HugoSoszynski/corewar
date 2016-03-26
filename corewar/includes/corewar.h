@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Fri Mar 25 01:04:34 2016 corsin_a
+** Last update Sat Mar 26 17:29:39 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -115,8 +115,11 @@ typedef struct		s_op_tab
   int			cycle;
 }			t_op_tab;
 
-#define			OP_TAB		((t_op_tab*)(corewar->op_tab))
+# ifndef		OP_TAB
+#  define		OP_TAB		((t_op_tab*)(corewar->op_tab))
+# endif			/* !OP_TAB */
 
+int			check_h(void);
 int			init_corewar(t_corewar		*corewar,
 				     int		ac,
 				     char		**av);

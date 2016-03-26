@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Fri Mar 25 14:20:27 2016 
+## Last update Sat Mar 26 17:29:02 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
@@ -69,6 +69,7 @@ ASM_OBJS		=	$(ASM_SRCS:.c=.o)
 COREWAR			=	corewar/corewar
 
 COREWAR_SRCS		=	corewar/sources/main.c \
+				corewar/sources/check_h.c \
 				corewar/sources/initialisation/init_champ.c \
 				corewar/sources/initialisation/init_corewar.c \
 				corewar/sources/initialisation/init_options.c \
