@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:03 2016 corsin_a
-** Last update Thu Mar 24 22:08:02 2016 corsin_a
+** Last update Sat Mar 26 14:09:03 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -56,11 +56,14 @@ void		exec_op_lld(t_corewar		*corewar,
   if (current->instruction.correct)
     {
       printf("CORRECT LLD\n");
-      reg = &current->process.reg[current->instruction.arg[1] - 1];
-      if (current->instruction.type_arg[0] - 1)
+      reg = &(current->process.reg[current->instruction.arg[1] - 1]);
+      if (current->instruction.type_arg[0] == 1)
 	*reg = current->process.reg[current->instruction.arg[0] - 1];
+      else if (current->instruction.type_arg[0] == 4)
+	*reg = current->instruction.arg[0];
       else
 	*reg = get_other_nb(corewar, current);
+      printf("LLD REG = %d\n", current->process.reg[current->instruction.arg[1] - 1]);
     }
   current->process.carry = (char)current->instruction.correct;
   move_pc(current);
