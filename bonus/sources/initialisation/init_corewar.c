@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:51:42 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 17:27:20 2016 corsin_a
+** Last update Fri Mar 25 17:19:56 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -43,7 +43,7 @@ static void	print_corewar(t_corewar *corewar)
     }
 }
 
-int		init_corewar(t_corewar *corewar,
+int		init_corewar(t_bonus *data,
 			     int ac, char **av)
 {
   t_options	options;
@@ -51,13 +51,15 @@ int		init_corewar(t_corewar *corewar,
   if (init_options(ac, av, &options) != SUCCESS)
     return (ERROR);
   print_options(&options);
-  if (init_champ(corewar, &options) != SUCCESS)
+  if (init_champ(&data->corewar, &options) != SUCCESS)
     return (ERROR);
-  print_corewar(corewar);
-  if (champ_imcomp(corewar) != SUCCESS)
+  print_corewar(&data->corewar);
+  if (champ_imcomp(&data->corewar) != SUCCESS)
     return (ERROR);
-  if (fill_champions(corewar) != SUCCESS)
+  if (fill_champions(&data->corewar) != SUCCESS)
     return (ERROR);
-  print_corewar(corewar);
+  if (init_graphics(data) != SUCCESS)
+    return (ERROR);
+  print_corewar(&data->corewar);
   return (SUCCESS);
 }

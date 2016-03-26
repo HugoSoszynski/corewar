@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Fri Mar 25 06:32:42 2016 
+** Last update Fri Mar 25 14:33:11 2016 
 */
 
 #include	<stdlib.h>
@@ -25,6 +25,7 @@ t_pile		*init_pile(void)
 
   if ((label = malloc(sizeof(t_pile))) == NULL)
     return (NULL);
+  label->nb_line = 0;
   label->nb_octet = 0;
   label->next = NULL;
   label->label_name = NULL;
@@ -34,30 +35,35 @@ t_pile		*init_pile(void)
 t_pile		*add_label(t_pile *label)
 {
   t_pile	*new_label;
+  t_pile	*tmp;
 
+  tmp = label;
   if ((new_label = init_pile()) == NULL)
     return (NULL);
-  while (label->next != NULL)
-    label = label->next;
-  label->next = new_label;
-  label->next->label_name = NULL;
+  /*  while (tmp->next != NULL)
+      tmp = tmp->next;*/
+  tmp->next = new_label;
+  tmp->next->label_name = NULL;
+  tmp->next->next = NULL;
   return (label);
 }
 
-t_pile		*stock_pile_for_call(t_pile *def, char *label, int line)
+t_pile		*stock_pile_for_call(t_pile *call, char *label, int line)
 {
   t_pile	*head;
 
-  write(1, "ma call\n", 8);
-  head = def;
-  while (def->next != NULL)
-    def = def->next;
-      if ((def = add_label(def)) == NULL)
+  head = call;
+  while (head->next != NULL)
+    head = head->next;
+  if (head->label_name != NULL)
+    {
+      if ((head = add_label(head)) == NULL)
 	return (NULL);
-
-  def->label_name = label;
-  def->nb_line = line;
-  return (head);
+      head = head->next;
+    }
+  head->label_name = label;
+  head->nb_line = line;
+  return (call);
   
 }
 
@@ -66,24 +72,24 @@ t_pile		*stock_pile_for_def(t_pile *def, char *label, int line)
   t_pile	*head;
   int		cpt;
 
-  write(1, "ma bite\n", 8);
   cpt = 0;
   head = def;
-  while (def->next != NULL)
-    def = def->next;
-  if (def->label_name != NULL)
+  while (head->next != NULL)
+    head = head->next;
+  if (head->label_name != NULL)
     {
-      if ((def = add_label(def)) == NULL)
+      if ((head = add_label(def)) == NULL)
 	return (NULL);
+      head = head->next;
     }
-  def->label_name = label;
-  while (def->label_name[cpt] != ':')
+  head->label_name = label;
+  while (head->label_name[cpt] != ':')
     cpt++;
-  while (def->label_name[cpt] != '\0')
+  while (head->label_name[cpt] != '\0')
     {
-      def->label_name[cpt] = '\0';
+      head->label_name[cpt] = '\0';
       cpt++;
     }
-  def->nb_line = line;
-  return (head);
+  head->nb_line = line;
+  return (def);
 }

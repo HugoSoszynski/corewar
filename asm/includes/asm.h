@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Fri Mar 25 02:51:41 2016 
+** Last update Fri Mar 25 17:26:49 2016 
 */
 
 #ifndef		ASM_H_
@@ -136,7 +136,6 @@ typedef struct	s_cmd
   char		octet_codage;
   int		arg[3];
   char		type_arg[3];
-  char		label[3][T_LAB];
   struct s_cmd  *head;
   struct s_cmd	*next;
   t_pile	*def;

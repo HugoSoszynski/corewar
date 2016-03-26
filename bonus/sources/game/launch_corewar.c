@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Fri Mar 25 16:32:35 2016 corsin_a
+** Last update Fri Mar 25 17:28:16 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -47,13 +47,13 @@ static int	game_is_not_finished(t_corewar	*corewar)
 
 int		launch_corewar(t_corewar	*corewar)
 {
-  while (game_is_not_finished(corewar) == CONTINUE)
+  if (game_is_not_finished(corewar) == CONTINUE)
     {
       execute_process(corewar);
       printf("\n\t\t\t\tactual cycle %ld\n", corewar->actual_cycle);
       ++corewar->cycle_passed;
       ++corewar->actual_cycle;
-      if (corewar->actual_cycle == 10000) break ;
+      if (corewar->actual_cycle == 1000) return (SUCCESS);
       if (corewar->live_nb >= NBR_LIVE)
 	{
 	  corewar->live_nb = 0;
@@ -61,6 +61,7 @@ int		launch_corewar(t_corewar	*corewar)
 	  if (corewar->cycle_to_die <= 0)
 	    return (SUCCESS);
 	}
+      return (CONTINUE) ;
     }
   return (SUCCESS);
 }

@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Fri Mar 25 03:33:23 2016 
+## Last update Fri Mar 25 14:20:27 2016 
 ##
 
 CC			=	gcc
@@ -19,6 +19,7 @@ CFLAGS			+=	-pedantic
 CFLAGS			+=	-ggdb3
 CFLAGS			+=	-Iasm/includes
 CFLAGS			+=	-Icorewar/includes
+CFLAGS			+=	-g
 
 ASM			=	asm/asm
 

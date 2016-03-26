@@ -5,7 +5,7 @@
 ** Login   <pillon_m@epitech.net>
 ** 
 ** Started on  Fri Mar 25 02:21:33 2016 
-** Last update Fri Mar 25 02:25:08 2016 
+** Last update Fri Mar 25 19:28:16 2016 
 */
 
 #include	<stddef.h>
@@ -14,23 +14,34 @@
 #include	"parser.h"
 #include	"op.h"
 
+
+#include	<stdio.h>
+
+
 char		*check_one_name(t_cmd *cmd)
 {
   t_cmd		*check;
   char		*name;
+  int		cpt;
 
-  check = cmd;
+  check = cmd->head;
+  cpt = 0;
+  name = NULL;
   while (check != NULL)
     {
       if (check->type == TYPE_LINE_NAME)
 	{
 	  if (name == NULL)
-	    name = check->line + 6;
+	    name = check->line + 7;
 	  else
 	    return (NULL);
 	}
       check = check->next;
     }
+  while (name[cpt] != '"' && name[cpt] != '\0')
+    cpt++;
+  if (name[cpt] == '"')
+    name[cpt] = '\0';
   return (name);
 }
 
@@ -48,7 +59,7 @@ char		**comment_malloc(t_cmd *cmd)
 	cpt++;
       check = check->next;
     }
-  if ((comment = malloc(sizeof(char *) * cpt + 1)) == NULL)
+  if ((comment = malloc(sizeof(char *) * (cpt + 2))) == NULL)
     return (NULL);
   return (comment);
 }
@@ -77,8 +88,8 @@ char		**where_comment(t_cmd *cmd)
   t_cmd		*check;
 
   cpt = 0;
-  check = cmd;
-  if ((comment = comment_malloc(cmd)) == NULL)
+  check = cmd->head;
+  if ((comment = comment_malloc(check->head)) == NULL)
     return (NULL);
   while (check != NULL)
     {

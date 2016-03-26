@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Wed Mar 23 16:14:19 2016
-** Last update Fri Mar 25 06:07:09 2016 
+** Last update Fri Mar 25 16:55:28 2016 
 */
 
 #include	<stddef.h>
@@ -64,7 +64,7 @@ char		setup_octet_codage(char *arg, char cpt)
 
 t_cmd		*add_call(char *label, t_cmd *cmd)
 {
-  if ((cmd->call = stock_pile_for_call(cmd->call, label, cmd->nbr_line)) == NULL)
+  if ((cmd->call = stock_pile_for_call(cmd->head->call, label, cmd->nbr_line)) == NULL)
     return (NULL);
   return (cmd);
 }
@@ -77,20 +77,16 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
   int		nb_argument;
   char		**arg;
 
-  /*printf ("%s ttotototototoot \n", my_getword(line, 1));*/
   val = check_exist_cmd(my_getword(line, 1), cmd);
   arg = my_str_to_wordtab(cmd[val + 1], &nb_argument, ",");
   arg = my_str_to_wordtab(my_getword(line, 2), &balec, ",");
   nb = -1;
   while (++nb < 3)
   {
-    printf("%d ----- %d \n", nb, nb_argument);
     if (nb < nb_argument)
       {
-	printf("%s \n", arg[nb]);
 	if (arg_register(arg[nb]) == 0)
 	  {
-	    printf ("passe par register \n");
 	    stock_arg->type_arg[nb] = 1;
 	    stock_arg->arg[nb] = my_getnbr_base(arg[nb]+1, "0123456789");
 	  }
@@ -99,12 +95,10 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
 	    stock_arg->type_arg[nb] = 2;
 	    if (arg[nb][1] != ':')
 	      {
-		printf ("direct mais pas label");
 	      stock_arg->arg[nb] = my_getnbr_base(arg[nb]+1, "0123456789");
 	      }
 	      else
 	      {
-		write (1, "add_arg", 7);
 		if ((stock_arg = add_call(arg[nb]+2, stock_arg)) == NULL)
 		  return (NULL);
 		stock_arg->type_arg[nb] += 10;
@@ -120,7 +114,6 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
 	      }
 	      else
 	      {
-		write (1, "add_arg", 7);
 		if ((stock_arg = add_call(arg[nb]+2, stock_arg)) == NULL)
 		  return (NULL);
 		stock_arg->type_arg[nb] += 10;

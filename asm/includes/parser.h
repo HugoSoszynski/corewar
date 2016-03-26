@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Fri Mar 25 06:05:03 2016 
+** Last update Fri Mar 25 13:14:24 2016 
 */
 
 #ifndef	PARSER_H_
@@ -16,7 +16,7 @@
 
 
 t_cmd		*init_first_cmd(void);
-t_cmd		*init_cmd(void);
+t_cmd		*init_cmd(t_cmd *);
 char		**set_tab_part1(void);
 t_pile		*init_pile(void);
 t_pile		*stock_pile_for_call(t_pile *, char *, int);
