@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Sat Mar 26 17:29:02 2016 Sylvain Corsini
+## Last update Sat Mar 26 21:11:30 2016 Hugo SOSZYNSKI
 ##
 
 CC			=	gcc
@@ -15,7 +15,7 @@ RM			=	rm -f
 CFLAGS			+=	-W -Wextra -Wall
 CFLAGS			+=	-Werror
 #CFLAGS			+=	-ansi
-CFLAGS			+=	-pedantic
+#CFLAGS			+=	-pedantic
 CFLAGS			+=	-ggdb3
 CFLAGS			+=	-Iasm/includes
 CFLAGS			+=	-Icorewar/includes
@@ -107,7 +107,8 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 				corewar/sources/my_putnbr.c \
 				corewar/sources/my_strcmp.c \
 				corewar/sources/aff_help.c \
-				corewar/sources/my_init_tab.c
+				corewar/sources/my_init_tab.c \
+				corewar/sources/game/print_champions_states.c
 
 COREWAR_OBJS		=	$(COREWAR_SRCS:.c=.o)
 

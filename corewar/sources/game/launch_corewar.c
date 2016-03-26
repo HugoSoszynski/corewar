@@ -5,10 +5,9 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Fri Mar 25 16:32:35 2016 corsin_a
+** Last update Sat Mar 26 21:14:34 2016 Hugo SOSZYNSKI
 */
 
-#include	<stdio.h>
 #include	"corewar.h"
 
 static int	game_is_not_finished(t_corewar	*corewar)
@@ -18,19 +17,18 @@ static int	game_is_not_finished(t_corewar	*corewar)
 
   if (corewar->cycle_passed < corewar->cycle_to_die)
     return (CONTINUE);
-  printf("NOUVEAU CYCLE\n");
   cpt = 0;
   live = 0;
   while (cpt < corewar->nb_champions)
     {
       if (corewar->champions_alive[cpt] == IS_RUN)
 	{
-	  printf("champion dead : %d\n", cpt);
+	  corewar->champions_alive[cpt] = IS_DEAD;
+	  print_champ_dead(&(corewar->champion[cpt]), cpt);
 	  if ((corewar->process_list =
 	       kill_zombies(corewar->process_list,
 			    corewar->champion[cpt].nb_champion)) == NULL)
 	    return (SUCCESS);
-	  corewar->champions_alive[cpt] = IS_DEAD;
 	}
       else if (corewar->champions_alive[cpt] == IS_ALIVE)
 	{
@@ -40,7 +38,10 @@ static int	game_is_not_finished(t_corewar	*corewar)
       ++cpt;
     }
   if (live == 1 && corewar->nb_champions != 1)
-    return (SUCCESS);
+    {
+      check_winner(corewar);
+      return (SUCCESS);
+    }
   corewar->cycle_passed = 0;
   return (CONTINUE);
 }
@@ -50,10 +51,8 @@ int		launch_corewar(t_corewar	*corewar)
   while (game_is_not_finished(corewar) == CONTINUE)
     {
       execute_process(corewar);
-      printf("\n\t\t\t\tactual cycle %ld\n", corewar->actual_cycle);
       ++corewar->cycle_passed;
       ++corewar->actual_cycle;
-      if (corewar->actual_cycle == 10000) break ;
       if (corewar->live_nb >= NBR_LIVE)
 	{
 	  corewar->live_nb = 0;

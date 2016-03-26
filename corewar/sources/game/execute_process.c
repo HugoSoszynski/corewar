@@ -5,10 +5,9 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:13:18 2016 corsin_a
-** Last update Fri Mar 25 12:14:41 2016 corsin_a
+** Last update Sat Mar 26 18:56:11 2016 Hugo SOSZYNSKI
 */
 
-#include	<stdio.h>
 #include	"op_list.h"
 #include	"corewar.h"
 
@@ -41,8 +40,6 @@ void		execute_process(t_corewar	*corewar)
   process_list = corewar->process_list;
   while (process_list != NULL)
     {
-      printf("champ %d ===> pc %d\n", process_list->process.nb_champion,
-	     process_list->process.pc);
       if (process_list->cycle == -1 &&
 	  check_instruction(corewar, process_list) != SUCCESS)
 	++process_list->process.pc;
@@ -50,11 +47,7 @@ void		execute_process(t_corewar	*corewar)
 	--process_list->cycle;
       else if (process_list->cycle == 0)
 	{
-	  printf("EXEC PROCESS %d : champ = %d\n", process_list->instruction.op,
-		 process_list->process.nb_champion);
-	  /*if (process_list->instruction.op >= OP_LIVE &&
-		process_list->instruction.op <= OP_AFF)*/
-	    OP_TAB[process_list->instruction.op - 1].exec(corewar, process_list);
+	  OP_TAB[process_list->instruction.op - 1].exec(corewar, process_list);
 	  process_list->cycle = -1;
 	}
       process_list = process_list->next;

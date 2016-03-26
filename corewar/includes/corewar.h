@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Sat Mar 26 17:29:39 2016 corsin_a
+** Last update Sat Mar 26 21:13:51 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
@@ -168,5 +168,12 @@ void			copy_args(t_corewar		*corewar,
 				  t_process_list	*process_list);
 int			prepare_op_tab(t_corewar	*corewar);
 void			check_reg(t_process_list	*current);
+void			print_champ_win(t_champion	*champion,
+					int		nb);
+void			print_champ_dead(t_champion	*champion,
+					 int		nb);
+void			print_champ_alive(t_champion	*champion,
+					  int		nb);
+int			check_winner(t_corewar *corewar);
 
 #endif		/* !COREWAR_H_ */

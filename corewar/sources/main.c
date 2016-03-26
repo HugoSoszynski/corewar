@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Sat Mar 26 16:44:25 2016 corsin_a
+** Last update Sat Mar 26 21:30:59 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
@@ -29,15 +29,6 @@ int		main(int 	argc,
     return (aff_help(1));
   if (prepare_corewar(&corewar) != SUCCESS)
     return (ERROR);
-  cpt = 0;
-  #include	<stdio.h>
-  while (cpt < MEM_SIZE)
-    {
-      printf("Ox%.2x ", corewar.mem[cpt]);
-      if ((cpt + 1) % 20 == 0 && cpt != 0)
-	printf("\n");
-      ++cpt;
-    }
   if (launch_corewar(&corewar) != SUCCESS)
     return (ERROR);
   free_processlist(corewar.process_list);
