@@ -5,15 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:03 2016 corsin_a
-** Last update Sat Mar 26 14:09:03 2016 Hugo SOSZYNSKI
+** Last update Sat Mar 26 18:04:29 2016 Hugo SOSZYNSKI
 */
 
-#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_lld(unsigned char opcode)
 {
-  printf("CHECK LLD\n");
   if (opcode != 144 && opcode != 208)
     return (ERROR);
   return (SUCCESS);
@@ -22,7 +20,6 @@ int		check_op_lld(unsigned char opcode)
 void		copy_op_lld(t_corewar *corewar,
 			    t_process_list *current)
 {
-  printf("COPY LLD\n");
   copy_args(corewar, current);
 }
 
@@ -52,10 +49,8 @@ void		exec_op_lld(t_corewar		*corewar,
 {
   int		*reg;
 
-  printf("EXEC LLD\n");
   if (current->instruction.correct)
     {
-      printf("CORRECT LLD\n");
       reg = &(current->process.reg[current->instruction.arg[1] - 1]);
       if (current->instruction.type_arg[0] == 1)
 	*reg = current->process.reg[current->instruction.arg[0] - 1];
@@ -63,7 +58,6 @@ void		exec_op_lld(t_corewar		*corewar,
 	*reg = current->instruction.arg[0];
       else
 	*reg = get_other_nb(corewar, current);
-      printf("LLD REG = %d\n", current->process.reg[current->instruction.arg[1] - 1]);
     }
   current->process.carry = (char)current->instruction.correct;
   move_pc(current);
