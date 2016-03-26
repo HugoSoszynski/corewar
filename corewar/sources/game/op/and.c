@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:27 2016 corsin_a
-** Last update Thu Mar 24 22:04:05 2016 corsin_a
+** Last update Sat Mar 26 11:13:46 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -39,7 +39,7 @@ void		exec_op_and(t_corewar	*corewar,
   (void)corewar;
   if (current->instruction.correct)
     {
-      printf("CORRECT AND\n");    
+      printf("CORRECT AND\n");
       if (current->instruction.type_arg[0] == 1)
 	nb1 = current->process.reg[current->instruction.arg[0] - 1];
       else
@@ -50,6 +50,7 @@ void		exec_op_and(t_corewar	*corewar,
 	nb2 = current->instruction.arg[1];
       reg = &current->process.reg[current->instruction.arg[2] - 1];
       *reg = nb1 & nb2;
+      printf("RESULT AND REG : %d\n", current->process.reg[current->instruction.arg[2] - 1]);
     }
   current->process.carry = (char)current->instruction.correct;
   move_pc(current);

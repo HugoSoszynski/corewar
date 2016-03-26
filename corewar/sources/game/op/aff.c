@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:18 2016 corsin_a
-** Last update Thu Mar 24 22:16:09 2016 corsin_a
+** Last update Fri Mar 25 19:33:30 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -31,16 +31,14 @@ void		exec_op_aff(t_corewar	*corewar,
 			    t_process_list	*current)
 {
   char		car;
-  int		tmp;
 
   printf("EXEC AFF\n");
   (void)corewar;
   if (current->instruction.correct)
     {
       printf("CORRECT AFF\n");
-      tmp = current->process.reg[current->instruction.arg[0] - 1];
-      car = (char)(tmp % 256);
-      write(1, &car, 1);
+      car = (char)(current->process.reg[current->instruction.arg[0] - 1] % 256);
+      write(1, &car, sizeof(char));
     }
   move_pc(current);
 }

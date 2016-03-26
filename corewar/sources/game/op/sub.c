@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:24 2016 corsin_a
-** Last update Fri Mar 25 00:38:09 2016 corsin_a
+** Last update Sat Mar 26 11:16:25 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -47,7 +47,8 @@ void		exec_op_sub(t_corewar	*corewar,
       nb1 = current->process.reg[current->instruction.arg[0] - 1];
       nb2 = current->process.reg[current->instruction.arg[1] - 1];
       reg = &current->process.reg[current->instruction.arg[2] - 1];
-      *reg = nb1 + nb2;
+      *reg = nb1 - nb2;
+      printf("RESULT SUB REG : %d\n", current->process.reg[current->instruction.arg[2] - 1]);
     }
   current->process.carry = (char)current->instruction.correct;
   move_pc(current);

@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:28 2016 corsin_a
-** Last update Thu Mar 24 22:11:59 2016 corsin_a
+** Last update Sat Mar 26 11:14:33 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -50,6 +50,7 @@ void		exec_op_xor(t_corewar	*corewar,
 	nb2 = current->instruction.arg[1];
       reg = &current->process.reg[current->instruction.arg[2] - 1];
       *reg = nb1 ^ nb2;
+      printf("RESULT XOR REG : %d\n", current->process.reg[current->instruction.arg[2] - 1]);
     }
   current->process.carry = (char)current->instruction.correct;
   move_pc(current);
