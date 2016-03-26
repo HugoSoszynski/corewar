@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Fri Mar 25 17:26:49 2016 
+** Last update Sat Mar 26 10:41:53 2016 
 */
 
 #ifndef		ASM_H_
@@ -121,10 +121,6 @@
 # define	IS_LIT_ENDIAN		(check_for_endianess())
 #endif		/* !IS_LIT_ENDIAN */
 
-typedef struct s_list
-{
-  struct s_cmd	*head;
-}		t_list;
 
 typedef struct	s_cmd
 {
@@ -136,7 +132,8 @@ typedef struct	s_cmd
   char		octet_codage;
   int		arg[3];
   char		type_arg[3];
-  struct s_cmd  *head;
+  char		label[3][T_LAB];
+  struct s_cmd	*head;
   struct s_cmd	*next;
   t_pile	*def;
   t_pile	*call;
