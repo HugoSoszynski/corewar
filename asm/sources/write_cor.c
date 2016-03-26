@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 14:40:35 2016 
-** Last update Fri Mar 25 19:29:33 2016 
+** Last update Sat Mar 26 11:06:17 2016 
 */
 
 #include	<unistd.h>
@@ -44,6 +44,22 @@ char		*to_dot_cor(char *filename)
   return (output);
 }
 
+void		write_struct(t_cmd *cmd)
+{
+  int cpt = 1;
+  cmd = cmd->head;
+  while (cmd != NULL)
+    {
+      printf("nous sommes au maillon numero : %d \n", cpt);
+      printf("le type est de %c \n", cmd->type);
+      printf("la ligne de ce maillon est %s et la ligne est de %d \n", cmd->line, cmd->nbr_line);
+      printf("l'opcode est de %d \n la valeur du dot_code_octet %d \n", cmd->opcode, cmd->dot_code_octet);
+      printf("les arg sont %d, %d, %d \n", cmd->arg[0], cmd->arg[1], cmd->arg[2]);
+      printf("les types arg sont %d %d %d \n", cmd->type_arg[0], cmd->type_arg[1], cmd->type_arg[2]);
+      printf(">>>>> END MAILLON <<<<<<<<");
+    }
+}
+
 int		write_cor(t_cmd *cmd, char *filename)
 {
   int		fd;
@@ -55,6 +71,7 @@ int		write_cor(t_cmd *cmd, char *filename)
   
   prog_size = 0;
   cpt = 0;
+  write_struct(cmd);
   if (label_and_prog_size(cmd, &prog_size) == -1)
     return (-1);
   if ((cmd = set_octet_label(cmd)) == NULL)
@@ -69,13 +86,8 @@ int		write_cor(t_cmd *cmd, char *filename)
     return (-1);
   if ((comment = where_comment(cmd)) == NULL)
     return (-1);
-  printf("%s \n", name);
   while (comment[cpt] != NULL)
-    {
-      printf("%s \n", comment[cpt]);
-      cpt++;
-    }
-  printf("%s \n", comment[cpt]);
+    cpt++;
   if ((header = create_cor_header(name, comment, prog_size)) == NULL)
     return (-1);
   if ((write_cor_header(header, fd, filename)) == ERROR)

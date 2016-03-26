@@ -5,7 +5,7 @@
 ** Login   <pillon_m@epitech.net>
 ** 
 ** Started on  Fri Mar 25 02:21:33 2016 
-** Last update Fri Mar 25 19:28:16 2016 
+** Last update Sat Mar 26 10:52:52 2016 
 */
 
 #include	<stddef.h>
@@ -85,9 +85,11 @@ char		**where_comment(t_cmd *cmd)
 {
   char		**comment;
   int		cpt;
+  int		cpt1;
   t_cmd		*check;
 
   cpt = 0;
+  cpt1 = -1;
   check = cmd->head;
   if ((comment = comment_malloc(check->head)) == NULL)
     return (NULL);
@@ -95,7 +97,10 @@ char		**where_comment(t_cmd *cmd)
     {
       if (check->type == TYPE_LINE_COMMENT)
 	{
-	  comment[cpt] = check->line+9;
+	  comment[cpt] = check->line+10;
+	  while (comment[cpt][++cpt1] != '"');
+	  comment[cpt][cpt1] = '\0';
+	  cpt1 = -1;
 	  cpt++;
 	}
       check = check->next;
