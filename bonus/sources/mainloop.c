@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Fri Mar 25 17:01:13 2016 corsin_a
-** Last update Fri Mar 25 17:30:46 2016 corsin_a
+** Last update Sat Mar 26 16:03:39 2016 corsin_a
 */
 
 #include		"corewar.h"
@@ -17,6 +17,7 @@ t_bunny_response	mainloop(void	*_data)
   data = _data;
   if (launch_corewar(&data->corewar) == SUCCESS)
     return (EXIT_ON_SUCCESS);
+  launch_graphics(data);
   bunny_blit(&data->win->buffer,
   	     &data->pix->clipable,
 	     NULL);

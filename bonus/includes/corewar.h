@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Fri Mar 25 17:34:18 2016 corsin_a
+** Last update Sat Mar 26 16:06:10 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -184,5 +184,13 @@ void			copy_args(t_corewar		*corewar,
 				  t_process_list	*process_list);
 int			prepare_op_tab(t_corewar	*corewar);
 void			check_reg(t_process_list	*current);
+void			launch_graphics(t_bonus		*data);
+void			tekreset(t_bunny_pixelarray	*pix,
+				 t_color		*color);
+void			tekpixel(t_bunny_pixelarray	*pix,
+				 t_bunny_position	*pos,
+				 t_color		*color);
+unsigned int		tekgetcolor(t_bunny_pixelarray	*pix,
+				    t_bunny_position	*pos);
 
 #endif		/* !COREWAR_H_ */
