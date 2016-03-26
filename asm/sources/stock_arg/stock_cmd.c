@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Wed Mar 23 16:14:19 2016
-** Last update Fri Mar 25 16:55:28 2016 
+** Last update Sat Mar 26 11:34:00 2016 
 */
 
 #include	<stddef.h>
@@ -92,7 +92,7 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
 	  }
 	else if (arg_direct(arg[nb]) == 0)
 	  {
-	    stock_arg->type_arg[nb] = 2;
+	    stock_arg->type_arg[nb] = T_DIR;
 	    if (arg[nb][1] != ':')
 	      {
 	      stock_arg->arg[nb] = my_getnbr_base(arg[nb]+1, "0123456789");
@@ -106,7 +106,7 @@ t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
 	  }
 	else if (arg_indirect(arg[nb]) == 0)
 	  {
-	    stock_arg->type_arg[nb] = 4;
+	    stock_arg->type_arg[nb] = T_IND;
 	    if (arg[nb][0] != ':')
 	      {
 		printf ("indirect mais pas label");

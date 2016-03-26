@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 19:33:51 2016 
-** Last update Sat Mar 26 10:30:54 2016 
+** Last update Sat Mar 26 11:41:27 2016 
 */
 
 #include	<unistd.h>
@@ -72,6 +72,7 @@ int		write_file(int fd, t_cmd *cmd)
     {
       if (cmd->type == TYPE_LINE_CMD || cmd->type == TYPE_LINE_LABEL_CMD)
 	{
+	  cmd->opcode = cmd->opcode / 2 + 1;
 	  write(fd, &cmd->opcode, 1);
 	  if (cmd->octet_codage != 0)
 	    write(fd, &cmd->octet_codage, 1);

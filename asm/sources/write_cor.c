@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 14:40:35 2016 
-** Last update Sat Mar 26 11:06:17 2016 
+** Last update Sat Mar 26 11:21:15 2016 
 */
 
 #include	<unistd.h>
@@ -51,12 +51,14 @@ void		write_struct(t_cmd *cmd)
   while (cmd != NULL)
     {
       printf("nous sommes au maillon numero : %d \n", cpt);
-      printf("le type est de %c \n", cmd->type);
+      printf("le type est de %d \n", cmd->type);
       printf("la ligne de ce maillon est %s et la ligne est de %d \n", cmd->line, cmd->nbr_line);
       printf("l'opcode est de %d \n la valeur du dot_code_octet %d \n", cmd->opcode, cmd->dot_code_octet);
       printf("les arg sont %d, %d, %d \n", cmd->arg[0], cmd->arg[1], cmd->arg[2]);
       printf("les types arg sont %d %d %d \n", cmd->type_arg[0], cmd->type_arg[1], cmd->type_arg[2]);
-      printf(">>>>> END MAILLON <<<<<<<<");
+      printf(">>>>> END MAILLON <<<<<<<< \n");
+      cmd = cmd->next;
+      cpt++;
     }
 }
 
