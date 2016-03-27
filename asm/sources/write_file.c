@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 19:33:51 2016 
-** Last update Sun Mar 27 14:28:53 2016 
+** Last update Sun Mar 27 16:56:36 2016 
 */
 
 #include	<unistd.h>
@@ -100,6 +100,6 @@ int		write_file(int fd, t_cmd *cmd)
       cmd = cmd->next;
     }
   rescue = rescue->head;
-  /*  free_struct(rescue);*/
+  free_struct(rescue);
   return (0);
 }
