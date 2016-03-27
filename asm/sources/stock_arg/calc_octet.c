@@ -5,15 +5,13 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Thu Mar 24 23:20:29 2016 Grégoire Loens
-** Last update Sun Mar 27 23:21:39 2016 loens_g
+** Last update Sun Mar 27 23:33:21 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
 #include	"asm.h"
 #include	"parser.h"
 #include	"pile_label.h"
-
-#include	<stdio.h>
 
 void		set_octet(t_cmd *arg, t_cmd *call, int nb_octet)
 {

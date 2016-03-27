@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Sun Mar 27 23:28:55 2016 loens_g
+** Last update Sun Mar 27 23:33:03 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdlib.h>
@@ -14,10 +14,6 @@
 #include	"asm.h"
 #include	"parser.h"
 #include	"pile_label.h"
-
-
-#include	<stdio.h>
-
 
 t_pile		*init_pile(void)
 {

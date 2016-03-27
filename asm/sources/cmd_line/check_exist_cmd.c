@@ -5,13 +5,11 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Mon Mar  7 19:23:44 2016 Maxime Pillon
-** Last update Sun Mar 27 23:13:34 2016 loens_g
+** Last update Sun Mar 27 23:32:49 2016 Hugo SOSZYNSKI
 */
 
 #include	"parser.h"
 #include	"asm.h"
-
-#include	<stdio.h>
 
 int		check_exist_cmd(char *line,
 				char **cmd)

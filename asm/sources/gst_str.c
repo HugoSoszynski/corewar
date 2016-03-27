@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Sun Mar 27 23:08:49 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 23:32:19 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdlib.h>
@@ -48,7 +48,6 @@ char		*check_only_space(char *output, char *input, int cpt_output)
     output[0] = '\0';
   free(input);
   input = NULL;
-  printf ("%s \n", output);
   return (output);
 }
 
