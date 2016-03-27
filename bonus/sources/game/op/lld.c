@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:03 2016 corsin_a
-** Last update Sun Mar 27 14:31:36 2016 corsin_a
+** Last update Sun Mar 27 21:20:26 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -37,7 +37,7 @@ static int	get_other_nb(t_corewar		*corewar,
   while (cpt < 4)
     {
       nb = nb << 8;
-      nb += corewar->mem[(current->process.pc + cpt + pt) % MEM_SIZE];
+      nb += corewar->mem[verif_pc(current->process.pc + cpt + pt)];
       ++cpt;
     }
   if (!IS_LIT_ENDIAN)

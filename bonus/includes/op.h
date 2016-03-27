@@ -84,7 +84,7 @@ typedef struct	header_s
  ** live
  */
 
-#define CYCLE_TO_DIE    1    /* nombre de cycle pour etre d\'eclarer mort */
+#define CYCLE_TO_DIE    1536    /* nombre de cycle pour etre d\'eclarer mort */
 #define CYCLE_DELTA     5
 #define NBR_LIVE        40
 

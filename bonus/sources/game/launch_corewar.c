@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Sun Mar 27 07:27:24 2016 corsin_a
+** Last update Sun Mar 27 21:26:15 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -23,11 +23,11 @@ static int	game_is_not_finished(t_corewar	*corewar)
     {
       if (corewar->champions_alive[cpt] == IS_RUN)
 	{
+	  corewar->champions_alive[cpt] = IS_DEAD;
 	  if ((corewar->process_list =
 	       kill_zombies(corewar->process_list,
 			    corewar->champion[cpt].nb_champion)) == NULL)
 	    return (SUCCESS);
-	  corewar->champions_alive[cpt] = IS_DEAD;
 	}
       else if (corewar->champions_alive[cpt] == IS_ALIVE)
 	{
