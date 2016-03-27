@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:13:18 2016 corsin_a
-** Last update Sun Mar 27 16:55:15 2016 corsin_a
+** Last update Sun Mar 27 19:38:59 2016 corsin_a
 */
 
 #include	"op_list.h"
@@ -47,9 +47,7 @@ void		execute_process(t_corewar	*corewar)
 	--process_list->cycle;
       else if (process_list->cycle == 0)
 	{
-	  /*if (process_list->instruction.op >= OP_LIVE &&
-		process_list->instruction.op <= OP_AFF)*/
-	    OP_TAB[process_list->instruction.op - 1].exec(corewar, process_list);
+	  OP_TAB[process_list->instruction.op - 1].exec(corewar, process_list);
 	  process_list->cycle = -1;
 	}
       process_list = process_list->next;

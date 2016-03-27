@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Sun Mar 27 14:32:33 2016 corsin_a
+** Last update Sun Mar 27 19:39:04 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -33,7 +33,6 @@ void		copy_op_live(t_corewar *corewar,
   if (!IS_LIT_ENDIAN)
     my_reverse_bytes(&current->instruction.arg[0], sizeof(int));
   current->instruction.opcode = 0;
-  current->cycle = ((t_op_tab*)(corewar->op_tab))[0].cycle;
 }
 
 void		exec_op_live(t_corewar	*corewar,
