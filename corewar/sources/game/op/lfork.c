@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:55 2016 corsin_a
-** Last update Sat Mar 26 18:03:39 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 20:01:29 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -25,9 +25,9 @@ void		copy_op_lfork(t_corewar *corewar,
   current->instruction.arg[0] = 0;
   while (cpt < 2)
     {
-      current->instruction.arg[0] = current->instruction.arg[0] << 8;
+      current->instruction.arg[0] = (short)(current->instruction.arg[0] << 8);
       current->instruction.arg[0] +=
-      corewar->mem[(current->process.pc + cpt + 1) % MEM_SIZE];
+      (short)corewar->mem[(current->process.pc + cpt + 1) % MEM_SIZE];
       ++cpt;
     }
   if (!IS_LIT_ENDIAN)
@@ -43,7 +43,7 @@ void		exec_op_lfork(t_corewar	*corewar,
   (void)corewar;
   if (current->instruction.correct)
     {
-      if (clone_process(current, current->instruction.arg[0]) != ERROR)
+      if (clone_process(current, (short)current->instruction.arg[0]) != ERROR)
 	current->process.carry = 1;
     }
   current->process.pc = (current->process.pc + 3) % MEM_SIZE;

@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 16:29:54 2016 corsin_a
-** Last update Sat Mar 26 18:57:11 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 16:51:55 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -22,13 +22,16 @@ static int	copy_one_arg(t_corewar		*corewar,
   value = 0;
   while (cpt < type)
     {
-      value = value << 8;
-      value += corewar->mem[(process_list->process.pc + *ptr) % MEM_SIZE];
+      if (type == 2)
+	value = (short)(value << 8);
+      else
+    	value = value << 8;
+      value += corewar->mem[verif_pc(process_list->process.pc + *ptr)];
       ++*ptr;
       ++cpt;
     }
   if (!IS_LIT_ENDIAN)
-    my_reverse_bytes(&value, sizeof(int));
+    my_reverse_bytes(&value, sizeof(type));
   return (value);
 }
 

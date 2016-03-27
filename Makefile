@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Sun Mar 27 12:18:33 2016 
+## Last update Sun Mar 27 20:23:30 2016 Hugo SOSZYNSKI
 ##
 
 CC			=	gcc
@@ -13,9 +13,7 @@ CC			=	gcc
 RM			=	rm -f
 
 CFLAGS			+=	-W -Wextra -Wall
-CFLAGS			+=	-Werror
-#CFLAGS			+=	-ansi
-#CFLAGS			+=	-pedantic
+#CFLAGS			+=	-Werror
 CFLAGS			+=	-ggdb3
 CFLAGS			+=	-Iasm/includes
 CFLAGS			+=	-Icorewar/includes
@@ -63,7 +61,7 @@ ASM_SRCS		=	asm/sources/free_struct.c \
 				asm/sources/cmd_line/check_label.c \
 				asm/sources/cmd_line/check_label_cmd.c \
 				asm/sources/cmd_line/my_getword.c \
-				asm/sources/cmd_line/tab_cmd.c \
+				asm/sources/cmd_line/tab_cmd.c
 
 ASM_OBJS		=	$(ASM_SRCS:.c=.o)
 
@@ -110,12 +108,13 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 				corewar/sources/aff_help.c \
 				corewar/sources/my_init_tab.c \
 				corewar/sources/game/print_champions_states.c \
-				corewar/sources/initialisation/set_address_many.c
+				corewar/sources/initialisation/set_address_many.c \
+				corewar/sources/game/verif_pc.c
 
 COREWAR_OBJS		=	$(COREWAR_SRCS:.c=.o)
 
 
-all:		$(ASM)
+all:		$(ASM) $(COREWAR)
 
 $(ASM):		$(ASM_OBJS)
 		$(CC) $(ASM_OBJS) -o $(ASM) -Iasm/includes

@@ -5,14 +5,14 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:15 2016 corsin_a
-** Last update Sun Mar 27 12:05:49 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 19:56:48 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
 
 int		check_op_st(unsigned char opcode)
 {
-  if (opcode != 96 && opcode != 112)
+  if (opcode != 80 && opcode != 112)
     return (ERROR);
   return (SUCCESS);
 }
@@ -21,32 +21,30 @@ void		copy_op_st(t_corewar *corewar,
 			   t_process_list *current)
 {
   copy_args(corewar, current);
+  check_reg(current);
 }
 
 void		exec_op_st(t_corewar		*corewar,
 			   t_process_list	*current)
 {
   int		nb;
-  int		pt;
-  int		r_nb;
+  short		pt;
+  int		pc;
 
-  r_nb = REG_NUMBER;
   if (current->instruction.correct)
     {
-      nb = current->process.reg[(current->instruction.arg[0] - 1) % r_nb];
+      pc = current->process.pc;
+      nb = current->process.reg[current->instruction.arg[0] - 1];
       if (current->instruction.type_arg[1] == 1)
-	current->process.reg[(current->instruction.arg[1] - 1) % r_nb] = nb;
+	current->process.reg[current->instruction.arg[1] - 1] = nb;
       else
 	{
-	  pt = current->instruction.arg[1];
-	  corewar->mem[(current->process.pc + (pt % IDX_MOD) + 0) % MEM_SIZE] =
-	  nb >> (8 * 3) & 255;
-	  corewar->mem[(current->process.pc + (pt % IDX_MOD) + 1) % MEM_SIZE] =
-	  nb >> (8 * 2) & 255;
-	  corewar->mem[(current->process.pc + (pt % IDX_MOD) + 2) % MEM_SIZE] =
-	  nb >> (8 * 1) & 255;
-	  corewar->mem[(current->process.pc + (pt % IDX_MOD) + 3) % MEM_SIZE] =
-	  nb >> (8 * 0) & 255;
+	  pt = (short)current->instruction.arg[1];
+          pt %= IDX_MOD;
+	  corewar->mem[verif_pc(pc + pt + 0)] = nb >> (8 * 3) & 255;
+	  corewar->mem[verif_pc(pc + pt + 1)] = nb >> (8 * 2) & 255;
+	  corewar->mem[verif_pc(pc + pt + 2)] = nb >> (8 * 1) & 255;
+	  corewar->mem[verif_pc(pc + pt + 3)] = nb >> (8 * 0) & 255;
 	}
     }
   move_pc(current);
