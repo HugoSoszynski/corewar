@@ -5,12 +5,17 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Sun Mar 27 15:41:24 2016 
+** Last update Sun Mar 27 17:37:49 2016 
 */
 
 #include	<stdlib.h>
 #include	"parser.h"
 #include	"asm.h"
+
+
+
+#include	<stdio.h>
+
 
 int		my_isalpha_num(char c)
 {
@@ -28,7 +33,7 @@ int		my_ispace(char c)
   return (0);
 }
 
-char		*check_only_space(char *output)
+char		*check_only_space(char *output, char *input)
 {
   int		cpt;
   int		var;
@@ -43,6 +48,9 @@ char		*check_only_space(char *output)
     }
   if (var == 0)
     output[0] = '\0';
+  printf("2>>>>input>>>>%p<<<<<<<<<<\n", (void *)input); 
+  printf("2>>>>output>>>%p<<<<<<<<<<\n", (void *)output);
+  free(input);
   return (output);
 }
 
@@ -59,6 +67,8 @@ char		*my_isspace(char *input)
   cpt_output = 0;
   if ((output = malloc(sizeof(char) * my_strlen(input) + 1)) == NULL)
     return (NULL);
+  printf("1>>>>input>>>>%p<<<<<<<<<<\n", (void *)input); 
+  printf("1>>>>output>>>%p<<<<<<<<<<\n", (void *)output);
   while (my_ispace(input[cpt_input]) == -1 && input[cpt_input] != '\0')
     cpt_input++;
   while (input[cpt_input] != '\0')
@@ -68,12 +78,12 @@ char		*my_isspace(char *input)
       else if (input[cpt_input] == COMMENT_CHAR || input[cpt_input] == ';')
 	{
 	  output[cpt_output] = '\0';
-	  return (check_only_space(output));
+	  return (check_only_space(output, input));
 	}
       else
 	{
 	  output[cpt_output] = ' ';
-	  while (input[cpt_input] != '\0' && my_ispace(input[cpt_input]) == -1 )
+	  while (input[cpt_input] != '\0' && my_ispace(input[cpt_input]) == -1)
 	    cpt_input++;
 	  cpt_input -= 1;
 	}
@@ -81,6 +91,5 @@ char		*my_isspace(char *input)
       cpt_output++; 
     }
   output[cpt_output] = '\0';
-  /*free(input);*/
-  return (check_only_space(output));
+  return (check_only_space(output, input));
 }

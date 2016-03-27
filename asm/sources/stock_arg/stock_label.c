@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Fri Mar 25 00:01:14 2016 
-** Last update Sat Mar 26 15:03:09 2016 
+** Last update Sun Mar 27 17:00:38 2016 
 */
 
 #include	<stddef.h>
@@ -14,15 +14,8 @@
 #include	"pile_label.h"
 #include	"op.h"
 
-
-
-#include	<stdio.h>
-
-
-
 t_cmd		*stock_label(char *line, t_cmd *cmd)
 {
-  /*  printf("ce qui passe par stok label %s \n", my_getword(line, 1));*/
   if ((cmd->head->def = stock_pile_for_def(cmd->head->def, my_getword(line, 1), cmd->nbr_line)) == NULL)
     return (NULL);
   return (cmd);

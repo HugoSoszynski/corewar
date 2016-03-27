@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 14:40:35 2016 
-** Last update Sun Mar 27 15:08:19 2016 
+** Last update Sun Mar 27 16:35:19 2016 
 */
 
 #include	<unistd.h>
@@ -75,14 +75,15 @@ int		write_cor(t_cmd *cmd, char *filename)
   prog_size = 0;
   cpt = 0;
   cmd = cmd->head;
-  write_struct(cmd);
   /*  printf("%s \n", cmd->call->label_name);
       printf("%s \n", cmd->call->next->label_name);
       printf("%s \n", cmd->def->label_name);
       printf("%s \n", cmd->def->next->label_name);*/
 
+  /*write_struct(cmd);*/
   if (label_and_prog_size(cmd, &prog_size) == -1)
     return (-1);
+  cmd = cmd->head;
   /*
     printf("%s \n", cmd->call->label_name);
     printf("%s \n", cmd->call->next->label_name);

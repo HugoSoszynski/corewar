@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Sat Mar 26 15:02:00 2016 
+** Last update Sun Mar 27 16:19:23 2016 
 */
 
 #include	<stdlib.h>
@@ -79,7 +79,7 @@ t_pile		*stock_pile_for_def(t_pile *def, char *label, int line)
     head = head->next;
   if (head->label_name != NULL)
     {
-      if ((head = add_label(def)) == NULL)
+      if ((head = add_label(head)) == NULL)
 	return (NULL);
       head = head->next;
     }

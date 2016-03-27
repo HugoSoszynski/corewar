@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Sun Mar 27 15:43:06 2016 
+** Last update Sun Mar 27 17:49:36 2016 
 */
 
 #include	<stddef.h>
@@ -16,13 +16,8 @@
 #include	"get_next_line.h"
 #include	"asm.h"
 
-
-
 #include	<stdio.h>
-
-
-/*#include	<stdio.h>
-#include	<unistd.h>
+/*#include	<unistd.h>
 
 void            write_struct(t_cmd *cmd)
 {
@@ -97,8 +92,6 @@ int		parsing(char *line, int nbr_line)
 
   type = 0;
   (void)nbr_line;
-  if ((line = my_isspace(line)) == NULL)
-    return(error_message_parser("epurstr failed line ", nbr_line));
   if ((type = type_of_cmd(line)) == -1)
     return(error_message_line("line ", nbr_line, line));
   if (type == TYPE_LINE_NAME)
@@ -167,8 +160,10 @@ int		verif_cmd_line(int fd, char *filename)
     return (error_message("initialise conflict for stocking argument"));
   while ((line = get_next_line(fd)) != NULL)
     {
+      printf("tototo");
       if ((line = my_isspace(line)) == NULL)
 	return(error_message_parser("epurstr failed line ", nbr_line));
+      /*printf("%p \n", (void *)line);*/
       type = parsing(line, nbr_line);
       if (type == -1 || type == TYPE_LINE_EXTEND)
 	stock = 1;
@@ -182,6 +177,9 @@ int		verif_cmd_line(int fd, char *filename)
 	}
       nbr_line++;
     }
+  stock_arg = stock_arg->head;
+  if (stock == 1)
+    free_struct(stock_arg);
   if (stock == 1)
     return (-1);
   write_cor(stock_arg, filename);

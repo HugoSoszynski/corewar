@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 15:25:08 2016 
-** Last update Sun Mar 27 11:39:41 2016 
+** Last update Sun Mar 27 17:01:42 2016 
 */
 
 #include	<stddef.h>
@@ -44,11 +44,10 @@ int		check_call_exist(t_cmd *cmd)
 	{
 	  if (strcmpend(def->label_name, call->label_name) == 0)
 	    cpt = 1;
-	  else
-	    def = def->next;
+	  def = def->next;
 	}
       if (cpt != 1)
-	return (-1);
+	  return (-1);
       def = cmd->def;
       call = call->next;
       cpt = 0;
@@ -90,6 +89,7 @@ int		label_and_prog_size(t_cmd *cmd, int *prog_size)
   t_cmd		*head;
 
   head = cmd;
+  cmd = cmd->head;
   *prog_size = 0;
   if ((cmd = check_only_label(cmd)) == NULL)
     return (-1);

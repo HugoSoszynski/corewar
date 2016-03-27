@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Thu Mar 24 21:41:06 2016 Grégoire Loens
-** Last update Sun Mar 27 07:19:17 2016 
+** Last update Sun Mar 27 17:00:01 2016 
 */
 
 #include	<unistd.h>
@@ -41,10 +41,12 @@ t_cmd		*set_octet_label(t_cmd *cmd)
 {
   t_cmd		*call;
   t_cmd		*def;
+  t_pile	*definition;
   t_cmd		*arg;
-  
+
   if (cmd != NULL && cmd->head != NULL)
     {
+      definition = cmd->head->def;
       call = cmd->head;
       def  = cmd->head;
       arg = cmd->head;
@@ -54,6 +56,7 @@ t_cmd		*set_octet_label(t_cmd *cmd)
       search_def(call, def);
       set_arg(call, def, arg);
       def = cmd->head;
+      def->def = definition;
       arg = cmd->head;
       call->call = call->call->next;
     }
