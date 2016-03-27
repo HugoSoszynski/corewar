@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Thu Mar 24 21:41:06 2016 Grégoire Loens
-** Last update Sun Mar 27 17:00:01 2016 
+** Last update Sun Mar 27 23:22:35 2016 loens_g
 */
 
 #include	<unistd.h>
@@ -14,12 +14,10 @@
 #include	"parser.h"
 #include	"pile_label.h"
 
-
-#include	<stdio.h>
-
 void		search_def(t_cmd *call, t_cmd *def)
 {
-  while(call->call != NULL && def->def != NULL && strcmpend(call->call->label_name, def->def->label_name) != 0)
+  while(call->call != NULL && def->def != NULL
+	  && strcmpend(call->call->label_name, def->def->label_name) != 0)
     def->def = def->def->next;
 }
 
@@ -33,7 +31,7 @@ void		set_arg(t_cmd *call, t_cmd *def, t_cmd *arg)
     nb_octet = calc_call(call, def, arg);
   else
     nb_octet = calc_def(call, def, arg);
-  set_octet(arg, call, nb_octet); 
+  set_octet(arg, call, nb_octet);
 
 }
 

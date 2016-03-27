@@ -1,11 +1,11 @@
 /*
 ** stock_cmd_extend.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources/stock_arg
-** 
+**
 ** Made by Maxime Pillon
 ** Login   <pillon_m@epitech.net>
-** 
-** Started on  Sun Mar 27 22:14:05 2016 
-** Last update Sun Mar 27 22:44:39 2016 
+**
+** Started on  Sun Mar 27 22:14:05 2016
+** Last update Sun Mar 27 23:24:58 2016 loens_g
 */
 
 #include	<stddef.h>
@@ -36,7 +36,8 @@ char		*case_direct(t_cmd *stock_arg, char **arg, int nb)
   stock_arg->type_arg[nb] = T_DIR;
   if (arg[nb][1] != ':')
     {
-      if (arg[nb][1] != '\0' && arg[nb][1] == '0' && arg[nb][2] != '\0' && arg[nb][2] == 'x'\
+      if (arg[nb][1] != '\0' && arg[nb][1] == '0'
+	  && arg[nb][2] != '\0' && arg[nb][2] == 'x'	\
 	  )
 	stock_arg->arg[nb] = my_getnbr_base(arg[nb]+3, "0123456789ABCDEF");
       else
@@ -56,7 +57,8 @@ char		*case_indirect(t_cmd *stock_arg, char **arg, int nb)
   stock_arg->type_arg[nb] = T_IND;
   if (arg[nb][0] != ':')
     {
-      if (arg[nb][0] != '\0' && arg[nb][0] == '0' && arg[nb][1] != '\0' && arg[nb][1] == 'x'\
+      if (arg[nb][0] != '\0' && arg[nb][0] == '0'
+	  && arg[nb][1] != '\0' && arg[nb][1] == 'x'	\
 	  )
 	stock_arg->arg[nb] = my_getnbr_base(arg[nb]+2, "0123456789");
       else

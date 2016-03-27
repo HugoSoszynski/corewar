@@ -1,11 +1,11 @@
 /*
 ** check_label_cmd.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources/cmd_line
 **
-** Made by
+** Made by pillon_m
 ** Login   <@epitech.net>
 **
-** Started on  Tue Mar  8 16:21:23 2016
-** Last update Fri Mar 25 03:54:45 2016 
+** Started on  Tue Mar  8 16:21:23 2016 Maxime pillon
+** Last update Sun Mar 27 23:14:44 2016 loens_g
 */
 
 #include		"op.h"

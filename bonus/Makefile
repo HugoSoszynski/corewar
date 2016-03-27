@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ##
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Sun Mar 27 21:00:49 2016 Sylvain Corsini
+## Last update Sun Mar 27 23:17:43 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
@@ -75,6 +75,8 @@ COREWAR_SRCS		=	sources/main.c \
 				sources/graphics/show_cycle.c \
 				sources/graphics/show_mem.c \
 				sources/graphics/show_champ.c \
+				sources/graphics/salt.c \
+				sources/graphics/intro.c \
 				sources/my_endianess.c \
 				sources/process_list_utils.c \
 				sources/error.c \
