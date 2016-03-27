@@ -1,11 +1,11 @@
 /*
 ** check_dot_name.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources/cmd_line
-** 
-** Made by 
+**
+** Made by pillon_m
 ** Login   <@epitech.net>
-** 
-** Started on  Tue Mar  8 16:11:56 2016 
-** Last update Wed Mar 23 04:48:56 2016 
+**
+** Started on  Tue Mar  8 16:11:56 2016 Maxime Pillon
+** Last update Sun Mar 27 23:12:42 2016 loens_g
 */
 
 #include	"parser.h"
