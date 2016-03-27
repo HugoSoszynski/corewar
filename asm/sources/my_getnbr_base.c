@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Thu Mar 24 18:58:34 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 23:14:46 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 23:41:02 2016 Sylvain Corsini
 */
 
 static int		check_in_base(char car, const char *base)
@@ -44,6 +44,6 @@ int		my_getnbr_base(char *str, const char *base)
       nb *= base_len;
       nb += idx;
     }
-  if (sign == 1 && (nb *= -1));
+  nb *= (sign == 1) ? (-1) : (1);
   return (nb);
 }

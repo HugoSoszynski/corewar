@@ -5,15 +5,14 @@
 ## Login   <sylvain.corsini@epitech.eu>
 ##
 ## Started on  Sun Mar 27 23:27:48 2016 corsin_a
-## Last update Sun Mar 27 23:35:06 2016 corsin_a
+## Last update Sun Mar 27 23:43:32 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
 
 RM			=	rm -f
 
-CFLAGS			+=	-W -Wextra -Wall
-#CFLAGS			+=	-Werror
+CFLAGS			+=	-W -Wall -Wextra
 CFLAGS			+=	-Iincludes
 
 ASM			=	asm
@@ -29,7 +28,6 @@ ASM_SRCS		=	sources/stock_arg/stock_cmd_extend.c \
 				sources/write_cor.c \
 				sources/write_file.c \
 				sources/stock_arg/calc_octet.c \
-				sources/stock_arg/gst_label.c \
 				sources/stock_arg/set_octet_label.c \
 				sources/stock_arg/stock_cmd.c \
 				sources/stock_arg/stock_code.c \

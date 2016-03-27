@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Sun Mar 27 23:25:06 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 23:30:39 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 23:42:51 2016 Sylvain Corsini
 */
 
 #include	<unistd.h>
@@ -54,7 +54,7 @@ int		write_cor_extend(t_cmd *cmd, char *filename, int *fd, int *prog_size)
     return (-1);
   if ((filename = to_dot_cor(filename)) == NULL)
     return (-1);
-  if ((fd = open(filename, O_CREAT | O_RDONLY | O_WRONLY |
+  if ((*fd = open(filename, O_CREAT | O_RDONLY | O_WRONLY |
 		 O_TRUNC | O_APPEND, S_IWUSR | S_IRUSR | S_IRGRP |
 		 S_IWGRP | S_IROTH)) == -1)
     return (-1);
