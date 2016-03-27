@@ -4,19 +4,14 @@
 ** Made by
 ** Login   <@epitech.net>
 **
-** Started on  Mon Mar 21 17:40:54 2016
-** Last update Sun Mar 27 15:05:52 2016 
+** Started on  Mon Mar 21 17:40:54 2016 Maxime Pillon
+** Last update Sun Mar 27 23:06:07 2016 loens_g
 */
 
 #include	<stdlib.h>
 #include	"parser.h"
 #include	"asm.h"
 #include	"op.h"
-
-
-#include	<stdio.h>
-#include	<unistd.h>
-
 
 int		arg_direct(char *arg_file)
 {
@@ -31,7 +26,8 @@ int		arg_direct(char *arg_file)
     {
       while (arg_file[cpt] != '\0')
 	{
-	  if((arg_file[cpt] < '0' || arg_file[cpt] > '9') && arg_file[cpt] != 'x' && arg_file[cpt] != '-')
+	  if((arg_file[cpt] < '0' || arg_file[cpt] > '9')
+	     && arg_file[cpt] != 'x' && arg_file[cpt] != '-')
 	    return (-1);
 	  else
 	    cpt++;
@@ -78,9 +74,12 @@ int		arg_register(char *arg_file)
   else
     {
      cpt++;
-      if ((arg_file[cpt] >= '1' && arg_file[cpt] <= '9' && arg_file[cpt + 1] == '\0'))
+      if ((arg_file[cpt] >= '1'
+	   && arg_file[cpt] <= '9' && arg_file[cpt + 1] == '\0'))
 	return (0);
-      else if (arg_file[cpt] == '1' && (arg_file[cpt + 1] >= '0' && arg_file[cpt + 1] <= '6') && arg_file[cpt + 2] == '\0')
+      else if (arg_file[cpt] == '1' && (arg_file[cpt + 1] >= '0'
+					&& arg_file[cpt + 1] <= '6')
+	       && arg_file[cpt + 2] == '\0')
 	return (0);
       else
 	return (-1);

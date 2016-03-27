@@ -4,14 +4,15 @@
 ** Made by
 ** Login   <@epitech.net>
 **
-** Started on  Mon Mar  7 16:10:58 2016
-** Last update Sun Mar 27 14:45:16 2016 
+** Started on  Mon Mar  7 16:10:58 2016 Maxime Pillon
+** Last update Sun Mar 27 23:08:28 2016 loens_g
 */
 
 #include	<stddef.h>
+#include	<stdlib.h>
 #include	"parser.h"
 #include	"asm.h"
-#include	<stdlib.h>
+
 
 void		free_check_validity(char **tab1, char **tab2, int limit1, int limit2)
 {
@@ -47,15 +48,14 @@ int		check_validity(char *line, char **cmd)
   while (cpt < nb_arg_have)
     {
       if ((check_one_arg(arg_of_cmd[cpt], arg_of_cmd_tab[cpt])) == -1)
-	return (error_message_parser1("You have an error for your argument number ", cpt+1));
+	return (error_message_parser1
+	("You have an error for your argument number ", cpt+1));
       cpt++;
     }
   free(arg);
   free_check_validity(arg_of_cmd_tab, arg_of_cmd, nb_arg_need, nb_arg_have);
   return (0);
 }
-
-/* quand asm retestable svp changer la ligne check_exist_cmd elle permet une multiple definition de fonction c'est la merde oublie pas connard de pillon ou de loens de merde */
 
 int		check_cmd(char *line)
 {
