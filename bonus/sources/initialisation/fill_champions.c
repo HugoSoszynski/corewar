@@ -5,9 +5,11 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 22:09:36 2016 Hugo SOSZYNSKI
-** Last update Tue Mar 22 22:33:02 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 06:36:13 2016 corsin_a
 */
 
+#include	<unistd.h>
+#include	<sys/types.h>
 #include	"corewar.h"
 
 static void	set_address_one_2(t_corewar	*corewar,
@@ -62,12 +64,14 @@ int		fill_champions(t_corewar *corewar)
   tmp = 666;
   cpt = -1;
   nb_set = 0;
+  srand(getpid());
   while (++cpt < corewar->nb_champions)
     {
       if (corewar->champion[cpt].nb_champion == -1)
 	{
 	  corewar->champion[cpt].nb_champion = tmp;
 	  tmp = (tmp * 666) % 9999;
+	  corewar->champion[cpt].color = rand() % BLACK;
 	}
       if (corewar->champion[cpt].address != -1)
 	++nb_set;

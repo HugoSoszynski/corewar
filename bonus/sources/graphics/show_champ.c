@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Sun Mar 27 05:42:29 2016 corsin_a
-** Last update Sun Mar 27 06:10:31 2016 corsin_a
+** Last update Sun Mar 27 07:12:18 2016 corsin_a
 */
 
 #include		<stdio.h>
@@ -23,9 +23,9 @@ void			show_champ(t_bonus	*data)
   while (cpt < data->corewar.nb_champions)
     {
       pos.y = 455;
-      color.full = 4294440704;
-      sprintf(str, "%s\n\nNumber : %d", data->corewar.champion[cpt].header.prog_name,
-	      data->corewar.champion[cpt].nb_champion);
+      color.full = data->corewar.champion[cpt].color;
+      sprintf(str, "%s\n\nNumber : %d\nProcessus : %d", data->corewar.champion[cpt].header.prog_name,
+	      data->corewar.champion[cpt].nb_champion, data->corewar.champion[cpt].nb_process);
       tektext(data, &pos, str, &color);
       pos.y += 100;
       if (data->corewar.champions_alive[cpt] == IS_DEAD)
@@ -33,10 +33,15 @@ void			show_champ(t_bonus	*data)
 	  color.full = RED;
 	  tektext(data, &pos, "DEAD", &color);
 	}
-      else
+      else if (data->corewar.champions_alive[cpt] == IS_ALIVE)
 	{
 	  color.full = GREEN;
 	  tektext(data, &pos, "ALIVE", &color);
+	}
+      else
+	{
+	  color.full = YELLOW;
+      	  tektext(data, &pos, "WAITING", &color);
 	}
       pos.x += 300;
       ++cpt;

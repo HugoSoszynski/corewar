@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 12:03:44 2016 corsin_a
-** Last update Tue Mar 22 14:07:13 2016 corsin_a
+** Last update Sun Mar 27 06:45:02 2016 corsin_a
 */
 
 #include		<sys/types.h>
@@ -52,6 +52,7 @@ static int		finish_init(t_corewar	*corewar,
     return (ERROR);
   corewar->champion[cpt].address = options->champion[cpt].ad;
   corewar->champion[cpt].nb_champion = options->champion[cpt].nb;
+  corewar->champion[cpt].nb_process = 1;
   return (SUCCESS);
 }
 
@@ -71,10 +72,8 @@ int			init_champ(t_corewar	*corewar,
 	return (error_file("File ", options->champion[cpt].name, " : wrong file size"));
       if (IS_LIT_ENDIAN)
 	{
-	  my_reverse_bytes(&(corewar->champion[cpt].header.magic),
-			   sizeof(int));
-          my_reverse_bytes(&(corewar->champion[cpt].header.prog_size),
-			   sizeof(int));
+	  my_reverse_bytes(&(corewar->champion[cpt].header.magic), sizeof(int));
+          my_reverse_bytes(&(corewar->champion[cpt].header.prog_size), sizeof(int));
 	}
       if (corewar->champion[cpt].header.magic != COREWAR_EXEC_MAGIC)
 	return (error_file("", options->champion[cpt].name, " is not a corewar executable"));

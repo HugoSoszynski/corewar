@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 05:45:40 2016 corsin_a
+** Last update Sun Mar 27 06:44:12 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -60,6 +60,7 @@ typedef struct		s_process
   char			carry;
   unsigned int		pc;
   unsigned int		nb_champion;
+  int			cpt;
 }			t_process;
 
 typedef struct		s_process_list
@@ -76,6 +77,8 @@ typedef struct		s_champion
   unsigned char		*prog;
   int			address;
   int			nb_champion;
+  unsigned int		color;
+  unsigned int		nb_process;
 }			t_champion;
 
 typedef struct		s_corewar

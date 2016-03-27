@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:44:00 2016 corsin_a
-** Last update Sun Mar 27 06:24:55 2016 corsin_a
+** Last update Sun Mar 27 06:34:02 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -26,7 +26,7 @@ void		prepare_mem(t_corewar	*corewar)
 	  corewar->mem[(cpt_prog + corewar->champion[cpt].address) % MEM_SIZE]
 	  = corewar->champion[cpt].prog[cpt_prog];
 	  corewar->mem_champ[(cpt_prog + corewar->champion[cpt].address) % MEM_SIZE]
-	  = cpt + 1;
+	  = corewar->champion[cpt].color;
 	  ++cpt_prog;
 	}
       ++cpt;

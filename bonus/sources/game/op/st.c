@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:15 2016 corsin_a
-** Last update Sun Mar 27 03:59:23 2016 corsin_a
+** Last update Sun Mar 27 06:57:39 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -47,6 +47,14 @@ void		exec_op_st(t_corewar		*corewar,
 	  nb >> (8 * 1) & 255;
 	  corewar->mem[(pc + (pt % IDX_MOD) + 3) % MEM_SIZE] =
 	  nb >> (8 * 0) & 255;
+          corewar->mem_champ[(pc + (pt % IDX_MOD) + 0) % MEM_SIZE] =
+          corewar->champion[current->process.cpt].color;
+          corewar->mem_champ[(pc + (pt % IDX_MOD) + 1) % MEM_SIZE] =
+          corewar->champion[current->process.cpt].color;
+          corewar->mem_champ[(pc + (pt % IDX_MOD) + 2) % MEM_SIZE] =
+          corewar->champion[current->process.cpt].color;
+          corewar->mem_champ[(pc + (pt % IDX_MOD) + 3) % MEM_SIZE] =
+          corewar->champion[current->process.cpt].color;
 	}
     }
   move_pc(current);

@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Sun Mar 27 04:07:00 2016 corsin_a
-** Last update Sun Mar 27 06:24:31 2016 corsin_a
+** Last update Sun Mar 27 06:42:29 2016 corsin_a
 */
 
 #include		"corewar.h"
@@ -45,10 +45,10 @@ static void		print_mem(t_bonus	*data)
   pos.y = 89;
   while (cpt < MEM_SIZE)
     {
-      if (data->corewar.mem_champ[cpt] == 0)
-	color.full = 4285945600;
-      else
-	color.full = WHITE;
+      color.full = data->corewar.mem_champ[cpt];
+      color.argb[0] *= 0.5;
+      color.argb[1] *= 0.5;
+      color.argb[2] *= 0.5;
       if (cpt % 128 == 0 && cpt != 0)
 	{
 	  pos.x = 33;
@@ -70,6 +70,7 @@ static void		print_process(t_bonus	*data)
   current = data->corewar.process_list;
   while (current != NULL)
     {
+      color.full = data->corewar.champion[current->process.cpt].color;
       pos.x = current->process.pc % 128 * 7 + 33;
       pos.y = current->process.pc / 128 * 7 + 89;
       put_octet(data, &pos, &color);

@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 03:13:57 2016 corsin_a
+** Last update Sun Mar 27 07:11:06 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -25,6 +25,10 @@ static void	free_corewar(t_bonus	*data)
   free(data->corewar.op_tab);
   bunny_stop(data->win);
   bunny_delete_clipable(&data->pix->clipable);
+  bunny_delete_clipable(&data->bg->clipable);
+  bunny_delete_clipable(&data->cadre->clipable);
+  bunny_delete_clipable(&data->titre->clipable);
+  bunny_delete_clipable(&data->font->clipable);
 }
 
 int		main(int 	argc,
@@ -49,7 +53,7 @@ int		main(int 	argc,
   bunny_set_key_response(key);
   bunny_set_loop_main_function(mainloop);
   bunny_loop(data.win, 250, &data);
-  free_processlist(data.corewar.process_list);
+  /*free_processlist(data.corewar.process_list);*/
   free_corewar(&data);
   return (SUCCESS);
 }

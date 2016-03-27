@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:55 2016 corsin_a
-** Last update Sun Mar 27 03:58:27 2016 corsin_a
+** Last update Sun Mar 27 06:59:58 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -45,6 +45,9 @@ void		exec_op_lfork(t_corewar	*corewar,
     {
       if (clone_process(current, current->instruction.arg[0]) != ERROR)
 	current->process.carry = 1;
+      ++corewar->champion[current->process.cpt].nb_process;
+      corewar->mem_champ[(current->process.pc + current->instruction.arg[0]) % MEM_SIZE] =
+      corewar->champion[current->process.cpt].color;
     }
   current->process.pc = (current->process.pc + 3) % MEM_SIZE;
 }

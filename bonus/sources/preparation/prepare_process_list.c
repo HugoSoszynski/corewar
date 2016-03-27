@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:45:08 2016 corsin_a
-** Last update Thu Mar 24 11:10:00 2016 corsin_a
+** Last update Sun Mar 27 06:40:20 2016 corsin_a
 */
 
 
@@ -13,7 +13,8 @@
 
 #include		"corewar.h"
 
-static t_process_list	*create_process_list(t_champion		*champion)
+static t_process_list	*create_process_list(t_champion		*champion,
+					     int		pt)
 {
   t_process_list	*process_list;
   int			cpt;
@@ -24,6 +25,7 @@ static t_process_list	*create_process_list(t_champion		*champion)
       return (NULL);
     }
   process_list->cycle = -1;
+  process_list->process.cpt = pt;
   process_list->instruction.opcode = 0;
   process_list->process.carry = 0;
   process_list->process.pc = champion->address;
@@ -43,12 +45,12 @@ int			prepare_process_list(t_corewar		*corewar)
   t_process_list	*process_list;
 
   cpt = 1;
-  if ((process_list = create_process_list(&corewar->champion[0])) == NULL)
+  if ((process_list = create_process_list(&corewar->champion[0], 0)) == NULL)
     return (ERROR);
   tmp = process_list;
   while (cpt < corewar->nb_champions)
     {
-      if ((tmp->next = create_process_list(&corewar->champion[cpt])) == NULL)
+      if ((tmp->next = create_process_list(&corewar->champion[cpt], cpt)) == NULL)
 	return (ERROR);
       corewar->champions_alive[cpt] = IS_RUN;
       tmp = tmp->next;
