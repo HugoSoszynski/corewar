@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:55 2016 corsin_a
-** Last update Sun Mar 27 20:01:29 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 21:44:44 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -27,14 +27,11 @@ void		copy_op_lfork(t_corewar *corewar,
     {
       current->instruction.arg[0] = (short)(current->instruction.arg[0] << 8);
       current->instruction.arg[0] +=
-      (short)corewar->mem[(current->process.pc + cpt + 1) % MEM_SIZE];
+      corewar->mem[verif_pc(current->process.pc + cpt + 1)];
       ++cpt;
     }
   if (!IS_LIT_ENDIAN)
-    my_reverse_bytes(&current->instruction.arg[0], sizeof(int));
-  current->instruction.opcode = 0;
-  current->instruction.correct = false;
-  current->cycle = ((t_op_tab*)(corewar->op_tab))[0].cycle;
+    my_reverse_bytes(&current->instruction.arg[0], sizeof(short));
 }
 
 void		exec_op_lfork(t_corewar	*corewar,

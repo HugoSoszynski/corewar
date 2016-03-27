@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Sun Mar 27 20:14:40 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 21:46:54 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -27,7 +27,7 @@ void		copy_op_live(t_corewar *corewar,
     {
       current->instruction.arg[0] = current->instruction.arg[0] << 8;
       current->instruction.arg[0] +=
-      corewar->mem[(current->process.pc + cpt + 1) % MEM_SIZE];
+      corewar->mem[verif_pc(current->process.pc + cpt + 1)];
       ++cpt;
     }
   if (!IS_LIT_ENDIAN)

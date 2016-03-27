@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:55 2016 corsin_a
-** Last update Sun Mar 27 21:20:51 2016 corsin_a
+** Last update Sun Mar 27 21:44:37 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -32,7 +32,6 @@ void		copy_op_lfork(t_corewar *corewar,
     }
   if (!IS_LIT_ENDIAN)
     my_reverse_bytes(&current->instruction.arg[0], sizeof(short));
-  current->instruction.opcode = 0;
 }
 
 void		exec_op_lfork(t_corewar	*corewar,
