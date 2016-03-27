@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Sat Mar 26 21:11:30 2016 Hugo SOSZYNSKI
+## Last update Sun Mar 27 00:45:55 2016 Hugo SOSZYNSKI
 ##
 
 CC			=	gcc
@@ -108,7 +108,8 @@ COREWAR_SRCS		=	corewar/sources/main.c \
 				corewar/sources/my_strcmp.c \
 				corewar/sources/aff_help.c \
 				corewar/sources/my_init_tab.c \
-				corewar/sources/game/print_champions_states.c
+				corewar/sources/game/print_champions_states.c \
+				corewar/sources/initialisation/set_address_many.c
 
 COREWAR_OBJS		=	$(COREWAR_SRCS:.c=.o)
 
