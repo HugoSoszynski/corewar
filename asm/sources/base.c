@@ -5,15 +5,34 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Tue Mar 22 18:30:56 2016 
-** Last update Wed Mar 23 05:01:15 2016 
+** Last update Sun Mar 27 11:07:58 2016 
 */
 
 #include	"op.h"
 #include	"asm.h"
 #include	"parser.h"
 
+int             my_strcmp(char *str1, char *str2)
+{
+  int           cpt;
 
-#include	<stdio.h>
+  cpt = 0;
+  while (str1[cpt] && str2[cpt] && str1[cpt] == str2[cpt])
+    ++cpt;
+  if (!str2[cpt] && (str1[cpt] == ' ' || str1[cpt] == '\0'))
+    return (0);
+  return (-1);
+}
+
+int             my_strlen(const char *str)
+{
+  int           i;
+
+  i = 0;
+  while (str[i] != '\0')
+    i++;
+  return (i);
+}
 
 int		my_islabelchar(char c)
 {

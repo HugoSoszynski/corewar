@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Thu Mar 24 18:58:34 2016 Hugo SOSZYNSKI
-** Last update Sat Mar 26 19:00:24 2016 
+** Last update Sun Mar 27 15:31:45 2016 
 */
 
 static int		check_in_base(char car, const char *base)
@@ -19,14 +19,21 @@ static int		check_in_base(char car, const char *base)
   return (1);
 }
 
-unsigned char		my_getnbr_base(char *str, const char *base)
+int		my_getnbr_base(char *str, const char *base)
 {
-  unsigned char		nb;
+  int	       		nb;
+  int			sign;
   int			cpt;
   int			idx;
   int			base_len;
 
   base_len = -1;
+  sign = 0;
+  if (str[0] == '-')
+    {
+      sign = 1;
+      str++;
+    }
   while (base[++base_len] != '\0');
   nb = 0;
   cpt = -1;
@@ -37,5 +44,7 @@ unsigned char		my_getnbr_base(char *str, const char *base)
       nb *= base_len;
       nb += idx;
     }
+  if (sign == 1)
+    nb *= -1;
   return (nb);
 }

@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Tue Mar  8 16:05:30 2016
-** Last update Wed Mar 23 04:50:38 2016
+** Last update Sun Mar 27 14:56:44 2016 
 */
 
 #include	<stdlib.h>
@@ -14,10 +14,6 @@
 
 char		**set_cmd_part3(char **cmd)
 {
-  if ((cmd[20] = my_strdup("sti")) == NULL)
-    return (NULL);
-  if ((cmd[21] = my_strdup("r,r/d/i,r/d")) == NULL)
-    return (NULL);
   if ((cmd[22] = my_strdup("fork")) == NULL)
     return (NULL);
   if ((cmd[23] = my_strdup("d")) == NULL)
@@ -47,8 +43,6 @@ char		**set_cmd_part3(char **cmd)
 
 char		**set_cmd_part2(char **cmd)
 {
-  if ((cmd[9] = my_strdup("r,r,r")) == NULL)
-    return (NULL);
   if  ((cmd[10] = my_strdup("and")) == NULL)
     return (NULL);
   if ((cmd[11] = my_strdup("r/d/i,r/d/i,r")) == NULL)
@@ -69,6 +63,10 @@ char		**set_cmd_part2(char **cmd)
     return (NULL);
   if ((cmd[19] = my_strdup("r/d/i,r/d,r")) == NULL)
     return (NULL);
+  if ((cmd[20] = my_strdup("sti")) == NULL)
+    return (NULL);
+  if ((cmd[21] = my_strdup("r,r/d/i,r/d")) == NULL)
+    return (NULL);
   return (set_cmd_part3(cmd));
 }
 
@@ -87,7 +85,7 @@ char		**set_cmd_part1()
     return (NULL);
  if ((cmd[4] = my_strdup("st")) == NULL)
     return (NULL);
- if ((cmd[5] = my_strdup("r,d/r")) == NULL)
+ if ((cmd[5] = my_strdup("r,i/r")) == NULL)
     return (NULL);
  if ((cmd[6] = my_strdup("add")) == NULL)
     return (NULL);
@@ -95,5 +93,7 @@ char		**set_cmd_part1()
     return (NULL);
  if ((cmd[8] = my_strdup("sub")) == NULL)
     return (NULL);
-  return (set_cmd_part2(cmd));
+  if ((cmd[9] = my_strdup("r,r,r")) == NULL)
+    return (NULL);
+ return (set_cmd_part2(cmd));
 }

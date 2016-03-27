@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Sat Mar 26 18:06:09 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 13:59:23 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -29,6 +29,23 @@ void		copy_op_sti(t_corewar *corewar,
   current->instruction.opcode = temp;
 }
 
+static void	set_args_to_exec(t_process_list *current,
+				 int *nb1, int *nb2, int *value)
+{
+  int		r_nb;
+
+  r_nb = REG_NUMBER;
+  *value = current->process.reg[(current->instruction.arg[0] - 1) % r_nb];
+  if (current->instruction.type_arg[1] == 1)
+    *nb1 = current->process.reg[(current->instruction.arg[1] - 1) % r_nb];
+  else
+    *nb1 = current->instruction.arg[1];
+  if (current->instruction.type_arg[2] == 1)
+    *nb2 = current->process.reg[(current->instruction.arg[2] - 1) % r_nb];
+  else
+    *nb2 = current->instruction.arg[2];
+}
+
 void		exec_op_sti(t_corewar	*corewar,
 			    t_process_list	*current)
 {
@@ -39,17 +56,9 @@ void		exec_op_sti(t_corewar	*corewar,
 
   if (current->instruction.correct)
     {
-      value = current->process.reg[current->instruction.arg[0] - 1];
-      if (current->instruction.type_arg[1] == 1)
-	nb1 = current->process.reg[current->instruction.arg[1] - 1];
-      else
-	nb1 = current->instruction.arg[1];
-      if (current->instruction.type_arg[2] == 1)
-	nb2 = current->process.reg[current->instruction.arg[2] - 1];
-      else
-	nb2 = current->instruction.arg[2];
+      set_args_to_exec(current, &nb1, &nb2, &value);
       pc = current->process.pc;
-      if (current->instruction.type_arg[1] == 2)
+      /*if (current->instruction.type_arg[1] == 2)*/
 	nb1 %= IDX_MOD;
       corewar->mem[(pc + nb1 + nb2 + 0) % MEM_SIZE] = value >> (8 * 3) & 255;
       corewar->mem[(pc + nb1 + nb2 + 1) % MEM_SIZE] = value >> (8 * 2) & 255;

@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:55:26 2016 corsin_a
-** Last update Sat Mar 26 18:02:22 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 12:20:31 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -31,6 +31,17 @@ void		exec_op_add(t_corewar	*corewar,
   int		*reg;
 
   (void)corewar;
+  if (current->instruction.arg[0] <= 0 ||
+      current->instruction.arg[0] > REG_NUMBER ||
+      current->instruction.arg[1] <= 0 ||
+      current->instruction.arg[1] > REG_NUMBER ||
+      current->instruction.arg[2] <= 0 ||
+      current->instruction.arg[2] > REG_NUMBER)
+    {
+      current->process.carry = 0;
+      move_pc(current);
+      return ;
+    }
   if (current->instruction.correct)
     {
       nb1 = current->process.reg[current->instruction.arg[0] - 1];

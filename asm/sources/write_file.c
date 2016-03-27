@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 19:33:51 2016 
-** Last update Sun Mar 27 03:12:24 2016 
+** Last update Sun Mar 27 14:28:53 2016 
 */
 
 #include	<unistd.h>
@@ -14,9 +14,7 @@
 #include	"parser.h"
 #include	"op.h"
 
-
 #include	<stdio.h>
-
 
 void		write_arg(int fd, t_cmd *cmd)
 {
@@ -25,8 +23,6 @@ void		write_arg(int fd, t_cmd *cmd)
   cpt = -1;
   if (cmd->opcode == (OP_STI / 2 + 1))
     {
-      printf("%s \n", "icicici");
-      printf("%d \n", cmd->arg[1]);
       write(fd, &(cmd->arg[0]), 1);
       my_reverse_bytes(&(cmd->arg[1]), 2);
       my_reverse_bytes(&(cmd->arg[2]), 2);
@@ -71,16 +67,22 @@ void		write_dot_code(int fd, t_cmd *cmd)
   unsigned char	c;
   
   cpt = 0;
+  printf("%s \n", cmd->line);
   while (cmd->line[cpt] != '\0')
     {
       c = my_getnbr_base(&(cmd->line[cpt]), "0123456789ABCDEF");
-      write(fd, &c, 1);
-      cpt += 3;
+      write(fd, &c, 1); 
+      if (cmd->line[cpt + 1] != '\0' && cmd->line[cpt + 2] != '\0' && cmd->line[cpt + 3] != '\0')
+	cpt += 3;
+      else
+	return ;
     }
 }
 
 int		write_file(int fd, t_cmd *cmd)
 {
+  t_cmd		*rescue;
+
   cmd = cmd->head;
   while (cmd != NULL)
     {
@@ -94,7 +96,10 @@ int		write_file(int fd, t_cmd *cmd)
 	}
       else if (cmd->type == TYPE_LINE_CODE)
 	write_dot_code(fd, cmd);
+      rescue = cmd;
       cmd = cmd->next;
     }
+  rescue = rescue->head;
+  /*  free_struct(rescue);*/
   return (0);
 }

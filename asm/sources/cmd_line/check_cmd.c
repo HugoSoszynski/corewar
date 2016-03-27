@@ -5,15 +5,27 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Mon Mar  7 16:10:58 2016
-** Last update Fri Mar 25 04:22:00 2016 
+** Last update Sun Mar 27 14:45:16 2016 
 */
 
 #include	<stddef.h>
 #include	"parser.h"
 #include	"asm.h"
+#include	<stdlib.h>
 
-#include	<unistd.h>
-#include	<stdio.h>
+void		free_check_validity(char **tab1, char **tab2, int limit1, int limit2)
+{
+  int		cpt;
+
+  cpt = -1;
+  while (++cpt < limit1)
+    free(tab1[cpt]);
+  free(tab1);
+  cpt = -1;
+  while (++cpt < limit2)
+    free(tab2[cpt]);
+  free(tab2);
+}
 
 int		check_validity(char *line, char **cmd)
 {
@@ -38,6 +50,8 @@ int		check_validity(char *line, char **cmd)
 	return (error_message_parser1("You have an error for your argument number ", cpt+1));
       cpt++;
     }
+  free(arg);
+  free_check_validity(arg_of_cmd_tab, arg_of_cmd, nb_arg_need, nb_arg_have);
   return (0);
 }
 
@@ -53,14 +67,16 @@ int		check_cmd(char *line)
   cmd = set_cmd_part1();
   word = my_getword(line, 1);
   if (check_exist_cmd(word, cmd) == -1)
-    return (-1);
+    return (error_message("no function declared at line "));
   while ((word = my_getword(line, word_nbr)) != NULL)
     {
       if (check_exist_cmd(word, cmd) == 0)
-	return (error_message("too much function declaration on at line"));
+	return (error_message("too much function declaration at line"));
       word_nbr++;
     }
   if (check_validity(line, cmd) == -1)
     return (-1);
+  free(word);
+  free_tab_cmd(cmd);
   return (0);
 }
