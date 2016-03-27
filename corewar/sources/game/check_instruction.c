@@ -5,29 +5,26 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 02:04:14 2016 corsin_a
-** Last update Sat Mar 26 18:55:28 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 20:50:09 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
 #include	"op_list.h"
 
-int		check_instruction(t_corewar	*corewar,
-				  t_process_list	*process_list)
+int		checkinstruction(t_corewar	*corewar,
+				 t_process_list	*process_list)
 {
   int		op;
-  char		opcode;
 
   my_init_tab(&(process_list->instruction), sizeof(t_instruction));
   op = corewar->mem[process_list->process.pc];
   process_list->instruction.op = op;
   if (op < OP_LIVE || op > OP_AFF)
+    return (ERROR);
+  process_list->instruction.opcode =
+  corewar->mem[verif_pc(process_list->process.pc + 1)];
+  if (OP_TAB[op - 1].check(process_list->instruction.opcode) == SUCCESS)
     {
-      return (ERROR);
-    }
-  opcode = corewar->mem[(process_list->process.pc + 1) % MEM_SIZE];
-  if (OP_TAB[op - 1].check(opcode) == SUCCESS)
-    {
-      process_list->instruction.opcode = opcode;
       OP_TAB[op - 1].copy(corewar, process_list);
       process_list->instruction.correct = true;
     }

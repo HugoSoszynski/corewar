@@ -5,11 +5,10 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 17:42:18 2016 corsin_a
-** Last update Tue Mar 22 15:20:32 2016 corsin_a
+** Last update Sun Mar 27 21:12:50 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
-#include	<stdio.h>
 #include	"corewar.h"
 
 static void	clean_champion(t_options_champion	*champion)

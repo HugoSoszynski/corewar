@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 00:44:55 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 20:51:30 2016 Hugo SOSZYNSKI
 */
 
 #ifndef			COREWAR_H_
@@ -158,8 +158,8 @@ int			clone_process(t_process_list	*src,
 void			execute_process(t_corewar	*corewar);
 void			prepare_mem(t_corewar		*corewar);
 int			prepare_process_list(t_corewar	*corewar);
-int			check_instruction(t_corewar	*corewar,
-					  t_process_list	*process_list);
+int			checkinstruction(t_corewar	*corewar,
+					 t_process_list	*process_list);
 void 			move_pc(t_process_list		*process_list);
 t_process_list		*kill_zombies(t_process_list 	*list,
 				      unsigned int 	nb_champion);
@@ -176,5 +176,6 @@ void			print_champ_alive(t_champion	*champion,
 					  int		nb);
 int			check_winner(t_corewar		*corewar);
 void			address_2_setand_left(t_corewar	*corewar);
+int			verif_pc(int			pc);
 
 #endif		/* !COREWAR_H_ */

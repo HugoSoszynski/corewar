@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:44:00 2016 corsin_a
-** Last update Wed Mar 23 03:44:41 2016 corsin_a
+** Last update Sun Mar 27 21:07:09 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -23,7 +23,7 @@ void		prepare_mem(t_corewar	*corewar)
       while (cpt_prog < corewar->champion[cpt].header.prog_size)
 	{
 	  corewar->mem[(cpt_prog + corewar->champion[cpt].address) % MEM_SIZE]
-	  = corewar->champion[cpt].prog[cpt_prog];
+	    = corewar->champion[cpt].prog[cpt_prog];
 	  ++cpt_prog;
 	}
       ++cpt;

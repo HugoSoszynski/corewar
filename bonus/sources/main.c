@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 12:28:56 2016 corsin_a
+** Last update Sun Mar 27 20:47:55 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -23,26 +23,33 @@ static void	free_corewar(t_bonus	*data)
       ++cpt;
     }
   free(data->corewar.op_tab);
-  /*
   bunny_stop(data->win);
   bunny_delete_clipable(&data->pix->clipable);
   bunny_delete_clipable(&data->bg->clipable);
   bunny_delete_clipable(&data->cadre->clipable);
   bunny_delete_clipable(&data->titre->clipable);
   bunny_delete_clipable(&data->font->clipable);
-  */
+}
+
+static void	start_game(t_bonus	*data)
+{
+  bunny_set_key_response(key);
+  bunny_set_loop_main_function(mainloop);
+  bunny_loop(data->win, 250, data);
+  bunny_set_loop_main_function(leaderboard);
+  bunny_loop(data->win, 250, data);
 }
 
 int		main(int 	argc,
-		     char 	*argv[])
+		     char 	*argv[],
+		     char	*arge[])
 {
   t_bonus	data;
 
-  if (REG_NUMBER < 1 || REG_SIZE != 4 || CYCLE_TO_DIE < 1
-      || CYCLE_DELTA < 0 || NBR_LIVE < 1 || PROG_NAME_LENGTH < 1
-      || COMMENT_LENGTH < 1 || IND_SIZE < 1 || DIR_SIZE < 1
-      || T_REG < 1 || T_DIR < 1 || T_IND < 1)
-    return (error_message("Error op.h"));
+  if (check_h() != SUCCESS)
+    return (ERROR);
+  if (my_getenv(arge, "TERM") == NULL || my_getenv(arge, "DISPLAY") == NULL)
+    return (ERROR);
   if (there_is_help(argc, argv) == SUCCESS)
     {
       aff_help(0);
@@ -52,10 +59,8 @@ int		main(int 	argc,
     return (aff_help(1));
   if (prepare_corewar(&data.corewar) != SUCCESS)
     return (ERROR);
-  bunny_set_key_response(key);
-  bunny_set_loop_main_function(mainloop);
-  bunny_loop(data.win, 250, &data);
-  /*free_processlist(data.corewar.process_list);*/
+  start_game(&data);
+  free_processlist(data.corewar.process_list);
   free_corewar(&data);
   return (SUCCESS);
 }

@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:49 2016 corsin_a
-** Last update Sun Mar 27 11:55:15 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 16:01:20 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -37,7 +37,7 @@ static int	get_other_nb(t_corewar		*corewar,
   while (cpt < 4)
     {
       nb = nb << 8;
-      nb += corewar->mem[(current->process.pc + cpt + pt) % MEM_SIZE];
+      nb += corewar->mem[verif_pc(current->process.pc + cpt + pt)];
       ++cpt;
     }
   if (!IS_LIT_ENDIAN)
@@ -49,14 +49,12 @@ void		exec_op_ld(t_corewar		*corewar,
 			   t_process_list	*current)
 {
   int		*reg;
-  int		r_nb;
 
-  r_nb = REG_NUMBER;
   if (current->instruction.correct)
     {
-      reg = &(current->process.reg[(current->instruction.arg[1] - 1) % r_nb]);
+      reg = &(current->process.reg[current->instruction.arg[1] - 1]);
       if (current->instruction.type_arg[0] == 1)
-	*reg = current->process.reg[(current->instruction.arg[0] - 1) % r_nb];
+	*reg = current->process.reg[current->instruction.arg[0] - 1];
       else if (current->instruction.type_arg[0] == 4)
 	*reg = current->instruction.arg[0];
       else

@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:13:18 2016 corsin_a
-** Last update Sat Mar 26 18:56:11 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 20:50:30 2016 Hugo SOSZYNSKI
 */
 
 #include	"op_list.h"
@@ -17,19 +17,19 @@ void		move_pc(t_process_list		*process_list)
 
   if (process_list->instruction.correct == false)
     {
-      ++process_list->process.pc;
+      process_list->process.pc = (process_list->process.pc + 1) % MEM_SIZE;
       return ;
     }
   process_list->process.pc = (process_list->process.pc + 2) % MEM_SIZE;
-  if ((type = process_list->instruction.type_arg[0]) != 0)
+  if ((type = process_list->instruction.type_arg[0]) > 0)
     process_list->process.pc = (process_list->process.pc + type) % MEM_SIZE;
   else
     return ;
-  if ((type = process_list->instruction.type_arg[1]) != 0)
+  if ((type = process_list->instruction.type_arg[1]) > 0)
     process_list->process.pc = (process_list->process.pc + type) % MEM_SIZE;
   else
     return ;
-  if ((type = process_list->instruction.type_arg[2]) != 0)
+  if ((type = process_list->instruction.type_arg[2]) > 0)
     process_list->process.pc = (process_list->process.pc + type) % MEM_SIZE;
 }
 
@@ -41,8 +41,8 @@ void		execute_process(t_corewar	*corewar)
   while (process_list != NULL)
     {
       if (process_list->cycle == -1 &&
-	  check_instruction(corewar, process_list) != SUCCESS)
-	++process_list->process.pc;
+	  checkinstruction(corewar, process_list) != SUCCESS)
+	process_list->process.pc = (process_list->process.pc + 1) % MEM_SIZE;
       if (process_list->cycle > 0)
 	--process_list->cycle;
       else if (process_list->cycle == 0)

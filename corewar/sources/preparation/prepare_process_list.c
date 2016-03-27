@@ -5,12 +5,10 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:45:08 2016 corsin_a
-** Last update Thu Mar 24 11:10:00 2016 corsin_a
+** Last update Sun Mar 27 21:10:37 2016 Hugo SOSZYNSKI
 */
 
-
 #include		<stdlib.h>
-
 #include		"corewar.h"
 
 static t_process_list	*create_process_list(t_champion		*champion)
