@@ -5,12 +5,26 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar 21 17:10:44 2016 Grégoire Loens
-** Last update Sun Mar 27 11:43:52 2016 
+** Last update Sun Mar 27 19:25:05 2016 
 */
 
 #include	<stdlib.h>
 #include	"asm.h"
 #include	"parser.h"
+
+void		free_str_wordtab(char **tab, int limit)
+{
+  int		cpt;
+
+  cpt = -1;
+  while (++cpt < limit)
+    {
+      free(tab[cpt]);
+      tab[cpt] = NULL;
+    }
+  free(tab);
+  tab = NULL;
+}
 
 void		free_tab_cmd(char **cmd)
 {
@@ -20,6 +34,7 @@ void		free_tab_cmd(char **cmd)
   while (cpt < 34)
     {
       free(cmd[cpt]);
+      cmd[cpt] = NULL;
       cpt++;
     }
   free(cmd);

@@ -5,10 +5,11 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Fri Mar 25 00:29:22 2016 
-** Last update Fri Mar 25 05:40:10 2016 
+** Last update Sun Mar 27 20:17:17 2016 
 */
 
 #include	<stddef.h>
+#include	<stdlib.h>
 #include	"asm.h"
 #include	"parser.h"
 #include	"op.h"
@@ -22,10 +23,16 @@
 t_cmd	*stock_label_cmd(char *line, t_cmd *cmd)
 {
   int	cpt;
-
+  char	*tofree;
+  
   cpt = 0;
-  if ((cmd = stock_label(my_getword(line, 1), cmd)) == NULL)
-    return (NULL);
+  tofree =  my_getword(line, 1); 
+  if ((cmd = stock_label(tofree, cmd)) == NULL) 
+    { 
+      free(tofree);
+      return (NULL);
+    }
+  free(tofree);
   while (line[cpt] != ':')
     cpt++;
   if ((cmd = stock_cmd(line+cpt+2, cmd)) == NULL)

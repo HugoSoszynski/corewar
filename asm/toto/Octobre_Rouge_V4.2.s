@@ -1,6 +1,5 @@
 .name		"Octobre Rouge V4.2"
 .comment	"And the winner is ..."
-
 	
 		st	r1,19
 		ld	%0,r15
@@ -151,10 +150,3 @@ torp3:		st	r1,r3
 launch:	st	r3,15
 	st	r6,-1
 launc_:	live	%42
-
-
-
-
-
-
-

@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 15:25:08 2016 
-** Last update Sun Mar 27 17:01:42 2016 
+** Last update Sun Mar 27 19:45:08 2016 
 */
 
 #include	<stddef.h>
@@ -22,6 +22,8 @@ int		strcmpend(char *str1, char *str2)
   int		cpt;
 
   cpt = 0;
+  if (str1 == NULL || str2 == NULL)
+    return (-1);
   while (str1[cpt] && str2[cpt] && str1[cpt] == str2[cpt])
     ++cpt;
   if (!str2[cpt] && !str1[cpt])

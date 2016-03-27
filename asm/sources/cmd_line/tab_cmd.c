@@ -4,8 +4,9 @@
 ** Made by Pillon_m
 ** Login   <@epitech.net>
 **
+<<<<<<< HEAD
 ** Started on  Tue Mar  8 16:05:30 2016 Maxime Pillon
-** Last update Sun Mar 27 23:15:55 2016 loens_g
+** Last update Sun Mar 27 23:17:56 2016 loens_g
 */
 
 #include	<stdlib.h>
@@ -74,7 +75,7 @@ char		**set_cmd_part1()
 {
   char		**cmd;
 
-  cmd = malloc(sizeof(char *) * 35);
+  cmd = malloc(sizeof(char *) * 34);
   if ((cmd[0] = my_strdup("live")) == NULL)
     return (NULL);
   if ((cmd[1] = my_strdup("d")) == NULL)
