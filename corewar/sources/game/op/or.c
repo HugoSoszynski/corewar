@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:11 2016 corsin_a
-** Last update Sat Mar 26 18:05:14 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 12:01:30 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdio.h>
@@ -32,19 +32,21 @@ void		exec_op_or(t_corewar		*corewar,
   int		nb1;
   int		nb2;
   int		*reg;
+  int		r_nb;
 
+  r_nb = REG_NUMBER;
   (void)corewar;
   if (current->instruction.correct)
     {
       if (current->instruction.type_arg[0] == 1)
-	nb1 = current->process.reg[current->instruction.arg[0] - 1];
+	nb1 = current->process.reg[(current->instruction.arg[0] - 1) % r_nb];
       else
 	nb1 = current->instruction.arg[0];
       if (current->instruction.type_arg[1] == 1)
-	nb2 = current->process.reg[current->instruction.arg[1] - 1];
+	nb2 = current->process.reg[(current->instruction.arg[1] - 1) % r_nb];
       else
 	nb2 = current->instruction.arg[1];
-      reg = &current->process.reg[current->instruction.arg[2] - 1];
+      reg = &current->process.reg[(current->instruction.arg[2] - 1) % r_nb];
       *reg = nb1 | nb2;
     }
   current->process.carry = (char)current->instruction.correct;

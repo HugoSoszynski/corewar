@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:06 2016 corsin_a
-** Last update Sat Mar 26 18:04:52 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 12:21:38 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -54,18 +54,20 @@ void		exec_op_lldi(t_corewar	*corewar,
 {
   int		nb1;
   int		nb2;
+  int		r_nb;
 
+  r_nb = REG_NUMBER;
   if (current->instruction.correct)
     {
       if (current->instruction.type_arg[0] == 1)
-	nb1 = current->process.reg[current->instruction.arg[0] - 1];
+	nb1 = current->process.reg[(current->instruction.arg[0] - 1) % r_nb];
       else
 	nb1 = current->instruction.arg[0];
       if (current->instruction.type_arg[1] == 1)
-	nb2 = current->process.reg[current->instruction.arg[1] - 1];
+	nb2 = current->process.reg[(current->instruction.arg[1] - 1) % r_nb];
       else
 	nb2 = current->instruction.arg[1];
-      current->process.reg[current->instruction.arg[2] - 1]
+      current->process.reg[(current->instruction.arg[2] - 1) % r_nb]
       = get_nb(corewar, current, (nb1 + nb2));
     }
   current->process.carry = (char)current->instruction.correct;
