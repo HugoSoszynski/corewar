@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Fri Mar 25 17:12:12 2016 corsin_a
-** Last update Sun Mar 27 01:47:48 2016 corsin_a
+** Last update Sun Mar 27 23:20:12 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -24,6 +24,11 @@ int		init_graphics(t_bonus	*data)
   if ((data->bg = bunny_load_pixelarray("ressources/bg.png")) == NULL)
     return (ERROR);
   if ((data->font = bunny_load_pixelarray("ressources/font2.png")) == NULL)
-      return (ERROR);
+    return (ERROR);
+  if ((data->salt = bunny_load_pixelarray("ressources/salt.png")) == NULL)
+    return (ERROR);
+  if ((data->salt_title =
+       bunny_load_pixelarray("ressources/salt_title.png")) == NULL)
+    return (ERROR);
   return (SUCCESS);
 }

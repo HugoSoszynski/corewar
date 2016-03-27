@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 20:47:55 2016 corsin_a
+** Last update Sun Mar 27 23:19:42 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -29,11 +29,15 @@ static void	free_corewar(t_bonus	*data)
   bunny_delete_clipable(&data->cadre->clipable);
   bunny_delete_clipable(&data->titre->clipable);
   bunny_delete_clipable(&data->font->clipable);
+  bunny_delete_clipable(&data->salt->clipable);
+  bunny_delete_clipable(&data->salt_title->clipable);
 }
 
 static void	start_game(t_bonus	*data)
 {
   bunny_set_key_response(key);
+  bunny_set_loop_main_function(introloop);
+  bunny_loop(data->win, 250, data);
   bunny_set_loop_main_function(mainloop);
   bunny_loop(data->win, 250, data);
   bunny_set_loop_main_function(leaderboard);

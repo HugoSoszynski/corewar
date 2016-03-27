@@ -5,7 +5,7 @@
 ** Login   <pillon_m@epitech.net>
 ** 
 ** Started on  Sun Mar 27 23:04:17 2016 
-** Last update Sun Mar 27 23:15:42 2016 
+** Last update Sun Mar 27 23:21:29 2016 
 */
 
 #include	<lapin.h>
@@ -26,7 +26,8 @@ void		gst_alpha(t_bunny_pixelarray *pix, int alpha)
 	{
 	  color.full = ((unsigned int *)pix->pixels)[(pos.y * pix->clipable.clip_width +
 						      pos.x)];
-	  color.argb[3] = alpha;
+	  if (color.argb[3] != 0)
+	    color.argb[3] = alpha;
 	  ((unsigned int *)pix->pixels)[(pos.y * pix->clipable.clip_width +
 					 pos.x)] = color.full;
 	  pos.x++;
