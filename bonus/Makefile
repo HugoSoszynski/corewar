@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ##
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Sun Mar 27 05:45:17 2016 Sylvain Corsini
+## Last update Sun Mar 27 15:40:24 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
@@ -25,6 +25,7 @@ CFLAGS			+=	-W -Wextra -Wall
 CFLAGS			+=	-Werror
 CFLAGS			+=	-Iincludes
 CFLAGS			+=	$(LIB)
+CFLAGS			+=	-g
 
 COREWAR			=	corewar
 
@@ -45,6 +46,7 @@ COREWAR_SRCS		=	sources/main.c \
 				sources/game/execute_process.c \
 				sources/game/check_instruction.c \
 				sources/game/check_reg.c \
+				sources/game/verif_pc.c \
 				sources/game/init_instruction.c \
 				sources/game/op/add.c \
 				sources/game/op/aff.c \

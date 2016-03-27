@@ -5,10 +5,9 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:03 2016 corsin_a
-** Last update Sun Mar 27 03:58:50 2016 corsin_a
+** Last update Sun Mar 27 14:31:36 2016 corsin_a
 */
 
-#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_lld(unsigned char opcode)
@@ -22,6 +21,7 @@ void		copy_op_lld(t_corewar *corewar,
 			    t_process_list *current)
 {
   copy_args(corewar, current);
+  check_reg(current);
 }
 
 static int	get_other_nb(t_corewar		*corewar,
@@ -52,9 +52,11 @@ void		exec_op_lld(t_corewar		*corewar,
 
   if (current->instruction.correct)
     {
-      reg = &current->process.reg[current->instruction.arg[1] - 1];
-      if (current->instruction.type_arg[0] - 1)
+      reg = &(current->process.reg[current->instruction.arg[1] - 1]);
+      if (current->instruction.type_arg[0] == 1)
 	*reg = current->process.reg[current->instruction.arg[0] - 1];
+      else if (current->instruction.type_arg[0] == 4)
+	*reg = current->instruction.arg[0];
       else
 	*reg = get_other_nb(corewar, current);
     }

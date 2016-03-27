@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 06:44:12 2016 corsin_a
+** Last update Sun Mar 27 16:03:59 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -84,8 +84,8 @@ typedef struct		s_champion
 typedef struct		s_corewar
 {
   t_process_list	*process_list;
-  unsigned int		cycle_to_die;
-  unsigned int		cycle_passed;
+  int			cycle_to_die;
+  int			cycle_passed;
   unsigned long int	actual_cycle;
   char			champions_alive[4];
   unsigned char		nb_champions;
@@ -127,13 +127,13 @@ typedef struct		s_op_tab
 
 typedef			struct s_bonus
 {
-  t_corewar		corewar;
   t_bunny_pixelarray	*pix;
   t_bunny_window	*win;
   t_bunny_pixelarray	*bg;
   t_bunny_pixelarray	*titre;
   t_bunny_pixelarray	*cadre;
   t_bunny_pixelarray	*font;
+  t_corewar		corewar;
 }			t_bonus;
 
 #define			OP_TAB		((t_op_tab*)(corewar->op_tab))
@@ -172,6 +172,7 @@ int			fill_champions(t_corewar	*corewar);
 int			aff_help(int			a);
 int			there_is_help(int		argc,
 				      char		*argv[]);
+int			verif_pc(int			arg);
 void			my_init_tab(void		*_tab,
 				    size_t		size);
 int			prepare_corewar(t_corewar	*corewar);

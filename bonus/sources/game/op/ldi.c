@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:43 2016 corsin_a
-** Last update Sun Mar 27 03:58:18 2016 corsin_a
+** Last update Sun Mar 27 14:31:29 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -27,6 +27,7 @@ void		copy_op_ldi(t_corewar *corewar,
   current->instruction.opcode = 244;
   copy_args(corewar, current);
   current->instruction.opcode = temp;
+  check_reg(current);
 }
 
 static int	get_nb(t_corewar		*corewar,

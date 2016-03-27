@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Sun Mar 27 03:56:45 2016 corsin_a
+** Last update Sun Mar 27 07:27:24 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -52,7 +52,7 @@ int		launch_corewar(t_corewar	*corewar)
       corewar->cycle_to_die = CYCLE_TO_DIE - corewar->live_nb / NBR_LIVE * CYCLE_DELTA;
       if (corewar->cycle_to_die <= 0)
 	return (SUCCESS);
-      return (CONTINUE) ;
+      return (CONTINUE);
     }
   return (SUCCESS);
 }

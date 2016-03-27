@@ -5,10 +5,9 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:27:30 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 07:18:19 2016 corsin_a
+** Last update Sun Mar 27 16:35:31 2016 corsin_a
 */
 
-#include		<stdio.h>
 #include		<stddef.h>
 #include		<stdlib.h>
 #include		"corewar.h"
@@ -22,7 +21,7 @@ static void		cpy_t_process(t_process *src,
   dest->carry = src->carry;
   dest->cpt = src->cpt;
   dest->nb_champion = src->nb_champion;
-  dest->pc = (src->pc + add_to_pc) % MEM_SIZE;
+  dest->pc = verif_pc(src->pc + add_to_pc);
   cpt = -1;
   while (++cpt < REG_NUMBER)
     {

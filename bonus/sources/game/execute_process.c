@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:13:18 2016 corsin_a
-** Last update Sun Mar 27 06:17:29 2016 corsin_a
+** Last update Sun Mar 27 16:55:15 2016 corsin_a
 */
 
 #include	"op_list.h"
@@ -21,15 +21,15 @@ void		move_pc(t_process_list		*process_list)
       return ;
     }
   process_list->process.pc = (process_list->process.pc + 2) % MEM_SIZE;
-  if ((type = process_list->instruction.type_arg[0]) != 0)
+  if ((type = process_list->instruction.type_arg[0]) > 0)
     process_list->process.pc = (process_list->process.pc + type) % MEM_SIZE;
   else
     return ;
-  if ((type = process_list->instruction.type_arg[1]) != 0)
+  if ((type = process_list->instruction.type_arg[1]) > 0)
     process_list->process.pc = (process_list->process.pc + type) % MEM_SIZE;
   else
     return ;
-  if ((type = process_list->instruction.type_arg[2]) != 0)
+  if ((type = process_list->instruction.type_arg[2]) > 0)
     process_list->process.pc = (process_list->process.pc + type) % MEM_SIZE;
 }
 

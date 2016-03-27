@@ -5,9 +5,10 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:11 2016 corsin_a
-** Last update Sun Mar 27 03:59:10 2016 corsin_a
+** Last update Sun Mar 27 14:31:43 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_or(unsigned char opcode)
@@ -23,6 +24,7 @@ void		copy_op_or(t_corewar *corewar,
 			   t_process_list *current)
 {
   copy_args(corewar, current);
+  check_reg(current);
 }
 
 void		exec_op_or(t_corewar		*corewar,

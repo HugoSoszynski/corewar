@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:18 2016 corsin_a
-** Last update Sun Mar 27 04:01:54 2016 corsin_a
+** Last update Sun Mar 27 14:31:06 2016 corsin_a
 */
 
 #include	<unistd.h>
@@ -22,20 +22,19 @@ void		copy_op_aff(t_corewar *corewar,
 			    t_process_list *current)
 {
   copy_args(corewar, current);
+  check_reg(current);
 }
 
 void		exec_op_aff(t_corewar	*corewar,
 			    t_process_list	*current)
 {
   char		car;
-  int		tmp;
 
   (void)corewar;
   if (current->instruction.correct)
     {
-      tmp = current->process.reg[current->instruction.arg[0] - 1];
-      car = (char)(tmp % 256);
-      write(1, &car, 1);
+      car = (char)(current->process.reg[current->instruction.arg[0] - 1] % 256);
+      write(1, &car, sizeof(char));
     }
   move_pc(current);
 }

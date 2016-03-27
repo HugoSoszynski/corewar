@@ -5,9 +5,10 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:32 2016 corsin_a
-** Last update Sun Mar 27 03:59:58 2016 corsin_a
+** Last update Sun Mar 27 16:48:49 2016 corsin_a
 */
 
+#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_zjmp(char	opcode)
@@ -25,15 +26,14 @@ void		copy_op_zjmp(t_corewar *corewar,
   current->instruction.arg[0] = 0;
   while (cpt < 2)
     {
-      current->instruction.arg[0] = current->instruction.arg[0] << 8;
+      current->instruction.arg[0] = (short)(current->instruction.arg[0] << 8);
       current->instruction.arg[0] +=
-      corewar->mem[(current->process.pc + cpt + 1) % MEM_SIZE];
+      (short)corewar->mem[verif_pc(current->process.pc + cpt + 1)];
       ++cpt;
     }
   if (!IS_LIT_ENDIAN)
-    my_reverse_bytes(&current->instruction.arg[0], sizeof(int));
+    my_reverse_bytes(&current->instruction.arg[0], sizeof(short));
   current->instruction.opcode = 0;
-  current->instruction.correct = false;
   current->cycle = ((t_op_tab*)(corewar->op_tab))[0].cycle;
 }
 
@@ -45,9 +45,9 @@ void		exec_op_zjmp(t_corewar	*corewar,
     {
       if (current->process.carry == 1)
 	{
-	  current->process.pc = ((current->process.pc +
-				  ((short)current->instruction.arg[0] % IDX_MOD))
-				 % MEM_SIZE);
+	  current->process.pc = verif_pc(current->process.pc +
+					 ((short)current->instruction.arg[0]
+					  % IDX_MOD));
 	}
       else
 	current->process.pc = (current->process.pc + 3) % MEM_SIZE;

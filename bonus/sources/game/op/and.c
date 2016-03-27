@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:27 2016 corsin_a
-** Last update Sun Mar 27 04:01:29 2016 corsin_a
+** Last update Sun Mar 27 14:31:16 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -23,6 +23,7 @@ void		copy_op_and(t_corewar *corewar,
 			    t_process_list *current)
 {
   copy_args(corewar, current);
+  check_reg(current);
 }
 
 void		exec_op_and(t_corewar	*corewar,

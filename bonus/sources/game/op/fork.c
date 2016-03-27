@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:32 2016 corsin_a
-** Last update Sun Mar 27 06:55:59 2016 corsin_a
+** Last update Sun Mar 27 16:49:12 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -25,13 +25,13 @@ void		copy_op_fork(t_corewar *corewar,
   current->instruction.arg[0] = 0;
   while (cpt < 2)
     {
-      current->instruction.arg[0] = current->instruction.arg[0] << 8;
+      current->instruction.arg[0] = (short)(current->instruction.arg[0] << 8);
       current->instruction.arg[0] +=
-      corewar->mem[(current->process.pc + cpt + 1) % MEM_SIZE];
+      (short)corewar->mem[verif_pc(current->process.pc + cpt + 1)];
       ++cpt;
     }
   if (!IS_LIT_ENDIAN)
-    my_reverse_bytes(&current->instruction.arg[0], sizeof(int));
+    my_reverse_bytes(&current->instruction.arg[0], sizeof(short));
   current->instruction.opcode = 0;
   current->instruction.correct = false;
   current->cycle = ((t_op_tab*)(corewar->op_tab))[0].cycle;
@@ -43,10 +43,8 @@ void		exec_op_fork(t_corewar	*corewar,
   (void)corewar;
   if (current->instruction.correct)
     {
-      clone_process(current, current->instruction.arg[0] % IDX_MOD);
+      clone_process(current, (short)(current->instruction.arg[0]) % IDX_MOD);
       ++corewar->champion[current->process.cpt].nb_process;
-      corewar->mem_champ[(current->process.pc + current->instruction.arg[0]) % MEM_SIZE] =
-      corewar->champion[current->process.cpt].color;
     }
   current->process.pc = (current->process.pc + 3) % MEM_SIZE;
 }

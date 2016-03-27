@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:21 2016 corsin_a
-** Last update Sun Mar 27 06:58:34 2016 corsin_a
+** Last update Sun Mar 27 15:41:15 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -27,41 +27,42 @@ void		copy_op_sti(t_corewar *corewar,
   current->instruction.opcode = 124;
   copy_args(corewar, current);
   current->instruction.opcode = temp;
+  check_reg(current);
 }
 
 void		exec_op_sti(t_corewar	*corewar,
 			    t_process_list	*current)
 {
   int		value;
-  int		nb1;
-  int		nb2;
+  short		nb1;
+  short		nb2;
   int		pc;
 
   if (current->instruction.correct)
     {
       value = current->process.reg[current->instruction.arg[0] - 1];
       if (current->instruction.type_arg[1] == 1)
-	nb1 = current->process.reg[current->instruction.arg[1] - 1];
+	nb1 = (short)current->process.reg[current->instruction.arg[1] - 1];
       else
-	nb1 = current->instruction.arg[1];
+	nb1 = (short)current->instruction.arg[1];
       if (current->instruction.type_arg[2] == 1)
-	nb2 = current->process.reg[current->instruction.arg[2] - 1];
+	nb2 = (short)current->process.reg[current->instruction.arg[2] - 1];
       else
-	nb2 = current->instruction.arg[2];
+	nb2 = (short)current->instruction.arg[2];
       pc = current->process.pc;
       if (current->instruction.type_arg[1] == 2)
 	nb1 %= IDX_MOD;
-      corewar->mem[(pc + nb1 + nb2 + 0) % MEM_SIZE] = value >> (8 * 3) & 255;
-      corewar->mem[(pc + nb1 + nb2 + 1) % MEM_SIZE] = value >> (8 * 2) & 255;
-      corewar->mem[(pc + nb1 + nb2 + 2) % MEM_SIZE] = value >> (8 * 1) & 255;
-      corewar->mem[(pc + nb1 + nb2 + 3) % MEM_SIZE] = value >> (8 * 0) & 255;
-      corewar->mem_champ[(pc + nb1 + nb2 + 0) % MEM_SIZE] =
+      corewar->mem[verif_pc(pc + nb1 + nb2 + 0)] = value >> (8 * 3) & 255;
+      corewar->mem[verif_pc(pc + nb1 + nb2 + 1)] = value >> (8 * 2) & 255;
+      corewar->mem[verif_pc(pc + nb1 + nb2 + 2)] = value >> (8 * 1) & 255;
+      corewar->mem[verif_pc(pc + nb1 + nb2 + 3)] = value >> (8 * 0) & 255;
+      corewar->mem_champ[verif_pc(pc + nb1 + nb2 + 0)] =
       corewar->champion[current->process.cpt].color;
-      corewar->mem_champ[(pc + nb1 + nb2 + 1) % MEM_SIZE] =
+      corewar->mem_champ[verif_pc(pc + nb1 + nb2 + 1)] =
       corewar->champion[current->process.cpt].color;
-      corewar->mem_champ[(pc + nb1 + nb2 + 2) % MEM_SIZE] =
+      corewar->mem_champ[verif_pc(pc + nb1 + nb2 + 2)] =
       corewar->champion[current->process.cpt].color;
-      corewar->mem_champ[(pc + nb1 + nb2 + 3) % MEM_SIZE] =
+      corewar->mem_champ[verif_pc(pc + nb1 + nb2 + 3)] =
       corewar->champion[current->process.cpt].color;
     }
   current->process.pc = (current->process.pc + 7) % MEM_SIZE;

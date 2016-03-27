@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Sun Mar 27 03:58:37 2016 corsin_a
+** Last update Sun Mar 27 14:32:33 2016 corsin_a
 */
 
 #include	"corewar.h"
