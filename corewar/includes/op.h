@@ -30,8 +30,8 @@
 typedef char			args_type_t;
 
 #define T_REG			(1)
-#define T_DIR			(2)
-#define T_IND			(4)
+#define T_DIR			(4)
+#define T_IND			(2)
 #define T_LAB			(8)
 
 struct				op_s

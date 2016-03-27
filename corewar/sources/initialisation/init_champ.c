@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 12:03:44 2016 corsin_a
-** Last update Sun Mar 27 21:31:58 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 22:03:38 2016 Hugo SOSZYNSKI
 */
 
 #include		<sys/types.h>
@@ -56,7 +56,7 @@ static int		finish_init(t_corewar	*corewar,
   return (SUCCESS);
 }
 
-static void		opt_endian(t_corewar *corewar)
+static void		opt_endian(t_corewar *corewar, int cpt)
 {
   if (IS_LIT_ENDIAN)
     {
@@ -83,7 +83,7 @@ int			init_champ(t_corewar	*corewar,
 	       sizeof(header_t)) != sizeof(header_t))
 	return (error_file("File ",
 			   options->champion[cpt].name, " : wrong file size"));
-      opt_endian(corewar);
+      opt_endian(corewar, cpt);
       if (corewar->champion[cpt].header.magic != COREWAR_EXEC_MAGIC)
 	return (error_file("", options->champion[cpt].name,
 			   " is not a corewar executable"));
