@@ -5,7 +5,7 @@
 ** Login   <pillon_m@epitech.net>
 ** 
 ** Started on  Sun Mar 27 23:04:17 2016 
-** Last update Sun Mar 27 23:12:35 2016 
+** Last update Sun Mar 27 23:15:42 2016 
 */
 
 #include	<lapin.h>
@@ -16,6 +16,8 @@ void		gst_alpha(t_bunny_pixelarray *pix, int alpha)
   t_bunny_position	pos;
   t_color		color;
 
+  if (alpha > 255)
+    alpha = 255;
   pos.y = 0;
   while (pos.y < pix->clipable.clip_height)
     {
