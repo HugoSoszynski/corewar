@@ -5,11 +5,11 @@
 ** Login   <corsin_a@epitech.net>
 **
 ** Started on  Tue Nov 24 09:32:23 2015 corsin_a
-** Last update Wed Feb 17 09:30:39 2016 corsin_a
+** Last update Sun Mar 27 01:31:28 2016 corsin_a
 */
 
 #include		<lapin.h>
-#include		"header.h"
+#include		"corewar.h"
 
 void			tekreset(t_bunny_pixelarray	*pix,
 				 t_color		*color)

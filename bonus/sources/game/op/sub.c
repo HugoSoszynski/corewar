@@ -5,15 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:24 2016 corsin_a
-** Last update Fri Mar 25 00:38:09 2016 corsin_a
+** Last update Sun Mar 27 04:01:47 2016 corsin_a
 */
 
-#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_sub(char	opcode)
 {
-  printf("CHECK SUB\n");
   if (opcode != 84)
     return (ERROR);
   return (SUCCESS);
@@ -22,7 +20,6 @@ int		check_op_sub(char	opcode)
 void		copy_op_sub(t_corewar *corewar,
 			    t_process_list *current)
 {
-  printf("COPY SUB\n");
   copy_args(corewar, current);
   check_reg(current);
 }
@@ -34,16 +31,9 @@ void		exec_op_sub(t_corewar	*corewar,
   int		nb2;
   int		*reg;
 
-  printf("EXEC SUB\n");
-  printf("%d\n", current->instruction.opcode);
-  printf("%d , %d , %d\n",
-	 current->instruction.arg[0],
-	 current->instruction.arg[1],
-	 current->instruction.arg[2]);
   (void)corewar;
   if (current->instruction.correct)
     {
-      printf("CORRECT SUB\n");
       nb1 = current->process.reg[current->instruction.arg[0] - 1];
       nb2 = current->process.reg[current->instruction.arg[1] - 1];
       reg = &current->process.reg[current->instruction.arg[2] - 1];

@@ -5,10 +5,9 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 16:29:54 2016 corsin_a
-** Last update Fri Mar 25 12:11:24 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 04:01:09 2016 corsin_a
 */
 
-#include	<stdio.h>
 #include	"corewar.h"
 
 static int	copy_one_arg(t_corewar		*corewar,
@@ -51,8 +50,6 @@ void		copy_args(t_corewar		*corewar,
 	  process_list->instruction.arg[cpt] =
 	  copy_one_arg(corewar, process_list, &ptr, type);
 	  process_list->instruction.type_arg[cpt] = type;
-	  printf("%d : %d\n", process_list->instruction.arg[cpt],
-		 process_list->instruction.type_arg[cpt]);
 	}
       else
 	return ;

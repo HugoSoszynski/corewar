@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar 21 10:06:28 2016 Hugo SOSZYNSKI
-** Last update Fri Mar 25 17:31:50 2016 corsin_a
+** Last update Sun Mar 27 03:13:57 2016 corsin_a
 */
 
 #include	<stddef.h>
@@ -48,7 +48,7 @@ int		main(int 	argc,
     return (ERROR);
   bunny_set_key_response(key);
   bunny_set_loop_main_function(mainloop);
-  bunny_loop(data.win, 60, &data);
+  bunny_loop(data.win, 250, &data);
   free_processlist(data.corewar.process_list);
   free_corewar(&data);
   return (SUCCESS);

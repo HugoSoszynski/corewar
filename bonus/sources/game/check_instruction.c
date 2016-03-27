@@ -5,10 +5,9 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 02:04:14 2016 corsin_a
-** Last update Fri Mar 25 12:11:14 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 04:00:53 2016 corsin_a
 */
 
-#include	<stdio.h>
 #include	"corewar.h"
 #include	"op_list.h"
 
@@ -21,16 +20,11 @@ int		check_instruction(t_corewar	*corewar,
   my_init_tab(&(process_list->instruction), sizeof(t_instruction));
   op = corewar->mem[process_list->process.pc];
   process_list->instruction.op = op;
-  printf("op : %d\n", op);
   if (op < OP_LIVE || op > OP_AFF)
-    {
-      printf("\n");
-      return (ERROR);
-    }
+    return (ERROR);
   opcode = corewar->mem[(process_list->process.pc + 1) % MEM_SIZE];
   if (OP_TAB[op - 1].check(opcode) == SUCCESS)
     {
-      printf("COPY\n");
       process_list->instruction.opcode = opcode;
       OP_TAB[op - 1].copy(corewar, process_list);
       process_list->instruction.correct = true;

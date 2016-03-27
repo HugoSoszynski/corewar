@@ -5,12 +5,15 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Sat Mar 26 16:03:14 2016 corsin_a
-** Last update Sat Mar 26 16:04:34 2016 corsin_a
+** Last update Sun Mar 27 05:42:11 2016 corsin_a
 */
 
-#include	"corewar.h"
+#include		"corewar.h"
 
-void		launch_graphics(t_bonus	*data)
+void			launch_graphics(t_bonus	*data)
 {
-  
+  show_interface(data);
+  show_cycle(data);
+  show_mem(data);
+  show_champ(data);
 }

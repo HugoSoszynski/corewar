@@ -5,15 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:49 2016 corsin_a
-** Last update Fri Mar 25 10:58:16 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 03:58:05 2016 corsin_a
 */
 
-#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_ld(unsigned char opcode)
 {
-  printf("CHECK LD\n");
   if (opcode != 144 && opcode != 208)
     return (ERROR);
   return (SUCCESS);
@@ -22,7 +20,6 @@ int		check_op_ld(unsigned char opcode)
 void		copy_op_ld(t_corewar *corewar,
 			   t_process_list *current)
 {
-  printf("COPY LD\n");
   copy_args(corewar, current);
   check_reg(current);
 }
@@ -54,10 +51,8 @@ void		exec_op_ld(t_corewar		*corewar,
 {
   int		*reg;
 
-  printf("EXEC LD\n");
   if (current->instruction.correct)
     {
-      printf("CORRECT LD\n");
       reg = &current->process.reg[current->instruction.arg[1] - 1];
       if (current->instruction.type_arg[0] == 1)
 	*reg = current->process.reg[current->instruction.arg[0] - 1];

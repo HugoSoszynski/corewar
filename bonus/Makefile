@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ##
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Sat Mar 26 17:28:47 2016 Sylvain Corsini
+## Last update Sun Mar 27 05:45:17 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
@@ -62,6 +62,16 @@ COREWAR_SRCS		=	sources/main.c \
 				sources/game/op/sub.c \
 				sources/game/op/xor.c \
 				sources/game/op/zjmp.c \
+				sources/graphics/launch_graphics.c \
+				sources/graphics/tekblit.c \
+				sources/graphics/tekpixel.c \
+				sources/graphics/tekgetcolor.c \
+				sources/graphics/tekreset.c \
+				sources/graphics/tektext.c \
+				sources/graphics/show_interface.c \
+				sources/graphics/show_cycle.c \
+				sources/graphics/show_mem.c \
+				sources/graphics/show_champ.c \
 				sources/my_endianess.c \
 				sources/process_list_utils.c \
 				sources/error.c \

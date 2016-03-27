@@ -5,15 +5,13 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:11 2016 corsin_a
-** Last update Thu Mar 24 22:09:49 2016 corsin_a
+** Last update Sun Mar 27 03:59:10 2016 corsin_a
 */
 
-#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_or(unsigned char opcode)
 {
-  printf("CHECK OR\n");
   if (opcode != 84 && opcode != 100 && opcode != 116 && opcode != 148 &&
       opcode != 164 && opcode != 180 && opcode != 212 && opcode != 228 &&
       opcode != 244)
@@ -24,7 +22,6 @@ int		check_op_or(unsigned char opcode)
 void		copy_op_or(t_corewar *corewar,
 			   t_process_list *current)
 {
-  printf("COPY OR\n");
   copy_args(corewar, current);
 }
 
@@ -36,10 +33,8 @@ void		exec_op_or(t_corewar		*corewar,
   int		*reg;
 
   (void)corewar;
-  printf("EXEC OR\n");
   if (current->instruction.correct)
     {
-      printf("CORRECT OR\n");
       if (current->instruction.type_arg[0] == 1)
 	nb1 = current->process.reg[current->instruction.arg[0] - 1];
       else

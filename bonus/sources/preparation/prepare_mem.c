@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:44:00 2016 corsin_a
-** Last update Wed Mar 23 03:44:41 2016 corsin_a
+** Last update Sun Mar 27 06:24:55 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -16,6 +16,7 @@ void		prepare_mem(t_corewar	*corewar)
   int			cpt_prog;
 
   my_init_tab(corewar->mem, MEM_SIZE);
+  my_init_tab(corewar->mem_champ, MEM_SIZE * sizeof(int));
   cpt = 0;
   while (cpt < corewar->nb_champions)
     {
@@ -24,6 +25,8 @@ void		prepare_mem(t_corewar	*corewar)
 	{
 	  corewar->mem[(cpt_prog + corewar->champion[cpt].address) % MEM_SIZE]
 	  = corewar->champion[cpt].prog[cpt_prog];
+	  corewar->mem_champ[(cpt_prog + corewar->champion[cpt].address) % MEM_SIZE]
+	  = cpt + 1;
 	  ++cpt_prog;
 	}
       ++cpt;

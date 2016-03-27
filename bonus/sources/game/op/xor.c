@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:28 2016 corsin_a
-** Last update Thu Mar 24 22:11:59 2016 corsin_a
+** Last update Sun Mar 27 03:59:49 2016 corsin_a
 */
 
 #include	<stdio.h>
@@ -13,7 +13,6 @@
 
 int		check_op_xor(unsigned char opcode)
 {
-  printf("CHECK XOR\n");
   if (opcode != 84 && opcode != 100 && opcode != 116 && opcode != 148 &&
       opcode != 164 && opcode != 180 && opcode != 212 && opcode != 228 &&
       opcode != 244)
@@ -24,7 +23,6 @@ int		check_op_xor(unsigned char opcode)
 void		copy_op_xor(t_corewar *corewar,
 			    t_process_list *current)
 {
-  printf("COPY XOR\n");
   copy_args(corewar, current);
 }
 
@@ -35,11 +33,9 @@ void		exec_op_xor(t_corewar	*corewar,
   int		nb2;
   int		*reg;
 
-  printf("EXEC XOR\n");
   (void)corewar;
   if (current->instruction.correct)
     {
-      printf("CORRECT XOR\n");
       if (current->instruction.type_arg[0] == 1)
 	nb1 = current->process.reg[current->instruction.arg[0] - 1];
       else

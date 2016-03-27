@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Sat Mar 26 16:06:10 2016 corsin_a
+** Last update Sun Mar 27 05:45:40 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -117,8 +117,8 @@ typedef struct		s_op_tab
   int			cycle;
 }			t_op_tab;
 
-# define		SCREEN_HEIGHT		(480)
-# define		SCREEN_WIDTH		(640)
+# define		SCREEN_HEIGHT		(720)
+# define		SCREEN_WIDTH		(1280)
 # define		SCREEN_FULLSCREEN	(false)
 # define		SCREEN_NAME		("Corewar")
 
@@ -127,6 +127,10 @@ typedef			struct s_bonus
   t_corewar		corewar;
   t_bunny_pixelarray	*pix;
   t_bunny_window	*win;
+  t_bunny_pixelarray	*bg;
+  t_bunny_pixelarray	*titre;
+  t_bunny_pixelarray	*cadre;
+  t_bunny_pixelarray	*font;
 }			t_bonus;
 
 #define			OP_TAB		((t_op_tab*)(corewar->op_tab))
@@ -135,6 +139,7 @@ t_bunny_response mainloop(void			*data);
 t_bunny_response key(t_bunny_event_state	state,
 		     t_bunny_keysym		key,
 		     void			*data);
+
 int			init_corewar(t_bonus		*data,
 				     int		ac,
 				     char		**av);
@@ -192,5 +197,17 @@ void			tekpixel(t_bunny_pixelarray	*pix,
 				 t_color		*color);
 unsigned int		tekgetcolor(t_bunny_pixelarray	*pix,
 				    t_bunny_position	*pos);
+void			tekblit(t_bunny_pixelarray *out,
+				t_bunny_pixelarray *in,
+				const t_bunny_position *pos);
+void			tektext(t_bonus			*data,
+				const t_bunny_position	*initial,
+				char			*str,
+				t_color			*color);
+int			my_strlen(char *str);
+void			show_cycle(t_bonus	*data);
+void			show_interface(t_bonus	*data);
+void			show_mem(t_bonus	*data);
+void			show_champ(t_bonus	*data);
 
 #endif		/* !COREWAR_H_ */
