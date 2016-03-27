@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 21:00:34 2016 corsin_a
+** Last update Sun Mar 27 23:19:32 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -133,6 +133,8 @@ typedef			struct s_bonus
   t_bunny_pixelarray	*titre;
   t_bunny_pixelarray	*cadre;
   t_bunny_pixelarray	*font;
+  t_bunny_pixelarray	*salt;
+  t_bunny_pixelarray	*salt_title;
   t_corewar		corewar;
 }			t_bonus;
 
@@ -220,6 +222,8 @@ int			check_h(void);
 int			my_strncmp(char			*str1,
 				   char			*str2,
 				   int			n);
+void			gst_alpha(t_bunny_pixelarray *pix, int alpha);
+t_bunny_response	introloop(void	*_data);
 
 
 #endif		/* !COREWAR_H_ */
