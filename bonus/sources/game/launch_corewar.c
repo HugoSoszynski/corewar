@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Sun Mar 27 21:26:15 2016 corsin_a
+** Last update Sun Mar 27 22:30:39 2016 corsin_a
 */
 
 #include	"corewar.h"
@@ -21,14 +21,8 @@ static int	game_is_not_finished(t_corewar	*corewar)
   live = 0;
   while (cpt < corewar->nb_champions)
     {
-      if (corewar->champions_alive[cpt] == IS_RUN)
-	{
-	  corewar->champions_alive[cpt] = IS_DEAD;
-	  if ((corewar->process_list =
-	       kill_zombies(corewar->process_list,
-			    corewar->champion[cpt].nb_champion)) == NULL)
-	    return (SUCCESS);
-	}
+      if (corewar->champions_alive[cpt] != IS_ALIVE)
+	corewar->champions_alive[cpt] = IS_DEAD;
       else if (corewar->champions_alive[cpt] == IS_ALIVE)
 	{
 	  corewar->champions_alive[cpt] = IS_RUN;
@@ -42,10 +36,32 @@ static int	game_is_not_finished(t_corewar	*corewar)
   return (CONTINUE);
 }
 
+static int	clean_zombies(t_corewar		*corewar)
+{
+  int		cpt;
+
+  cpt = 0;
+  while (cpt < corewar->nb_champions)
+    {
+      if (corewar->champions_alive[cpt] == IS_DEAD)
+	{
+	  if ((corewar->process_list =
+	       kill_zombies(corewar->process_list,
+			    corewar->champion[cpt].nb_champion)) == NULL)
+	    return (SUCCESS);
+	  corewar->champion[cpt].nb_process = 0;
+	}
+      ++cpt;
+    }
+  return (CONTINUE);
+}
+
 int		launch_corewar(t_corewar	*corewar)
 {
   if (game_is_not_finished(corewar) == CONTINUE)
     {
+      if (clean_zombies(corewar) == SUCCESS)
+	return (SUCCESS);
       execute_process(corewar);
       ++corewar->cycle_passed;
       ++corewar->actual_cycle;
