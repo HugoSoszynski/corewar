@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Fri Mar 25 17:54:18 2016 
+** Last update Sun Mar 27 03:50:03 2016 
 */
 
 #include	<stddef.h>
@@ -16,10 +16,59 @@
 #include	"asm.h"
 
 
-
-
 #include	<stdio.h>
 #include	<unistd.h>
+
+
+/*void            write_struct(t_cmd *cmd)
+{
+  int cpt = 1;
+  cmd = cmd->head;
+  while (cmd != NULL)
+    {
+      printf("nous sommes au maillon numero : %d \n", cpt);
+      printf("le type est de %d \n", cmd->type);
+      printf("la ligne de ce maillon est %s et la ligne est de %d \n", cmd->line, cmd->nbr_line);
+      printf("la valeur de octet de codage %d \n", cmd->octet_codage);
+      printf("l'opcode est de %d \n la valeur du dot_code_octet %d \n", cmd->opcode, cmd->dot_code_octet);
+      printf("les arg sont %d, %d, %d \n", cmd->arg[0], cmd->arg[1], cmd->arg[2]);
+      printf("les types arg sont %d %d %d \n", cmd->type_arg[0], cmd->type_arg[1], cmd->type_arg[2]);
+      printf(">>>>> END MAILLON <<<<<<<< \n");
+      cmd = cmd->next;
+      cpt++;
+    }
+  cmd = cmd->head;
+}
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 int		type_of_cmd(char *line)
@@ -144,6 +193,7 @@ int		verif_cmd_line(int fd, char *filename)
 	    return (-1);
 	  else
 	    {
+	      /*printf("%d \n", stock_arg->opcode);*/
 	      /*	      printf ("apres storage : head %s \n", stock_arg->head->line);
 			      printf("\n\nAV STOCK ARG %p\n", (void*)(stock_arg));*/
 	      if ((stock_arg = add_cmd(stock_arg)) == NULL)
@@ -156,6 +206,7 @@ int		verif_cmd_line(int fd, char *filename)
 	}
       nbr_line++;
     }
+  /*    write_struct(stock_arg);*/
   write_cor(stock_arg, filename);
   if (stock == 1)
     return (-1);

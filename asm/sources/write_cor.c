@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 14:40:35 2016 
-** Last update Sat Mar 26 11:21:15 2016 
+** Last update Sun Mar 27 04:32:07 2016 
 */
 
 #include	<unistd.h>
@@ -53,6 +53,7 @@ void		write_struct(t_cmd *cmd)
       printf("nous sommes au maillon numero : %d \n", cpt);
       printf("le type est de %d \n", cmd->type);
       printf("la ligne de ce maillon est %s et la ligne est de %d \n", cmd->line, cmd->nbr_line);
+      printf("la valeur de octet de codage %d \n", cmd->octet_codage);
       printf("l'opcode est de %d \n la valeur du dot_code_octet %d \n", cmd->opcode, cmd->dot_code_octet);
       printf("les arg sont %d, %d, %d \n", cmd->arg[0], cmd->arg[1], cmd->arg[2]);
       printf("les types arg sont %d %d %d \n", cmd->type_arg[0], cmd->type_arg[1], cmd->type_arg[2]);
@@ -73,11 +74,24 @@ int		write_cor(t_cmd *cmd, char *filename)
   
   prog_size = 0;
   cpt = 0;
-  write_struct(cmd);
+  cmd = cmd->head;
+
+  /*  printf("%s \n", cmd->call->label_name);
+      printf("%s \n", cmd->call->next->label_name);
+      printf("%s \n", cmd->def->label_name);
+      printf("%s \n", cmd->def->next->label_name);*/
+
   if (label_and_prog_size(cmd, &prog_size) == -1)
     return (-1);
+  /*
+    printf("%s \n", cmd->call->label_name);
+    printf("%s \n", cmd->call->next->label_name);
+    printf("%s \n", cmd->def->label_name);
+    printf("%s \n", cmd->def->next->label_name);*/
+
   if ((cmd = set_octet_label(cmd)) == NULL)
     return (-1);
+  /*    write_struct(cmd);*/  
   if ((filename = to_dot_cor(filename)) == NULL)
     return (-1);
   if ((fd = open(filename, O_CREAT | O_RDONLY | O_WRONLY |

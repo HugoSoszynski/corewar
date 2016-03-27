@@ -38,8 +38,8 @@
 typedef char    args_type_t;
 
 #define T_REG           1       /* registre */
-#define T_DIR           2       /* directe  (ld  #1,r1  met 1 dans r1) */
-#define T_IND           4       /* indirecte toujours relatif
+#define T_DIR           4       /* directe  (ld  #1,r1  met 1 dans r1) */
+#define T_IND           2       /* indirecte toujours relatif
                                    ( ld 1,r1 met ce qu'il y a l'adress (1+pc)
                                    dans r1 (4 octecs )) */
 #define T_LAB           8       /* LABEL */

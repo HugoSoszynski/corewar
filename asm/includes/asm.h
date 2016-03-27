@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Sat Mar 26 10:41:53 2016 
+** Last update Sat Mar 26 17:13:13 2016 
 */
 
 #ifndef		ASM_H_
@@ -83,7 +83,7 @@
 # ifndef	TYPE_LINE_ERROR
 #  define       TYPE_LINE_ERROR		(-1)
 # endif		/* TYPE_LINE_ERROR */
-
+ 
 # ifndef	TYPE_LINE_EMPTY
 # define	TYPE_LINE_EMPTY		(0)
 # endif		/* TYPE_LINE_EMPTY */

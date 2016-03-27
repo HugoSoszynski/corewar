@@ -5,8 +5,19 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Thu Mar 24 18:58:34 2016 Hugo SOSZYNSKI
-** Last update Fri Mar 25 01:36:10 2016 
+** Last update Sat Mar 26 19:00:24 2016 
 */
+
+static int		check_in_base(char car, const char *base)
+{
+  int			cpt;
+
+  cpt = -1;
+  while (base[++cpt] != '\0')
+    if (car == base[cpt])
+      return (0);
+  return (1);
+}
 
 unsigned char		my_getnbr_base(char *str, const char *base)
 {
@@ -19,7 +30,7 @@ unsigned char		my_getnbr_base(char *str, const char *base)
   while (base[++base_len] != '\0');
   nb = 0;
   cpt = -1;
-  while (str[++cpt] != '\0')
+  while (str[++cpt] != '\0' && check_in_base(str[cpt], base) == 0)
     {
       idx = -1;
       while (base[++idx] != str[cpt]);

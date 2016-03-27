@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Fri Mar 25 14:33:11 2016 
+** Last update Sat Mar 26 15:02:00 2016 
 */
 
 #include	<stdlib.h>
@@ -72,6 +72,7 @@ t_pile		*stock_pile_for_def(t_pile *def, char *label, int line)
   t_pile	*head;
   int		cpt;
 
+  /*  printf ("%s \n", label);*/
   cpt = 0;
   head = def;
   while (head->next != NULL)

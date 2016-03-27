@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Fri Mar 25 13:14:24 2016 
+** Last update Sun Mar 27 02:53:53 2016 
 */
 
 #ifndef	PARSER_H_
@@ -14,16 +14,18 @@
 #include	"pile_label.h"
 #include	"asm.h"
 
-
+int		calc_call(t_cmd *, t_cmd *, t_cmd *);
+int		calc_def(t_cmd *, t_cmd *, t_cmd *);
 t_cmd		*init_first_cmd(void);
 t_cmd		*init_cmd(t_cmd *);
 char		**set_tab_part1(void);
+void		set_octet(t_cmd *, t_cmd *, int);
 t_pile		*init_pile(void);
 t_pile		*stock_pile_for_call(t_pile *, char *, int);
 t_pile		*add_label(t_pile *label);
 t_pile		*stock_pile_for_def(t_pile *, char *, int);
 t_cmd		*add_cmd(t_cmd *);
-int		add_octet(t_cmd *arg);
+int		add_octet(t_cmd *arg, int);
 t_cmd		*set_octet_label(t_cmd *cmd);
 t_cmd		*stock_label_cmd(char *, t_cmd *);
 t_cmd		*stock_label(char *, t_cmd *);
@@ -33,7 +35,6 @@ t_cmd		*stock_cmd(char *, t_cmd *);
 int		strcmpend(char *str1, char *str2);
 int		calc_with_def(t_cmd *, t_cmd *, t_cmd *);
 int		calc_with_call(t_cmd *, t_cmd *, t_cmd *);
-int		add_octet(t_cmd *);
 header_t	*create_cor_header(char *, char **, int);
 int		write_cor_header(header_t *, int, char *);
 char		*to_do_cor(char *filename);
@@ -42,10 +43,10 @@ int		write_file(int fd, t_cmd *);
 unsigned char	my_getnbr_base(char *str, const char *base);
 char		*check_one_name(t_cmd *cmd);
 char		**where_comment(t_cmd *);
-int	my_strlen(const char *);
-int	error_message(char *);
-int	error_message_line(char *,int , char *);
-int	error_message_parser(char *message, int nbr);
+int		my_strlen(const char *);
+int		error_message(char *);
+int		error_message_line(char *,int , char *);
+int		error_message_parser(char *message, int nbr);
 int	arg_direct(char *);
 int	error_message_parser1(char *, int);
 int	error_message_nonb(char *);

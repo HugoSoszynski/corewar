@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Thu Mar 24 23:20:29 2016 Grégoire Loens
-** Last update Fri Mar 25 17:39:41 2016 
+** Last update Sun Mar 27 07:19:00 2016 
 */
 
 #include	<stddef.h>
@@ -13,52 +13,70 @@
 #include	"parser.h"
 #include	"pile_label.h"
 
-int		calc_with_def(t_cmd *call, t_cmd *def, t_cmd *arg)
-{
-  int		nb_octet;
+#include	<stdio.h>
 
-  nb_octet = 0;
-  while (arg->nbr_line != def->def->nb_line && arg != NULL && def->def != NULL)
-    arg = arg->next;
-  while (arg->nbr_line < call->call->nb_line && arg != NULL && def->def != NULL)
-    {
-      nb_octet += add_octet(arg);
-      arg = arg->next;
-    }
-  nb_octet -= nb_octet * 2;
-  return (nb_octet);
-}
-
-int		calc_with_call(t_cmd *call, t_cmd *def, t_cmd *arg)
-{
-  int		nb_octet;
-
-  nb_octet = 0;
-  while (arg->nbr_line != call->call->nb_line && arg != NULL
-	 && call->call != NULL)
-    arg = arg->next;
-  while (arg->nbr_line <= def->nbr_line && arg != NULL && def->def != NULL)
-    {
-      nb_octet += add_octet(arg);
-      arg = arg->next;
-    }
-  return (nb_octet);
-}
-
-int		add_octet(t_cmd *arg)
+void		set_octet(t_cmd *arg, t_cmd *call, int nb_octet)
 {
   int		cpt;
+
+  cpt = 0;
+  arg = arg->head;
+  while (arg != NULL && arg->nbr_line < call->call->nb_line)
+    arg = arg->next;
+  while (arg != NULL && arg->type_arg[cpt] != 12 && arg->type_arg[cpt] != 14
+	 && arg->arg[cpt] != 0)
+    cpt++;
+  arg->arg[cpt] = nb_octet;
+}
+
+int		add_octet_def(t_cmd *arg, t_pile *start)
+{
+  int		nb_octet;
+  int		cpt;
+
+  cpt = 0;
+  nb_octet = 0;
+  while (arg != NULL && arg->nbr_line < start->nb_line)
+    {
+            nb_octet += 1;
+      if (arg->octet_codage != 0)
+	nb_octet += 1;
+      if (arg->opcode == OP_LLDI || arg->opcode == OP_LDI || arg->opcode == OP_STI)
+	nb_octet += 5;
+      else if (arg->opcode == OP_FORK || arg->opcode == OP_LFORK || arg->opcode == OP_ZJMP)
+	nb_octet += 2;
+      else if (arg->opcode == OP_LIVE)
+	nb_octet += 4;
+      else
+	while (cpt < 3)
+	  {
+	    nb_octet += arg->type_arg[cpt];
+	    cpt++;
+	  }
+      cpt = 0;
+      arg = arg->next;
+    }
+  return (nb_octet);
+}
+
+int		calc_call(t_cmd *call, t_cmd *def, t_cmd *arg)
+{
   int		nb_octet;
 
+  (void)call;
   nb_octet = 0;
-  cpt = 0;
-  if (arg->type == TYPE_LINE_CODE)
-    nb_octet += arg->dot_code_octet;
-  else
-    while (arg->arg[cpt] != 0)
-      {
-	nb_octet += arg->arg[cpt];
-	cpt++;
-      }
+  nb_octet = add_octet_def(arg, def->def);
+  return (nb_octet);
+}
+
+int		calc_def(t_cmd *call, t_cmd *def, t_cmd *arg)
+{
+  int		nb_octet;
+
+  arg = arg->head;
+  while (arg != NULL && arg->nbr_line < def->def->nb_line)
+    arg = arg->next;
+  nb_octet = add_octet_def(arg, call->call);
+  nb_octet *= -1;
   return (nb_octet);
 }
