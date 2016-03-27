@@ -5,17 +5,13 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 11:21:21 2016 Grégoire Loens
-** Last update Fri Mar 25 17:28:39 2016 
+** Last update Sun Mar 27 23:11:09 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdlib.h>
 #include	"parser.h"
 #include	"pile_label.h"
 #include	"asm.h"
-
-
-
-#include	<unistd.h>
 
 t_cmd		*init_first_cmd()
 {

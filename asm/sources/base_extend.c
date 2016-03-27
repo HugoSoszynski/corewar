@@ -1,11 +1,11 @@
 /*
-** base_extend.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources
-** 
-** Made by Maxime Pillon
-** Login   <pillon_m@epitech.net>
-** 
-** Started on  Sun Mar 27 20:49:08 2016 
-** Last update Sun Mar 27 20:50:48 2016 
+** base_extend.c for asm in /home/soszyn_h/rendu/CPE/CPE_2015_corewar/asm/sources
+**
+** Made by Hugo SOSZYNSKI
+** Login   <hugo.soszynski@epitech.eu>
+**
+** Started on  Sun Mar 27 23:05:17 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 23:05:25 2016 Hugo SOSZYNSKI
 */
 
 #include        "op.h"
@@ -23,4 +23,3 @@ int             my_strcmp(char *str1, char *str2)
     return (0);
   return (-1);
 }
-

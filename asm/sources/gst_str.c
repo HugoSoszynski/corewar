@@ -5,23 +5,20 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Sun Mar 27 21:23:45 2016 
+** Last update Sun Mar 27 23:08:49 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdlib.h>
 #include	"parser.h"
 #include	"asm.h"
 
-
-
-#include	<stdio.h>
-
-
 int		my_isalpha_num(char c)
 {
-  if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+  if ((c >= '0' && c <= '9') ||
+      (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
     return (2);
-  if (c == ' ' || c == '\t' || c == '\v' || c == '\b' || c == '\f' || c == '\r')
+  if (c == ' ' || c == '\t' ||
+      c == '\v' || c == '\b' || c == '\f' || c == '\r')
     return (-1);
   return (0);
 }
@@ -77,7 +74,7 @@ char		*my_isspace(char *input, int cpt_input, int cpt_output)
 	  cpt_input -= 1;
 	}
       cpt_input++;
-      cpt_output++; 
+      cpt_output++;
     }
   return (check_only_space(output, input, cpt_output));
 }

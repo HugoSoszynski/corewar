@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Wed Feb 24 11:58:27 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 20:47:33 2016 
+** Last update Sun Mar 27 23:06:19 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
@@ -13,12 +13,6 @@
 #include	<stdlib.h>
 #include	"asm.h"
 #include	"op.h"
-
-/*
-** Copie le tableau de string contenant les commentaires
-** dans la section comment du header au format :
-** "comment_1\ncomment2\ncomment_3\0"
-*/
 
 static header_t	*cpy_commentary(header_t *header,
 				char **comment)
@@ -43,11 +37,6 @@ static header_t	*cpy_commentary(header_t *header,
     }
   return (header);
 }
-
-/*
-** Alloue la mémoire pour le header_t
-** et met toutes les valeurs à 0
-*/
 
 static header_t	*init_cor_header()
 {
@@ -76,10 +65,6 @@ static header_t	*init_cor_header()
   return (header);
 }
 
-/*
-** Appelle la fonction init_cor_header() et le remplit
-*/
-
 header_t	*create_cor_header(char *name,
 				   char **comment,
 				   int prog_size)
@@ -97,10 +82,6 @@ header_t	*create_cor_header(char *name,
   header = cpy_commentary(header, comment);
   return (header);
 }
-
-/*
-** Ecrit la structure header_t remplie dans le fichier .cor
-*/
 
 int		write_cor_header(header_t *header,
 				 int fd,

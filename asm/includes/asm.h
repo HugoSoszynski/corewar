@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Feb 22 19:35:27 2016 Hugo SOSZYNSKI
-** Last update Sat Mar 26 17:13:13 2016 
+** Last update Sun Mar 27 22:57:08 2016 Hugo SOSZYNSKI
 */
 
 #ifndef		ASM_H_
@@ -83,7 +83,7 @@
 # ifndef	TYPE_LINE_ERROR
 #  define       TYPE_LINE_ERROR		(-1)
 # endif		/* TYPE_LINE_ERROR */
- 
+
 # ifndef	TYPE_LINE_EMPTY
 # define	TYPE_LINE_EMPTY		(0)
 # endif		/* TYPE_LINE_EMPTY */
@@ -138,10 +138,6 @@ typedef struct	s_cmd
   t_pile	*def;
   t_pile	*call;
 }		t_cmd;
-
-/*
-** cor_header.c
-*/
 
 header_t	*create_cor_header(char *name,
 				   char **coment,

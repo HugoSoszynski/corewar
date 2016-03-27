@@ -5,17 +5,13 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 10:53:24 2016 Grégoire Loens
-** Last update Sun Mar 27 11:38:02 2016 
+** Last update Sun Mar 27 23:10:08 2016 Hugo SOSZYNSKI
 */
 
 #include 	<stddef.h>
 #include	"parser.h"
 #include	"asm.h"
 #include	"op.h"
-
-
-#include	<unistd.h>
-#include	<stdio.h>
 
 int		gst_comment(char *line)
 {
@@ -41,7 +37,7 @@ int		gst_name(char *line)
 {
   int		cpt;
   int		cpt1;
-  
+
   cpt = 5;
   cpt1 = 0;
   if (my_strcmp(line, ".name") == -1)

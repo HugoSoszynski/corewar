@@ -1,11 +1,11 @@
 /*
-** name_and_comment.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources
-** 
-** Made by Maxime Pillon
-** Login   <pillon_m@epitech.net>
-** 
-** Started on  Fri Mar 25 02:21:33 2016 
-** Last update Sun Mar 27 21:28:01 2016 
+** name_and_comment.c for asm in /home/soszyn_h/rendu/CPE/CPE_2015_corewar/asm/sources
+**
+** Made by Hugo SOSZYNSKI
+** Login   <hugo.soszynski@epitech.eu>
+**
+** Started on  Sun Mar 27 23:18:36 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 23:19:08 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>

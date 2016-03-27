@@ -1,11 +1,11 @@
 /*
-** free_struct.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources
-** 
-** Made by Maxime Pillon
-** Login   <pillon_m@epitech.net>
-** 
-** Started on  Sun Mar 27 12:06:51 2016 
-** Last update Sun Mar 27 22:00:13 2016 
+** free_struct.c for asm in /home/soszyn_h/rendu/CPE/CPE_2015_corewar/asm/sources
+**
+** Made by Hugo SOSZYNSKI
+** Login   <hugo.soszynski@epitech.eu>
+**
+** Started on  Sun Mar 27 23:07:48 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 23:08:04 2016 Hugo SOSZYNSKI
 */
 
 #include	<stdlib.h>
@@ -31,7 +31,7 @@ void		free_struct(t_cmd *cmd)
 {
   t_pile	*to_next;
   t_cmd		*head;
-  
+
   head = cmd->head;
   while (cmd->def->next != NULL)
     {

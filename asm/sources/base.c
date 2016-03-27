@@ -1,11 +1,11 @@
 /*
-** base.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources
-** 
-** Made by 
-** Login   <@epitech.net>
-** 
-** Started on  Tue Mar 22 18:30:56 2016 
-** Last update Sun Mar 27 20:49:46 2016 
+** base.c for asm in /home/soszyn_h/rendu/CPE/CPE_2015_corewar/asm/sources
+**
+** Made by Hugo SOSZYNSKI
+** Login   <hugo.soszynski@epitech.eu>
+**
+** Started on  Sun Mar 27 23:04:10 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 23:04:34 2016 Hugo SOSZYNSKI
 */
 
 #include	"op.h"
@@ -37,7 +37,7 @@ int		my_islabel(char *str)
 {
   int		cpt;
   int		cpt1;
-  
+
   cpt = 0;
   while (str[cpt] != '\0')
     {

@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Sun Mar 27 21:57:27 2016 
+** Last update Sun Mar 27 23:22:34 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
@@ -99,7 +99,8 @@ int		storage(int nbr_line, char *line, int type, t_cmd *stock_arg)
   stock_arg->type = type;
   stock_arg->line = line;
   stock_arg->nbr_line = nbr_line;
-  if (type == TYPE_LINE_NAME || type == TYPE_LINE_COMMENT || type == TYPE_LINE_EXTEND)
+  if (type == TYPE_LINE_NAME || type ==
+      TYPE_LINE_COMMENT || type == TYPE_LINE_EXTEND)
     return (0);
   else if (type == TYPE_LINE_CODE)
     {
@@ -128,7 +129,7 @@ int		verif_cmd_line(int fd, char *filename)
 
   if ((stock_arg = init_first_cmd()) == NULL)
     return (error_message("initialise conflict for stocking argument"));
-  if (parser_cmd_extend(&stock_arg, fd) == -1)
+  if (parser_cmd_extend(&stock_arg, fd, 0, 1) == -1)
     {
       stock_arg = stock_arg->head;
       free_struct(stock_arg);

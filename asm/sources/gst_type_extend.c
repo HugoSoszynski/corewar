@@ -1,11 +1,11 @@
 /*
-** gst_type_extend.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources
-** 
-** Made by 
-** Login   <@epitech.net>
-** 
-** Started on  Tue Mar 22 11:57:24 2016 
-** Last update Tue Mar 22 18:27:55 2016 
+** gst_type_extend.c for asm in /home/soszyn_h/rendu/CPE/CPE_2015_corewar/asm/sources
+**
+** Made by Hugo SOSZYNSKI
+** Login   <hugo.soszynski@epitech.eu>
+**
+** Started on  Sun Mar 27 23:10:39 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 23:10:54 2016 Hugo SOSZYNSKI
 */
 
 #include	"parser.h"

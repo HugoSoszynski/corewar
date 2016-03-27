@@ -1,21 +1,17 @@
 /*
-** label_and_prog_size.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources
-** 
-** Made by 
-** Login   <@epitech.net>
-** 
-** Started on  Thu Mar 24 15:25:08 2016 
-** Last update Sun Mar 27 19:45:08 2016 
+** label_and_prog_size.c for asm in /home/soszyn_h/rendu/CPE/CPE_2015_corewar/asm/sources
+**
+** Made by Hugo SOSZYNSKI
+** Login   <hugo.soszynski@epitech.eu>
+**
+** Started on  Sun Mar 27 23:11:35 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 23:12:12 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
 #include	"asm.h"
 #include	"parser.h"
 #include	"op.h"
-
-#include	<unistd.h>
-#include	<stdio.h>
-
 
 int		strcmpend(char *str1, char *str2)
 {

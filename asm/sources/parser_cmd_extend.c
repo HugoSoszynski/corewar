@@ -1,11 +1,11 @@
 /*
-** parser_cmd_extend.c for  in /home/pillon_m/corewar/CPE_2015_corewar/asm/sources
-** 
-** Made by Maxime Pillon
-** Login   <pillon_m@epitech.net>
-** 
-** Started on  Sun Mar 27 21:34:15 2016 
-** Last update Sun Mar 27 21:56:32 2016 
+** parser_cmd_extend.c for asm in /home/soszyn_h/rendu/CPE/CPE_2015_corewar/asm/sources
+**
+** Made by Hugo SOSZYNSKI
+** Login   <hugo.soszynski@epitech.eu>
+**
+** Started on  Sun Mar 27 23:20:53 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 23:23:26 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
@@ -16,15 +16,12 @@
 #include	"get_next_line.h"
 #include	"asm.h"
 
-int		parser_cmd_extend(t_cmd **stock_arg, int fd)
+int		parser_cmd_extend(t_cmd **stock_arg, int fd, unsigned char
+				  stock, int nbr_line)
 {
-  int		nbr_line;
   char		*line;
   int		type;
-  unsigned char	stock;
 
-  stock = 0;
-  nbr_line = 1;
   while ((line = get_next_line(fd)) != NULL)
     {
       if ((line = my_isspace(line, 0, 0)) == NULL)

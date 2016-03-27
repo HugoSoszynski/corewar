@@ -5,11 +5,11 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:12:56 2016 Grégoire Loens
-** Last update Fri Mar 25 02:13:54 2016 
+** Last update Sun Mar 27 23:00:04 2016 Hugo SOSZYNSKI
 */
 
-#ifndef PILE_LABEL_H_
-# define PILE_LABEL_H_
+#ifndef		PILE_LABEL_H_
+# define	PILE_LABEL_H_
 
 typedef struct	s_pile
 {
@@ -23,4 +23,4 @@ typedef struct	s_pile
 t_pile		*init_pile(void);
 t_pile		*add_label(t_pile *);
 
-#endif /* !PILE_LABEL_H_ */
+#endif		/* !PILE_LABEL_H_ */
