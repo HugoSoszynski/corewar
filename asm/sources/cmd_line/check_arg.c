@@ -5,14 +5,17 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Mon Mar 21 17:40:54 2016
-** Last update Wed Mar 23 03:55:55 2016 
+** Last update Sun Mar 27 15:05:52 2016 
 */
 
+#include	<stdlib.h>
 #include	"parser.h"
 #include	"asm.h"
 #include	"op.h"
-#include <stdio.h>
-#include <unistd.h>
+
+
+#include	<stdio.h>
+#include	<unistd.h>
 
 
 int		arg_direct(char *arg_file)
@@ -45,7 +48,8 @@ int		arg_indirect(char *arg_file)
   int		cpt;
 
   cpt = 0;
-  if (arg_file[cpt] != LABEL_CHAR && (arg_file[cpt] < '0' || arg_file[cpt] > '9'))
+  if (arg_file[cpt] != LABEL_CHAR &&
+      ((arg_file[cpt] < '0' || arg_file[cpt] > '9') && arg_file[cpt] != '-'))
     return (-1);
   if (arg_file[cpt] == LABEL_CHAR)
     {
@@ -54,8 +58,13 @@ int		arg_indirect(char *arg_file)
       return (0);
     }
   else
-    if (my_isnum(arg_file) == 0)
-      return(0);
+    {
+      if (arg_file[cpt] == '-')
+	if (my_isnum(arg_file+1) == 0)
+	  return (0);
+      if (my_isnum(arg_file) == 0)
+	return(0);
+    }
   return (-1);
 }
 
@@ -106,5 +115,12 @@ int             check_one_arg(char *arg_file, char *arg_cmd)
 	return (0);
       cpt++;
     }
+  cpt = 0;
+  while (cpt < nb_type)
+    {
+      free(type_of_arg_cmd[cpt]);
+      cpt++;
+    }
+  free(type_of_arg_cmd);
   return (-1);
 }

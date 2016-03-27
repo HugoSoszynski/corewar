@@ -5,10 +5,11 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:40:34 2016 Grégoire Loens
-** Last update Wed Mar 23 05:42:05 2016 
+** Last update Sun Mar 27 14:51:41 2016 
 */
 
 #include	<unistd.h>
+#include	<stdlib.h>
 #include	"parser.h"
 #include	"asm.h"
 
@@ -19,6 +20,7 @@ int		error_message_line(char *message, int nbr, char *line)
   write (2, " cause of \"", 11);
   write (2, line, my_strlen(line));
   write (2, "\"\n", 2);
+  free(line);
   return (-1);
 }
 

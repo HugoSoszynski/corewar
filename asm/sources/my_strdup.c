@@ -5,12 +5,25 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar 21 17:10:44 2016 Grégoire Loens
-** Last update Fri Mar 25 04:20:10 2016 
+** Last update Sun Mar 27 11:43:52 2016 
 */
 
 #include	<stdlib.h>
 #include	"asm.h"
 #include	"parser.h"
+
+void		free_tab_cmd(char **cmd)
+{
+  int		cpt;
+
+  cpt = 0;
+  while (cpt < 34)
+    {
+      free(cmd[cpt]);
+      cpt++;
+    }
+  free(cmd);
+}
 
 char		*my_strdup(const char *src)
 {

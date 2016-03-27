@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ## 
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Sun Mar 27 00:45:55 2016 Hugo SOSZYNSKI
+## Last update Sun Mar 27 12:18:33 2016 
 ##
 
 CC			=	gcc
@@ -23,7 +23,8 @@ CFLAGS			+=	-g
 
 ASM			=	asm/asm
 
-ASM_SRCS		=	asm/sources/my_endianess.c \
+ASM_SRCS		=	asm/sources/free_struct.c \
+				asm/sources/my_endianess.c \
 				asm/sources/label_and_prog_size.c \
 				asm/sources/my_getnbr_base.c \
 				asm/sources/name_and_comment.c \

@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Sun Mar 27 02:53:53 2016 
+** Last update Sun Mar 27 15:29:04 2016 
 */
 
 #ifndef	PARSER_H_
@@ -14,6 +14,9 @@
 #include	"pile_label.h"
 #include	"asm.h"
 
+void		free_linked_list(t_cmd *cmd);
+void		free_struct(t_cmd *cmd);
+void		free_tab_cmd(char **cmd);
 int		calc_call(t_cmd *, t_cmd *, t_cmd *);
 int		calc_def(t_cmd *, t_cmd *, t_cmd *);
 t_cmd		*init_first_cmd(void);
@@ -40,7 +43,7 @@ int		write_cor_header(header_t *, int, char *);
 char		*to_do_cor(char *filename);
 int		write_cor(t_cmd *, char *);
 int		write_file(int fd, t_cmd *);
-unsigned char	my_getnbr_base(char *str, const char *base);
+int		my_getnbr_base(char *str, const char *base);
 char		*check_one_name(t_cmd *cmd);
 char		**where_comment(t_cmd *);
 int		my_strlen(const char *);
