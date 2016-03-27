@@ -5,18 +5,16 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Sun Mar 27 21:19:31 2016 Hugo SOSZYNSKI
+** Last update Sun Mar 27 21:21:55 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
 
-static int	test_champ_cycles(t_corewar *corewar)
+static int	test_champ_cycles(t_corewar *corewar, int *live)
 {
   int		cpt;
-  int		live;
 
   cpt = 0;
-  live = 0;
   while (cpt < corewar->nb_champions)
     {
       if (corewar->champions_alive[cpt] == IS_RUN)
@@ -31,7 +29,7 @@ static int	test_champ_cycles(t_corewar *corewar)
       else if (corewar->champions_alive[cpt] == IS_ALIVE)
 	{
 	  corewar->champions_alive[cpt] = IS_RUN;
-	  ++live;
+	  *live += 1;
 	}
       ++cpt;
     }
@@ -40,9 +38,12 @@ static int	test_champ_cycles(t_corewar *corewar)
 
 static int	game_is_not_finished(t_corewar	*corewar)
 {
+  int		live;
+
+  live = 0;
   if (corewar->cycle_passed < corewar->cycle_to_die)
     return (CONTINUE);
-  if (test_champ_cycles(corewar) == SUCCESS)
+  if (test_champ_cycles(corewar, &live) == SUCCESS)
     return (SUCCESS);
   if (live == 1 && corewar->nb_champions != 1)
     {
