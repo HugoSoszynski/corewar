@@ -4,9 +4,8 @@
 ** Made by
 ** Login   <@epitech.net>
 **
-<<<<<<< HEAD
 ** Started on  Mon Mar  7 16:10:58 2016 Maxime Pillon
-** Last update Sun Mar 27 23:18:19 2016 loens_g
+** Last update Sun Mar 27 23:20:09 2016 loens_g
 */
 
 #include	<stddef.h>
