@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Mon Mar  7 16:10:58 2016
-** Last update Sun Mar 27 14:45:16 2016 
+** Last update Sun Mar 27 18:22:10 2016 
 */
 
 #include	<stddef.h>
@@ -38,7 +38,10 @@ int		check_validity(char *line, char **cmd)
   char		**arg_of_cmd;
 
   cpt = 0;
-  arg_cmd_line = check_exist_cmd(my_getword(line, 1), cmd) + 1;
+  arg = my_getword(line, 1);
+  arg_cmd_line = check_exist_cmd(arg, cmd) + 1;
+  free(arg);
+  arg = NULL;
   arg = my_getword(line, 2);
   arg_of_cmd_tab = my_str_to_wordtab(cmd[arg_cmd_line], &nb_arg_need, ",");
   arg_of_cmd = my_str_to_wordtab(arg, &nb_arg_have, ",");
@@ -68,15 +71,22 @@ int		check_cmd(char *line)
   word = my_getword(line, 1);
   if (check_exist_cmd(word, cmd) == -1)
     return (error_message("no function declared at line "));
+  free(word);
+  word = NULL;
   while ((word = my_getword(line, word_nbr)) != NULL)
     {
-      if (check_exist_cmd(word, cmd) == 0)
-	return (error_message("too much function declaration at line"));
+      if (check_exist_cmd(word, cmd) != -1)
+	{
+	  free(word);
+	  word = NULL;
+	  return (error_message("too much function declaration at line"));
+	}
+      free(word);
+      word = NULL;
       word_nbr++;
     }
   if (check_validity(line, cmd) == -1)
     return (-1);
-  free(word);
   free_tab_cmd(cmd);
   return (0);
 }

@@ -5,10 +5,11 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Fri Mar 25 00:01:14 2016 
-** Last update Sun Mar 27 17:00:38 2016 
+** Last update Sun Mar 27 20:41:14 2016 
 */
 
 #include	<stddef.h>
+#include	<stdlib.h>
 #include	"asm.h"
 #include	"parser.h"
 #include	"pile_label.h"
@@ -16,7 +17,14 @@
 
 t_cmd		*stock_label(char *line, t_cmd *cmd)
 {
-  if ((cmd->head->def = stock_pile_for_def(cmd->head->def, my_getword(line, 1), cmd->nbr_line)) == NULL)
-    return (NULL);
+  char		*tofree;
+
+  tofree = my_getword(line, 1);
+  if ((cmd->head->def = stock_pile_for_def(cmd->head->def, tofree, cmd->nbr_line)) == NULL)
+    {
+      free(tofree);
+      tofree = NULL;
+      return (NULL);
+    }
   return (cmd);
 }

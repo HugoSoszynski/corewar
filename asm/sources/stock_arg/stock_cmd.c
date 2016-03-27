@@ -5,19 +5,15 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Wed Mar 23 16:14:19 2016
-** Last update Sun Mar 27 15:10:43 2016 
+** Last update Sun Mar 27 22:50:57 2016 
 */
 
 #include	<stddef.h>
+#include	<stdlib.h>
 #include	"asm.h"
 #include	"parser.h"
 #include	"op.h"
 #include	"pile_label.h"
-
-
-#include	<unistd.h>
-#include	<stdio.h>
-
 
 char		if_octet_codage(char **tab, int cpt1, char output)
 {
@@ -50,97 +46,72 @@ char		setup_octet_codage(char *arg, char cpt)
     {
       output = if_octet_codage(tab, cpt1, output);
     }
+  free_str_wordtab(tab, cpt2);
   return (output);
 }
 
 t_cmd		*add_call(char *label, t_cmd *cmd)
 {
-  if ((cmd->head->call = stock_pile_for_call(cmd->head->call, label, cmd->nbr_line)) == NULL)
+  char		*label_new;
+
+  if ((label_new = my_strdup(label)) == NULL)
+    return (NULL);
+  if ((cmd->head->call = stock_pile_for_call(cmd->head->call, label_new, cmd->nbr_line)) == NULL)
     return (NULL);
   return (cmd);
 }
 
-t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd)
+t_cmd		*type_arg(char *line, t_cmd *stock_arg, char **cmd, int nb)
 {
-  int		nb;
-  int		val;
-  int		balec;
+  int		tofree;
   int		nb_argument;
   char		**arg;
+  char		*totab;
 
-  val = check_exist_cmd(my_getword(line, 1), cmd);
-  arg = my_str_to_wordtab(cmd[val + 1], &nb_argument, ",");
-  arg = my_str_to_wordtab(my_getword(line, 2), &balec, ",");
-  nb = -1;
-  while (++nb < 3)
+  nb_argument = nb_argument_calc(line, stock_arg, cmd);
+  totab = my_getword(line, 2);
+  arg = my_str_to_wordtab(totab, &tofree, ",");
+  free(totab);
+  while (++nb < nb_argument)
     {
-      if (nb < nb_argument)
+      if (arg_register(arg[nb]) == 0)
 	{
-	  if (arg_register(arg[nb]) == 0)
-	    {
-	      stock_arg->type_arg[nb] = 1;
-	      stock_arg->arg[nb] = my_getnbr_base(arg[nb]+1, "0123456789");
-	    }
-	  else if (arg_direct(arg[nb]) == 0)
-	    {
-	      stock_arg->type_arg[nb] = T_DIR;
-	      if (arg[nb][1] != ':')
-		{
-		  if (arg[nb][1] != '\0' && arg[nb][1] == '0' && arg[nb][2] != '\0' && arg[nb][2] == 'x')
-		    {
-		      stock_arg->arg[nb] = my_getnbr_base(arg[nb]+3, "0123456789ABCDEF");
-		    }
-		  else
-		    {
-		      stock_arg->arg[nb] = my_getnbr_base(arg[nb]+1, "0123456789");
-		    }
-		}
-	      else
-		{
-		  if ((stock_arg = add_call(arg[nb]+2, stock_arg)) == NULL)
-		    return (NULL);
-		  stock_arg->type_arg[nb] += 10;
-		}
-	    }
-	  else if (arg_indirect(arg[nb]) == 0)
-	    {
-	      stock_arg->type_arg[nb] = T_IND;
-	      if (arg[nb][0] != ':')
-		{
-		  if (arg[nb][0] != '\0' && arg[nb][0] == '0' && arg[nb][1] != '\0' && arg[nb][1] == 'x')
-		    {
-		      stock_arg->arg[nb] = my_getnbr_base(arg[nb]+2, "0123456789");
-		    }
-		  else
-		    {
-		      stock_arg->arg[nb] = my_getnbr_base(arg[nb], "0123456789");
-		    }
-		}
-	      else
-		{
-		  if ((stock_arg = add_call(arg[nb]+2, stock_arg)) == NULL)
-		    return (NULL);
-		  stock_arg->type_arg[nb] += 10;
-		}
-	    }
+	  stock_arg->type_arg[nb] = 1;
+	  stock_arg->arg[nb] = my_getnbr_base(arg[nb]+1, "0123456789");
 	}
-      else
-	stock_arg->type_arg[nb] = 0;
+      else if (arg_direct(arg[nb]) == 0)
+	if ((case_direct(stock_arg, arg, nb)) == NULL)
+	  return (NULL);
+      if (arg_indirect(arg[nb]) == 0)
+	if ((case_indirect(stock_arg, arg, nb)) == NULL)
+	  return (NULL);
     }
+  free_str_wordtab(arg, tofree);
   return (stock_arg);
 }
 
 t_cmd		*stock_cmd(char *line, t_cmd *stock_arg)
 {
   char		**cmd;
+  char		*tofree;
 
   if ((cmd = set_cmd_part1()) == NULL)
     return (NULL);
   stock_arg->opcode = (char)check_exist_cmd(line, cmd); // opcode
   /*printf("%d \n", stock_arg->opcode);*/
-  if ((stock_arg->octet_codage = setup_octet_codage(my_getword(line, 2), stock_arg->opcode)) == -1)
-    return (NULL);
-  if ((stock_arg = type_arg(line, stock_arg, cmd)) == NULL)
-    return (NULL);
+  tofree = my_getword(line, 2);
+  if ((stock_arg->octet_codage = setup_octet_codage(tofree, stock_arg->opcode)) == -1)
+    {
+      free(tofree);
+      free_tab_cmd(cmd);
+      return (NULL);
+    }
+  free(tofree);
+  if ((stock_arg = type_arg(line, stock_arg, cmd, -1)) == NULL)
+    {
+      free_tab_cmd(cmd);
+      return (NULL);
+    }
+  free_tab_cmd(cmd);
   return (stock_arg);
 }

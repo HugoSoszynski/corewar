@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Tue Mar  8 16:05:30 2016
-** Last update Sun Mar 27 14:56:44 2016 
+** Last update Sun Mar 27 18:53:31 2016 
 */
 
 #include	<stdlib.h>
@@ -74,7 +74,7 @@ char		**set_cmd_part1()
 {
   char		**cmd;
 
-  cmd = malloc(sizeof(char *) * 35);
+  cmd = malloc(sizeof(char *) * 34);
   if ((cmd[0] = my_strdup("live")) == NULL)
     return (NULL);
   if ((cmd[1] = my_strdup("d")) == NULL)

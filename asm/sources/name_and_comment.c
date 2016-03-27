@@ -5,7 +5,7 @@
 ** Login   <pillon_m@epitech.net>
 ** 
 ** Started on  Fri Mar 25 02:21:33 2016 
-** Last update Sat Mar 26 10:52:52 2016 
+** Last update Sun Mar 27 21:28:01 2016 
 */
 
 #include	<stddef.h>
@@ -13,10 +13,6 @@
 #include	"asm.h"
 #include	"parser.h"
 #include	"op.h"
-
-
-#include	<stdio.h>
-
 
 char		*check_one_name(t_cmd *cmd)
 {
@@ -81,14 +77,12 @@ int		check_size_comment(char **comment)
   return (0);
 }
 
-char		**where_comment(t_cmd *cmd)
+char		**where_comment(t_cmd *cmd, int cpt)
 {
   char		**comment;
-  int		cpt;
   int		cpt1;
   t_cmd		*check;
 
-  cpt = 0;
   cpt1 = -1;
   check = cmd->head;
   if ((comment = comment_malloc(check->head)) == NULL)
@@ -97,7 +91,7 @@ char		**where_comment(t_cmd *cmd)
     {
       if (check->type == TYPE_LINE_COMMENT)
 	{
-	  comment[cpt] = check->line+10;
+	  comment[cpt] = my_strdup(check->line+10);
 	  while (comment[cpt][++cpt1] != '"');
 	  comment[cpt][cpt1] = '\0';
 	  cpt1 = -1;

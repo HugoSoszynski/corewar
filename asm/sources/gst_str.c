@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 11:20:10 2016 Grégoire Loens
-** Last update Sun Mar 27 17:37:49 2016 
+** Last update Sun Mar 27 21:23:45 2016 
 */
 
 #include	<stdlib.h>
@@ -33,13 +33,14 @@ int		my_ispace(char c)
   return (0);
 }
 
-char		*check_only_space(char *output, char *input)
+char		*check_only_space(char *output, char *input, int cpt_output)
 {
   int		cpt;
   int		var;
 
   var = 0;
   cpt = 0;
+  output[cpt_output] = '\0';
   while (output[cpt] != '\0')
     {
       if (my_ispace(output[cpt]) != -1)
@@ -48,27 +49,18 @@ char		*check_only_space(char *output, char *input)
     }
   if (var == 0)
     output[0] = '\0';
-  printf("2>>>>input>>>>%p<<<<<<<<<<\n", (void *)input); 
-  printf("2>>>>output>>>%p<<<<<<<<<<\n", (void *)output);
   free(input);
+  input = NULL;
+  printf ("%s \n", output);
   return (output);
 }
 
-/* tentative de free et de mise a la norme failed */
-
-
-char		*my_isspace(char *input)
+char		*my_isspace(char *input, int cpt_input, int cpt_output)
 {
-  int		cpt_input;
-  int		cpt_output;
   char		*output;
 
-  cpt_input = 0;
-  cpt_output = 0;
   if ((output = malloc(sizeof(char) * my_strlen(input) + 1)) == NULL)
     return (NULL);
-  printf("1>>>>input>>>>%p<<<<<<<<<<\n", (void *)input); 
-  printf("1>>>>output>>>%p<<<<<<<<<<\n", (void *)output);
   while (my_ispace(input[cpt_input]) == -1 && input[cpt_input] != '\0')
     cpt_input++;
   while (input[cpt_input] != '\0')
@@ -76,10 +68,7 @@ char		*my_isspace(char *input)
       if (my_ispace(input[cpt_input]) == 0 && input[cpt_input] != COMMENT_CHAR)
 	output[cpt_output] = input[cpt_input];
       else if (input[cpt_input] == COMMENT_CHAR || input[cpt_input] == ';')
-	{
-	  output[cpt_output] = '\0';
-	  return (check_only_space(output, input));
-	}
+	return (check_only_space(output, input, cpt_output));
       else
 	{
 	  output[cpt_output] = ' ';
@@ -90,6 +79,5 @@ char		*my_isspace(char *input)
       cpt_input++;
       cpt_output++; 
     }
-  output[cpt_output] = '\0';
-  return (check_only_space(output, input));
+  return (check_only_space(output, input, cpt_output));
 }

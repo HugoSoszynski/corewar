@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 ** 
 ** Started on  Thu Mar 24 19:33:51 2016 
-** Last update Sun Mar 27 16:56:36 2016 
+** Last update Sun Mar 27 22:08:58 2016 
 */
 
 #include	<unistd.h>
@@ -14,13 +14,8 @@
 #include	"parser.h"
 #include	"op.h"
 
-#include	<stdio.h>
-
-void		write_arg(int fd, t_cmd *cmd)
+int		write_arg1(int fd, t_cmd *cmd)
 {
-  int		cpt;
-
-  cpt = -1;
   if (cmd->opcode == (OP_STI / 2 + 1))
     {
       write(fd, &(cmd->arg[0]), 1);
@@ -42,6 +37,17 @@ void		write_arg(int fd, t_cmd *cmd)
       my_reverse_bytes(&(cmd->arg[0]), 2);
       write(fd, &(cmd->arg[0]), 2);      
     }
+  else
+    return (1);
+  return (0);
+}
+
+void		write_arg(int fd, t_cmd *cmd)
+{
+  int		cpt;
+
+  if (write_arg1(fd, cmd) == 0)
+    return ;
   else if (cmd->opcode == (OP_LIVE / 2 + 1))
     {
       my_reverse_bytes(&(cmd->arg[0]), 4);
@@ -67,7 +73,6 @@ void		write_dot_code(int fd, t_cmd *cmd)
   unsigned char	c;
   
   cpt = 0;
-  printf("%s \n", cmd->line);
   while (cmd->line[cpt] != '\0')
     {
       c = my_getnbr_base(&(cmd->line[cpt]), "0123456789ABCDEF");
@@ -100,6 +105,6 @@ int		write_file(int fd, t_cmd *cmd)
       cmd = cmd->next;
     }
   rescue = rescue->head;
-  free_struct(rescue);
+  /*  free_struct(rescue);*/
   return (0);
 }

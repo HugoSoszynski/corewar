@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:43:06 2016 Grégoire Loens
-** Last update Sun Mar 27 15:29:04 2016 
+** Last update Sun Mar 27 22:43:22 2016 
 */
 
 #ifndef	PARSER_H_
@@ -14,6 +14,13 @@
 #include	"pile_label.h"
 #include	"asm.h"
 
+int		nb_argument_calc(char *line, t_cmd *stock_arg, char **cmd);
+t_cmd		*add_call(char *, t_cmd *);
+char		*case_direct(t_cmd *, char **, int);
+char		*case_indirect(t_cmd *, char **, int);
+int		storage(int, char *, int, t_cmd *);
+int		parser_cmd_extend(t_cmd **stock_arg, int);
+void		free_str_wordtab(char **, int);
 void		free_linked_list(t_cmd *cmd);
 void		free_struct(t_cmd *cmd);
 void		free_tab_cmd(char **cmd);
@@ -45,7 +52,7 @@ int		write_cor(t_cmd *, char *);
 int		write_file(int fd, t_cmd *);
 int		my_getnbr_base(char *str, const char *base);
 char		*check_one_name(t_cmd *cmd);
-char		**where_comment(t_cmd *);
+char		**where_comment(t_cmd *, int);
 int		my_strlen(const char *);
 int		error_message(char *);
 int		error_message_line(char *,int , char *);
@@ -82,7 +89,7 @@ int	error_message(char *);
 int	my_isalpha_num(char );
 int	my_strcmp(char *, char *);
 int	my_ispace(char );
-char	*my_isspace(char *);
+char	*my_isspace(char *, int, int);
 int	gst_comment(char *);
 int	gst_name(char *);
 int	gst_cmd(char *, char **);

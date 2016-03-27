@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Mon Mar 21 17:40:54 2016
-** Last update Sun Mar 27 15:05:52 2016 
+** Last update Sun Mar 27 19:02:37 2016 
 */
 
 #include	<stdlib.h>
@@ -112,14 +112,23 @@ int             check_one_arg(char *arg_file, char *arg_cmd)
   while (cpt < nb_type)
     {
       if ((check_is_type(arg_file, type_of_arg_cmd[cpt])) == 0)
-	return (0);
+	{
+	  cpt = -1;
+	  while (++cpt < nb_type)
+	    {
+	      free(type_of_arg_cmd[cpt]);
+	      type_of_arg_cmd[cpt] = NULL;
+	    }
+	  free(type_of_arg_cmd);
+	  return (0);
+	}
       cpt++;
     }
-  cpt = 0;
-  while (cpt < nb_type)
+  cpt = -1;
+  while (++cpt < nb_type)
     {
       free(type_of_arg_cmd[cpt]);
-      cpt++;
+      type_of_arg_cmd[cpt] = NULL;
     }
   free(type_of_arg_cmd);
   return (-1);
