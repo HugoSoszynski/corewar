@@ -5,10 +5,9 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:11 2016 corsin_a
-** Last update Sun Mar 27 14:31:43 2016 corsin_a
+** Last update Sun Mar 27 21:12:34 2016 Hugo SOSZYNSKI
 */
 
-#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_or(unsigned char opcode)

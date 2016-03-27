@@ -5,10 +5,9 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:32 2016 corsin_a
-** Last update Sun Mar 27 18:57:20 2016 corsin_a
+** Last update Sun Mar 27 21:12:23 2016 Hugo SOSZYNSKI
 */
 
-#include	<stdio.h>
 #include	"corewar.h"
 
 int		check_op_zjmp(char	opcode)

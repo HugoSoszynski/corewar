@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 01:13:18 2016 corsin_a
-** Last update Sun Mar 27 19:38:59 2016 corsin_a
+** Last update Sun Mar 27 20:50:30 2016 Hugo SOSZYNSKI
 */
 
 #include	"op_list.h"
@@ -41,7 +41,7 @@ void		execute_process(t_corewar	*corewar)
   while (process_list != NULL)
     {
       if (process_list->cycle == -1 &&
-	  check_instruction(corewar, process_list) != SUCCESS)
+	  checkinstruction(corewar, process_list) != SUCCESS)
 	process_list->process.pc = (process_list->process.pc + 1) % MEM_SIZE;
       if (process_list->cycle > 0)
 	--process_list->cycle;

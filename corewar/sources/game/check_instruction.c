@@ -5,14 +5,14 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 02:04:14 2016 corsin_a
-** Last update Sun Mar 27 18:54:45 2016 corsin_a
+** Last update Sun Mar 27 20:50:09 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
 #include	"op_list.h"
 
-int		check_instruction(t_corewar	*corewar,
-				  t_process_list	*process_list)
+int		checkinstruction(t_corewar	*corewar,
+				 t_process_list	*process_list)
 {
   int		op;
 
