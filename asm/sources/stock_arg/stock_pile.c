@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Wed Mar 23 01:30:46 2016 Grégoire Loens
-** Last update Sun Mar 27 16:19:23 2016 
+** Last update Sun Mar 27 23:28:55 2016 loens_g
 */
 
 #include	<stdlib.h>
@@ -40,8 +40,6 @@ t_pile		*add_label(t_pile *label)
   tmp = label;
   if ((new_label = init_pile()) == NULL)
     return (NULL);
-  /*  while (tmp->next != NULL)
-      tmp = tmp->next;*/
   tmp->next = new_label;
   tmp->next->label_name = NULL;
   tmp->next->next = NULL;
@@ -64,7 +62,7 @@ t_pile		*stock_pile_for_call(t_pile *call, char *label, int line)
   head->label_name = label;
   head->nb_line = line;
   return (call);
-  
+
 }
 
 t_pile		*stock_pile_for_def(t_pile *def, char *label, int line)
@@ -72,7 +70,6 @@ t_pile		*stock_pile_for_def(t_pile *def, char *label, int line)
   t_pile	*head;
   int		cpt;
 
-  /*  printf ("%s \n", label);*/
   cpt = 0;
   head = def;
   while (head->next != NULL)

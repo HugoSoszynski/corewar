@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Thu Mar 24 23:20:29 2016 Grégoire Loens
-** Last update Sun Mar 27 07:19:00 2016 
+** Last update Sun Mar 27 23:21:39 2016 loens_g
 */
 
 #include	<stddef.h>
@@ -41,9 +41,11 @@ int		add_octet_def(t_cmd *arg, t_pile *start)
             nb_octet += 1;
       if (arg->octet_codage != 0)
 	nb_octet += 1;
-      if (arg->opcode == OP_LLDI || arg->opcode == OP_LDI || arg->opcode == OP_STI)
+      if (arg->opcode == OP_LLDI
+	  || arg->opcode == OP_LDI || arg->opcode == OP_STI)
 	nb_octet += 5;
-      else if (arg->opcode == OP_FORK || arg->opcode == OP_LFORK || arg->opcode == OP_ZJMP)
+      else if (arg->opcode == OP_FORK
+	       || arg->opcode == OP_LFORK || arg->opcode == OP_ZJMP)
 	nb_octet += 2;
       else if (arg->opcode == OP_LIVE)
 	nb_octet += 4;

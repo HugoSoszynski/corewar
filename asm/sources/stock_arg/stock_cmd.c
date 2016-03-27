@@ -5,7 +5,7 @@
 ** Login   <@epitech.net>
 **
 ** Started on  Wed Mar 23 16:14:19 2016
-** Last update Sun Mar 27 22:50:57 2016 
+** Last update Sun Mar 27 23:24:02 2016 loens_g
 */
 
 #include	<stddef.h>
@@ -56,7 +56,8 @@ t_cmd		*add_call(char *label, t_cmd *cmd)
 
   if ((label_new = my_strdup(label)) == NULL)
     return (NULL);
-  if ((cmd->head->call = stock_pile_for_call(cmd->head->call, label_new, cmd->nbr_line)) == NULL)
+  if ((cmd->head->call = stock_pile_for_call
+       (cmd->head->call, label_new, cmd->nbr_line)) == NULL)
     return (NULL);
   return (cmd);
 }
@@ -97,10 +98,10 @@ t_cmd		*stock_cmd(char *line, t_cmd *stock_arg)
 
   if ((cmd = set_cmd_part1()) == NULL)
     return (NULL);
-  stock_arg->opcode = (char)check_exist_cmd(line, cmd); // opcode
-  /*printf("%d \n", stock_arg->opcode);*/
+  stock_arg->opcode = (char)check_exist_cmd(line, cmd);
   tofree = my_getword(line, 2);
-  if ((stock_arg->octet_codage = setup_octet_codage(tofree, stock_arg->opcode)) == -1)
+  if ((stock_arg->octet_codage =
+       setup_octet_codage(tofree, stock_arg->opcode)) == -1)
     {
       free(tofree);
       free_tab_cmd(cmd);
