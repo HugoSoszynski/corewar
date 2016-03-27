@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 13:40:34 2016 Grégoire Loens
-** Last update Mon Mar 21 21:22:48 2016 corsin_a
+** Last update Sun Mar 27 21:26:37 2016 Hugo SOSZYNSKI
 */
 
 #include	<unistd.h>
@@ -16,7 +16,7 @@ int		my_strlen(char *str)
   int		cpt;
 
   cpt = 0;
-  while(str[cpt] != '\0')
+  while (str[cpt] != '\0')
     cpt++;
   return (cpt);
 }

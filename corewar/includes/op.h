@@ -6,12 +6,12 @@
 */
 
 
-#ifndef _OP_H_
-# define _OP_H_
+#ifndef OP_H_
+# define OP_H_
 
 
 
-#define MEM_SIZE                (6*1024)
+#define MEM_SIZE                (6 * 1024)
 #define IDX_MOD                 (512)
 #define MAX_ARGS_NUMBER         (4)
 
@@ -57,9 +57,9 @@ typedef struct op_s		op_t;
 typedef struct			header_s
 {
    int				magic;
-   char				prog_name[PROG_NAME_LENGTH+1];
+   char				prog_name[PROG_NAME_LENGTH + 1];
    int				prog_size;
-   char				comment[COMMENT_LENGTH+1];
+   char				comment[COMMENT_LENGTH + 1];
 }				header_t;
 
 #define CYCLE_TO_DIE		(1536)

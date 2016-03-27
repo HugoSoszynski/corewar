@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 12:03:44 2016 corsin_a
-** Last update Tue Mar 22 14:07:13 2016 corsin_a
+** Last update Sun Mar 27 21:31:58 2016 Hugo SOSZYNSKI
 */
 
 #include		<sys/types.h>
@@ -48,11 +48,23 @@ static int		finish_init(t_corewar	*corewar,
 				    int		cpt,
 				    int		fd)
 {
-  if ((corewar->champion[cpt].prog = read_exe(fd, corewar->champion[cpt].header.prog_size)) == NULL)
+  if ((corewar->champion[cpt].prog =
+       read_exe(fd, corewar->champion[cpt].header.prog_size)) == NULL)
     return (ERROR);
   corewar->champion[cpt].address = options->champion[cpt].ad;
   corewar->champion[cpt].nb_champion = options->champion[cpt].nb;
   return (SUCCESS);
+}
+
+static void		opt_endian(t_corewar *corewar)
+{
+  if (IS_LIT_ENDIAN)
+    {
+      my_reverse_bytes(&(corewar->champion[cpt].header.magic),
+		       sizeof(int));
+      my_reverse_bytes(&(corewar->champion[cpt].header.prog_size),
+		       sizeof(int));
+    }
 }
 
 int			init_champ(t_corewar	*corewar,
@@ -65,19 +77,16 @@ int			init_champ(t_corewar	*corewar,
   while (++cpt < options->nb_champion)
     {
       if ((fd = open(options->champion[cpt].name, O_RDONLY)) == -1)
-	return (error_file("File ", options->champion[cpt].name, " is not accessible"));
+	return (error_file("File ",
+			   options->champion[cpt].name, " is not accessible"));
       if (read(fd, &corewar->champion[cpt].header,
 	       sizeof(header_t)) != sizeof(header_t))
-	return (error_file("File ", options->champion[cpt].name, " : wrong file size"));
-      if (IS_LIT_ENDIAN)
-	{
-	  my_reverse_bytes(&(corewar->champion[cpt].header.magic),
-			   sizeof(int));
-          my_reverse_bytes(&(corewar->champion[cpt].header.prog_size),
-			   sizeof(int));
-	}
+	return (error_file("File ",
+			   options->champion[cpt].name, " : wrong file size"));
+      opt_endian(corewar);
       if (corewar->champion[cpt].header.magic != COREWAR_EXEC_MAGIC)
-	return (error_file("", options->champion[cpt].name, " is not a corewar executable"));
+	return (error_file("", options->champion[cpt].name,
+			   " is not a corewar executable"));
       if (finish_init(corewar, options, cpt, fd) == ERROR)
 	return (ERROR);
       close(fd);
