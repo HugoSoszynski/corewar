@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Mon Mar  7 17:44:36 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 16:03:59 2016 corsin_a
+** Last update Sun Mar 27 21:00:34 2016 corsin_a
 */
 
 #ifndef			COREWAR_H_
@@ -201,17 +201,25 @@ void			tekpixel(t_bunny_pixelarray	*pix,
 				 t_color		*color);
 unsigned int		tekgetcolor(t_bunny_pixelarray	*pix,
 				    t_bunny_position	*pos);
-void			tekblit(t_bunny_pixelarray *out,
-				t_bunny_pixelarray *in,
+void			tekblit(t_bunny_pixelarray 	*out,
+				t_bunny_pixelarray 	*in,
 				const t_bunny_position *pos);
 void			tektext(t_bonus			*data,
 				const t_bunny_position	*initial,
 				char			*str,
 				t_color			*color);
-int			my_strlen(char *str);
-void			show_cycle(t_bonus	*data);
-void			show_interface(t_bonus	*data);
-void			show_mem(t_bonus	*data);
-void			show_champ(t_bonus	*data);
+int			my_strlen(char 			*str);
+void			show_cycle(t_bonus		*data);
+void			show_interface(t_bonus		*data);
+void			show_mem(t_bonus		*data);
+void			show_champ(t_bonus		*data);
+t_bunny_response	leaderboard(void		*_data);
+char			*my_getenv(char 		**env,
+				   char 		*var);
+int			check_h(void);
+int			my_strncmp(char			*str1,
+				   char			*str2,
+				   int			n);
+
 
 #endif		/* !COREWAR_H_ */

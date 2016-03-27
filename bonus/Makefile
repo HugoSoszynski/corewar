@@ -5,7 +5,7 @@
 ## Login   <hugo.soszynski@epitech.eu>
 ##
 ## Started on  Mon Mar 21 11:56:58 2016 Hugo SOSZYNSKI
-## Last update Sun Mar 27 15:40:24 2016 Sylvain Corsini
+## Last update Sun Mar 27 21:00:49 2016 Sylvain Corsini
 ##
 
 CC			=	gcc
@@ -64,6 +64,7 @@ COREWAR_SRCS		=	sources/main.c \
 				sources/game/op/sub.c \
 				sources/game/op/xor.c \
 				sources/game/op/zjmp.c \
+				sources/graphics/leaderboard.c \
 				sources/graphics/launch_graphics.c \
 				sources/graphics/tekblit.c \
 				sources/graphics/tekpixel.c \
@@ -81,7 +82,10 @@ COREWAR_SRCS		=	sources/main.c \
 				sources/my_putnbr.c \
 				sources/my_strcmp.c \
 				sources/aff_help.c \
-				sources/my_init_tab.c
+				sources/my_init_tab.c\
+				sources/my_getenv.c \
+				sources/check_h.c \
+				sources/my_strncmp.c
 
 COREWAR_OBJS		=	$(COREWAR_SRCS:.c=.o)
 
