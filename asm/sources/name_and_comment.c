@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Sun Mar 27 23:18:36 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 23:19:08 2016 Hugo SOSZYNSKI
+** Last update Mon Apr  4 19:33:57 2016 
 */
 
 #include	<stddef.h>
@@ -34,6 +34,8 @@ char		*check_one_name(t_cmd *cmd)
 	}
       check = check->next;
     }
+  if (name == NULL)
+    return (NULL);
   while (name[cpt] != '"' && name[cpt] != '\0')
     cpt++;
   if (name[cpt] == '"')
