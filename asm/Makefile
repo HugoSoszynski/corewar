@@ -5,7 +5,7 @@
 ## Login   <sylvain.corsini@epitech.eu>
 ##
 ## Started on  Sun Mar 27 23:27:48 2016 corsin_a
-## Last update Sun Mar 27 23:43:32 2016 Sylvain Corsini
+## Last update Thu Apr  7 22:18:46 2016 Hugo SOSZYNSKI
 ##
 
 CC			=	gcc
@@ -59,7 +59,8 @@ ASM_SRCS		=	sources/stock_arg/stock_cmd_extend.c \
 				sources/cmd_line/check_label.c \
 				sources/cmd_line/check_label_cmd.c \
 				sources/cmd_line/my_getword.c \
-				sources/cmd_line/tab_cmd.c
+				sources/cmd_line/tab_cmd.c \
+				sources/my_bzero.c
 
 ASM_OBJS		=	$(ASM_SRCS:.c=.o)
 
