@@ -20,7 +20,6 @@ int		error_message_line(char *message, int nbr, char *line)
   write(2, " cause of \"", 11);
   write(2, line, my_strlen(line));
   write(2, "\"\n", 2);
-  free(line);
   return (-1);
 }
 

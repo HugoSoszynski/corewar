@@ -29,6 +29,7 @@ char		*to_dot_cor(char *filename)
   cpt = -1;
   while ((filename[++cpt] != '\0'))
     output[cpt] = filename[cpt];
+  cpt--;
   while (cpt != 0 && output[cpt] != '.')
     cpt--;
   if (cpt == 0)

@@ -37,8 +37,7 @@ char		*case_direct(t_cmd *stock_arg, char **arg, int nb)
   if (arg[nb][1] != ':')
     {
       if (arg[nb][1] != '\0' && arg[nb][1] == '0'
-	  && arg[nb][2] != '\0' && arg[nb][2] == 'x'	\
-	  )
+	  && arg[nb][2] != '\0' && arg[nb][2] == 'x')
 	stock_arg->arg[nb] = my_getnbr_base(arg[nb]+3, "0123456789ABCDEF");
       else
 	stock_arg->arg[nb] = my_getnbr_base(arg[nb]+1, "0123456789");
