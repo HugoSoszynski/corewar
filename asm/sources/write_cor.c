@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Sun Mar 27 23:25:06 2016 Hugo SOSZYNSKI
-** Last update Mon Apr  4 19:35:40 2016 
+** Last update Thu Apr  7 11:59:30 2016 gregoire loens
 */
 
 #include	<unistd.h>
@@ -57,7 +57,7 @@ int		write_cor_extend(t_cmd *cmd, char *filename, int *fd, int *prog_size)
   if ((*fd = open(filename, O_CREAT | O_RDONLY | O_WRONLY |
 		 O_TRUNC | O_APPEND, S_IWUSR | S_IRUSR | S_IRGRP |
 		 S_IWGRP | S_IROTH)) == -1)
-    return (-1);
+    return (error_message_nonb("cant open the file"));
   return (0);
 }
 
