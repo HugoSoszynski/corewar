@@ -33,7 +33,7 @@ void		free_struct(t_cmd *cmd)
   t_cmd		*head;
 
   head = cmd->head;
-  while (cmd->def->next != NULL)
+  while (cmd->def != NULL)
     {
       to_next = cmd->def->next;
       free(cmd->def->label_name);
@@ -41,7 +41,7 @@ void		free_struct(t_cmd *cmd)
       cmd->def = to_next;
     }
   cmd = head;
-  while (cmd->call != NULL && cmd->call->next != NULL)
+  while (cmd->call != NULL)
     {
       to_next = cmd->call->next;
       free(cmd->call->label_name);
