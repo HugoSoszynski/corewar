@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:16:00 2016 corsin_a
-** Last update Sun Mar 27 21:46:54 2016 Hugo SOSZYNSKI
+** Last update Thu Apr  7 16:09:13 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -52,7 +52,8 @@ void		exec_op_live(t_corewar	*corewar,
 	      if (corewar->champions_alive[cpt] != IS_DEAD)
 		{
 		  corewar->champions_alive[cpt] = IS_ALIVE;
-		  print_champ_alive(&(corewar->champion[cpt]), cpt);
+		  print_champ_alive(&(corewar->champion[cpt]),
+				    corewar->champion[cpt].nb_champion);
 		}
 	      return ;
 	    }

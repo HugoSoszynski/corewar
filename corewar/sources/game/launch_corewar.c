@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Tue Mar 22 22:17:05 2016 corsin_a
-** Last update Sun Mar 27 22:41:34 2016 corsin_a
+** Last update Thu Apr  7 16:10:01 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -39,7 +39,8 @@ static int	test_champ_cycles(t_corewar *corewar, int *live)
       if (corewar->champions_alive[cpt] == IS_RUN)
 	{
 	  corewar->champions_alive[cpt] = IS_DEAD;
-	  print_champ_dead(&(corewar->champion[cpt]), cpt);
+	  print_champ_dead(&(corewar->champion[cpt]),
+			   corewar->champion[cpt].nb_champion);
 	}
       else if (corewar->champions_alive[cpt] == IS_ALIVE)
 	{
