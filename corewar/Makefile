@@ -5,7 +5,7 @@
 ## Login   <sylvain.corsini@epitech.eu>
 ##
 ## Started on  Sun Mar 27 23:29:29 2016 corsin_a
-## Last update Sun Mar 27 23:34:54 2016 corsin_a
+## Last update Mon Apr  4 21:02:24 2016 Hugo SOSZYNSKI
 ##
 
 CC			=	gcc
@@ -15,6 +15,7 @@ RM			=	rm -f
 CFLAGS			+=	-W -Wextra -Wall
 #CFLAGS			+=	-Werror
 CFLAGS			+=	-Iincludes
+CFLAGS			+=	-ggdb3
 
 COREWAR			=	corewar
 
