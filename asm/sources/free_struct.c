@@ -20,7 +20,7 @@ void		free_linked_list(t_cmd *cmd)
     {
       to_next = cmd->next;
       if (cmd->line != NULL)
-	free(cmd->line);
+	/*free(cmd->line);*/
       free(cmd);
       cmd = NULL;
       cmd = to_next;

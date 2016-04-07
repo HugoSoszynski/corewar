@@ -44,7 +44,7 @@ char		*to_dot_cor(char *filename)
   return (output);
 }
 
-int		write_cor_extend(t_cmd *cmd, char *filename, int *fd, int *prog_size)
+int		write_cor_extend(t_cmd *cmd, char **filename, int *fd, int *prog_size)
 {
   *prog_size = 0;
   cmd = cmd->head;
@@ -53,9 +53,9 @@ int		write_cor_extend(t_cmd *cmd, char *filename, int *fd, int *prog_size)
   cmd = cmd->head;
   if ((cmd = set_octet_label(cmd)) == NULL)
     return (-1);
-  if ((filename = to_dot_cor(filename)) == NULL)
+  if ((*filename = to_dot_cor(*filename)) == NULL)
     return (-1);
-  if ((*fd = open(filename, O_CREAT | O_RDONLY | O_WRONLY |
+  if ((*fd = open(*filename, O_CREAT | O_RDONLY | O_WRONLY |
 		 O_TRUNC | O_APPEND, S_IWUSR | S_IRUSR | S_IRGRP |
 		 S_IWGRP | S_IROTH)) == -1)
     return (error_message_nonb("cant open the file"));
@@ -66,20 +66,16 @@ int		write_cor(t_cmd *cmd, char *filename)
 {
   int		fd;
   char		*name;
-  int		cpt;
   char		**comment;
   int		prog_size;
   header_t	*header;
 
-  cpt = 0;
-  if ((write_cor_extend(cmd, filename, &fd, &prog_size)) == -1)
+  if ((write_cor_extend(cmd, &filename, &fd, &prog_size)) == -1)
     return (-1);
   if ((name = check_one_name(cmd)) == NULL)
     return (error_message_nonb("no name are reach"));
   if ((comment = where_comment(cmd, 0)) == NULL)
     return (-1);
-  while (comment[cpt] != NULL)
-    cpt++;
   if ((header = create_cor_header(name, comment, prog_size)) == NULL)
     return (-1);
   if ((write_cor_header(header, fd, filename)) == ERROR)
@@ -87,5 +83,7 @@ int		write_cor(t_cmd *cmd, char *filename)
   free(header);
   if ((write_file(fd, cmd)) == -1)
     return(-1);
+  close(fd);
+  free(filename);
   return (0);
 }

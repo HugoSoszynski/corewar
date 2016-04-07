@@ -46,6 +46,7 @@ void		write_arg(int fd, t_cmd *cmd)
 {
   int		cpt;
 
+  cpt = -1;
   if (write_arg1(fd, cmd) == 0)
     return ;
   else if (cmd->opcode == (OP_LIVE / 2 + 1))
@@ -105,6 +106,6 @@ int		write_file(int fd, t_cmd *cmd)
       cmd = cmd->next;
     }
   rescue = rescue->head;
-  /*  free_struct(rescue);*/
+  free_struct(rescue);
   return (0);
 }

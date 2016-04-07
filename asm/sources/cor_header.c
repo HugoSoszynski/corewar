@@ -13,6 +13,7 @@
 #include	<stdlib.h>
 #include	"asm.h"
 #include	"op.h"
+#include	"parser.h"
 
 static header_t	*cpy_commentary(header_t *header,
 				char **comment)
@@ -21,47 +22,26 @@ static header_t	*cpy_commentary(header_t *header,
   int		cpt1;
   int		cpt2;
 
-  cpt = -1;
+  cpt = 0;
   cpt2 = 0;
-  while (comment[++cpt] != NULL)
+  while (comment[cpt] != NULL)
     {
-      cpt1 = -1;
-      while (comment[cpt][++cpt1] != '\0')
+      cpt1 = 0;
+      while (comment[cpt][cpt1] != '\0')
 	{
 	  header->comment[cpt2] = comment[cpt][cpt1];
 	  cpt2++;
+	  ++cpt1;
 	}
       if (comment[cpt + 1] != NULL)
 	header->comment[cpt2] = '\n';
       cpt2++;
+      ++cpt;
     }
-  return (header);
-}
-
-static header_t	*init_cor_header()
-{
-  int		cpt;
-  header_t	*header;
-
-  if ((header = malloc(sizeof(header_t))) == NULL)
-    {
-      write(2, "Can’t perform malloc\n", 21);
-      return (NULL);
-    }
-  header->magic = 0;
-  cpt = 0;
-  while (cpt < PROG_NAME_LENGTH + 1)
-    {
-      header->prog_name[cpt] = '\0';
-      cpt++;
-    }
-  header->prog_size = 0;
-  cpt = 0;
-  while (cpt < COMMENT_LENGTH + 1)
-    {
-      header->comment[cpt] = '\0';
-      cpt++;
-    }
+  cpt = -1;
+  while (comment[++cpt])
+    free(comment[cpt]);
+  free(comment);
   return (header);
 }
 
@@ -72,12 +52,19 @@ header_t	*create_cor_header(char *name,
   header_t	*header;
   int		cpt;
 
-  if ((header = init_cor_header()) == NULL)
+  if ((header = malloc(sizeof(header_t))) == NULL)
+  {
+    write(2, "Can’t perform malloc\n", 21);
     return (NULL);
+  }
+  my_bzero(header, sizeof(header_t));
   header->magic = COREWAR_EXEC_MAGIC;
-  cpt = -1;
-  while (name[++cpt] != '\0')
+  cpt = 0;
+  while (name[cpt] != '\0')
+  {
     header->prog_name[cpt] = name[cpt];
+    ++cpt;
+  }
   header->prog_size = prog_size;
   header = cpy_commentary(header, comment);
   return (header);
@@ -87,22 +74,13 @@ int		write_cor_header(header_t *header,
 				 int fd,
 				 char *file_name)
 {
-  int		size;
-
+  (void)file_name;
   if (IS_LIT_ENDIAN)
     {
       my_reverse_bytes(&header->magic, sizeof(int));
       my_reverse_bytes(&header->prog_size, sizeof(int));
     }
   if (write(fd, header, sizeof(header_t)) == -1)
-    {
-      size = 0;
-      while (file_name[size] != '\0')
-	size++;
-      write(2, "File ", 5);
-      write(2, file_name, size);
-      write(2, " not accessible\n", 15);
-      return (ERROR);
-    }
+    return (-1);
   return (0);
 }

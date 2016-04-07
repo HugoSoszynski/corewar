@@ -107,5 +107,6 @@ int		type_of_cmd(char *);
 int		parsing(char *, int);
 int		verif_cmd_line(int, char *);
 int		my_put_nbr_base(int, char *);
+void		my_bzero(void *_ptr, int size);
 
 #endif		/* !PARSER_H_ */
