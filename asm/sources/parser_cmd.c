@@ -5,7 +5,7 @@
 ** Login   <loens_g@epitech.net>
 **
 ** Started on  Mon Mar  7 14:24:56 2016 Grégoire Loens
-** Last update Sun Mar 27 23:22:34 2016 Hugo SOSZYNSKI
+** Last update Thu Apr  7 12:11:22 2016 gregoire loens
 */
 
 #include	<stddef.h>
@@ -136,6 +136,7 @@ int		verif_cmd_line(int fd, char *filename)
       return (-1);
     }
   stock_arg = stock_arg->head;
-  write_cor(stock_arg, filename);
+  if ((write_cor(stock_arg, filename)) == -1)
+    return (-1);
   return (0);
 }

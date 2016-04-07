@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Sun Mar 27 23:12:25 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 23:12:26 2016 Hugo SOSZYNSKI
+** Last update Thu Apr  7 12:14:15 2016 gregoire loens
 */
 
 #include	<sys/stat.h>
@@ -26,7 +26,7 @@ int		main(int ac, char **av, char **envp)
   if (ac != 2)
     return (-1);
   if ((fd = open(av[1], O_RDONLY)) == -1)
-    return (-1);
+    return (error_message_nonb("cant open file"));
   if ((verif_cmd_line(fd, av[1])) == -1)
     return (-1);
   return (0);

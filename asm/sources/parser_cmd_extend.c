@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Sun Mar 27 23:20:53 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 23:23:26 2016 Hugo SOSZYNSKI
+** Last update Thu Apr  7 12:13:39 2016 gregoire loens
 */
 
 #include	<stddef.h>
@@ -36,11 +36,11 @@ int		parser_cmd_extend(t_cmd **stock_arg, int fd, unsigned char
 	  else if ((*stock_arg = add_cmd(*stock_arg)) == NULL)
 	    return (-1);
 	}
-      else
-	free(line);
+      //else
+	//	free(line);
       nbr_line++;
     }
   if (stock == 1)
-    return (-1);
+    return (error_message_nonb("you have a .dot_extend or an error_line"));
   return (0);
 }

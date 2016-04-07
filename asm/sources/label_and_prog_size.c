@@ -5,7 +5,7 @@
 ** Login   <hugo.soszynski@epitech.eu>
 **
 ** Started on  Sun Mar 27 23:11:35 2016 Hugo SOSZYNSKI
-** Last update Sun Mar 27 23:12:12 2016 Hugo SOSZYNSKI
+** Last update Mon Apr  4 19:49:10 2016 
 */
 
 #include	<stddef.h>
@@ -90,7 +90,7 @@ int		label_and_prog_size(t_cmd *cmd, int *prog_size)
   cmd = cmd->head;
   *prog_size = 0;
   if ((cmd = check_only_label(cmd)) == NULL)
-    return (-1);
+    return (error_message_nonb("you have a double define of label or a label is call without be define in the file"));
   cmd = cmd->head;
   while (cmd != NULL)
     {
