@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Wed Mar 23 03:15:49 2016 corsin_a
-** Last update Sun Mar 27 16:01:20 2016 corsin_a
+** Last update Mon Apr  4 21:24:56 2016 Hugo SOSZYNSKI
 */
 
 #include	"corewar.h"
@@ -52,9 +52,11 @@ void		exec_op_ld(t_corewar		*corewar,
 
   if (current->instruction.correct)
     {
-      reg = &(current->process.reg[current->instruction.arg[1] - 1]);
+      reg = &(current->process.reg[(current->instruction.arg[1] - 1) %
+				   REG_NUMBER]);
       if (current->instruction.type_arg[0] == 1)
-	*reg = current->process.reg[current->instruction.arg[0] - 1];
+	*reg = current->process.reg[(current->instruction.arg[0] - 1) %
+				    REG_NUMBER];
       else if (current->instruction.type_arg[0] == 4)
 	*reg = current->instruction.arg[0];
       else

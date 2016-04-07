@@ -5,7 +5,7 @@
 ** Login   <sylvain.corsini@epitech.eu>
 **
 ** Started on  Mon Mar 21 17:42:18 2016 corsin_a
-** Last update Sun Mar 27 21:12:50 2016 Hugo SOSZYNSKI
+** Last update Mon Apr  4 20:39:01 2016 Hugo SOSZYNSKI
 */
 
 #include	<stddef.h>
@@ -24,20 +24,21 @@ static int	is_options(t_options	*options,
 {
   if (my_strcmp(opt, "-dump"))
     {
-      if (options->dump != -1 || !my_getnbr(next, &(options->dump)))
+      if (options->dump != -1 || next == NULL ||
+	  !my_getnbr(next, &(options->dump)))
 	return (error_message("Error with '-dump'"));
       return (SUCCESS);
     }
   else if (my_strcmp(opt, "-n"))
     {
-      if (options->champion[options->nb_champion].nb != -1 ||
+      if (options->champion[options->nb_champion].nb != -1 || next == NULL ||
 	  !my_getnbr(next, &(options->champion[options->nb_champion].nb)))
 	return (error_message("Error with '-n'"));
       return (SUCCESS);
     }
   else if (my_strcmp(opt, "-a"))
     {
-      if (options->champion[options->nb_champion].ad != -1 ||
+      if (options->champion[options->nb_champion].ad != -1 || next == NULL ||
 	  !my_getnbr(next, &(options->champion[options->nb_champion].ad)))
 	return (error_message("Error with '-a'"));
       return (SUCCESS);
